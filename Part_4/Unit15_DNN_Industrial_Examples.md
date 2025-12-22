@@ -29,7 +29,7 @@
 
 #### 1.1 前向傳播（Forward Propagation）
 
-對於第 $l$ 層的神經元，其輸出計算如下：
+對第 $l$ 層的神經元，其輸出計算如下：
 
 $$
 \begin{aligned}
@@ -39,14 +39,15 @@ $$
 $$
 
 其中：
-- $\mathbf{W}^{[l]}$：第 $l$ 層的權重矩陣
-- $\mathbf{b}^{[l]}$：第 $l$ 層的偏置向量
-- $\mathbf{a}^{[l-1]}$：第 $l-1$ 層的激活輸出
-- $g^{[l]}(\cdot)$：激活函數（如 ReLU、sigmoid、tanh）
+- $\mathbf{W}^{[l]}$ ： 第 $l$ 層的權重矩陣
+- $\mathbf{b}^{[l]}$ ： 第 $l$ 層的偏置向量
+- $\mathbf{a}^{[l-1]}$ ： 第 $l-1$ 層的激活輸出
+- $g^{[l]}(\cdot)$ ： 激活函數（如 ReLU、sigmoid、tanh）
 
 #### 1.2 常用激活函數
 
 **ReLU (Rectified Linear Unit):**
+
 $$
 \text{ReLU}(x) = \max(0, x)
 $$
@@ -55,6 +56,7 @@ $$
 應用：隱藏層的主流選擇
 
 **Softmax（用於多分類輸出層）:**
+
 $$
 \text{softmax}(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
 $$
@@ -64,11 +66,13 @@ $$
 #### 1.3 損失函數
 
 **均方誤差（MSE）- 用於回歸:**
+
 $$
 \mathcal{L}_{\text{MSE}} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 $$
 
 **Huber Loss - 魯棒性損失:**
+
 $$
 \mathcal{L}_{\text{Huber}}(\delta) = \begin{cases}
 \frac{1}{2}(y - \hat{y})^2 & \text{if } |y - \hat{y}| \leq \delta \\
@@ -79,6 +83,7 @@ $$
 Huber Loss 對異常值更魯棒，在 $|y - \hat{y}| \leq \delta$ 時表現為 MSE，在誤差較大時退化為 MAE。
 
 **交叉熵損失（Cross-Entropy）- 用於分類:**
+
 $$
 \mathcal{L}_{\text{CE}} = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{K} y_{ik} \log(\hat{y}_{ik})
 $$
@@ -86,11 +91,13 @@ $$
 #### 1.4 反向傳播與梯度下降
 
 **梯度計算（鏈式法則）:**
+
 $$
 \frac{\partial \mathcal{L}}{\partial \mathbf{W}^{[l]}} = \frac{\partial \mathcal{L}}{\partial \mathbf{a}^{[L]}} \cdot \frac{\partial \mathbf{a}^{[L]}}{\partial \mathbf{z}^{[L]}} \cdot \ldots \cdot \frac{\partial \mathbf{z}^{[l]}}{\partial \mathbf{W}^{[l]}}
 $$
 
 **Adam 優化器更新規則:**
+
 $$
 \begin{aligned}
 \mathbf{m}_t &= \beta_1 \mathbf{m}_{t-1} + (1-\beta_1)\nabla_{\theta}\mathcal{L} \\
@@ -100,7 +107,7 @@ $$
 \end{aligned}
 $$
 
-其中 $\beta_1=0.9$, $\beta_2=0.999$ 為動量參數，$\alpha$ 為學習率。
+其中 $\beta_1=0.9$ , $\beta_2=0.999$ 為動量參數， $\alpha$ 為學習率。
 
 ### 2. 數據預處理與標準化
 
@@ -118,6 +125,7 @@ $$
 - 保證不同特徵的尺度一致
 
 **反標準化（用於預測結果）:**
+
 $$
 x_{\text{original}} = x_{\text{scaled}} \cdot \sigma + \mu
 $$
@@ -138,16 +146,19 @@ $$
 #### 3.1 回歸評估指標
 
 **均方根誤差 (RMSE):**
+
 $$
 \text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
 $$
 
 **平均絕對誤差 (MAE):**
+
 $$
 \text{MAE} = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|
 $$
 
 **決定係數 (R²):**
+
 $$
 R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}
 $$
@@ -157,16 +168,19 @@ R² 表示模型解釋的變異比例，越接近 1 表示擬合越好。
 #### 3.2 分類評估指標
 
 **準確率 (Accuracy):**
+
 $$
 \text{Accuracy} = \frac{\text{正確預測數}}{\text{總樣本數}}
 $$
 
 **精確率 (Precision) 與召回率 (Recall):**
+
 $$
 \text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}
 $$
 
 **F1 Score:**
+
 $$
 F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 $$
@@ -218,7 +232,7 @@ $$
 \text{pH} = \text{pK}_a + \log \frac{[\text{A}^-]}{[\text{HA}]}
 $$
 
-其中 $[\text{A}^-]$ 為酸根離子濃度，$[\text{HA}]$ 為未解離酸濃度。
+其中 $[\text{A}^-]$ 為酸根離子濃度， $[\text{HA}]$ 為未解離酸濃度。
 
 **2. SO₂ 的化學平衡**
 
@@ -254,11 +268,11 @@ $$
 
 從上圖可以看出：
 - **左圖**：品質評分直方圖顯示明顯的中心集中趨勢，5分和6分佔據絕大多數樣本
-- **右圖**：箱型圖揭示了品質與酒精度的正相關關係
+- **右圖**：箱型圖揭示了品質與酒精度的正相關關係 ( $r=+0.485$ )
   - 低質量酒（≤5分）：酒精度中位數約9.5%，分布較分散
   - 中等質量酒（6分）：酒精度中位數約10.5%，分布較集中
   - 高質量酒（≥7分）：酒精度中位數約11.5%，明顯更高且離群值較多
-- **統計意義**：酒精度與品質的正相關性（r=+0.485）在視覺上得到驗證
+- **統計意義**：酒精度與品質的正相關性 ( $r=+0.485$ ) 在視覺上得到驗證
 
 #### 特徵相關性分析
 
@@ -497,6 +511,7 @@ Sequential([
 ```
 
 **Claus 反應：**
+
 $$
 2\text{H}_2\text{S} + \text{O}_2 \rightarrow 2\text{S} + 2\text{H}_2\text{O} \quad (\text{放熱})
 $$
@@ -545,7 +560,7 @@ ACF(lag=50): 0.4521
 
 ### 2.4 滯後特徵工程
 
-基於自相關性分析，添加 y1 的歷史滯後值：
+基於自相關性分析，添加 $y_1$ 的歷史滯後值：
 
 $$
 \mathbf{X}_{\text{augmented}}(t) = [u_1(t), u_2(t), u_3(t), u_4(t), u_5(t), y_1(t-1), y_1(t-2), y_1(t-3)]
@@ -776,10 +791,10 @@ N_{\min} = \frac{\log\left(\frac{x_D}{1-x_D} \cdot \frac{1-x_B}{x_B}\right)}{\lo
 $$
 
 其中：
-- $N_{\min}$：最小理論板數
-- $x_D$：塔頂輕組分摩爾分數
-- $x_B$：塔底輕組分摩爾分數
-- $\alpha$：相對揮發度
+- $N_{\min}$ ： 最小理論板數
+- $x_D$ ： 塔頂輕組分摩爾分數
+- $x_B$ ： 塔底輕組分摩爾分數
+- $\alpha$ ： 相對揮發度
 
 **相對揮發度與溫度關係：**
 
@@ -813,6 +828,7 @@ $$
 ### 3.5 Baseline模型
 
 **1. Persistence Model**
+
 $$
 \hat{y}(t) = y(t-1)
 $$

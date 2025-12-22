@@ -19,3 +19,4 @@ Part_5/data/
 
 # Also track .gitignore itself
 !.gitignore
+!.agent/

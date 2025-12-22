@@ -93,14 +93,16 @@ GPU 可用: []
 ```
 
 數學表示：
+
 $$z^{[l]} = W^{[l]} \cdot a^{[l-1]} + b^{[l]}$$
+
 $$a^{[l]} = g(z^{[l]})$$
 
 其中：
-- $W$: 權重矩陣
-- $b$: 偏差向量
-- $g$: 激活函數
-- $a$: 激活值
+- $W$ : 權重矩陣
+- $b$ : 偏差向量
+- $g$ : 激活函數
+- $a$ : 激活值
 
 ### 2.2 適用時機與問題類型
 
@@ -623,11 +625,17 @@ LSTM 透過門控機制 (gates) 解決梯度消失問題，能夠學習長期依
 3. **輸出門 (Output Gate)**: 決定輸出什麼資訊
 
 數學表示：
+
 $$f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)$$
+
 $$i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)$$
+
 $$\tilde{C}_t = \tanh(W_C \cdot [h_{t-1}, x_t] + b_C)$$
+
 $$C_t = f_t \cdot C_{t-1} + i_t \cdot \tilde{C}_t$$
+
 $$o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)$$
+
 $$h_t = o_t \cdot \tanh(C_t)$$
 
 **GRU (Gated Recurrent Unit)**：

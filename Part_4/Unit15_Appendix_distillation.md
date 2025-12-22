@@ -18,7 +18,7 @@ $$
 \hat{y} = f(\mathbf{x}),\quad \mathbf{x}\in \mathbb{R}^{20},\ y\in \mathbb{R}
 $$
 
-其中 $y$ 是乙醇莫耳濃度（`Ethanol concentration`），$\mathbf{x}$ 是壓力、塔板溫度與流量組成的特徵向量。
+其中 $y$ 是乙醇莫耳濃度（`Ethanol concentration`）， $\mathbf{x}$ 是壓力、塔板溫度與流量組成的特徵向量。
 
 ---
 
@@ -113,7 +113,7 @@ $$
 x' = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}
 $$
 
-注意：$\mu_{\text{train}},\sigma_{\text{train}}$ 必須只由訓練集估計，才能避免 data leakage。
+注意： $\mu_{\text{train}},\sigma_{\text{train}}$ 必須只由訓練集估計，才能避免 data leakage。
 
 ---
 
