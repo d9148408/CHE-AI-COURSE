@@ -259,9 +259,9 @@ $$
 #### 數學補充：優化演算法 Adam
 Adam (Adaptive Moment Estimation) 是目前最常用的優化器，結合了動量（Momentum）與 RMSProp 的概念。參數 $\theta_t$ 的更新公式如下：
 
-1.  **計算梯度**：$g_t = \nabla_\theta \mathcal{L}(\theta_{t-1})$
-2.  **更新一階矩（Momentum）**：$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$
-3.  **更新二階矩（RMSProp）**：$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2$
+1.  **計算梯度**： $g_t = \nabla_\theta \mathcal{L}(\theta_{t-1})$
+2.  **更新一階矩（Momentum）**： $m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$
+3.  **更新二階矩（RMSProp）**： $v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2$
 4.  **偏差校正（Bias Correction）**：
     $\hat{m}_t = m_t / (1-\beta_1^t)$
     $\hat{v}_t = v_t / (1-\beta_2^t)$
