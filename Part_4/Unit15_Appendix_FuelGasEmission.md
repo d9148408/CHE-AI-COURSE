@@ -14,6 +14,23 @@
 
 本案例以回歸問題建模：輸入多個操作/環境變數，輸出 NOx（連續值）。
 
+### 1.1 補充理論：NOx 的生成機制（Domain Knowledge）
+
+在燃氣渦輪（Gas Turbine, GT）燃燒過程中，NOx 的生成主要受燃燒溫度與化學反應動力學控制，主要機制包含：
+
+1.  **Thermal NOx（熱力型 NOx）**：
+    *   這是高溫燃燒（通常 > 1300°C）中最主要的 NOx 來源。
+    *   根據 **Zeldovich mechanism**，氮氣（$N_2$）在高溫下與氧原子（$O$）反應生成 $NO$。
+    *   反應速率對溫度高度敏感（指數關係），因此**燃燒溫度（Flame Temperature）**是關鍵控制變因。
+2.  **Prompt NOx（快速型 NOx）**：
+    *   發生在燃燒初期，碳氫燃料碎片（CH radicals）與 $N_2$ 反應。
+    *   在富燃（fuel-rich）區域較為顯著。
+3.  **Fuel NOx（燃料型 NOx）**：
+    *   來自燃料本身含有的氮化合物（在天然氣中通常極少，但在燃煤或重油中常見）。
+
+**為何需要軟測器（Soft Sensor）？**
+傳統的連續排放監測系統（CEMS）雖然準確，但有延遲（採樣傳輸+分析時間）且維護昂貴。資料驅動的軟測器可以實現「虛擬即時量測」，對燃燒控制優化（Combustion Tuning）至關重要——例如在維持低 NOx 的同時，還要避免火焰不穩定（Lean Blowout）或燃燒室振動（Combustion Dynamics）。
+
 ---
 
 ## 2. 資料集與欄位
@@ -37,7 +54,16 @@
 | `TEY` | X | Turbine Energy Yield（能量產出/效率相關指標） |
 | `CDP` | X | Compressor Discharge Pressure（壓縮機出口壓力） |
 | `CO` | X | Carbon Monoxide（CO 排放） |
-| `NOX` | y | Nitrogen Oxides（NOx 排放，預測目標） |
+| `NOX` | y | Nitrogen Oxides（NOx 排放，預測目標，單位通常為 ppmV @ 15% O2） |
+
+### 2.1 特徵的物理意義解讀
+
+理解特徵對應的物理意義，有助於我們解釋模型行為：
+
+*   **TIT (Turbine Inlet Temperature)**：渦輪入口溫度。這是決定 GT 熱效率與功率的關鍵。但也直接關聯到燃燒溫度，因此理論上 **TIT 越高，Thermal NOx 傾向越高**（若控制策略不變）。
+*   **CDP (Compressor Discharge Pressure)**：壓縮機出口壓力。反映了進入燃燒室的空氣質量流量與總壓，高壓有助於反應速率，可能增加 NOx。
+*   **AT, AP, AH (Ambient Conditions)**：環境溫濕壓會改變空氣密度與濕度。
+    *   例如：**環境溫度 (AT) 上升** $\rightarrow$ 空氣密度下降 $\rightarrow$ 進入壓縮機的空氣質量流率（Mass flow）下降 $\rightarrow$ 為了維持負載或保護機組，且高溫空氣含水量不同，可能導致燃燒控制點改變，進而影響排放。
 
 注意：此資料集的特徵皆為數值型，通常不需類別編碼；但仍需注意標準化、資料切分與評估方式。
 
@@ -75,7 +101,15 @@ $$
 - `CO`、`AP` 與 `NOX` 呈現中度正相關（約 `0.40` 左右）。
 - `TIT`、`GTEP` 與 `NOX` 呈現弱到中度負相關（約 `-0.23 ~ -0.24`）。
 
-請注意：這些現象可能反映「操作條件、負載、燃燒狀態」等多因子共同作用的結果；我們使用 DNN 的目的，是讓模型從多維變數的組合中學到更有效的非線性映射，而不是僅靠單一變數的線性趨勢。
+請注意：這些現象反映了複雜的物理與控制邏輯。
+
+**深入分析：為什麼 AT（環境溫度）與 NOx 呈負相關？**
+這是一個反直覺但具備物理原因的現象：
+1.  **空氣密度效應**：當環境溫度 `AT` 升高，空氣密度降低，導致燃氣渦輪吸入的空氣質量流率（Air Mass Flow）減少。
+2.  **負載與控制**：為了維持機組運行穩定或受限於材料溫度限制，在高溫天候下，渦輪的出力（Load）或燃燒溫度峰值可能受到限制或自動調整。而 NOx 生成對溫度呈現指數相關，因此整體效應可能表現為「熱天（高 AT）排放較低」。
+3.  **相對負載**：此資料集若包含多種負載狀態，高溫天候可能更多處於部份負載（Partial Load），導致平均 NOx 較低。
+
+我們使用 DNN 的目的，正是要讓模型自動捕捉這些由 `AT`、`TIT`、`CDP` 等多變數交織而成的非線性燃燒特性。
 
 本次資料集各特徵與 `NOX` 的相關係數如下（由 Notebook 計算，四捨五入到小數第 3 位）：
 
@@ -187,16 +221,19 @@ $$
 但在工業應用報告時，更常用下列指標，因為更容易解讀：
 
 **MAE（平均絕對誤差）**
+
 $$
 \mathrm{MAE}=\frac{1}{n}\sum_{i=1}^{n}\lvert y_i-\hat{y}_i\rvert
 $$
 
 **RMSE（均方根誤差）**
+
 $$
 \mathrm{RMSE}=\sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}
 $$
 
 **$R^2$（決定係數）**
+
 $$
 R^2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}
 $$
@@ -217,7 +254,21 @@ $$
 \theta \leftarrow \theta - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon}
 $$
 
-（本範例的 Notebook：若環境有 TensorFlow/Keras，會使用 Adam；若無 TensorFlow，則使用 sklearn 的 MLPRegressor（同樣是 MLP/DNN 架構）完成訓練。）
+（本範例的 Notebook 當偵測到環境有 TensorFlow/Keras 時會自動切換使用，並啟用更進階的優化器設定。）
+
+#### 數學補充：優化演算法 Adam
+Adam (Adaptive Moment Estimation) 是目前最常用的優化器，結合了動量（Momentum）與 RMSProp 的概念。參數 $\theta_t$ 的更新公式如下：
+
+1.  **計算梯度**：$g_t = \nabla_\theta \mathcal{L}(\theta_{t-1})$
+2.  **更新一階矩（Momentum）**：$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$
+3.  **更新二階矩（RMSProp）**：$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2$
+4.  **偏差校正（Bias Correction）**：
+    $\hat{m}_t = m_t / (1-\beta_1^t)$
+    $\hat{v}_t = v_t / (1-\beta_2^t)$
+5.  **參數更新**：
+    $\theta_t = \theta_{t-1} - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$
+
+其中，$\eta$ 為學習率（Learning Rate），$\beta_1, \beta_2$ 為衰減係數（通常設為 0.9, 0.999）。Adam 能針對每個參數自適應調整學習步長，特別適合高維度、非凸的損失曲面。
 
 ### 6.4 範例執行結果：訓練曲線（Notebook 輸出）
 
@@ -248,6 +299,8 @@ $$
 - MAE 與 RMSE 明顯下降：平均誤差降低，且大誤差也減少（RMSE 對大誤差更敏感）。
 - $R^2$ 從約 0.71 提升到約 0.89：代表模型對 `NOX` 變異的解釋能力顯著提升。
 - 以比例來看：MAE 約降低 `32%`（`1 - 2.454/3.622`），RMSE 約降低 `37%`（`1 - 3.560/5.620`），顯示非線性 DNN 對此資料集確實帶來可觀增益。
+
+這證明了 **NOx 排放機制本質上是非線性的**（如 Zeldovich 機制的指數溫度依賴性），因此線性模型（Ridge）會遭遇較大的 Model Bias，而 DNN 透過多層 ReLU 成功捕捉了這些特徵。
 
 #### 進一步解讀：MAE vs RMSE
 
@@ -312,6 +365,12 @@ $$
 
 ![Residual plot](outputs/P4_Unit15_Appendix_FuelGasEmission/figs/residual_plot.png)
 
+#### 殘差圖的進階解讀（Heteroscedasticity Analysis）
+觀察上圖：
+1.  **分佈對稱性**：殘差大致以 0 為中心上下分佈，沒有明顯的偏斜，表示模型沒有嚴重的系統性偏差（Bias）。
+2.  **變異數（Variance）**：隨預測值（x 軸）增加，殘差的擴散程度（y 軸寬度）似乎有些微變化，但不明顯。若高排放區間的殘差明顯變大（喇叭狀），稱為「異質變異性（Heteroscedasticity）」，可能需要對目標變數做 Log 轉換或使用加權損失函數。
+3.  **離群值**：圖中可見少數點偏離較遠，這些可能是特殊的瞬態操作（Transient events）或儀表雜訊。在實務上，可考慮將殘差超過 $3\sigma$ 的樣本標記出來，回頭檢查當時的操作記錄，確認是否為異常工況。
+
 ---
 
 ## 8. 推論（Inference）與交付物（Artifacts）
@@ -351,6 +410,12 @@ Notebook 會對 `Part_4/data/fuel_gas/test.csv` 產生 `NOX` 預測並輸出到�
 - 若 `test predicted NOX` 明顯偏移或出現長尾：可能代表 `test.csv` 存在不同工況/資料漂移，此時應特別注意模型風險（例如需做 OOD 檢測、分段模型或再訓練）。
 
 ![Distribution: train NOX vs test predicted NOX](outputs/P4_Unit15_Appendix_FuelGasEmission/figs/test_pred_vs_train_dist.png)
+
+#### 數據分佈檢定（Data Drift Check）
+這張圖是觀察 **Covariate Shift** 或 **Label Shift** 的重要工具。
+*   **觀察**：Test set 的預測值分佈（橘色）與 Train set 真實值分佈（藍色）高度重疊。
+*   **結論**：這是一個健康的訊號。表示測試集的工況（Operating Conditions）大部分都包含在訓練集的經驗範圍內。模型不需要進行過多的「外插（Extrapolation）」。
+*   **反之**：若橘色曲線明顯向右或向左偏移，代表測試期間機組可能運行在不同的季節或負載模式，此時模型的誤差風險會增加，需要發出預警。
 
 ### 8.3 範例執行結果：`test.csv` 預測值與關鍵特徵關係（Notebook 輸出）
 
