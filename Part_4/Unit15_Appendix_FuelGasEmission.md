@@ -20,7 +20,7 @@
 
 1.  **Thermal NOx（熱力型 NOx）**：
     *   這是高溫燃燒（通常 > 1300°C）中最主要的 NOx 來源。
-    *   根據 **Zeldovich mechanism**，氮氣（$N_2$）在高溫下與氧原子（$O$）反應生成 $NO$。
+    *   根據 **Zeldovich mechanism**，氮氣（ $N_2$ ）在高溫下與氧原子（ $O$ ）反應生成 $NO$。
     *   反應速率對溫度高度敏感（指數關係），因此**燃燒溫度（Flame Temperature）**是關鍵控制變因。
 2.  **Prompt NOx（快速型 NOx）**：
     *   發生在燃燒初期，碳氫燃料碎片（CH radicals）與 $N_2$ 反應。
@@ -238,7 +238,7 @@ $$
 R^2 = 1-\frac{\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}
 $$
 
-直覺：$R^2$ 越接近 1 表示模型越能解釋目標變異；若接近 0 則接近只用平均值預測。
+直覺： $R^2$ 越接近 1 表示模型越能解釋目標變異；若接近 0 則接近只用平均值預測。
 
 ### 6.3 反向傳播（Backpropagation）的概念
 
@@ -277,7 +277,7 @@ Adam (Adaptive Moment Estimation) 是目前最常用的優化器，結合了動�
 - 若 `train loss` 持續下降，但 `valid loss` 開始上升：常見過擬合跡象
 - 若兩者都下降且趨於平坦：模型收斂且泛化較佳
 
-本次範例在目前環境以 `sklearn-mlp` 執行，early stopping 停在約 `132` 個 epoch，最佳 validation MSE 約 `15.23`（可視為 validation RMSE 約 $\sqrt{15.23}\approx 3.90$，僅用來建立尺度直覺）。
+本次範例在目前環境以 `sklearn-mlp` 執行，early stopping 停在約 `132` 個 epoch，最佳 validation MSE 約 `15.23`（可視為 validation RMSE 約 $\sqrt{15.23}\approx 3.90$ ，僅用來建立尺度直覺）。
 
 ![Training curves](outputs/P4_Unit15_Appendix_FuelGasEmission/figs/loss_curve.png)
 
@@ -468,7 +468,7 @@ $$
 ### 9.2 你應該觀察什麼？
 
 - **訓練曲線**：train/valid loss 是否同步下降？valid 是否提前惡化（過擬合）？
-- **Parity plot**：點是否貼近 $y=\hat{y}$？是否有系統性偏移（整體偏高/偏低）？
+- **Parity plot**：點是否貼近 $y=\hat{y}$ ？是否有系統性偏移（整體偏高/偏低）？
 - **Residual plot**：殘差是否呈現結構（分段/漏斗/曲線）？若有，常代表模型在某些工況需要補強特徵或分段建模。
 - **工業落地觀點**：資料漂移（季節/負載變化）可能讓模型退化；需定期監控與再訓練策略。
 
