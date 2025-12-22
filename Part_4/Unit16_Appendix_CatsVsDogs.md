@@ -67,9 +67,9 @@
 **二元分類問題**：給定一張影像，判斷是 **貓 (Cat)** 還是 **狗 (Dog)**。
 
 這是典型的監督式學習任務：
-- 輸入：\(160 \times 160 \times 3\) 的 RGB 影像
-- 輸出：機率 \(P(\text{Dog} | x)\)，範圍 \([0, 1]\)
-- 決策規則：若 \(P(\text{Dog}) > 0.5\)，判定為 Dog；否則為 Cat
+- 輸入： $160 \times 160 \times 3$ 的 RGB 影像
+- 輸出：機率 $P(\text{Dog} | x)$ ，範圍 $[0, 1]$
+- 決策規則：若 $P(\text{Dog}) > 0.5$ ，判定為 Dog；否則為 Cat
 
 ### 1.2 資料集：Cats and Dogs Filtered
 
@@ -156,15 +156,15 @@ $$
 
 在小樣本情況下：
 - **Variance 主導**：模型過度擬合訓練集的特定樣本，無法泛化
-- **VC 維數限制**：根據 Vapnik-Chervonenkis 理論，要達到 \(\epsilon\) 的泛化誤差，所需樣本數約為：
+- **VC 維數限制**：根據 Vapnik-Chervonenkis 理論，要達到 $\epsilon$ 的泛化誤差，所需樣本數約為：
 
 $$
 N \geq \frac{1}{\epsilon} \left( d \log \frac{2}{\epsilon} + \log \frac{2}{\delta} \right)
 $$
 
-其中 \(d\) 是模型的 VC 維數（參數量的函數），\(\delta\) 是置信水平。
+其中 $d$ 是模型的 VC 維數（參數量的函數）， $\delta$ 是置信水平。
 
-對於深度 CNN，\(d\) 可達數百萬，因此從頭訓練需要 **數十萬** 樣本才能達到良好泛化。但透過遷移學習，我們實際上只訓練最後幾層（\(d \approx 1000-10000\)），因此 **數千樣本** 即可達到良好效果。
+對於深度 CNN， $d$ 可達數百萬，因此從頭訓練需要 **數十萬** 樣本才能達到良好泛化。但透過遷移學習，我們實際上只訓練最後幾層（ $d \approx 1000-10000$ ），因此 **數千樣本** 即可達到良好效果。
 
 ---
 
@@ -183,10 +183,10 @@ Flatten → Dense(128) → Dense(1)
 ```
 
 參數量計算：
-- Conv1: \(3 \times 3 \times 3 \times 32 = 864\)
-- Conv2: \(3 \times 3 \times 32 \times 64 = 18,432\)
-- Dense1: \(40 \times 40 \times 64 \times 128 = 13,107,200\) ⬅️ 最多參數
-- Dense2: \(128 \times 1 = 128\)
+- Conv1: $3 \times 3 \times 3 \times 32 = 864$
+- Conv2: $3 \times 3 \times 32 \times 64 = 18,432$
+- Dense1: $40 \times 40 \times 64 \times 128 = 13,107,200$ ⬅️ 最多參數
+- Dense2: $128 \times 1 = 128$
 - **總計**：約 **13.1 百萬參數**
 
 **問題**：
@@ -216,24 +216,28 @@ Flatten → Dense(128) → Dense(1)
 
 ### 2.3 形式化定義
 
-令 CNN 的參數為 \(\theta = (\theta_{\text{base}}, \theta_{\text{head}})\)：
-- \(\theta_{\text{base}}\)：MobileNetV2 的卷積基底（已在 ImageNet 上預訓練）
-- \(\theta_{\text{head}}\)：我們新增的分類層（隨機初始化）
+令 CNN 的參數為 $\theta = (\theta_{\text{base}}, \theta_{\text{head}})$ ：
+- $\theta_{\text{base}}$ ： MobileNetV2 的卷積基底（已在 ImageNet 上預訓練）
+- $\theta_{\text{head}}$ ： 我們新增的分類層（隨機初始化）
 
 **兩種遷移學習策略**：
 
 **(1) 特徵抽取 (Feature Extraction)**：
+
 $$
 \min_{\theta_{\text{head}}} \; \mathcal{L}\bigl(f_{\theta_{\text{base}}^{\text{ImageNet}}, \theta_{\text{head}}}(X), Y\bigr)
 $$
-- 固定 \(\theta_{\text{base}}\)，只訓練 \(\theta_{\text{head}}\)
+
+- 固定 $\theta_{\text{base}}$ ，只訓練 $\theta_{\text{head}}$
 - 優點：訓練快、不易過擬合
 - 缺點：可能無法充分適應目標任務
 
 **(2) 微調 (Fine-tuning)**：
+
 $$
 \min_{\theta_{\text{base}}, \theta_{\text{head}}} \; \mathcal{L}(f_\theta(X), Y) + \lambda \lVert \theta_{\text{base}} - \theta_{\text{base}}^{\text{ImageNet}} \rVert^2
 $$
+
 - 先固定基底訓練分類頭，再解凍部分高層卷積層微調
 - 正則化項避免「把原本學好的特徵完全洗掉」
 - 優點：性能可進一步提升
@@ -266,39 +270,43 @@ $$
 
 **傳統卷積的計算複雜度**：
 
-對於一個 \(D_K \times D_K\) 的卷積核，輸入通道數 \(M\)，輸出通道數 \(N\)，特徵圖尺寸 \(D_F \times D_F\)：
+對於一個 $D_K \times D_K$ 的卷積核，輸入通道數 $M$ ，輸出通道數 $N$ ，特徵圖尺寸 $D_F \times D_F$ ：
+
 $$
 \text{FLOPs}_{\text{conv}} = D_K^2 \cdot M \cdot N \cdot D_F^2
 $$
 
 範例：
-- \(D_K = 3\)，\(M = 32\)，\(N = 64\)，\(D_F = 56\)
-- FLOPs = \(3^2 \times 32 \times 64 \times 56^2 = 58M\)
+- $D_K = 3$ ， $M = 32$ ， $N = 64$ ， $D_F = 56$
+- FLOPs = $3^2 \times 32 \times 64 \times 56^2 = 58M$
 
 **深度可分離卷積**：
 
 將傳統卷積分解為兩步：
 
 **(1) Depthwise Convolution**（逐通道卷積）：
-- 對每個輸入通道 **單獨** 做 \(D_K \times D_K\) 卷積
-- 輸出通道數 = 輸入通道數 = \(M\)
-- FLOPs: \(D_K^2 \cdot M \cdot D_F^2\)
+- 對每個輸入通道 **單獨** 做 $D_K \times D_K$ 卷積
+- 輸出通道數 = 輸入通道數 = $M$
+- FLOPs: $D_K^2 \cdot M \cdot D_F^2$
 
-**(2) Pointwise Convolution**（\(1 \times 1\) 卷積）：
-- 用 \(N\) 個 \(1 \times 1\) 卷積核混合不同通道的資訊
-- FLOPs: \(M \cdot N \cdot D_F^2\)
+**(2) Pointwise Convolution**（ $1 \times 1$ 卷積）：
+- 用 $N$ 個 $1 \times 1$ 卷積核混合不同通道的資訊
+- FLOPs: $M \cdot N \cdot D_F^2$
 
 **總 FLOPs**：
+
 $$
 \text{FLOPs}_{\text{depthwise}} = D_K^2 \cdot M \cdot D_F^2 + M \cdot N \cdot D_F^2
 $$
 
 **壓縮比**：
+
 $$
 \frac{\text{FLOPs}_{\text{depthwise}}}{\text{FLOPs}_{\text{conv}}} = \frac{D_K^2 \cdot M + M \cdot N}{D_K^2 \cdot M \cdot N} = \frac{1}{N} + \frac{1}{D_K^2}
 $$
 
-當 \(D_K = 3\)，\(N = 64\) 時：
+當 $D_K = 3$ ， $N = 64$ 時：
+
 $$
 \frac{1}{64} + \frac{1}{9} \approx 0.127 \quad \Rightarrow \quad \text{約減少到 } \mathbf{1/8}
 $$
@@ -383,7 +391,7 @@ validation_dataset = tf.keras.utils.image_dataset_from_directory(
 $$
 \min_\theta \; \mathbb{E}_{(x, y) \sim \mathcal{D}, \; T \sim \mathcal{T}} \left[ \mathcal{L}\bigl(f_\theta(T(x)), y\bigr) \right]
 $$
-- \(\mathcal{T}\)：隨機變換集合（旋轉、翻轉、縮放、亮度調整等）
+- $\mathcal{T}$ ： 隨機變換集合（旋轉、翻轉、縮放、亮度調整等）
 - 希望模型對這些變換具有不變性 (Invariance)
 
 **常用變換**：
@@ -405,14 +413,14 @@ data_augmentation = tf.keras.Sequential([
 
 ### 4.3 預處理：Rescaling
 
-MobileNetV2 的預訓練權重是在 ImageNet 上訓練的，當時影像的像素值被縮放到 \([-1, 1]\) 範圍。
+MobileNetV2 的預訓練權重是在 ImageNet 上訓練的，當時影像的像素值被縮放到 $[-1, 1]$ 範圍。
 
 因此，我們需要：
 ```python
 preprocess_input = tf.keras.applications.mobilenet_v2.preprocess_input
 ```
 
-這會將 \([0, 255]\) 的像素值轉換為 \([-1, 1]\)：
+這會將 $[0, 255]$ 的像素值轉換為 $[-1, 1]$ ：
 $$
 x_{\text{normalized}} = \frac{x_{\text{raw}}}{127.5} - 1
 $$
@@ -438,10 +446,10 @@ base_model.trainable = False
 - `trainable=False`：凍結所有層的權重（不參與訓練）
 
 **輸出形狀**：
-- 輸入：\((None, 160, 160, 3)\)
-- 輸出：\((None, 5, 5, 1280)\)
-  - \(5 \times 5\)：經過多次 pooling 後的空間尺寸
-  - \(1280\)：MobileNetV2 最後一層的通道數
+- 輸入： (None, 160, 160, 3)
+- 輸出： (None, 5, 5, 1280)
+  - $5 \times 5$ ： 經過多次 pooling 後的空間尺寸
+  - $1280$ ： MobileNetV2 最後一層的通道數
 
 ### 4.5 自訂分類頭 (Custom Head)
 
@@ -470,8 +478,8 @@ model = models.Sequential([
 **各層說明**：
 
 **(1) GlobalAveragePooling2D**：
-- 將 \((5, 5, 1280)\) 平均成 \((1280,)\)
-- 數學：對每個通道的 \(5 \times 5\) 特徵圖取平均
+- 將 $(5, 5, 1280)$ 平均成 $(1280,)$
+- 數學：對每個通道的 $5 \times 5$ 特徵圖取平均
 $$
 v_c = \frac{1}{5 \times 5} \sum_{i=1}^{5} \sum_{j=1}^{5} h_{i,j,c}
 $$
@@ -480,18 +488,22 @@ $$
 **(2) Dropout(0.2)**：
 - 訓練時隨機將 20% 的神經元輸出設為 0
 - 數學：
+
 $$
 \mathbf{h}_{\text{dropout}} = \mathbf{h} \odot \mathbf{m}, \quad m_i \sim \text{Bernoulli}(0.8)
 $$
+
 - 效果：類似 L2 正則化，降低過擬合
 
 **(3) Dense(1, activation='sigmoid')**：
-- 將 1280 維特徵映射到單一標量 \(z\)
+- 將 1280 維特徵映射到單一標量 $z$
 - Sigmoid 激活：
+
 $$
 \hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}
 $$
-- 輸出：\(P(\text{Dog} | x) \in [0, 1]\)
+
+- 輸出： $P(\text{Dog} | x) \in [0, 1]$
 
 **為什麼這麼簡單？**
 
@@ -513,19 +525,22 @@ model.compile(
 **超參數說明**：
 
 **(1) 學習率 (Learning Rate)**：
-- 設為 \(1 \times 10^{-4}\)，比從頭訓練的典型值（1e-3）小一個數量級
+- 設為 $1 \times 10^{-4}$ ，比從頭訓練的典型值（1e-3）小一個數量級
 - **原因**：預訓練權重已經很好，我們不希望大步更新破壞已學會的特徵
 - 類比：「微調鋼琴而非重造鋼琴」
 
 **(2) 損失函數 (Loss)**：
 - 二元交叉熵 (Binary Crossentropy)：
+
 $$
 \mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log \hat{y}_i + (1 - y_i) \log (1 - \hat{y}_i) \right]
 $$
+
 - `from_logits=False`：因為我們已經用 Sigmoid 輸出機率
 
 **(3) 評估指標**：
 - Accuracy：分類準確率
+
 $$
 \text{Accuracy} = \frac{\text{正確預測數}}{\text{總樣本數}}
 $$
@@ -596,7 +611,7 @@ plt.show()
 - 若訓練與驗證準確率差距 > 10% → 加強正則化
 
 **理想學習曲線**：
-- 訓練與驗證曲線接近（差距 < 5%）
+- 訓練與驗證曲線接近（差距 $ < 5\% $ ）
 - 驗證準確率穩定在高水平（95%+）
 - 損失持續下降且穩定
 
@@ -637,23 +652,29 @@ print(classification_report(y_true, y_pred, target_names=['Cat', 'Dog']))
 **關鍵指標**：
 
 **(1) Precision（精確率）**：
+
 $$
 \text{Precision} = \frac{TP}{TP + FP}
 $$
+
 - 意義：在所有預測為 Dog 的樣本中，有多少是真的 Dog
 - 高 Precision → 誤判率低
 
 **(2) Recall（召回率）**：
+
 $$
 \text{Recall} = \frac{TP}{TP + FN}
 $$
+
 - 意義：在所有真正的 Dog 中，有多少被正確抓到
 - 高 Recall → 漏檢率低
 
 **(3) F1-Score**：
+
 $$
 \text{F1} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 $$
+
 - 意義：Precision 與 Recall 的調和平均
 - 用於平衡兩者
 
@@ -774,9 +795,9 @@ plt.show()
 ```
 
 **信心度計算邏輯**：
-- 模型輸出：\(s = P(\text{Dog} | x) \in [0, 1]\)
-- 若 \(s > 0.5\)：預測為 Dog，信心度 = \(s \times 100\%\)
-- 若 \(s \le 0.5\)：預測為 Cat，信心度 = \((1-s) \times 100\%\)
+- 模型輸出： $s = P(\text{Dog} | x) \in [0, 1]$
+- 若 $s > 0.5$ ：預測為 Dog，信心度 = $s \times 100\%$
+- 若 $s \le 0.5$ ：預測為 Cat，信心度 = $(1-s) \times 100\%$
 
 **觀察重點**：
 1. **高信心度樣本**（>95%）：模型非常確定，通常判斷正確
@@ -801,7 +822,7 @@ plt.show()
 
 ### 6.2 三級決策系統 (Three-Tier Decision System)
 
-根據信心度 \(s\)，我們可以設計三層決策：
+根據信心度 $s$ ，我們可以設計三層決策：
 
 $$
 \text{Decision}(s) = \begin{cases}
@@ -815,14 +836,14 @@ $$
 
 | 信心度範圍 | 決策 | 說明 |
 |-----------|------|------|
-| \(s < 0.3\) | AUTO_PASS | 模型非常確定是 Cat（正常品），直接放行 |
-| \(0.3 \le s < 0.7\) | HUMAN_REVIEW | 模型不確定，交給人工判斷 |
-| \(s \ge 0.7\) | AUTO_REJECT | 模型非常確定是 Dog（缺陷品），直接報警 |
+| $s < 0.3$ | AUTO_PASS | 模型非常確定是 Cat（正常品），直接放行 |
+| $0.3 \le s < 0.7$ | HUMAN_REVIEW | 模型不確定，交給人工判斷 |
+| $s \ge 0.7$ | AUTO_REJECT | 模型非常確定是 Dog（缺陷品），直接報警 |
 
 **設計考量**：
 
 **(1) 漏檢成本遠大於誤殺**：
-- 設定較低的 \(t_{\text{high}}\)（例如 0.6），寧可誤殺也不漏檢
+- 設定較低的 $t_{\text{high}}$ （例如 0.6），寧可誤殺也不漏檢
 - 增加 HUMAN_REVIEW 範圍，確保安全
 
 **(2) 產線速度要求高**：
@@ -864,10 +885,10 @@ C_{\text{total}} &= C_{\text{FN}} \cdot FN(t_{\text{low}}, t_{\text{high}}) \\
 $$
 
 其中：
-- \(FN(t_{\text{low}}, t_{\text{high}})\)：漏檢數（AUTO_PASS 中的瑕疵品）
-- \(FP(t_{\text{low}}, t_{\text{high}})\)：誤殺數（AUTO_REJECT 中的良品）
-- \(N_{\text{review}}(t_{\text{low}}, t_{\text{high}})\)：人工複檢數
-- \(C_{\text{human}}\)：單次人工複檢成本（時間成本 + 人力成本）
+- $FN(t_{\text{low}}, t_{\text{high}})$ ： 漏檢數（AUTO_PASS 中的瑕疵品）
+- $FP(t_{\text{low}}, t_{\text{high}})$ ： 誤殺數（AUTO_REJECT 中的良品）
+- $N_{\text{review}}(t_{\text{low}}, t_{\text{high}})$ ： 人工複檢數
+- $C_{\text{human}}$ ： 單次人工複檢成本（時間成本 + 人力成本）
 
 **決策區間解讀**：
 
@@ -893,13 +914,13 @@ $$
 d' = \frac{|\mu_{\text{dog}} - \mu_{\text{cat}}|}{\sqrt{(\sigma_{\text{dog}}^2 + \sigma_{\text{cat}}^2)/2}} = \frac{0.90}{0.09} = 10.0
 $$
 
-\(d' > 2\) 表示兩個類別高度可分，這解釋了為何模型達到 97.3% 準確率。
+$d' > 2$ 表示兩個類別高度可分，這解釋了為何模型達到 97.3% 準確率。
 
 **產線應用策略**：
 
 根據實際結果，我們可以提供以下建議：
 
-| 場景 | \(t_{\text{low}}\) | \(t_{\text{high}}\) | 自動化率 | 人工負擔 |
+| 場景 | $t_{\text{low}}$ | $t_{\text{high}}$ | 自動化率 | 人工負擔 |
 |------|-------------------|---------------------|---------|---------|
 | 高風險產線（藥品） | 0.10 | 0.90 | ~50% | ~50% |
 | 中風險產線（食品） | 0.05 | 0.95 | ~65% | ~35% |
@@ -935,8 +956,8 @@ plt.show()
 ```
 
 **ROC 曲線解讀**：
-- 橫軸：FPR（誤殺率）= \(\frac{FP}{FP + TN}\)
-- 縱軸：TPR（召回率）= \(\frac{TP}{TP + FN}\)
+- 橫軸：FPR（誤殺率）= $\frac{FP}{FP + TN}$
+- 縱軸：TPR（召回率）= $\frac{TP}{TP + FN}$
 - 曲線越靠近左上角越好（高 TPR、低 FPR）
 - AUC（曲線下面積）：0.5（隨機猜）到 1.0（完美分類）
 
@@ -969,7 +990,7 @@ ROC (Receiver Operating Characteristic) 曲線源自信號檢測理論，用於�
 
 **(1) 曲線生成過程**：
 
-對於模型輸出的信心度 \(s \in [0, 1]\)，我們遍歷所有可能的閾值 \(t\)：
+對於模型輸出的信心度 $s \in [0, 1]$ ，我們遍歷所有可能的閾值 $t$ ：
 
 $$
 \begin{aligned}
@@ -978,7 +999,7 @@ $$
 \end{aligned}
 $$
 
-將 \((\text{FPR}(t), \text{TPR}(t))\) 點連成曲線即得 ROC 曲線。
+將 $(\text{FPR}(t), \text{TPR}(t))$ 點連成曲線即得 ROC 曲線。
 
 **(2) AUC 的機率解釋**：
 
@@ -1013,15 +1034,15 @@ $$
 t^* = \frac{1}{1 + \frac{C_{FP}}{C_{FN}} \cdot \frac{P(y=0)}{P(y=1)}}
 $$
 
-當類別平衡時（\(P(y=0) = P(y=1) = 0.5\)）：
+當類別平衡時（ $P(y=0) = P(y=1) = 0.5$ ）：
 
 $$
 t^* = \frac{1}{1 + C_{FP}/C_{FN}} = \frac{C_{FN}}{C_{FP} + C_{FN}}
 $$
 
 **本案例計算**：
-- 成本比：\(C_{FN}/C_{FP} = 50000/3000 \approx 16.67\)
-- 理論閾值：\(t^* = 1/(1 + 1/16.67) = 0.9434\)
+- 成本比： $C_{FN}/C_{FP} = 50000/3000 \approx 16.67$
+- 理論閾值： $t^* = 1/(1 + 1/16.67) = 0.9434$
 - **解釋**：因為漏檢成本遠高於誤殺，應大幅提高閾值，寧可誤殺也不漏檢
 
 **策略選擇指南**：
@@ -1032,7 +1053,7 @@ $$
 | 均衡優化 | Youden Index | 0.4-0.6 | 最大化 TPR-FPR |
 | 高風險產品 | High Recall | 0.2-0.4 | 藥品、醫療器材（絕不漏檢）|
 | 高價值產品 | Low FPR | 0.6-0.8 | 半導體、精密零件（避免誤殺）|
-| 成本導向 | Cost-Optimal | 根據 \(C_{FN}/C_{FP}\) | 最小化總成本 |
+| 成本導向 | Cost-Optimal | 根據 $C_{FN}/C_{FP}$ | 最小化總成本 |
 
 ---
 
@@ -1095,7 +1116,7 @@ $$
 w_{\text{int8}} = \text{round}\left(\frac{w_{\text{fp32}} - \min(w)}{\max(w) - \min(w)} \times 255\right)
 $$
 
-**壓縮比**：\(32/8 = 4\times\)，加上其他優化後達到 **8.81倍** 壓縮。
+**壓縮比**： $32/8 = 4 \times $ ，加上其他優化後達到 **8.81倍** 壓縮。
 
 **(2) 激活函數量化（Activation Quantization）**：
 
@@ -1105,7 +1126,7 @@ $$
 a_{\text{int8}} = \text{clip}\left(\text{round}\left(\frac{a_{\text{fp32}}}{S}\right) + Z, 0, 255\right)
 $$
 
-其中 \(S\) 是縮放因子，\(Z\) 是零點偏移。
+其中 $S$ 是縮放因子， $Z$ 是零點偏移。
 
 **邊緣裝置性能比較**：
 
@@ -1126,7 +1147,7 @@ $$
 
 2. **吞吐量 (Throughput)**：
    - GPU 支援批次推論（batch processing）
-   - Jetson Nano 可同時處理 batch=4：\(4 \times 25 = 100 \text{ 件/秒}\)
+   - Jetson Nano 可同時處理 batch=4： $4 \times 25 = 100 \text{ 件/秒}$ 
 
 3. **穩定性**：
    - 溫控：Jetson Nano 需風扇散熱（70°C 穩定）
@@ -1194,7 +1215,7 @@ Dog      14    486    (漏檢率: 2.8%)
    - 為後續不平衡問題（NEU）提供對比基準
 
 3. **信心度分佈特性**：
-   - 兩個類別高度可分（分離度 \(d' = 10.0\)）
+   - 兩個類別高度可分（分離度 $d' = 10.0$ ）
    - 絕大多數樣本信心度 >95% 或 <5%
    - 只有 1.6% 樣本處於極低信心區（需停線檢查）
 

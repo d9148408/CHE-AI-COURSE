@@ -26,9 +26,12 @@ MNIST (Modified National Institute of Standards and Technology) 手寫數字數�
 卷積運算透過可學習的濾波器 (Kernel/Filter) 在影像上滑動，提取局部特徵。
 
 **數學定義**：
-假設輸入影像為 $I$，濾波器為 $K$（通常 3×3 或 5×5），則二維卷積為：
+假設輸入影像為 $I$ ，濾波器為 $K$ （通常 3×3 或 5×5），則二維卷積為：
 
-$$ S(i, j) = (I * K)(i, j) = \sum_m \sum_n I(i+m, j+n) \cdot K(m, n) $$
+$$
+S(i, j) = (I * K)(i, j) = \sum_m \sum_n I(i+m, j+n) \cdot K(m, n)
+$$
+
 
 **關鍵特性**：
 
@@ -53,6 +56,7 @@ $$ S(i, j) = (I * K)(i, j) = \sum_m \sum_n I(i+m, j+n) \cdot K(m, n) $$
 **常見濾波器範例**：
 
 Sobel 邊緣檢測濾波器（手工設計，CNN 會自動學習類似功能）：
+
 $$
 K_x = \begin{bmatrix}
 -1 & 0 & 1 \\
@@ -66,12 +70,17 @@ K_y = \begin{bmatrix}
 \end{bmatrix}
 $$
 
+
 ### 1.2 池化層 (Pooling Layer)
 
 池化層用於降低特徵圖維度，減少運算量並提升平移不變性。
 
 **最大池化 (Max Pooling)**：
-$$ y_{i,j} = \max_{(p,q) \in \mathcal{R}_{i,j}} x_{p,q} $$
+
+$$
+y_{i,j} = \max_{(p,q) \in \mathcal{R}_{i,j}} x_{p,q}
+$$
+
 
 其中 $\mathcal{R}_{i,j}$ 為 2×2 池化視窗覆蓋的區域。
 
@@ -92,17 +101,20 @@ $$
 \mathbf{h} = f(\mathbf{W} \mathbf{x} + \mathbf{b})
 $$
 
+
 其中：
-- $\mathbf{x}$：展平後的特徵向量（如 7×7×64 = 3136 維）
-- $\mathbf{W}$：權重矩陣
-- $f(\cdot)$：激活函數（ReLU）
+- $\mathbf{x}$ ： 展平後的特徵向量（如 7×7×64 = 3136 維）
+- $\mathbf{W}$ ： 權重矩陣
+- $f(\cdot)$ ： 激活函數（ReLU）
 
 **最後輸出層**使用 Softmax：
+
 $$
 p_k = \frac{e^{z_k}}{\sum_{j=1}^{10} e^{z_j}}, \quad k = 0, 1, \dots, 9
 $$
 
-將 logits 轉為機率分佈（$\sum_{k=0}^{9} p_k = 1$）
+
+將 logits 轉為機率分佈 ( $\sum_{k=0}^{9} p_k = 1$ ) 
 
 ---
 
@@ -127,11 +139,12 @@ MNIST 資料集包含：
 
 **統計學習理論視角**：
 
-根據 **VC 維度理論（Vapnik-Chervonenkis Dimension）**，一個具有 $d$ 個參數的模型，若要達到泛化誤差 $\epsilon$ 且置信度 $1-\delta$，所需樣本數量需滿足：
+根據 **VC 維度理論（Vapnik-Chervonenkis Dimension）**，一個具有 $d$ 個參數的模型，若要達到泛化誤差 $\epsilon$ 且置信度 $1-\delta$ ，所需樣本數量需滿足：
 
 $$
 N \geq \frac{1}{\epsilon} \left( d \log \frac{2}{\epsilon} + \log \frac{2}{\delta} \right)
 $$
+
 
 對於我們的 CNN 模型（約 42 萬參數），60,000 訓練樣本提供了足夠的泛化保證。
 
@@ -220,15 +233,17 @@ model.compile(
 **參數計算詳解**：
 
 **卷積層參數公式**：
+
 $$
 \text{Params} = (K_h \times K_w \times C_{\text{in}} + 1) \times C_{\text{out}}
 $$
 
+
 其中：
-- $K_h, K_w$：濾波器高度、寬度（此處為 3×3）
-- $C_{\text{in}}$：輸入通道數
-- $C_{\text{out}}$：輸出通道數（濾波器個數）
-- $+1$：偏置項（每個輸出通道一個）
+- $K_h, K_w$ ： 濾波器高度、寬度（此處為 3×3）
+- $C_{\text{in}}$ ： 輸入通道數
+- $C_{\text{out}}$ ： 輸出通道數（濾波器個數）
+- $+1$ ： 偏置項（每個輸出通道一個）
 
 **各層參數統計**：
 
@@ -249,12 +264,13 @@ $$
 
 3. **計算複雜度分析**：  
    雖然全連接層參數多，但卷積層的浮點運算（FLOPs）更高：
-   $$
-   \text{FLOPs}_{\text{conv}} = 2 \times H_{\text{out}} \times W_{\text{out}} \times K_h \times K_w \times C_{\text{in}} \times C_{\text{out}}
-   $$
 
-   卷積層1 FLOPs：$2 \times 28 \times 28 \times 3 \times 3 \times 1 \times 32 \approx 451K$  
-   全連接層 FLOPs：$2 \times 3136 \times 128 \approx 803K$
+$$
+\text{FLOPs}_{\text{conv}} = 2 \times H_{\text{out}} \times W_{\text{out}} \times K_h \times K_w \times C_{\text{in}} \times C_{\text{out}}
+$$
+
+   卷積層 1 FLOPs： $2 \times 28 \times 28 \times 3 \times 3 \times 1 \times 32 \approx 451K$  
+   全連接層 FLOPs： $2 \times 3136 \times 128 \approx 803K$
 
 **化工應用啟示**：
 - 參數量 ≈ 模型複雜度 → 需要更多數據防止過擬合
@@ -300,14 +316,16 @@ Epoch 5/5
 **收斂動力學分析**：
 
 訓練損失呈現**指數衰減**特性，可用以下模型擬合：
+
 $$
 L(t) = L_\infty + (L_0 - L_\infty) e^{-\lambda t}
 $$
 
+
 其中：
-- $L_0 = 0.1972$（初始損失）
-- $L_\infty \approx 0.02$（漸近損失）
-- $\lambda \approx 0.8$（衰減常數）
+- $L_0 = 0.1972$ （初始損失）
+- $L_\infty \approx 0.02$ （漸近損失）
+- $\lambda \approx 0.8$ （衰減常數）
 
 **關鍵觀察**：
 
@@ -319,12 +337,14 @@ $$
 2. **精細調整階段**（Epoch 3-5）：
    - 訓練 Accuracy：98.86% → 99.29%（+0.43%）
    - 邊際改善遞減，符合**學習曲線冪次定律**：
-   $$
-   \text{Error}(t) \propto t^{-\alpha}, \quad \alpha \approx 0.5
-   $$
+
+$$
+\text{Error}(t) \propto t^{-\alpha}, \quad \alpha \approx 0.5
+$$
+
 
 3. **泛化能力驗證**：
-   - 訓練/驗證準確率差距：$99.29\% - 99.02\% = 0.27\%$
+   - 訓練/驗證準確率差距： $99.29\% - 99.02\% = 0.27\%$
    - **極小的泛化誤差** → 模型未過擬合
    - Epoch 5 驗證損失微升（0.0326 → 0.0398）→ 建議使用 Early Stopping
 
@@ -412,9 +432,11 @@ model.fit(..., callbacks=[early_stop])
    - **實務建議**：設定置信度閾值（如 80%），低於閾值送人工複檢
 
 3. **Softmax 輸出解讀**：
-   $$
-   p_k = \frac{e^{z_k}}{\sum_{j=0}^{9} e^{z_j}}
-   $$
+
+$$
+p_k = \frac{e^{z_k}}{\sum_{j=0}^{9} e^{z_j}}
+$$
+
    
    - 置信度 100%：$z_k \gg z_j$ for $j \neq k$（logits 差距極大）
    - 置信度 75.6%：$e^{z_5} \approx 0.756 \times \sum_j e^{z_j}$（次高機率約 15-20%）
@@ -481,9 +503,11 @@ Dense(10, activation='softmax')
 ```
 
 **數學原理**：
+
 $$
-\mathbf{h}_{\\text{dropout}} = \mathbf{h} \odot \mathbf{m}, \quad m_i \sim \\text{Bernoulli}(0.5)
+\mathbf{h}_{\text{dropout}} = \mathbf{h} \odot \mathbf{m}, \quad m_i \sim \text{Bernoulli}(0.5)
 $$
+
 
 **效果**：
 - 類似「集成學習」（Ensemble）：每次 batch 訓練不同子網路
@@ -492,9 +516,11 @@ $$
 #### (2) L2 正則化 (Weight Decay)
 
 在損失函數中加入權重懲罰項：
+
 $$
-\\mathcal{L}_{\\text{total}} = \\mathcal{L}_{\\text{CE}} + \\lambda \\sum_{i} w_i^2
+\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{CE}} + \lambda \sum_{i} w_i^2
 $$
+
 
 ```python
 from tensorflow.keras import regularizers
@@ -544,7 +570,7 @@ model.fit(datagen.flow(train_images, train_labels, batch_size=128),
 
 ### 4.1 混淆矩陣定義與實際結果
 
-$10 \times 10$ 方陣，元素 $C_{ij}$ 表示「真實類別為 $i$，預測為 $j$」的樣本數。
+$10 \times 10$ 方陣，元素 $C_{ij}$ 表示「真實類別為 $i$ ，預測為 $j$ 」的樣本數。
 
 **實際混淆矩陣**：
 
@@ -579,14 +605,18 @@ weighted avg       0.99      0.99      0.99     10000
 **數學解讀**：
 
 **Precision（精確率）公式**：
+
 $$
 \text{Precision}_k = \frac{\text{TP}_k}{\text{TP}_k + \text{FP}_k} = \frac{C_{kk}}{\sum_{i=0}^{9} C_{ik}}
 $$
 
+
 **Recall（召回率）公式**：
+
 $$
 \text{Recall}_k = \frac{\text{TP}_k}{\text{TP}_k + \text{FN}_k} = \frac{C_{kk}}{\sum_{j=0}^{9} C_{kj}}
 $$
+
 
 **關鍵觀察**：
 
@@ -608,7 +638,7 @@ $$
      - 差異在於連接方式（5 是斷開，3 是連續）
    
    - **特徵空間距離**：
-     設特徵向量為 $\mathbf{f}_5, \mathbf{f}_3$，則：
+     設特徵向量為 $\mathbf{f}_5, \mathbf{f}_3$ ，則：
      $$
      d(\mathbf{f}_5, \mathbf{f}_3) = \|\mathbf{f}_5 - \mathbf{f}_3\|_2 < \tau
      $$
@@ -635,34 +665,42 @@ $$
 **混淆矩陣的資訊論解讀**：
 
 **互信息（Mutual Information）**：
+
 $$
 I(Y; \hat{Y}) = \sum_{i=0}^{9} \sum_{j=0}^{9} P(y_i, \hat{y}_j) \log \frac{P(y_i, \hat{y}_j)}{P(y_i) P(\hat{y}_j)}
 $$
 
-其中 $P(y_i, \hat{y}_j) = \frac{C_{ij}}{N}$（聯合機率）。
 
-- **完美分類**：$I(Y; \hat{Y}) = H(Y)$（熵）
-- **隨機猜測**：$I(Y; \hat{Y}) = 0$
-- **我們的模型**：$I(Y; \hat{Y}) \approx 0.99 \times H(Y)$（接近完美）
+其中 $P(y_i, \hat{y}_j) = \frac{C_{ij}}{N}$ （聯合機率）。
+
+- **完美分類**： $I(Y; \hat{Y}) = H(Y)$ （熵）
+- **隨機猜測**： $I(Y; \hat{Y}) = 0$
+- **我們的模型**： $I(Y; \hat{Y}) \approx 0.99 \times H(Y)$ （接近完美）
 
 ### 4.2 評估指標：超越準確率
 
 **Precision（精確率）**：
+
 $$
-\\text{Precision}_k = \\frac{TP_k}{TP_k + FP_k}
+\text{Precision}_k = \frac{TP_k}{TP_k + FP_k}
 $$
+
 「預測為類別 $k$ 的樣本中，實際為 $k$ 的比例」
 
 **Recall（召回率）**：
+
 $$
-\\text{Recall}_k = \\frac{TP_k}{TP_k + FN_k}
+\text{Recall}_k = \frac{TP_k}{TP_k + FN_k}
 $$
+
 「實際為類別 $k$ 的樣本中，被正確預測的比例」
 
 **F1 Score（調和平均）**：
+
 $$
-F1_k = 2 \times \\frac{\\text{Precision}_k \times \\text{Recall}_k}{\\text{Precision}_k + \\text{Recall}_k}
+F1_k = 2 \times \frac{\text{Precision}_k \times \text{Recall}_k}{\text{Precision}_k + \text{Recall}_k}
 $$
+
 
 **化工應用**：
 
@@ -798,10 +836,11 @@ $$
 \text{Speedup} = \frac{T_{\text{single}} \times B}{T_{\text{batch}}} = \frac{56.74 \times 32}{52.48} \approx 34.5
 $$
 
+
 其中：
-- $T_{\text{single}}$：單張推論時間
-- $T_{\text{batch}}$：批次推論總時間
-- $B$：批次大小
+- $T_{\text{single}}$ ： 單張推論時間
+- $T_{\text{batch}}$ ： 批次推論總時間
+- $B$ ： 批次大小
 
 **工業場景適配性分析**：
 
@@ -820,12 +859,15 @@ $$
 \text{影像產生率} = \frac{10 \text{ m/s}}{0.1 \text{ m}} = 100 \text{ 張/秒}
 $$
 
+
 模型處理能力（批次推論）：
+
 $$
 \text{處理能力} = \frac{1000 \text{ ms}}{1.64 \text{ ms/張}} \approx 609 \text{ 張/秒}
 $$
 
-**安全裕度**：$\frac{609}{100} = 6.09$ 倍 → **足夠應付產線波動**
+
+**安全裕度**： $\frac{609}{100} = 6.09$ 倍 → **足夠應付產線波動**
 
 ### 6.2 遷移學習路徑
 
@@ -879,6 +921,7 @@ $$
 w_{\text{int8}} = \text{round}\left( \frac{w_{\text{fp32}} - \min(w)}{\max(w) - \min(w)} \times 255 \right)
 $$
 
+
 - 速度提升：2-4 倍
 - 模型縮小：4 倍（1.6 MB → 0.4 MB）
 - 準確率損失：< 1%
@@ -889,15 +932,18 @@ $$
 w_i^{\text{new}} = \begin{cases} w_i & \text{if } |w_i| > \tau \\ 0 & \text{otherwise} \end{cases}
 $$
 
+
 - 可減少 50-70% 參數
 - 需 Fine-tuning 恢復準確率
 
 **3. 知識蒸餾（Knowledge Distillation）**
 
 訓練小模型模仿大模型：
+
 $$
 \mathcal{L}_{\text{KD}} = \alpha \mathcal{L}_{\text{CE}} + (1-\alpha) \text{KL}(p_{\text{teacher}} \| p_{\text{student}})
 $$
+
 
 ### 7.3 部署架構建議
 
@@ -920,9 +966,11 @@ $$
 自動化系統成本：硬體 $5,000 + 維護 $500/年
 
 **投資回收期（ROI）**：
+
 $$
 \text{ROI} = \frac{\text{年節省人力成本} - \text{年維護成本}}{\text{初始硬體成本}} = \frac{20 \times 2000 - 500}{5000} \approx 7.9
 $$
+
 
 即約 1.5 個月回本（若 24/7 運作）。
 

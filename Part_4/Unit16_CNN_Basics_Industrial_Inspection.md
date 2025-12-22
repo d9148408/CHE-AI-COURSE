@@ -29,13 +29,25 @@
 在深度學習之前，影像分類依賴人工設計的特徵：
 
 **邊緣檢測**（Sobel, Canny）：
-$$ G_x = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix} * I, \quad G_y = \begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix} * I $$
+
+$$
+G_x = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix} * I, \quad G_y = \begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix} * I
+$$
+
 
 **紋理特徵**（GLCM, LBP）：
-$$ \text{Contrast} = \sum_{i,j} (i-j)^2 P(i,j), \quad \text{Energy} = \sum_{i,j} P(i,j)^2 $$
+
+$$
+\text{Contrast} = \sum_{i,j} (i-j)^2 P(i,j), \quad \text{Energy} = \sum_{i,j} P(i,j)^2
+$$
+
 
 **形狀特徵**（Hu Moments, Fourier Descriptors）：
-$$ \eta_{pq} = \frac{\mu_{pq}}{\mu_{00}^{(p+q)/2+1}}, \quad \phi_1 = \eta_{20} + \eta_{02} $$
+
+$$
+\eta_{pq} = \frac{\mu_{pq}}{\mu_{00}^{(p+q)/2+1}}, \quad \phi_1 = \eta_{20} + \eta_{02}
+$$
+
 
 這些方法的問題：
 1. **特徵工程成本高**：需要領域專家手動設計特徵
@@ -46,19 +58,31 @@ $$ \eta_{pq} = \frac{\mu_{pq}}{\mu_{00}^{(p+q)/2+1}}, \quad \phi_1 = \eta_{20} +
 
 CNN 透過**端到端學習**（End-to-End Learning），自動從原始像素學習特徵階層：
 
-$$ \text{輸入影像} \xrightarrow{\text{Conv Layer 1}} \text{低階特徵（邊緣、角點）} \xrightarrow{\text{Conv Layer 2}} \text{中階特徵（紋理、局部形狀）} \xrightarrow{\text{Conv Layer 3}} \text{高階語義（缺陷類型）} $$
+
+$$
+\text{輸入影像} \xrightarrow{\text{Conv Layer 1}} \text{低階特徵（邊緣、角點）} \xrightarrow{\text{Conv Layer 2}} \text{中階特徵（紋理、局部形狀）} \xrightarrow{\text{Conv Layer 3}} \text{高階語義（缺陷類型）}
+$$
+
 
 **核心數學原理**：
 
 **卷積運算**（Convolution）：
-$$ (I * K)(i,j) = \sum_{m=-k}^{k} \sum_{n=-k}^{k} I(i+m, j+n) \cdot K(m,n) $$
+
+$$
+(I * K)(i,j) = \sum_{m=-k}^{k} \sum_{n=-k}^{k} I(i+m, j+n) \cdot K(m,n)
+$$
+
 
 **池化運算**（Max Pooling）：
-$$ y_{i,j} = \max_{(m,n) \in \mathcal{N}(i,j)} x_{m,n} $$
+
+$$
+y_{i,j} = \max_{(m,n) \in \mathcal{N}(i,j)} x_{m,n}
+$$
+
 
 **參數共享的優勢**：
-- 傳統全連接層：$200 \times 200 \times 128 = 5,120,000$ 參數
-- CNN 卷積層：$3 \times 3 \times 128 = 1,152$ 參數（**減少 99.98%**）
+- 傳統全連接層： $200 \times 200 \times 128 = 5,120,000$ 參數
+- CNN 卷積層： $3 \times 3 \times 128 = 1,152$ 參數（**減少 99.98%**）
 
 ### 1.3 化工/材料/製造常見任務
 
@@ -84,16 +108,28 @@ $$ y_{i,j} = \max_{(m,n) \in \mathcal{N}(i,j)} x_{m,n} $$
 ### 2.2 類別不平衡的數學處理
 
 **加權交叉熵損失**（Weighted Cross-Entropy）：
-$$ \mathcal{L}_{\text{weighted}} = -\sum_{i=1}^{N} w_{y_i} \log p(y_i \mid x_i) $$
+
+$$
+\mathcal{L}_{\text{weighted}} = -\sum_{i=1}^{N} w_{y_i} \log p(y_i \mid x_i)
+$$
+
 
 其中權重設定：
-$$ w_k = \frac{N}{K \cdot n_k}, \quad n_k = \sum_{i=1}^{N} \mathbb{1}(y_i = k) $$
+
+$$
+w_k = \frac{N}{K \cdot n_k}, \quad n_k = \sum_{i=1}^{N} \mathbb{1}(y_i = k)
+$$
+
 
 **Focal Loss**（解決極度不平衡）：
-$$ \mathcal{L}_{\text{focal}} = -\alpha_t (1 - p_t)^\gamma \log p_t $$
 
-- $\alpha_t$：類別權重
-- $\gamma$：聚焦參數（通常 2.0），降低易分類樣本的損失
+$$
+\mathcal{L}_{\text{focal}} = -\alpha_t (1 - p_t)^\gamma \log p_t
+$$
+
+
+- $\alpha_t$ ： 類別權重
+- $\gamma$ ： 聚焦參數（通常 2.0），降低易分類樣本的損失
 
 ---
 
@@ -102,7 +138,11 @@ $$ \mathcal{L}_{\text{focal}} = -\alpha_t (1 - p_t)^\gamma \log p_t $$
 ### 3.1 卷積層（Convolutional Layer）
 
 **前向傳播**：
-$$ z^{[l]}_{i,j,k} = \text{ReLU}\left( \sum_{c=1}^{C} \sum_{m=0}^{f-1} \sum_{n=0}^{f-1} w^{[l]}_{m,n,c,k} \cdot a^{[l-1]}_{i+m, j+n, c} + b^{[l]}_k \right) $$
+
+$$
+z^{[l]}_{i,j,k} = \text{ReLU}\left( \sum_{c=1}^{C} \sum_{m=0}^{f-1} \sum_{n=0}^{f-1} w^{[l]}_{m,n,c,k} \cdot a^{[l-1]}_{i+m, j+n, c} + b^{[l]}_k \right)
+$$
+
 
 - $w^{[l]}$：可學習濾波器（Kernel）
 - $f$：濾波器尺寸（通常 3×3 或 5×5）
@@ -110,17 +150,29 @@ $$ z^{[l]}_{i,j,k} = \text{ReLU}\left( \sum_{c=1}^{C} \sum_{m=0}^{f-1} \sum_{n=0
 - $k$：輸出通道數（特徵圖數量）
 
 **參數量計算**：
-$$ \#\text{params} = (f \times f \times C_{\text{in}} + 1) \times C_{\text{out}} $$
 
-例如：$3 \times 3 \times 64 \times 128 = 73,856$ 參數（加上 bias）
+$$
+\#\text{params} = (f \times f \times C_{\text{in}} + 1) \times C_{\text{out}}
+$$
+
+
+例如： $3 \times 3 \times 64 \times 128 = 73,856$ 參數（加上 bias）
 
 ### 3.2 池化層（Pooling Layer）
 
 **Max Pooling**（保留最強特徵）：
-$$ y_{i,j,k} = \max_{(m,n) \in \mathcal{N}_{2\times 2}(i,j)} x_{m,n,k} $$
+
+$$
+y_{i,j,k} = \max_{(m,n) \in \mathcal{N}_{2\times 2}(i,j)} x_{m,n,k}
+$$
+
 
 **Average Pooling**（平滑特徵）：
-$$ y_{i,j,k} = \frac{1}{4} \sum_{(m,n) \in \mathcal{N}_{2\times 2}(i,j)} x_{m,n,k} $$
+
+$$
+y_{i,j,k} = \frac{1}{4} \sum_{(m,n) \in \mathcal{N}_{2\times 2}(i,j)} x_{m,n,k}
+$$
+
 
 **為什麼需要 Pooling？**
 1. **降低計算量**：$200 \times 200 \xrightarrow{\text{MaxPool 2×2}} 100 \times 100$（減少 75% 像素）
@@ -130,16 +182,28 @@ $$ y_{i,j,k} = \frac{1}{4} \sum_{(m,n) \in \mathcal{N}_{2\times 2}(i,j)} x_{m,n,
 ### 3.3 Dropout（防止過擬合）
 
 **訓練時**（隨機關閉神經元）：
-$$ h_i = \begin{cases} 
+
+$$
+h_i = \begin{cases} 
 0 & \text{with probability } p \\
 \frac{a_i}{1-p} & \text{with probability } 1-p
-\end{cases} $$
+\end{cases}
+$$
+
 
 **測試時**（使用所有神經元）：
-$$ h_i = a_i $$
+
+$$
+h_i = a_i
+$$
+
 
 **為什麼有效？** Dropout 相當於訓練 $2^H$ 個不同的子網絡，然後取平均（集成學習）：
-$$ p(y \mid x) \approx \frac{1}{2^H} \sum_{k=1}^{2^H} p_k(y \mid x) $$
+
+$$
+p(y \mid x) \approx \frac{1}{2^H} \sum_{k=1}^{2^H} p_k(y \mid x)
+$$
+
 
 ---
 
@@ -243,7 +307,10 @@ $$ p(y \mid x) \approx \frac{1}{2^H} \sum_{k=1}^{2^H} p_k(y \mid x) $$
 
 #### 混淆矩陣數學定義
 
-$$ C_{ij} = \sum_{k=1}^{N} \mathbb{1}(y_k = i \land \hat{y}_k = j) $$
+$$
+C_{ij} = \sum_{k=1}^{N} \mathbb{1}(y_k = i \land \hat{y}_k = j)
+$$
+
 
 - 對角線元素：正確分類數
 - 非對角線元素：誤判數
@@ -251,13 +318,25 @@ $$ C_{ij} = \sum_{k=1}^{N} \mathbb{1}(y_k = i \land \hat{y}_k = j) $$
 **評估指標推導**：
 
 **精確率（Precision）**：
-$$ P_i = \frac{C_{ii}}{\sum_{j} C_{ji}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}} $$
+
+$$
+P_i = \frac{C_{ii}}{\sum_{j} C_{ji}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
+$$
+
 
 **召回率（Recall）**：
-$$ R_i = \frac{C_{ii}}{\sum_{j} C_{ij}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} $$
+
+$$
+R_i = \frac{C_{ii}}{\sum_{j} C_{ij}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+$$
+
 
 **F1 分數（調和平均）**：
-$$ F1_i = \frac{2 P_i R_i}{P_i + R_i} = \frac{2}{\frac{1}{P_i} + \frac{1}{R_i}} $$
+
+$$
+F1_i = \frac{2 P_i R_i}{P_i + R_i} = \frac{2}{\frac{1}{P_i} + \frac{1}{R_i}}
+$$
+
 
 #### 混淆矩陣可視化
 
@@ -325,7 +404,7 @@ weighted avg     0.5914    0.5917    0.5752       360
 **核心問題**：扁平化將 64×64 影像變為 4096 維向量，**完全破壞空間鄰域關係**：
 - ❌ 像素 (32, 32) 和 (32, 33) 在空間上相鄰，但在向量中相距 64 個位置
 - ❌ RF/MLP 將影像視為「4096 個獨立特徵」，無法理解「邊緣連續性」、「紋理方向」
-- ✅ CNN 透過 3×3 卷積核保留鄰域信息：$(I * K)(32,32) = \sum_{i,j} I(32+i, 32+j) \cdot K(i,j)$
+- ✅ CNN 透過 3×3 卷積核保留鄰域信息： $(I * K)(32,32) = \sum_{i,j} I(32+i, 32+j) \cdot K(i,j)$
 
 ---
 
@@ -337,23 +416,35 @@ weighted avg     0.5914    0.5917    0.5752       360
 
 | 決策 | 條件 | 行動 | 風險 |
 |------|------|------|------|
-| **Pass** | 高信心正常 ($p_{\text{normal}} > \theta_h$) | 自動放行 | 低（漏報率 < 0.1%）|
-| **Review** | 低信心 ($\max_k p_k < \theta_l$) | 人工複檢 | 中（需人力，但避免災難）|
-| **Fail** | 高信心缺陷 ($p_{\text{defect}} > \theta_h$) | 自動剔除 | 低（誤報可接受）|
+| **Pass** | 高信心正常 ( $p_{\text{normal}} > \theta_h$ ) | 自動放行 | 低（漏報率 < 0.1%）|
+| **Review** | 低信心 ( $\max_k p_k < \theta_l$ ) | 人工複檢 | 中（需人力，但避免災難）|
+| **Fail** | 高信心缺陷 ( $p_{\text{defect}} > \theta_h$ ) | 自動剔除 | 低（誤報可接受）|
 
 #### 數學建模
 
 **預測信心度**：
-$$ c(x) = \max_{k \in \{1,\dots,K\}} p(y=k \mid x) $$
+
+$$
+c(x) = \max_{k \in \{1,\dots,K\}} p(y=k \mid x)
+$$
+
 
 **準確率 - 覆蓋率權衡**：
-$$ \begin{aligned}
+
+$$
+\begin{aligned}
 \text{Coverage}(\theta) &= P(c(x) \geq \theta) \\
 \text{Accuracy}(\theta) &= P(y = \hat{y} \mid c(x) \geq \theta)
-\end{aligned} $$
+\end{aligned}
+$$
+
 
 **目標優化**：
-$$ \theta^* = \arg\max_{\theta} \text{Accuracy}(\theta) \quad \text{s.t.} \quad \text{Coverage}(\theta) \geq 0.7 $$
+
+$$
+\theta^* = \arg\max_{\theta} \text{Accuracy}(\theta) \quad \text{s.t.} \quad \text{Coverage}(\theta) \geq 0.7
+$$
+
 
 （確保至少 70% 樣本自動決策，30% 送人工複檢）
 
@@ -366,7 +457,7 @@ $$ \theta^* = \arg\max_{\theta} \text{Accuracy}(\theta) \quad \text{s.t.} \quad 
 | **使用模型** | **Random Forest**（best_model，驗證準確率 59.17%） |
 | **測試數據** | **驗證集 360 個樣本**（6 類缺陷，每類 60 個） |
 | **信心度來源** | `model.predict_proba(X_val)` 返回每個樣本對 6 類的預測概率 |
-| **信心度定義** | $c(x) = \max_{k=1,\dots,6} p(y=k \mid x)$（取最高類別概率） |
+| **信心度定義** | $c(x) = \max_{k=1,\dots,6} p(y=k \mid x)$ （取最高類別概率） |
 | **分析方法** | 測試 10 個不同門檻（0.50, 0.55, ..., 0.95），計算每個門檻下的準確率和覆蓋率 |
 
 **計算流程示例**（以門檻 0.95 為例）：
@@ -428,7 +519,7 @@ high_conf_mask = y_confidence >= 0.95
 | 0.90 | 87.88% | 4.6% | 95.4% | 17/360 | 極高門檻 |
 | **0.95** | **100%** | **1.1%** | **98.9%** | **4/360** | **僅 4 個樣本自動決策** |
 
-**計算方法詳解**（以門檻 0.80 為例）：
+**計算方法詳解** （以門檻 0.80 為例）：
 ```python
 # 1. 篩選高信心樣本
 high_conf_samples = y_confidence >= 0.80  # 24 個樣本符合
@@ -567,7 +658,11 @@ MLP:
 **為什麼需要數據增強？** 小數據集（< 2000 張）容易過擬合，數據增強相當於擴充訓練集。
 
 **數學建模**：
-$$ \mathcal{D}_{\text{aug}} = \bigcup_{i=1}^{N} \{ T_k(x_i, y_i) \mid k \in \mathcal{T} \} $$
+
+$$
+\mathcal{D}_{\text{aug}} = \bigcup_{i=1}^{N} \{ T_k(x_i, y_i) \mid k \in \mathcal{T} \}
+$$
+
 
 其中 $\mathcal{T}$ 為變換集合：
 
@@ -645,7 +740,7 @@ Epoch 20/20
 
 1. **訓練準確率**：94.44%（Epoch 20，仍在上升）
 2. **驗證準確率**：76.11%（Epoch 20，震盪劇烈）
-3. **泛化差距**：$94.44\% - 76.11\% = 18.33\%$（**明顯過擬合**）
+3. **泛化差距**： $94.44\% - 76.11\% = 18.33\%$ （**明顯過擬合**）
 4. **驗證損失**：從 Epoch 3 開始持續上升（典型的過擬合曲線）
 
 **CNN vs Baseline 對比（關鍵發現）**：
@@ -689,7 +784,7 @@ Epoch 20/20
 
 4. **架構調整**（針對 1440 張小數據集）：
    - **減少參數量**：使用 MobileNetV2（參數量 350 萬，僅 CNN 的 1/10）
-   - **增加正則化**：卷積層加 L2 正則化（$\lambda = 0.0001$）、Dropout 提升至 0.6
+   - **增加正則化**：卷積層加 L2 正則化（ $\lambda = 0.0001$ ）、Dropout 提升至 0.6
    - **批次正規化**：每層卷積後加 BatchNormalization（穩定訓練）
 
 ---
@@ -736,11 +831,15 @@ def industrial_decision(image, model, threshold_high=0.95, threshold_low=0.70):
 ```
 
 **數學建模**：
-$$ \text{Decision}(x) = \begin{cases}
+
+$$
+\text{Decision}(x) = \begin{cases}
 \text{Pass} & \text{if } p(\text{normal} \mid x) > \theta_h \\
 \text{Review} & \text{if } \max_k p(k \mid x) < \theta_l \\
 \text{Fail} & \text{otherwise}
-\end{cases} $$
+\end{cases}
+$$
+
 
 **為什麼 Baseline / 基礎 CNN 不能用這個流程？**
 
@@ -767,7 +866,12 @@ $$ \text{Decision}(x) = \begin{cases}
 - **結論**：低性能模型無法商業化部署，期望成本過高
 
 **最優策略**：最小化期望成本
-$$ \theta^* = \arg\min_{\theta} \sum_{x,y} P(x,y) \cdot \text{Cost}(\text{Decision}_\theta(x), y) $$
+
+$$
+\theta^* = \arg\min_{\theta} \sum_{x,y} P(x,y) \cdot \text{Cost}(\text{Decision}_\theta(x), y)
+$$
+
+
 
 但前提是**模型基礎性能 > 90%**，否則無論如何調整 $\theta$ 都無法降低期望成本。
 
@@ -777,19 +881,31 @@ $$ \theta^* = \arg\min_{\theta} \sum_{x,y} P(x,y) \cdot \text{Cost}(\text{Decisi
 當前 Baseline / 基礎 CNN 無法部署，故無需監控。
 
 **概念漂移**（Concept Drift）：
-$$ P_t(y \mid x) \neq P_{t+\Delta t}(y \mid x) $$
+
+$$
+P_t(y \mid x) \neq P_{t+\Delta t}(y \mid x)
+$$
+
 
 **檢測方法**：
 
-1. **Kolmogorov-Smirnov Test**（檢測特徵分布變化）：
-   $$ D_{KS} = \sup_x |F_{\text{train}}(x) - F_{\text{prod}}(x)| $$
+1. **Kolmogorov-Smirnov Test** （檢測特徵分布變化）：
 
-2. **Page-Hinkley Test**（檢測性能下降）：
-   $$ m_T = \sum_{t=1}^{T} (x_t - \bar{x}_t - \delta) $$
+$$
+D_{KS} = \sup_x |F_{\text{train}}(x) - F_{\text{prod}}(x)|
+$$
+
+
+2. **Page-Hinkley Test** （檢測性能下降）：
+
+$$
+m_T = \sum_{t=1}^{T} (x_t - \bar{x}_t - \delta)
+$$
+
 
 **觸發重訓練的條件**（基於 95% 模型）：
 - 驗證準確率下降 > 5%（從 97.5% → 92.5%）
-- KS 統計量 $D_{KS} > 0.3$（分布顯著偏移）
+- KS 統計量 $D_{KS} > 0.3$ （分布顯著偏移）
 
 ---
 
@@ -818,7 +934,11 @@ $$ P_t(y \mid x) \neq P_{t+\Delta t}(y \mid x) $$
 - **數學解釋**：64×64 扁平化 = 4096 維向量，但像素 (32,32) 和 (32,33) 在向量中相距 64 個位置，**鄰域關係完全破壞**
 
 **Bias-Variance Tradeoff 分析**：
-$$ \text{Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error} $$
+
+$$
+\text{Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}
+$$
+
 
 | 模型 | Bias（欠擬合） | Variance（過擬合） | 總誤差 | 主要問題 |
 |------|---------------|-------------------|--------|---------|

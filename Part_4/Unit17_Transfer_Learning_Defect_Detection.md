@@ -56,10 +56,10 @@ $$
 $$
 
 其中：
-- $\mathbf{W}^{(l)}$、$\mathbf{b}^{(l)}$：第 $l$ 層的卷積核權重與偏置
-- $*$：卷積運算符號
-- $f^{(l)}$：非線性激活函數（如 ReLU）
-- $\mathbf{h}^{(l-1)}$：前一層的特徵圖
+- $\mathbf{W}^{(l)}$ 、 $\mathbf{b}^{(l)}$ ：第 $l$ 層的卷積核權重與偏置
+- $*$ ：卷積運算符號
+- $f^{(l)}$ ：非線性激活函數（如 ReLU）
+- $\mathbf{h}^{(l-1)}$ ：前一層的特徵圖
 
 **參數量估算**：一個典型的深度CNN可能包含數百萬甚至數千萬個參數。例如：
 - VGG-16：約 138M 參數
@@ -108,7 +108,7 @@ CNN學習的特徵具有**層次性**：
 
 #### 遷移學習的數學框架
 
-設源域（Source Domain）為 $\mathcal{D}_S$，目標域（Target Domain）為 $\mathcal{D}_T$：
+設源域（Source Domain）為 $\mathcal{D}_S$ ，目標域（Target Domain）為 $\mathcal{D}_T$ ：
 
 $$
 \mathcal{D}_S = \{(\mathbf{x}_i^S, y_i^S)\}_{i=1}^{N_S}, \quad \mathcal{D}_T = \{(\mathbf{x}_j^T, y_j^T)\}_{j=1}^{N_T}
@@ -119,55 +119,69 @@ $$
 **遷移學習目標**：利用在 $\mathcal{D}_S$ 上學到的知識，提升在 $\mathcal{D}_T$ 上的性能。
 
 **特徵提取器**：
+
 $$
 \mathbf{z} = \phi(\mathbf{x}; \theta_{\text{base}})
 $$
 
-其中 $\phi$ 是預訓練的特徵提取網路，$\theta_{\text{base}}$ 是在源域上學習的參數。
+
+其中 $\phi$ 是預訓練的特徵提取網路， $\theta_{\text{base}}$ 是在源域上學習的參數。
 
 **任務特定分類器**：
+
 $$
 \hat{y} = g(\mathbf{z}; \theta_{\text{head}})
 $$
 
-其中 $g$ 是針對目標任務設計的分類頭，$\theta_{\text{head}}$ 是需要在目標域上訓練的參數。
+
+其中 $g$ 是針對目標任務設計的分類頭， $\theta_{\text{head}}$ 是需要在目標域上訓練的參數。
 
 ### 1.3 MobileNetV2：高效的卷積神經網路
 
 #### 深度可分離卷積（Depthwise Separable Convolution）
 
 標準卷積的計算複雜度：
+
 $$
 \text{FLOPs}_{\text{standard}} = D_K^2 \cdot M \cdot N \cdot D_F^2
 $$
 
+
 其中：
-- $D_K$：卷積核尺寸（如 3×3）
-- $M$：輸入通道數
-- $N$：輸出通道數
-- $D_F$：特徵圖空間尺寸
+- $D_K$ ：卷積核尺寸（如 3×3）
+- $M$ ：輸入通道數
+- $N$ ：輸出通道數
+- $D_F$ ：特徵圖空間尺寸
 
 **深度可分離卷積分解**：
 
 **Step 1 - Depthwise Convolution**：對每個輸入通道獨立進行空間卷積
+
 $$
 \text{FLOPs}_{\text{DW}} = D_K^2 \cdot M \cdot D_F^2
 $$
 
+
 **Step 2 - Pointwise Convolution**：使用 1×1 卷積混合通道信息
+
 $$
 \text{FLOPs}_{\text{PW}} = M \cdot N \cdot D_F^2
 $$
 
+
 **總計算量**：
+
 $$
 \text{FLOPs}_{\text{DSC}} = D_K^2 \cdot M \cdot D_F^2 + M \cdot N \cdot D_F^2
 $$
 
+
 **效率提升比**：
+
 $$
 \frac{\text{FLOPs}_{\text{DSC}}}{\text{FLOPs}_{\text{standard}}} = \frac{1}{N} + \frac{1}{D_K^2} \approx \frac{1}{8} \sim \frac{1}{9}
 $$
+
 
 #### Inverted Residual Block
 
@@ -180,19 +194,24 @@ MobileNetV2 的核心創新是**倒殘差結構（Inverted Residual Block）**�
 ```
 
 **數學表達**：
+
 $$
 \mathbf{y} = \mathbf{x} + \mathcal{F}(\mathbf{x}; \mathbf{W})
 $$
 
 其中：
+
 $$
-\mathcal{F}(\mathbf{x}; \mathbf{W}) = \text{Conv}_{1×1}^{\text{project}} \circ \text{DWConv}_{3×3} \circ \text{Conv}_{1×1}^{\text{expand}}(\mathbf{x})
+\mathcal{F}(\mathbf{x}; \mathbf{W}) = \text{Conv}_{1 \times 1}^{\text{project}} \circ \text{DWConv}_{3 \times 3} \circ \text{Conv}_{1 \times 1}^{\text{expand}}(\mathbf{x})
 $$
 
+
 **線性瓶頸（Linear Bottleneck）**：最後的 1×1 卷積不使用 ReLU，保留資訊：
+
 $$
 \text{ReLU}(\mathbf{z}) = \max(0, \mathbf{z})
 $$
+
 
 在低維空間中，ReLU 可能破壞資訊，因此最後一層使用線性激活。
 
@@ -216,25 +235,29 @@ for layer in base_model.layers:
 ```
 
 **損失函數**：
+
 $$
-\mathcal{L}_{\text{stage1}} = -\frac{1}{N}\sum_{i=1}^{N} \sum_{c=1}^{C} y_{ic} \log(\hat{y}_{ic})
+\mathcal{L}_{\text{stage1}} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{C} y_{ic} \log(\hat{y}_{ic})
 $$
+
 
 其中：
-- $y_{ic}$：樣本 $i$ 屬於類別 $c$ 的真實標籤（one-hot編碼）
-- $\hat{y}_{ic}$：模型預測的機率分佈
-- $C=6$：缺陷類別數量
+- $y_{ic}$ ：樣本 $i$ 屬於類別 $c$ 的真實標籤（one-hot編碼）
+- $\hat{y}_{ic}$ ：模型預測的機率分佈
+- $C=6$ ：缺陷類別數量
 
 **優化器配置**：
-- Adam optimizer with $\beta_1=0.9$, $\beta_2=0.999$
+- Adam optimizer with $\beta_1=0.9$ , $\beta_2=0.999$
 - Initial learning rate: $\alpha_0 = 10^{-3}$
 - Batch size: 32
 - Max epochs: 20（配合 Early Stopping）
 
 **Early Stopping 機制**：
+
 $$
 \text{Stop if } \mathcal{L}_{\text{val}}^{(t)} > \min_{k < t} \mathcal{L}_{\text{val}}^{(k)} \text{ for } \geq 7 \text{ consecutive epochs}
 $$
+
 
 #### Stage 2：解凍高層，微調（Fine-tuning）
 
@@ -261,16 +284,16 @@ $$
 
 ### 2.2 學習率衰減策略
 
-為了穩定訓練，採用**指數衰減（Exponential Decay）**：
+為了穩定訓練，採用**指數衰減（Exponential Decay）** ：
 
 $$
 \alpha(t) = \alpha_0 \cdot e^{-\lambda t}
 $$
 
 其中：
-- $\alpha_0$：初始學習率
-- $\lambda = 0.1$：衰減係數
-- $t$：當前 epoch 數
+- $\alpha_0$ ：初始學習率
+- $\lambda = 0.1$ ：衰減係數
+- $t$ ：當前 epoch 數
 
 **衰減效果**：
 
@@ -370,28 +393,30 @@ def load_image_folder(root_folder, img_height=64, img_width=64, color_mode='rgb'
 
 #### 數據標準化
 
-為了讓不同特徵處於相同尺度，使用 **StandardScaler**：
+為了讓不同特徵處於相同尺度，使用 **StandardScaler** ：
 
 $$
 \mathbf{z} = \frac{\mathbf{x} - \mu}{\sigma}
 $$
 
 其中：
-- $\mu$：訓練集特徵均值
-- $\sigma$：訓練集特徵標準差
+- $\mu$ ：訓練集特徵均值
+- $\sigma$ ：訓練集特徵標準差
 
 這確保每個特徵的貢獻度相當，加速收斂。
 
 #### Random Forest 原理
 
 **決策樹集成**：
+
 $$
-\hat{y} = \frac{1}{T}\sum_{t=1}^{T} h_t(\mathbf{x})
+\hat{y} = \frac{1}{T} \sum_{t=1}^{T} h_t(\mathbf{x})
 $$
 
+
 其中：
-- $T=100$：樹的數量
-- $h_t(\mathbf{x})$：第 $t$ 棵決策樹的預測
+- $T=100$ ：樹的數量
+- $h_t(\mathbf{x})$ ：第 $t$ 棵決策樹的預測
 
 **關鍵超參數**：
 - `max_depth=10`：限制樹深度，防止過擬合
@@ -405,12 +430,15 @@ $$
 #### Multi-Layer Perceptron (MLP) 原理
 
 **網路架構**：
+
 $$
 \mathbf{h}_1 = \text{ReLU}(\mathbf{W}_1 \mathbf{x} + \mathbf{b}_1) \quad \text{(128 neurons)}
 $$
+
 $$
 \mathbf{h}_2 = \text{ReLU}(\mathbf{W}_2 \mathbf{h}_1 + \mathbf{b}_2) \quad \text{(64 neurons)}
 $$
+
 $$
 \hat{\mathbf{y}} = \text{softmax}(\mathbf{W}_3 \mathbf{h}_2 + \mathbf{b}_3) \quad \text{(6 classes)}
 $$
@@ -438,17 +466,20 @@ $$
 
 **關鍵指標**：
 
-**Precision（精確率）**：
+**精確率（精確率）**：
+
 $$
 P_j = \frac{C_{jj}}{\sum_{i} C_{ij}}
 $$
 
-**Recall（召回率）**：
+**召回率（Recall）**：
+
 $$
 R_j = \frac{C_{jj}}{\sum_{k} C_{jk}}
 $$
 
-**F1-score**：
+**F1 分數（F1-score）**：
+
 $$
 F1_j = 2 \cdot \frac{P_j \cdot R_j}{P_j + R_j}
 $$
@@ -482,22 +513,30 @@ $$
 | 缺陷      | FN              | TP              |
 
 常用指標：
-- **Precision (精確率)**：在所有被模型判為「缺陷」的樣本中，有多少是真的缺陷？
-  $$
-  \text{Precision} = \frac{TP}{TP + FP}
-  $$
-- **Recall (召回率／靈敏度)**：在所有真正的缺陷中，有多少被模型抓到？
-  $$
-  \text{Recall} = \frac{TP}{TP + FN}
-  $$
-- **F1-score**：Precision 與 Recall 的調和平均，用來平衡兩者：
-  $$
-  \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-  $$
-- **Specificity (特異性)**：在所有真正的正常品中，有多少被正確識別？
-  $$
-  \text{Specificity} = \frac{TN}{TN + FP}
-  $$
+- **精確率 (Precision)** ：在所有被模型判為「缺陷」的樣本中，有多少是真的缺陷？
+
+$$
+\text{Precision} = \frac{TP}{TP + FP}
+$$
+
+- **召回率 (Recall ／靈敏度)** ：在所有真正的缺陷中，有多少被模型抓到？
+
+$$
+\text{Recall} = \frac{TP}{TP + FN}
+$$
+
+- **F1 分數 (F1-score)** ：Precision 與 Recall 的調和平均，用來平衡兩者：
+
+$$
+\text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
+- **特異性 (Specificity)** ：在所有真正的正常品中，有多少被正確識別？
+
+$$
+\text{Specificity} = \frac{TN}{TN + FP}
+$$
+
 
 在化工品質檢測應用中的解讀：
 若將 '缺陷' 視為陽性，'正常' 視為陰性：
@@ -512,7 +551,7 @@ $$
 
 ### 2.2 信心度門檻（Confidence Threshold）與ROC曲線
 
-#### ROC (Receiver Operating Characteristic) 曲線
+**ROC (Receiver Operating Characteristic) 曲線**
 
 **ROC 曲線** 可以幫助我們:
 1. 評估模型在不同閾值下的表現
@@ -522,7 +561,7 @@ $$
 ROC 曲線的數學定義：
 - 橫軸：False Positive Rate (FPR) = $\frac{FP}{FP + TN}$ (誤報率)
 - 縱軸：True Positive Rate (TPR) = $\frac{TP}{TP + FN}$ (召回率)
-- 對於每個可能的閾值 $\theta$，計算一組 (FPR, TPR)
+- 對於每個可能的閾值 $\theta$ ，計算一組 (FPR, TPR)
 
 **AUC (Area Under the ROC Curve)**：
 - AUC = 1.0：完美分類器
@@ -538,7 +577,10 @@ ROC 曲線的數學定義：
    - 適用於成本對稱的情況
 
 2. **Youden Index (最大化 TPR - FPR)**：
-   - 數學定義：$J = \max_{\theta} (TPR - FPR)$
+
+$$
+J = \max_{\theta} (TPR - FPR)
+$$
    - 適用於平衡靈敏度與特異性
 
 3. **高召回策略 (TPR > 0.99)**：
@@ -546,7 +588,7 @@ ROC 曲線的數學定義：
    - 願意接受較高的誤報率以避免漏檢
 
 4. **成本最佳化閾值**：
-   假設成本: FN = $\$C_{FN}$, FP = $\$C_{FP}$
+   假設成本: FN = $\$C_{FN}$ , FP = $\$C_{FP}$
    理論最佳閾值 = $\frac{1}{1 + C_{FP}/C_{FN}}$
    
    **實務建議**:
@@ -557,9 +599,9 @@ ROC 曲線的數學定義：
 #### 三級決策系統實務應用
 
 基於信心度的分級處理：
-- **高信心缺陷** (confidence > 0.95)：直接剔除或停線檢查 → 自動決策
-- **中信心** (0.6 < confidence < 0.95)：進人工複檢/二次模型 → 人工審查
-- **低信心** (confidence < 0.6)：視為正常或送抽樣檢驗 → 標記為未知
+- **高信心缺陷** (confidence > 0.95) ：直接剔除或停線檢查 → 自動決策
+- **中信心** (0.6 < confidence < 0.95) ：進人工複檢/二次模型 → 人工審查
+- **低信心** (confidence < 0.6) ：視為正常或送抽樣檢驗 → 標記為未知
 
 **決策區間設計原則**：
 - 自動化率 (無需人工介入) 應達 80% 以上
@@ -590,29 +632,33 @@ Dense(6, activation='softmax') → 6 classes
 **數學形式**：
 
 **Step 1 - 特徵提取**：
+
 $$
 \mathbf{v} = \text{GAP}(\phi_{\text{MobileNetV2}}(\mathbf{x})) \in \mathbb{R}^{1280}
 $$
 
 其中 GAP（Global Average Pooling）對特徵圖的每個通道進行空間平均：
+
 $$
-v_k = \frac{1}{H \times W}\sum_{i=1}^{H}\sum_{j=1}^{W} F_k(i,j)
+v_k = \frac{1}{H \times W} \sum_{i=1}^{H} \sum_{j=1}^{W} F_k(i,j)
 $$
 
 **Step 2 - 分類頭**：
+
 $$
 \mathbf{h} = \text{ReLU}(\mathbf{W}_1 \mathbf{v} + \mathbf{b}_1) \in \mathbb{R}^{256}
 $$
+
 $$
 \mathbf{h}_{\text{drop}} = \text{Dropout}(\mathbf{h}, p=0.5)
 $$
+
 $$
 \hat{\mathbf{y}} = \text{softmax}(\mathbf{W}_2 \mathbf{h}_{\text{drop}} + \mathbf{b}_2) \in \mathbb{R}^{6}
 $$
 
-**Dropout 正則化**：
-
 訓練時隨機將 50% 的神經元輸出置零：
+
 $$
 h_i^{\text{drop}} = 
 \begin{cases}
@@ -643,6 +689,7 @@ train_datagen = ImageDataGenerator(
 **數學解釋**：
 
 **旋轉矩陣**：
+
 $$
 \mathbf{R}(\theta) = \begin{pmatrix}
 \cos\theta & -\sin\theta \\
@@ -651,11 +698,13 @@ $$
 $$
 
 **平移變換**：
+
 $$
 \mathbf{x}' = \mathbf{x} + \Delta\mathbf{x}, \quad \Delta x \sim \mathcal{U}(-0.2W, 0.2W)
 $$
 
 **縮放變換**：
+
 $$
 \mathbf{x}' = s \cdot \mathbf{x}, \quad s \sim \mathcal{U}(0.8, 1.2)
 $$
@@ -729,11 +778,12 @@ Final Performance:
 **損失函數的收斂性**：
 
 交叉熵損失的梯度：
+
 $$
 \frac{\partial \mathcal{L}}{\partial z_k} = \hat{y}_k - y_k
 $$
 
-其中 $z_k$ 是 softmax 前的 logits。
+其中 $z_k$ 是 softmax 前的 logits 。
 
 **梯度消失/爆炸檢查**：
 - 使用 Adam optimizer 自動調整學習率
@@ -807,6 +857,7 @@ Sample 3: True=Patches, Pred=Patches, Conf=0.9995
 **信心度分布**：
 
 設 $p_{\text{pred}}$ 為預測類別的機率，定義信心度：
+
 $$
 \text{Confidence} = \max_k \hat{y}_k
 $$
@@ -830,6 +881,7 @@ $$
 - 6 個類別應該形成明顯分離的聚類
 
 **理想特徵空間**：
+
 $$
 d(\mathbf{z}_i, \mathbf{z}_j) \gg d(\mathbf{z}_i, \mathbf{z}_k), \quad \forall i,j \in C_m, k \in C_n, m \neq n
 $$
@@ -850,6 +902,7 @@ $$
 **對比維度**：
 
 #### 1. Accuracy（準確率）
+
 $$
 \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}
 $$
@@ -914,6 +967,7 @@ $$
 **數學解釋**：
 
 CNN 的**平移不變性（Translation Invariance）**：
+
 $$
 f(\mathbf{x} + \Delta\mathbf{x}) \approx f(\mathbf{x})
 $$
@@ -923,6 +977,7 @@ $$
 - 池化：降採樣，進一步增強位置魯棒性
 
 **旋轉不變性**通過數據增強學習：
+
 $$
 \min_{\theta} \mathbb{E}_{\theta \sim \mathcal{U}(-20°, 20°)} \mathcal{L}(f(R_\theta(\mathbf{x})), y)
 $$
@@ -937,14 +992,15 @@ $$
 
 **Grad-CAM 解釋性**：
 
-對於輸入影像 $\mathbf{x}$ 和預測類別 $c$，Grad-CAM 熱力圖：
+對於輸入影像 $\mathbf{x}$ 和預測類別 $c$ ，Grad-CAM 熱力圖：
+
 $$
 L_{\text{Grad-CAM}}^c = \text{ReLU}\left(\sum_k \alpha_k^c A^k\right)
 $$
 
 其中：
-- $A^k$：最後卷積層的第 $k$ 個特徵圖
-- $\alpha_k^c = \frac{1}{Z}\sum_{i,j} \frac{\partial y^c}{\partial A_{ij}^k}$：特徵圖對預測的貢獻權重
+- $A^k$ ：最後卷積層的第 $k$ 個特徵圖
+- $\alpha_k^c = \frac{1}{Z}\sum_{i,j} \frac{\partial y^c}{\partial A_{ij}^k}$ ：特徵圖對預測的貢獻權重
 
 **實務應用**：
 - 可視化模型關注區域（裂紋、斑塊等）
@@ -1001,6 +1057,7 @@ $$
 
 **量化（Quantization）**：
 將 FP32 權重轉換為 INT8：
+
 $$
 w_{\text{int8}} = \text{round}\left(\frac{w_{\text{fp32}} - w_{\min}}{w_{\max} - w_{\min}} \times 255\right)
 $$
@@ -1012,14 +1069,15 @@ $$
 
 **知識蒸餾（Knowledge Distillation）**：
 訓練小模型（Student）模仿大模型（Teacher）：
+
 $$
 \mathcal{L}_{\text{KD}} = \alpha \mathcal{L}_{\text{CE}}(y, \hat{y}_S) + (1-\alpha) \mathcal{L}_{\text{KL}}(\hat{y}_T, \hat{y}_S)
 $$
 
 其中：
-- $\hat{y}_S$：學生模型輸出
-- $\hat{y}_T$：教師模型輸出（soft labels）
-- $\mathcal{L}_{\text{KL}}$：KL散度
+- $\hat{y}_S$ ：學生模型輸出
+- $\hat{y}_T$ ：教師模型輸出（soft labels）
+- $\mathcal{L}_{\text{KL}}$ ：KL散度
 
 #### 邊緣設備部署
 
@@ -1111,9 +1169,11 @@ predictions = interpreter.get_tensor(output_details[0]['index'])
 - $p_{\text{auto}}$：自動化率
 
 總成本：
+
 $$
 C_{\text{total}} = N \cdot [C_{\text{FN}} \cdot \text{FNR} + C_{\text{FP}} \cdot \text{FPR} + C_{\text{review}} \cdot (1 - p_{\text{auto}})]
 $$
+
 
 **實際案例**（假設）：
 - 漏檢成本：5000 元/件
@@ -1122,16 +1182,18 @@ $$
 - 自動化率：85%
 
 使用 MobileNetV2（FNR=0, FPR=0）：
+
 $$
 C_{\text{total}} = 10000 \times [0 + 0 + 20 \times 0.15] = 30,000 \text{ 元/日}
 $$
 
 相比全人工檢測（每件 30 元）：
+
 $$
 C_{\text{manual}} = 10000 \times 30 = 300,000 \text{ 元/日}
 $$
 
-**年度節省**：$(300,000 - 30,000) \times 365 = 98,550,000$ 元
+**年度節省**： $(300,000 - 30,000) \times 365 = 98,550,000$ 元
 
 #### 持續改善與模型維護
 
@@ -1146,8 +1208,8 @@ $$
 $$
 
 其中：
-- $p_i^{\text{train}}$：訓練時類別 $i$ 的比例
-- $p_i^{\text{prod}}$：生產時類別 $i$ 的比例
+- $p_i^{\text{train}}$ ：訓練時類別 $i$ 的比例
+- $p_i^{\text{prod}}$ ：生產時類別 $i$ 的比例
 
 **閾值設定**：
 - PSI < 0.1：無顯著漂移
@@ -1157,14 +1219,18 @@ $$
 **主動學習流程**：
 
 1. **不確定性採樣**：優先標註低信心樣本
-   $$
-   \mathbf{x}^* = \arg\min_{\mathbf{x} \in \mathcal{U}} \max_k p(y=k|\mathbf{x})
-   $$
+
+$$
+\mathbf{x}^* = \arg\min_{\mathbf{x} \in \mathcal{U}} \max_k p(y=k|\mathbf{x})
+$$
+
 
 2. **多樣性採樣**：確保覆蓋特徵空間
-   $$
-   \mathbf{x}^* = \arg\max_{\mathbf{x} \in \mathcal{U}} \min_{\mathbf{x}' \in \mathcal{L}} \|\phi(\mathbf{x}) - \phi(\mathbf{x}')\|
-   $$
+
+$$
+\mathbf{x}^* = \arg\max_{\mathbf{x} \in \mathcal{U}} \min_{\mathbf{x}' \in \mathcal{L}} \|\phi(\mathbf{x}) - \phi(\mathbf{x}')\|
+$$
+
 
 3. **增量訓練**：定期（如每月）用新標註數據微調
 
@@ -1203,9 +1269,11 @@ def generate_gradcam(model, img, class_idx):
 當新增缺陷類別但只有少量樣本時：
 
 **原型網路（Prototypical Networks）**：
+
 $$
-c_k = \frac{1}{|S_k|}\sum_{(\mathbf{x}_i, y_i) \in S_k} \phi(\mathbf{x}_i)
+c_k = \frac{1}{|S_k|} \sum_{(\mathbf{x}_i, y_i) \in S_k} \phi(\mathbf{x}_i)
 $$
+
 $$
 p(y=k|\mathbf{x}) = \frac{\exp(-d(\phi(\mathbf{x}), c_k))}{\sum_{k'} \exp(-d(\phi(\mathbf{x}), c_{k'}))}
 $$
@@ -1218,6 +1286,7 @@ $$
 對於未知缺陷類型：
 
 **自編碼器（Autoencoder）**：
+
 $$
 \mathcal{L}_{\text{recon}} = \|\mathbf{x} - \text{Dec}(\text{Enc}(\mathbf{x}))\|^2
 $$
@@ -1225,8 +1294,9 @@ $$
 正常樣本重建誤差小，異常樣本重建誤差大。
 
 **One-Class SVM**：
+
 $$
-\min_{\mathbf{w}, \rho} \frac{1}{2}\|\mathbf{w}\|^2 - \rho + \frac{1}{\nu N}\sum_i \max(0, \rho - \mathbf{w}^T\phi(\mathbf{x}_i))
+\min_{\mathbf{w}, \rho} \frac{1}{2}\|\mathbf{w}\|^2 - \rho + \frac{1}{\nu N} \sum_i \max(0, \rho - \mathbf{w}^T \phi(\mathbf{x}_i))
 $$
 
 ### 8.4 實踐建議
