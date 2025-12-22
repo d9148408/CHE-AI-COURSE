@@ -309,11 +309,11 @@ $$
 
 基於葡萄酒化學原理創建5個交互特徵：
 
-1. **總酸度：** $\text{total\\_acidity} = \text{fixed\\_acidity} + \text{volatile\\_acidity}$
-2. **遊離SO₂比例：** $\text{free\\_so2\\_ratio} = \frac{\text{free\\_SO}_2}{\text{total\\_SO}_2 + 1}$  
-3. **酒精-糖分平衡：** $\text{balance} = \text{alcohol} - 0.1 \times \text{residual\\_sugar}$
-4. **酸度-pH比：** $\text{acidity\\_ph\\_ratio} = \frac{\text{total\\_acidity}}{\text{pH} + 0.01}$
-5. **硫酸鹽-氯化物比：** $\text{sulphates\\_chlorides\\_ratio}$
+1. **總酸度：** $\texttt{total\_acidity} = \texttt{fixed\_acidity} + \texttt{volatile\_acidity}$
+2. **遊離SO₂比例：** $\texttt{free\_so2\_ratio} = \frac{\texttt{free\_SO}_2}{\texttt{total\_SO}_2 + 1}$  
+3. **酒精-糖分平衡：** $\texttt{balance} = \texttt{alcohol} - 0.1 \times \texttt{residual\_sugar}$
+4. **酸度-pH比：** $\texttt{acidity\_ph\_ratio} = \frac{\texttt{total\_acidity}}{\texttt{pH} + 0.01}$
+5. **硫酸鹽-氯化物比：** $\texttt{sulphates\_chlorides\_ratio}$
 
 **總特徵數：** 11（原始）+ 5（工程）= 16個
 
