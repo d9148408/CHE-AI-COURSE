@@ -1,0 +1,21 @@
+# Ignore everything by default
+/*
+
+# But do not ignore these specific folders
+!Part_0/
+!Part_1/
+!Part_2/
+!Part_3/
+!Part_4/
+!Part_5/
+
+# Inside these folders, ignore any 'data' directory
+Part_0/data/
+Part_1/data/
+Part_2/data/
+Part_3/data/
+Part_4/data/
+Part_5/data/
+
+# Also track .gitignore itself
+!.gitignore

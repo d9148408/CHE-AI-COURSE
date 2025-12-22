@@ -1,0 +1,201 @@
+﻿Solvent,Resin,Pigment,Additive,Surfactant,Thickener,formulation_id
+Toluene,Acrylic_B,TiO2,Defoamer_Y,Tego270,HEUR,F_001
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_002
+Butyl Acetate,Acrylic_B,Zinc_Oxide,Defoamer_X,Tego410,HEUR,F_003
+Toluene,Acrylic_B,TiO2,Defoamer_X,Tego270,HEC,F_004
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_005
+MEK,Epoxy,Iron_Oxide,Defoamer_X,Triton_X100,HEC,F_006
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_007
+Ethyl Acetate,Acrylic_B,TiO2,BYK-425,Tego270,HEUR,F_008
+IPA,Epoxy,TiO2,Disperbyk-190,Tego410,HEC,F_009
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_010
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_011
+IPA,Acrylic_A,Carbon_Black,Defoamer_Y,Triton_X100,HEC,F_012
+Toluene,Alkyd,TiO2,BYK-333,Tego270,CMC,F_013
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_014
+IPA,Polyester,Iron_Oxide,BYK-333,Triton_X100,Xanthan,F_015
+MEK,Alkyd,Carbon_Black,BYK-425,Tego270,CMC,F_016
+IPA,Acrylic_B,TiO2,Defoamer_Y,Surfynol104,CMC,F_017
+MEK,Polyester,TiO2,Disperbyk-190,Tego270,Xanthan,F_018
+Xylene,Alkyd,Carbon_Black,Disperbyk-190,Tego270,Xanthan,F_019
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_020
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_021
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_022
+IPA,Acrylic_B,Carbon_Black,Defoamer_Y,Tego410,HEC,F_023
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_024
+Toluene,Alkyd,TiO2,BYK-333,Tego270,HEC,F_025
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_026
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_027
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_028
+Xylene,Acrylic_A,Carbon_Black,Defoamer_X,Triton_X100,HEUR,F_029
+MEK,Acrylic_A,TiO2,BYK-333,Triton_X100,HEC,F_030
+Toluene,Alkyd,TiO2,Defoamer_Y,Tego270,HEC,F_031
+Toluene,Acrylic_A,TiO2,BYK-333,Triton_X100,Xanthan,F_032
+MEK,Polyester,TiO2,Defoamer_Y,Triton_X100,HEUR,F_033
+MEK,Acrylic_A,TiO2,Defoamer_X,Surfynol104,HEUR,F_034
+MEK,Epoxy,Zinc_Oxide,Disperbyk-190,Triton_X100,Xanthan,F_035
+MEK,Epoxy,Zinc_Oxide,Defoamer_X,Tego270,HEC,F_036
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_037
+Toluene,Alkyd,TiO2,BYK-425,Tego270,CMC,F_038
+Toluene,Alkyd,TiO2,Defoamer_X,Tego270,HEC,F_039
+Toluene,Acrylic_B,TiO2,Disperbyk-190,Tego270,HEC,F_040
+Toluene,Acrylic_A,TiO2,BYK-333,Triton_X100,HEC,F_041
+MEK,Acrylic_A,Zinc_Oxide,Defoamer_X,Tego410,CMC,F_042
+MEK,Acrylic_A,Iron_Oxide,BYK-333,Tego270,HEUR,F_043
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_044
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_045
+MEK,Acrylic_A,Zinc_Oxide,BYK-333,Triton_X100,CMC,F_046
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_047
+Toluene,Acrylic_B,TiO2,Disperbyk-190,Tego410,HEC,F_048
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_049
+Toluene,Acrylic_A,TiO2,BYK-333,Tego410,HEC,F_050
+Toluene,Alkyd,TiO2,BYK-333,Tego270,HEC,F_051
+Toluene,Acrylic_A,TiO2,Defoamer_X,Tego270,HEC,F_052
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_053
+Ethyl Acetate,Polyester,Zinc_Oxide,BYK-425,Triton_X100,Xanthan,F_054
+Ethyl Acetate,Polyester,Carbon_Black,BYK-425,Tego410,HEC,F_055
+Xylene,Polyester,Carbon_Black,Defoamer_Y,Tego410,Xanthan,F_056
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_057
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_058
+Toluene,Acrylic_B,TiO2,Defoamer_X,Tego270,CMC,F_059
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_060
+Ethyl Acetate,Acrylic_A,Zinc_Oxide,BYK-425,Tego410,Xanthan,F_061
+Toluene,Acrylic_A,TiO2,BYK-333,Triton_X100,CMC,F_062
+IPA,Alkyd,Zinc_Oxide,Defoamer_X,Tego410,Xanthan,F_063
+IPA,Alkyd,Carbon_Black,Defoamer_X,Tego410,HEUR,F_064
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_065
+Toluene,Acrylic_B,TiO2,BYK-333,Tego270,HEC,F_066
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_067
+Toluene,Acrylic_B,TiO2,Defoamer_Y,Tego270,Xanthan,F_068
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_069
+Xylene,Alkyd,Carbon_Black,Defoamer_X,Tego270,Xanthan,F_070
+Toluene,Alkyd,TiO2,Defoamer_Y,Tego270,HEUR,F_071
+Butyl Acetate,Epoxy,TiO2,Defoamer_Y,Surfynol104,HEUR,F_072
+Butyl Acetate,Epoxy,Carbon_Black,Defoamer_X,Surfynol104,HEUR,F_073
+Ethyl Acetate,Acrylic_A,Zinc_Oxide,Defoamer_Y,Tego270,CMC,F_074
+Ethyl Acetate,Acrylic_A,Zinc_Oxide,Disperbyk-190,Triton_X100,CMC,F_075
+MEK,Epoxy,TiO2,BYK-333,Tego270,Xanthan,F_076
+IPA,Polyester,TiO2,BYK-333,Triton_X100,HEUR,F_077
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_078
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_079
+Ethyl Acetate,Polyester,TiO2,Defoamer_X,Tego410,HEC,F_080
+Toluene,Alkyd,TiO2,Defoamer_X,Tego270,HEC,F_081
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_082
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_083
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_084
+Toluene,Alkyd,TiO2,Defoamer_X,Tego410,HEC,F_085
+Xylene,Epoxy,Zinc_Oxide,Defoamer_Y,Tego270,Xanthan,F_086
+Toluene,Acrylic_A,TiO2,Defoamer_X,Tego270,Xanthan,F_087
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_088
+Xylene,Alkyd,TiO2,BYK-425,Tego410,Xanthan,F_089
+Ethyl Acetate,Alkyd,Iron_Oxide,Defoamer_Y,Surfynol104,Xanthan,F_090
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_091
+Butyl Acetate,Acrylic_B,TiO2,BYK-425,Surfynol104,HEUR,F_092
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_093
+Toluene,Acrylic_B,TiO2,BYK-333,Tego270,CMC,F_094
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_095
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_096
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_097
+MEK,Alkyd,Zinc_Oxide,BYK-333,Surfynol104,CMC,F_098
+Toluene,Alkyd,TiO2,Defoamer_Y,Triton_X100,HEC,F_099
+Butyl Acetate,Alkyd,Zinc_Oxide,Defoamer_Y,Surfynol104,CMC,F_100
+Toluene,Acrylic_A,TiO2,BYK-425,Tego270,HEC,F_101
+Xylene,Alkyd,Carbon_Black,Disperbyk-190,Triton_X100,Xanthan,F_102
+Toluene,Acrylic_A,TiO2,Defoamer_X,Tego270,HEC,F_103
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_104
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_105
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_106
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_107
+Ethyl Acetate,Acrylic_B,Zinc_Oxide,BYK-425,Surfynol104,HEC,F_108
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_109
+Toluene,Acrylic_A,TiO2,BYK-333,Surfynol104,HEC,F_110
+Ethyl Acetate,Acrylic_A,Iron_Oxide,BYK-333,Tego270,CMC,F_111
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_112
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_113
+Toluene,Acrylic_A,TiO2,Defoamer_Y,Tego270,HEC,F_114
+Ethyl Acetate,Epoxy,Iron_Oxide,BYK-425,Tego410,HEUR,F_115
+Toluene,Alkyd,TiO2,Defoamer_X,Triton_X100,HEC,F_116
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_117
+Butyl Acetate,Acrylic_B,Iron_Oxide,Disperbyk-190,Surfynol104,HEUR,F_118
+Ethyl Acetate,Acrylic_B,Carbon_Black,BYK-425,Tego410,Xanthan,F_119
+Toluene,Alkyd,TiO2,BYK-333,Tego270,CMC,F_120
+Ethyl Acetate,Polyester,TiO2,Defoamer_Y,Tego270,CMC,F_121
+Toluene,Acrylic_B,TiO2,Defoamer_X,Tego270,HEC,F_122
+Butyl Acetate,Acrylic_B,TiO2,Disperbyk-190,Surfynol104,CMC,F_123
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_124
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_125
+MEK,Alkyd,Zinc_Oxide,BYK-425,Tego270,HEUR,F_126
+Toluene,Alkyd,TiO2,Defoamer_X,Tego270,HEUR,F_127
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_128
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_129
+MEK,Alkyd,TiO2,BYK-425,Triton_X100,HEC,F_130
+Toluene,Acrylic_A,TiO2,BYK-425,Tego410,CMC,F_131
+Ethyl Acetate,Polyester,Zinc_Oxide,Disperbyk-190,Surfynol104,Xanthan,F_132
+MEK,Epoxy,TiO2,BYK-425,Tego410,HEUR,F_133
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_134
+Toluene,Alkyd,TiO2,BYK-425,Tego270,HEC,F_135
+IPA,Acrylic_A,Zinc_Oxide,BYK-425,Surfynol104,HEC,F_136
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_137
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_138
+Ethyl Acetate,Polyester,Zinc_Oxide,Disperbyk-190,Tego270,HEUR,F_139
+Xylene,Alkyd,Carbon_Black,Defoamer_Y,Tego410,HEUR,F_140
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_141
+Toluene,Acrylic_B,TiO2,Disperbyk-190,Tego270,HEC,F_142
+Ethyl Acetate,Epoxy,Zinc_Oxide,Disperbyk-190,Triton_X100,Xanthan,F_143
+Xylene,Polyester,Carbon_Black,BYK-333,Tego410,Xanthan,F_144
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_145
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_146
+Butyl Acetate,Polyester,Iron_Oxide,Defoamer_X,Tego270,Xanthan,F_147
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_148
+Butyl Acetate,Acrylic_B,Zinc_Oxide,BYK-333,Surfynol104,HEC,F_149
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_150
+Toluene,Alkyd,TiO2,Defoamer_X,Tego410,HEC,F_151
+Xylene,Acrylic_B,Zinc_Oxide,Disperbyk-190,Surfynol104,HEC,F_152
+IPA,Alkyd,Zinc_Oxide,Disperbyk-190,Tego270,HEC,F_153
+Toluene,Acrylic_A,TiO2,BYK-333,Surfynol104,HEUR,F_154
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_155
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_156
+Xylene,Acrylic_A,TiO2,BYK-333,Surfynol104,Xanthan,F_157
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_158
+MEK,Acrylic_B,Zinc_Oxide,Defoamer_X,Surfynol104,Xanthan,F_159
+IPA,Polyester,Zinc_Oxide,Defoamer_Y,Tego410,HEC,F_160
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_161
+Butyl Acetate,Polyester,Carbon_Black,BYK-333,Tego410,HEUR,F_162
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_163
+Butyl Acetate,Alkyd,Iron_Oxide,Defoamer_X,Triton_X100,HEC,F_164
+MEK,Polyester,Zinc_Oxide,Defoamer_X,Tego410,Xanthan,F_165
+Toluene,Alkyd,TiO2,BYK-425,Tego270,HEUR,F_166
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_167
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_168
+IPA,Epoxy,TiO2,Defoamer_Y,Triton_X100,Xanthan,F_169
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_170
+Toluene,Acrylic_B,TiO2,BYK-333,Tego270,HEC,F_171
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_172
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_173
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_174
+Toluene,Alkyd,TiO2,BYK-425,Tego270,Xanthan,F_175
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_176
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_177
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_178
+Xylene,Acrylic_A,Zinc_Oxide,Defoamer_X,Surfynol104,HEC,F_179
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_180
+Toluene,Alkyd,TiO2,Defoamer_Y,Tego270,HEC,F_181
+Toluene,Acrylic_A,TiO2,BYK-333,Surfynol104,HEUR,F_182
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_183
+Toluene,Acrylic_A,TiO2,BYK-333,Tego410,HEUR,F_184
+Ethyl Acetate,Epoxy,TiO2,Defoamer_X,Triton_X100,HEUR,F_185
+Xylene,Acrylic_A,Iron_Oxide,Disperbyk-190,Triton_X100,Xanthan,F_186
+Butyl Acetate,Acrylic_A,Iron_Oxide,Defoamer_Y,Surfynol104,Xanthan,F_187
+Ethyl Acetate,Polyester,Zinc_Oxide,Disperbyk-190,Triton_X100,CMC,F_188
+Butyl Acetate,Acrylic_B,Iron_Oxide,BYK-425,Surfynol104,HEC,F_189
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,CMC,F_190
+Xylene,Alkyd,Zinc_Oxide,Disperbyk-190,Tego410,Xanthan,F_191
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEUR,F_192
+Xylene,Acrylic_B,TiO2,Defoamer_X,Surfynol104,CMC,F_193
+IPA,Acrylic_A,Carbon_Black,Disperbyk-190,Tego410,Xanthan,F_194
+Xylene,Acrylic_B,Iron_Oxide,BYK-333,Tego410,HEC,F_195
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,Xanthan,F_196
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_197
+Toluene,Acrylic_B,TiO2,BYK-425,Tego270,HEUR,F_198
+Toluene,Acrylic_A,TiO2,BYK-333,Tego270,HEC,F_199
+Toluene,Acrylic_A,TiO2,BYK-333,Triton_X100,HEUR,F_200
