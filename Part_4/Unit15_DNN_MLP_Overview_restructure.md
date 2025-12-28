@@ -124,6 +124,16 @@ $$
 - 小誤差時使用MSE(平滑),大誤差時使用MAE(穩健)
 - 適合工業數據中含有噪音和異常值的情況
 
+4. **均方對數誤差(Mean Squared Logarithmic Error, MSLE)**:
+$$
+L_{MSLE} = \frac{1}{n} \sum_{i=1}^{n} (\log(y_i + 1) - \log(\hat{y}_i + 1))^2
+$$
+
+**適用場景**:
+- 目標值範圍很大的回歸問題
+- 更關注相對誤差而非絕對誤差
+- 對小值的預測誤差更敏感
+
 **分類問題常用損失函數**:
 
 1. **二元交叉熵(Binary Crossentropy)**:
@@ -168,6 +178,7 @@ $$
 |---------|------------|---------------|
 | 回歸(一般) | MSE | Linear / 不指定 |
 | 回歸(有異常值) | MAE 或 Huber | Linear / 不指定 |
+| 回歸(大範圍) | MSLE | Linear / 不指定 |
 | 二元分類 | Binary Crossentropy | Sigmoid |
 | 多類別分類(one-hot) | Categorical Crossentropy | Softmax |
 | 多類別分類(整數標籤) | Sparse Categorical Crossentropy | Softmax |
@@ -223,6 +234,9 @@ $$
 - 可能出現"神經元死亡"問題(dying ReLU)
 
 **適用場景**: 隱藏層的首選激活函數
+
+> [!TIP]
+> 關於 ReLU 為何成為深度學習標準配備的深入理論分析，請參考 **第3.4節**。
 
 #### 2.1.2 Leaky ReLU
 $$
@@ -611,40 +625,40 @@ $$f(x) = \max(0, x)$$
 
 ## 4. DNN/MLP應用場景
 
-### 3.1 適合使用DNN/MLP的情境
+### 4.1 適合使用DNN/MLP的情境
 
 1. **非線性關係複雜**: 輸入與輸出之間存在高度非線性關係
 2. **特徵交互作用**: 特徵之間有複雜的交互作用
 3. **大量數據**: 有足夠的訓練數據支持深度模型
 4. **特徵工程困難**: 難以手動設計有效特徵時，DNN可自動學習
 
-### 3.2 化工領域應用案例
+### 4.2 化工領域應用案例
 
-#### 3.2.1 製程參數優化
+#### 4.2.1 製程參數優化
 - **應用**: 預測反應器溫度、壓力、流量等操作條件對產品品質的影響
 - **優勢**: 可處理多變數、非線性的製程關係
 
-#### 3.2.2 產品品質預測
+#### 4.2.2 產品品質預測
 - **應用**: 根據原料成分與製程條件預測最終產品性質
 - **範例**: 紅酒品質預測、聚合物性質預測
 
-#### 3.2.3 設備故障診斷
+#### 4.2.3 設備故障診斷
 - **應用**: 透過感測器數據預測設備異常或故障
 - **優勢**: 可學習複雜的時間序列模式
 
-#### 3.2.4 分離程序模擬
+#### 4.2.4 分離程序模擬
 - **應用**: 蒸餾塔、萃取塔等分離設備的快速模擬
 - **優勢**: 比傳統數值模擬快速，適合即時控制
 
-#### 3.2.5 環境排放預測
+#### 4.2.5 環境排放預測
 - **應用**: 預測燃燒程序的污染物排放量
 - **範例**: NOx、SOx、CO2排放預測
 
-#### 3.2.6 礦業浮選過程
+#### 4.2.6 礦業浮選過程
 - **應用**: 預測礦石浮選過程的矽石濃度
 - **優勢**: 可整合多種感測器數據進行即時預測
 
-### 3.3 DNN的優勢與限制
+### 4.3 DNN的優勢與限制
 
 **優勢**:
 - 強大的非線性建模能力
@@ -661,9 +675,9 @@ $$f(x) = \max(0, x)$$
 
 ---
 
-## 4. TensorFlow/Keras框架介紹
+## 5. TensorFlow/Keras框架介紹
 
-### 4.1 TensorFlow與Keras簡介
+### 5.1 TensorFlow與Keras簡介
 
 **TensorFlow** 是Google開發的開源深度學習框架，提供完整的機器學習生態系統。
 
@@ -673,7 +687,7 @@ $$f(x) = \max(0, x)$$
 - 易於擴展
 - 支援多種後端
 
-### 4.2 環境安裝
+### 5.2 環境安裝
 
 ```bash
 # 安裝TensorFlow (包含Keras)
@@ -686,7 +700,7 @@ pip install tensorflow==2.15.0
 python -c "import tensorflow as tf; print(tf.__version__)"
 ```
 
-### 4.3 基本導入
+### 5.3 基本導入
 
 ```python
 import tensorflow as tf
@@ -698,13 +712,13 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 5. 使用Keras建立DNN模型
+## 6. 使用Keras建立DNN模型
 
-### 5.1 模型架構: Sequential vs Functional API
+### 6.1 模型架構: Sequential vs Functional API
 
 Keras提供兩種建立模型的方式:
 
-#### 5.1.1 Sequential API (序列模型)
+#### 6.1.1 Sequential API (序列模型)
 
 適用於**單輸入、單輸出、線性堆疊**的簡單模型:
 
@@ -726,7 +740,7 @@ model.add(Dense(32, activation='relu'))
 model.add(Dense(1))
 ```
 
-#### 5.1.2 Functional API (函數式API)
+#### 6.1.2 Functional API (函數式API)
 
 適用於**多輸入、多輸出、複雜連接**的模型:
 
@@ -748,9 +762,9 @@ outputs = Dense(1)(x)
 model = Model(inputs=inputs, outputs=outputs)
 ```
 
-### 5.2 常用層(Layers)
+### 6.2 常用層(Layers)
 
-#### 5.2.1 Dense Layer (全連接層)
+#### 6.2.1 Dense Layer (全連接層)
 
 **功能**: 實現全連接的神經網路層
 
@@ -774,7 +788,7 @@ layer = Dense(
 - `activation`: 激活函數 ('relu', 'sigmoid', 'tanh', 'softmax', 'linear', None)
 - `kernel_initializer`: 權重初始化策略
 
-#### 5.2.2 Dropout Layer (隨機失活層)
+#### 6.2.2 Dropout Layer (隨機失活層)
 
 **功能**: 訓練時隨機將部分神經元輸出設為0，防止過擬合
 
@@ -800,7 +814,7 @@ model = Sequential([
 ])
 ```
 
-#### 5.2.3 BatchNormalization Layer (批次正規化層)
+#### 6.2.3 BatchNormalization Layer (批次正規化層)
 
 **功能**: 對每個batch的輸入進行標準化，加速訓練並提高穩定性
 
@@ -922,7 +936,7 @@ model = Sequential([
 - 小數據集(<1000樣本): 謹慎使用BatchNorm,可能導致過擬合
 
 
-#### 5.2.4 Activation Layer (激活層)
+#### 6.2.4 Activation Layer (激活層)
 
 **功能**: 單獨定義激活函數層
 
@@ -942,7 +956,7 @@ Dense(64)
 Activation('relu')
 ```
 
-### 5.3 權重初始化策略
+### 6.3 權重初始化策略
 
 合適的權重初始化可以加速訓練並避免梯度消失/爆炸問題。
 
@@ -969,11 +983,11 @@ model = Sequential([
 ])
 ```
 
-### 5.4 正則化(Regularization)
+### 6.4 正則化(Regularization)
 
 防止過擬合的技術。
 
-#### 5.4.1 L1/L2正則化
+#### 6.4.1 L1/L2正則化
 
 ```python
 from tensorflow.keras.regularizers import l1, l2, l1_l2
@@ -990,11 +1004,11 @@ Dense(64, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01))
 
 ---
 
-## 6. 模型編譯 (Model Compilation)
+## 7. 模型編譯 (Model Compilation)
 
 編譯模型時需要指定**優化器**、**損失函數**和**評估指標**。
 
-### 6.1 model.compile() 方法
+### 7.1 model.compile() 方法
 
 ```python
 model.compile(
@@ -1004,11 +1018,11 @@ model.compile(
 )
 ```
 
-### 6.2 優化器(Optimizers)
+### 7.2 優化器(Optimizers)
 
 優化器決定如何根據梯度更新權重。
 
-#### 6.2.1 Adam (Adaptive Moment Estimation)
+#### 7.2.1 Adam (Adaptive Moment Estimation)
 **推薦首選**，結合了Momentum和RMSprop的優點。
 
 ```python
@@ -1029,7 +1043,7 @@ model.compile(optimizer=optimizer, loss='mse')
 - 對超參數不敏感
 - 適用於大多數問題
 
-#### 6.2.2 SGD (Stochastic Gradient Descent)
+#### 7.2.2 SGD (Stochastic Gradient Descent)
 
 ```python
 from tensorflow.keras.optimizers import SGD
@@ -1041,7 +1055,7 @@ optimizer = SGD(
 )
 ```
 
-#### 6.2.3 RMSprop
+#### 7.2.3 RMSprop
 
 ```python
 from tensorflow.keras.optimizers import RMSprop
@@ -1052,7 +1066,7 @@ optimizer = RMSprop(
 )
 ```
 
-#### 6.2.4 AdaGrad, Adadelta, Nadam 等
+#### 7.2.4 AdaGrad, Adadelta, Nadam 等
 
 ```python
 from tensorflow.keras.optimizers import AdaGrad, Adadelta, Nadam
@@ -1063,174 +1077,86 @@ from tensorflow.keras.optimizers import AdaGrad, Adadelta, Nadam
 - **需要更好泛化**: SGD with momentum
 - **RNN問題**: RMSprop 或 Adam
 
-### 6.3 損失函數(Loss Functions)
+### 7.3 損失函數在Keras中的使用
 
-損失函數根據問題類型選擇,以下列出Keras中常用損失函數及其數學公式。
+> [!NOTE]
+> 損失函數的數學原理和理論基礎請參考 **第1.5節**。本節僅說明在Keras中的使用方式。
 
-#### 6.3.1 回歸問題
+#### 7.3.1 回歸問題
 
-**1. Mean Squared Error (MSE) - 均方誤差**
-
-**數學公式**:
-$$
-L_{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-$$
-
-**Keras使用**:
+**MSE (均方誤差)**:
 ```python
-# 均方誤差 (Mean Squared Error)
 model.compile(optimizer='adam', loss='mse')
 model.compile(optimizer='adam', loss='mean_squared_error')
+# 或
 from tensorflow.keras.losses import MeanSquaredError
 model.compile(optimizer='adam', loss=MeanSquaredError())
 ```
 
-**特性**: 對大誤差懲罰重,梯度與誤差成正比
-
----
-
-**2. Mean Absolute Error (MAE) - 平均絕對誤差**
-
-**數學公式**:
-$$
-L_{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
-$$
-
-**Keras使用**:
+**MAE (平均絕對誤差)**:
 ```python
-# 平均絕對誤差 (Mean Absolute Error)
 model.compile(optimizer='adam', loss='mae')
 model.compile(optimizer='adam', loss='mean_absolute_error')
+# 或
 from tensorflow.keras.losses import MeanAbsoluteError
 model.compile(optimizer='adam', loss=MeanAbsoluteError())
 ```
 
-**特性**: 對異常值穩健,梯度為常數
-
----
-
-**3. Huber Loss**
-
-**數學公式**:
-$$
-L_{\delta}(y, \hat{y}) = \begin{cases}
-\frac{1}{2}(y - \hat{y})^2 & \text{if } |y - \hat{y}| \leq \delta \\
-\delta (|y - \hat{y}| - \frac{1}{2}\delta) & \text{otherwise}
-\end{cases}
-$$
-
-**Keras使用**:
+**Huber Loss** (對異常值較不敏感):
 ```python
-# Huber Loss (對異常值較不敏感)
 from tensorflow.keras.losses import Huber
 model.compile(optimizer='adam', loss=Huber(delta=1.0))
 ```
 
-**特性**: 結合MSE和MAE優點,小誤差用MSE(平滑),大誤差用MAE(穩健)
-
----
-
-**4. Mean Squared Logarithmic Error (MSLE) - 均方對數誤差**
-
-**數學公式**:
-$$
-L_{MSLE} = \frac{1}{n} \sum_{i=1}^{n} (\log(y_i + 1) - \log(\hat{y}_i + 1))^2
-$$
-
-**Keras使用**:
+**MSLE (均方對數誤差)** - 適合目標值範圍很大的情況:
 ```python
-from tensorflow.keras.losses import MeanSquaredLogarithmicError
 model.compile(optimizer='adam', loss='msle')
+# 或
+from tensorflow.keras.losses import MeanSquaredLogarithmicError
 model.compile(optimizer='adam', loss=MeanSquaredLogarithmicError())
 ```
 
-**適用場景**: 目標變數範圍很大,關注相對誤差而非絕對誤差
+#### 7.3.2 分類問題
 
-#### 6.3.2 二元分類問題
-
-**Binary Crossentropy - 二元交叉熵**
-
-**數學公式**:
-$$
-L_{BCE} = -\frac{1}{n} \sum_{i=1}^{n} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)]
-$$
-
-其中:
-- $y_i \in \{0, 1\}$ : 真實標籤
-- $\hat{y}_i \in (0, 1)$ : 預測機率(Sigmoid輸出)
-
-**Keras使用**:
+**Binary Crossentropy** (二元分類):
 ```python
-# 二元交叉熵
 model.compile(optimizer='adam', loss='binary_crossentropy')
+# 或
 from tensorflow.keras.losses import BinaryCrossentropy
 model.compile(optimizer='adam', loss=BinaryCrossentropy())
 ```
+**配合使用**: 輸出層使用 `Sigmoid` 激活函數
 
-**配合使用**: 輸出層使用`Sigmoid`激活函數
-
-#### 6.3.3 多類別分類問題
-
-**1. Categorical Crossentropy - 類別交叉熵**
-
-**數學公式**:
-$$
-L_{CCE} = -\frac{1}{n} \sum_{i=1}^{n} \sum_{j=1}^{C} y_{ij} \log(\hat{y}_{ij})
-$$
-
-其中:
-- $C$ : 類別數量
-- $y_{ij}$ : one-hot編碼標籤 (第i個樣本屬於第j類時為1,否則為0)
-- $\hat{y}_{ij}$ : 預測機率(Softmax輸出)
-
-**Keras使用**:
+**Categorical Crossentropy** (多類別，one-hot標籤):
 ```python
-# 類別交叉熵 (標籤為one-hot編碼)
 model.compile(optimizer='adam', loss='categorical_crossentropy')
+# 或
 from tensorflow.keras.losses import CategoricalCrossentropy
 model.compile(optimizer='adam', loss=CategoricalCrossentropy())
 ```
-
 **標籤格式**: `[[0, 0, 1], [1, 0, 0], [0, 1, 0]]` (one-hot)
 
----
-
-**2. Sparse Categorical Crossentropy - 稀疏類別交叉熵**
-
-**數學公式**:
-$$
-L_{SCCE} = -\frac{1}{n} \sum_{i=1}^{n} \log(\hat{y}_{i,c_i})
-$$
-
-其中:
-- $c_i$ : 第i個樣本的真實類別索引
-- $\hat{y}_{i,c_i}$ : 該樣本在真實類別上的預測機率
-
-**Keras使用**:
+**Sparse Categorical Crossentropy** (多類別，整數標籤):
 ```python
-# 稀疏類別交叉熵 (標籤為整數)
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
+# 或
 from tensorflow.keras.losses import SparseCategoricalCrossentropy
 model.compile(optimizer='adam', loss=SparseCategoricalCrossentropy())
 ```
-
 **標籤格式**: `[2, 0, 1]` (整數索引)
 
-**差異**: 與Categorical Crossentropy數學上等價,僅標籤格式不同
+#### 7.3.3 快速參考
 
-### 損失函數選擇快速參考
+| 問題類型 | Keras損失函數 | 輸出層激活函數 |
+|---------|--------------|---------------|
+| 回歸(一般) | `'mse'` | `'linear'` |
+| 回歸(有異常值) | `'mae'` 或 `Huber()` | `'linear'` |
+| 回歸(大範圍) | `'msle'` | `'linear'` |
+| 二元分類 | `'binary_crossentropy'` | `'sigmoid'` |
+| 多類別(one-hot) | `'categorical_crossentropy'` | `'softmax'` |
+| 多類別(整數) | `'sparse_categorical_crossentropy'` | `'softmax'` |
 
-| 問題類型 | 損失函數 | 數學特性 |
-|---------|---------|---------|
-| 回歸(一般) | MSE | 對大誤差敏感 |
-| 回歸(有異常值) | MAE 或 Huber | 穩健性強 |
-| 回歸(大範圍目標值) | MSLE | 關注相對誤差 |
-| 二元分類 | Binary Crossentropy | 機率解釋清晰 |
-| 多類別(one-hot) | Categorical Crossentropy | 標準多類別損失 |
-| 多類別(整數標籤) | Sparse Categorical Crossentropy | 節省記憶體 |
-
-
-### 6.4 評估指標(Metrics)
+### 7.4 評估指標(Metrics)
 
 #### 什麼是評估指標?
 
@@ -1331,9 +1257,9 @@ history = model.fit(X_train, y_train, epochs=100, validation_split=0.2)
 - `F1Score`: F1分數
 
 
-### 6.5 模型摘要與視覺化
+### 7.5 模型摘要與視覺化
 
-#### 6.5.1 model.summary() - 文字摘要
+#### 7.5.1 model.summary() - 文字摘要
 
 查看模型架構、參數數量:
 
@@ -1363,7 +1289,7 @@ _________________________________________________________________
 - 第二層: (64 + 1) × 32 = 2,080
 - 第三層: (32 + 1) × 1 = 33
 
-#### 6.5.2 plot_model() - 圖形化視覺化
+#### 7.5.2 plot_model() - 圖形化視覺化
 
 使用`plot_model()`將模型架構繪製成圖片,更直觀地理解網路結構。
 
@@ -1395,91 +1321,11 @@ plot_model(
 )
 ```
 
-**關鍵參數詳解**:
-
-1. **show_shapes** (建議開啟):
-   - `True`: 顯示每層的輸出形狀,幫助理解數據流
-   - `False`: 只顯示層名稱
-
-2. **rankdir** (排列方向):
-   - `'TB'` (Top to Bottom): 從上到下,適合深層網路
-   - `'LR'` (Left to Right): 從左到右,適合較寬的網路
-
-3. **dpi** (解析度):
-   - 預設96,可調高到150-300以獲得更清晰的圖片
-   - 數值越高檔案越大
-
-**使用範例**:
-```python
-# 範例1: 基本視覺化
-plot_model(model, to_file='model_basic.png')
-
-# 範例2: 詳細視覺化 (推薦)
-plot_model(
-    model,
-    to_file='model_detailed.png',
-    show_shapes=True,
-    show_layer_names=True,
-    rankdir='TB',
-    dpi=150
-)
-
-# 範例3: 橫向排列
-plot_model(
-    model,
-    to_file='model_horizontal.png',
-    show_shapes=True,
-    rankdir='LR'
-)
-```
-
-**在Jupyter Notebook中直接顯示**:
-```python
-from IPython.display import Image, display
-from tensorflow.keras.utils import plot_model
-
-# 繪製並顯示模型
-plot_model(model, to_file='model.png', show_shapes=True)
-display(Image('model.png'))
-```
-
-**注意事項**:
-1. **需要安裝graphviz**:
-   ```bash
-   # 安裝Python套件
-   pip install pydot graphviz
-   
-   # 安裝系統套件 (Windows)
-   # 下載並安裝: https://graphviz.org/download/
-   # 並將bin目錄加入系統PATH
-   
-   # 安裝系統套件 (Linux)
-   sudo apt-get install graphviz
-   
-   # 安裝系統套件 (Mac)
-   brew install graphviz
-   ```
-
-2. **如果無法安裝graphviz**:
-   - 使用`model.summary()`作為替代
-   - 或使用TensorBoard的模型圖功能
-
-**比較: summary() vs plot_model()**
-
-| 特性 | model.summary() | plot_model() |
-|------|----------------|--------------|
-| 輸出形式 | 文字 | 圖片 |
-| 視覺化 | 表格形式 | 流程圖 |
-| 安裝要求 | 無 | 需要graphviz |
-| 適用場景 | 快速查看參數 | 理解架構 |
-| 簡報展示 | 較不適合 | 適合 |
-
-
 ---
 
-## 7. 模型訓練 (Model Training)
+## 8. 模型訓練 (Model Training)
 
-### 7.1 model.fit() 方法
+### 8.1 model.fit() 方法
 
 ```python
 history = model.fit(
@@ -1495,9 +1341,9 @@ history = model.fit(
 )
 ```
 
-### 7.2 重要參數說明
+### 8.2 重要參數說明
 
-#### 7.2.1 batch_size (批次大小)
+#### 8.2.1 batch_size (批次大小)
 
 **定義**: 每次梯度更新使用的樣本數量
 
@@ -1508,7 +1354,7 @@ history = model.fit(
 
 **記憶體限制**: 較大batch需要更多GPU記憶體
 
-#### 7.2.2 epochs (訓練輪數)
+#### 8.2.2 epochs (訓練輪數)
 
 **發音**: /'epɒks/ (eh-poks),不是"ee-pocks"  
 **定義**: 完整遍歷整個訓練集的次數
@@ -1619,7 +1465,7 @@ Epoch 1/10
 ✅ **正確**: 1 epoch = 多個 iterations
 
 
-#### 7.2.3 validation_split vs validation_data
+#### 8.2.3 validation_split vs validation_data
 
 **validation_split**:
 ```python
@@ -1635,17 +1481,17 @@ model.fit(X_train, y_train, validation_data=(X_val, y_val))
 
 **建議**: 使用`validation_data`可更好控制數據分割
 
-#### 7.2.4 verbose (顯示模式)
+#### 8.2.4 verbose (顯示模式)
 
 - `0`: 不顯示訓練過程
 - `1`: 顯示進度條 (預設)
 - `2`: 每輪顯示一行
 
-### 7.3 Callbacks (回調函數)
+### 8.3 Callbacks (回調函數)
 
 Callbacks在訓練過程中的特定時間點執行特定操作。
 
-#### 7.3.1 EarlyStopping (早停)
+#### 8.3.1 EarlyStopping (早停)
 
 **功能**: 當驗證指標不再改善時自動停止訓練
 
@@ -1673,7 +1519,7 @@ history = model.fit(
 - 節省訓練時間
 - 自動找到最佳訓練輪數
 
-#### 7.3.2 ModelCheckpoint (模型檢查點)
+#### 8.3.2 ModelCheckpoint (模型檢查點)
 
 **功能**: 在訓練過程中自動保存模型
 
@@ -1697,7 +1543,7 @@ history = model.fit(
 )
 ```
 
-#### 7.3.3 ReduceLROnPlateau (動態調整學習率)
+#### 8.3.3 ReduceLROnPlateau (動態調整學習率)
 
 **功能**: 當訓練停滯時降低學習率
 
@@ -1713,7 +1559,7 @@ reduce_lr = ReduceLROnPlateau(
 )
 ```
 
-#### 7.3.4 TensorBoard (訓練視覺化)
+#### 8.3.4 TensorBoard (訓練視覺化)
 
 **功能**: 使用TensorBoard記錄訓練過程
 
@@ -1744,7 +1590,7 @@ tensorboard --logdir=logs/fit
 
 在瀏覽器開啟 `http://localhost:6006/`
 
-#### 7.3.5 組合使用多個Callbacks
+#### 8.3.5 組合使用多個Callbacks
 
 ```python
 callbacks = [
@@ -1776,27 +1622,11 @@ history = model.fit(
 )
 ```
 
-### 7.4 History物件
-
-`model.fit()`返回一個`History`物件，記錄了訓練過程中的指標。
-
-```python
-# 查看可用的指標
-print(history.history.keys())
-# 輸出: dict_keys(['loss', 'mae', 'val_loss', 'val_mae'])
-
-# 存取訓練損失
-train_loss = history.history['loss']
-
-# 存取驗證損失
-val_loss = history.history['val_loss']
-```
-
 ---
 
-## 8. 訓練過程視覺化
+## 9. 訓練過程視覺化
 
-### 8.1 繪製損失曲線
+### 9.1 繪製訓練曲線
 
 ```python
 import matplotlib.pyplot as plt
@@ -1827,7 +1657,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-### 8.2 判斷過擬合與欠擬合
+### 9.2 解讀訓練曲線
 
 **過擬合(Overfitting)**:
 - 訓練損失持續下降
@@ -1842,54 +1672,11 @@ plt.show()
 - 訓練與驗證損失都下降
 - 兩者差距小且趨於穩定
 
-### 8.3 使用TensorBoard進階監控
-
-TensorBoard提供豐富的視覺化功能:
-
-**1. 損失與指標曲線**:
-- 實時監控訓練與驗證指標
-- 支援平滑處理
-
-**2. 模型架構圖**:
-- 視覺化網路結構
-- 查看張量維度與連接關係
-
-**3. 權重與梯度分布**:
-- 監控參數分布變化
-- 檢測梯度消失/爆炸
-
-**4. 超參數調整**:
-- 比較不同超參數設定的效果
-
-**設定範例**:
-```python
-# 在不同超參數下訓練
-for learning_rate in [1e-2, 1e-3, 1e-4]:
-    for batch_size in [16, 32, 64]:
-        log_dir = f"logs/lr{learning_rate}_bs{batch_size}"
-        
-        model = create_model()
-        model.compile(
-            optimizer=Adam(learning_rate=learning_rate),
-            loss='mse',
-            metrics=['mae']
-        )
-        
-        model.fit(
-            X_train, y_train,
-            validation_data=(X_val, y_val),
-            epochs=100,
-            batch_size=batch_size,
-            callbacks=[TensorBoard(log_dir=log_dir)],
-            verbose=0
-        )
-```
-
 ---
 
-## 9. 模型評估 (Model Evaluation)
+## 10. 模型評估 (Model Evaluation)
 
-### 9.1 model.evaluate() 方法
+### 10.1 model.evaluate() 方法
 
 ```python
 # 在測試集上評估
@@ -1903,7 +1690,7 @@ print(f'Test MAE: {test_mae:.4f}')
 - 第一個值: 損失函數值
 - 後續值: metrics中指定的指標
 
-### 9.2 詳細評估指標計算
+### 10.2 詳細評估指標計算
 
 ```python
 # 進行預測
@@ -1926,9 +1713,9 @@ print(f'R²:   {r2:.4f}')
 
 ---
 
-## 10. 模型預測 (Model Prediction)
+## 11. 模型預測 (Model Prediction)
 
-### 10.1 model.predict() 方法
+### 11.1 model.predict() 方法
 
 ```python
 # 對測試集進行預測
@@ -1941,7 +1728,7 @@ print(f'Prediction: {prediction[0][0]:.4f}')
 print(f'Actual: {y_test[0]:.4f}')
 ```
 
-### 10.2 預測結果視覺化
+### 11.2 預測結果視覺化
 
 ```python
 # 回歸問題: 真實值 vs 預測值散點圖
@@ -1982,13 +1769,13 @@ plt.show()
 
 ---
 
-## 11. 模型保存與載入
+## 12. 模型保存與載入
 
-### 11.1 保存完整模型
+### 12.1 保存完整模型
 
 Keras提供兩種主要的模型保存格式:**Keras格式 (.keras)** 和 **HDF5格式 (.h5)**。
 
-#### 11.1.1 Keras格式 (推薦,TensorFlow 2.x預設)
+#### 12.1.1 Keras格式 (推薦,TensorFlow 2.x預設)
 
 **檔案格式**: `.keras` (單一檔案,實際上是zip壓縮檔)
 
@@ -2027,7 +1814,7 @@ predictions = loaded_model.predict(X_test)
 - 不向後兼容TensorFlow 1.x
 - 檔案稍大於HDF5格式
 
-#### 11.1.2 HDF5格式 (舊版,仍支援但不推薦新專案使用)
+#### 12.1.2 HDF5格式 (舊版,仍支援但不推薦新專案使用)
 
 **檔案格式**: `.h5` 或 `.hdf5` (HDF5 binary格式)
 
@@ -2099,8 +1886,7 @@ model.save('model_keras_format.keras')  # 主要格式
 model.save('model_h5_format.h5')        # 備用格式
 ```
 
-
-### 11.2 僅保存權重
+### 12.2 僅保存權重
 
 ```python
 # 保存權重
@@ -2111,7 +1897,7 @@ new_model = create_model()  # 建立相同架構
 new_model.load_weights('model_weights.h5')
 ```
 
-### 11.3 保存模型架構
+### 12.3 保存模型架構
 
 ```python
 # 保存為JSON
@@ -2126,207 +1912,11 @@ with open('model_architecture.json', 'r') as json_file:
 new_model = model_from_json(json_config)
 ```
 
-### 11.4 保存訓練歷史
-
-訓練歷史(`history.history`)是一個Python字典,記錄了訓練過程中的所有指標。可以使用**pickle**或**joblib**來保存。
-
-#### 11.4.1 使用Pickle保存 (Python內建)
-
-**Pickle** 是Python標準庫的序列化工具。
-
-```python
-import pickle
-
-# 保存history
-with open('training_history.pkl', 'wb') as file:
-    pickle.dump(history.history, file)
-
-# 載入history
-with open('training_history.pkl', 'rb') as file:
-    history_dict = pickle.load(file)
-
-# 查看載入的歷史
-print(history_dict.keys())  # dict_keys(['loss', 'val_loss', 'mae', 'val_mae'])
-```
-
-**優點**:
-- Python內建,無需額外安裝
-- 適合小型對象
-- 廣泛支援
-
-**缺點**:
-- 對大型numpy數組效率較低
-- 不支援壓縮
-- 跨Python版本可能有兼容性問題
-
-#### 11.4.2 使用Joblib保存 (推薦用於numpy數組)
-
-**Joblib** 是scikit-learn推薦的持久化工具,對numpy數組優化更好。
-
-**安裝**:
-```bash
-pip install joblib
-```
-
-**使用方式**:
-```python
-import joblib
-
-# 保存history
-joblib.dump(history.history, 'training_history.joblib')
-
-# 載入history
-history_dict = joblib.load('training_history.joblib')
-
-# 使用壓縮(推薦,可大幅減小檔案大小)
-joblib.dump(history.history, 'training_history_compressed.joblib', compress=3)
-# compress參數: 0-9, 數字越大壓縮率越高但速度越慢,推薦3-5
-```
-
-**優點**:
-- **對numpy數組優化,速度快**
-- **支援壓縮,節省空間**
-- 記憶體效率高
-- 更好的跨Python版本兼容性
-
-**缺點**:
-- 需要額外安裝
-- 對非numpy對象優勢不明顯
-
-### Pickle vs Joblib 詳細比較
-
-| 特性 | Pickle | Joblib |
-|------|--------|--------|
-| **安裝** | ✅ Python內建 | ⚠️ 需安裝 (`pip install joblib`) |
-| **numpy數組速度** | ⚠️ 較慢 | ✅ 快 (優化過) |
-| **檔案大小** | ⚠️ 較大 | ✅ 支援壓縮,可大幅縮小 |
-| **記憶體效率** | 一般 | ✅ 高 (大型數組) |
-| **通用對象** | ✅ 支援所有Python對象 | ✅ 支援所有Python對象 |
-| **跨版本兼容** | ⚠️ 可能有問題 | ✅ 較好 |
-| **使用場景** | 小型Python對象 | numpy數組、大型數據 |
-| **sklearn推薦** | - | ✅ 是 |
-
-### 實際比較範例
-
-```python
-import pickle
-import joblib
-import numpy as np
-import time
-import os
-
-# 模擬一個較大的history (典型DNN訓練100 epochs)
-history_data = {
-    'loss': np.random.rand(100).tolist(),
-    'val_loss': np.random.rand(100).tolist(),
-    'mae': np.random.rand(100).tolist(),
-    'val_mae': np.random.rand(100).tolist()
-}
-
-# Pickle保存
-start = time.time()
-with open('history_pickle.pkl', 'wb') as f:
-    pickle.dump(history_data, f)
-pickle_time = time.time() - start
-pickle_size = os.path.getsize('history_pickle.pkl')
-
-# Joblib保存 (無壓縮)
-start = time.time()
-joblib.dump(history_data, 'history_joblib.joblib')
-joblib_time = time.time() - start
-joblib_size = os.path.getsize('history_joblib.joblib')
-
-# Joblib保存 (壓縮)
-start = time.time()
-joblib.dump(history_data, 'history_joblib_compressed.joblib', compress=3)
-joblib_compressed_time = time.time() - start
-joblib_compressed_size = os.path.getsize('history_joblib_compressed.joblib')
-
-print(f"Pickle      - 時間: {pickle_time:.4f}s, 大小: {pickle_size} bytes")
-print(f"Joblib      - 時間: {joblib_time:.4f}s, 大小: {joblib_size} bytes")
-print(f"Joblib壓縮  - 時間: {joblib_compressed_time:.4f}s, 大小: {joblib_compressed_size} bytes")
-```
-
-### 選擇建議
-
-**使用 Pickle 當**:
-- history數據很小 (<100 epochs)
-- 不想安裝額外套件
-- 簡單快速的原型開發
-
-**使用 Joblib 當**:
-- ✅ history數據較大 (>100 epochs)
-- ✅ 訓練時間很長,數據很多
-- ✅ 需要頻繁保存/載入
-- ✅ 磁碟空間有限 (使用壓縮)
-- ✅ 已安裝scikit-learn (joblib會自動安裝)
-
-### 最佳實踐
-
-```python
-import joblib
-
-# 推薦: 使用joblib with適度壓縮
-joblib.dump(
-    history.history, 
-    'training_history.joblib',
-    compress=3  # 平衡壓縮率與速度
-)
-
-# 載入
-history_dict = joblib.load('training_history.joblib')
-
-# 視覺化載入的歷史
-import matplotlib.pyplot as plt
-
-plt.figure(figsize=(12, 4))
-plt.subplot(1, 2, 1)
-plt.plot(history_dict['loss'], label='Training Loss')
-plt.plot(history_dict['val_loss'], label='Validation Loss')
-plt.legend()
-plt.title('Loss History')
-
-plt.subplot(1, 2, 2)
-plt.plot(history_dict['mae'], label='Training MAE')
-plt.plot(history_dict['val_mae'], label='Validation MAE')
-plt.legend()
-plt.title('MAE History')
-
-plt.show()
-```
-
-### 完整範例:同時保存模型和歷史
-
-```python
-import joblib
-from datetime import datetime
-
-# 訓練後保存
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-# 1. 保存模型 (使用.keras格式)
-model.save(f'model_{timestamp}.keras')
-
-# 2. 保存訓練歷史 (使用joblib壓縮)
-joblib.dump(
-    history.history,
-    f'history_{timestamp}.joblib',
-    compress=3
-)
-
-print(f"模型和歷史已保存,時間戳: {timestamp}")
-
-# 載入
-model_loaded = load_model(f'model_{timestamp}.keras')
-history_loaded = joblib.load(f'history_{timestamp}.joblib')
-```
-
-
 ---
 
-## 12. TensorFlow/Keras vs sklearn MLPRegressor/MLPClassifier
+## 13. TensorFlow/Keras vs sklearn MLPRegressor/MLPClassifier
 
-### 12.1 主要差異比較
+### 13.1 主要差異比較
 
 | 特性 | TensorFlow/Keras | sklearn MLP |
 |------|------------------|-------------|
@@ -2339,7 +1929,7 @@ history_loaded = joblib.load(f'history_{timestamp}.joblib')
 | **API風格** | Keras API | Scikit-learn API |
 | **適用場景** | 大規模、複雜深度學習 | 快速原型、小型問題 |
 
-### 12.2 sklearn MLP範例
+### 13.2 sklearn MLP範例
 
 ```python
 from sklearn.neural_network import MLPRegressor, MLPClassifier
@@ -2372,7 +1962,7 @@ y_pred = mlp_reg.predict(X_test)
 score = mlp_reg.score(X_test, y_test)  # R² score
 ```
 
-### 12.3 選擇建議
+### 13.3 選擇建議
 
 **使用TensorFlow/Keras當**:
 - 需要複雜的網路架構
@@ -2388,161 +1978,6 @@ score = mlp_reg.score(X_test, y_test)  # R² score
 - 需要與其他sklearn工具整合
 - 不需要GPU
 - 偏好簡潔的sklearn API
-
----
-
-## 13. 完整工作流程範例
-
-### 13.1 標準DNN回歸流程
-
-```python
-# 1. 導入必要套件
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, BatchNormalization
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-
-# 2. 準備數據 (此處使用模擬數據)
-np.random.seed(42)
-X = np.random.randn(1000, 10)
-y = X[:, 0]**2 + 2*X[:, 1] - X[:, 2] + np.random.randn(1000)*0.1
-
-# 3. 分割數據
-X_train, X_temp, y_train, y_temp = train_test_split(
-    X, y, test_size=0.3, random_state=42
-)
-X_val, X_test, y_val, y_test = train_test_split(
-    X_temp, y_temp, test_size=0.5, random_state=42
-)
-
-# 4. 特徵縮放
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_val_scaled = scaler.transform(X_val)
-X_test_scaled = scaler.transform(X_test)
-
-# 5. 建立模型
-model = Sequential([
-    Dense(64, activation='relu', input_shape=(10,)),
-    BatchNormalization(),
-    Dropout(0.3),
-    
-    Dense(32, activation='relu'),
-    BatchNormalization(),
-    Dropout(0.3),
-    
-    Dense(16, activation='relu'),
-    Dense(1)
-])
-
-# 6. 編譯模型
-model.compile(
-    optimizer=Adam(learning_rate=0.001),
-    loss='mse',
-    metrics=['mae']
-)
-
-# 7. 查看模型結構
-model.summary()
-
-# 8. 設定callbacks
-callbacks = [
-    EarlyStopping(
-        monitor='val_loss',
-        patience=20,
-        restore_best_weights=True,
-        verbose=1
-    ),
-    ModelCheckpoint(
-        filepath='best_model.keras',
-        monitor='val_loss',
-        save_best_only=True,
-        verbose=1
-    )
-]
-
-# 9. 訓練模型
-history = model.fit(
-    X_train_scaled, y_train,
-    validation_data=(X_val_scaled, y_val),
-    epochs=200,
-    batch_size=32,
-    callbacks=callbacks,
-    verbose=1
-)
-
-# 10. 視覺化訓練過程
-plt.figure(figsize=(12, 4))
-
-plt.subplot(1, 2, 1)
-plt.plot(history.history['loss'], label='Training Loss')
-plt.plot(history.history['val_loss'], label='Validation Loss')
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.title('Model Loss')
-plt.legend()
-plt.grid(True)
-
-plt.subplot(1, 2, 2)
-plt.plot(history.history['mae'], label='Training MAE')
-plt.plot(history.history['val_mae'], label='Validation MAE')
-plt.xlabel('Epoch')
-plt.ylabel('MAE')
-plt.title('Model MAE')
-plt.legend()
-plt.grid(True)
-
-plt.tight_layout()
-plt.show()
-
-# 11. 評估模型
-test_loss, test_mae = model.evaluate(X_test_scaled, y_test, verbose=0)
-print(f'\nTest Loss: {test_loss:.4f}')
-print(f'Test MAE: {test_mae:.4f}')
-
-# 12. 進行預測
-y_pred = model.predict(X_test_scaled)
-
-# 13. 計算詳細指標
-mae = mean_absolute_error(y_test, y_pred)
-mse = mean_squared_error(y_test, y_pred)
-rmse = np.sqrt(mse)
-r2 = r2_score(y_test, y_pred)
-
-print(f'\n詳細評估指標:')
-print(f'MAE:  {mae:.4f}')
-print(f'MSE:  {mse:.4f}')
-print(f'RMSE: {rmse:.4f}')
-print(f'R²:   {r2:.4f}')
-
-# 14. 視覺化預測結果
-plt.figure(figsize=(8, 8))
-plt.scatter(y_test, y_pred, alpha=0.5)
-plt.plot([y_test.min(), y_test.max()], 
-         [y_test.min(), y_test.max()], 
-         'r--', lw=2)
-plt.xlabel('Actual Values')
-plt.ylabel('Predicted Values')
-plt.title('Actual vs Predicted')
-plt.grid(True)
-plt.show()
-
-# 15. 保存模型
-model.save('final_model.keras')
-
-# 16. 載入並驗證模型
-loaded_model = tf.keras.models.load_model('final_model.keras')
-loaded_predictions = loaded_model.predict(X_test_scaled)
-print(f'\n模型載入驗證 - 預測一致性: {np.allclose(y_pred, loaded_predictions)}')
-```
 
 ---
 
@@ -2571,7 +2006,7 @@ print(f'\n模型載入驗證 - 預測一致性: {np.allclose(y_pred, loaded_pred
 3. **訓練不穩定**: 降低學習率、使用BatchNormalization、檢查數據縮放
 4. **梯度消失**: 使用ReLU、適當的權重初始化、BatchNormalization
 
-### 14.5 超參數조정
+### 14.5 超參數調整
 建議調整順序:
 1. 學習率 (最重要)
 2. 網路架構 (層數、神經元數)
@@ -2581,354 +2016,13 @@ print(f'\n模型載入驗證 - 預測一致性: {np.allclose(y_pred, loaded_pred
 
 ---
 
-## 16. 課堂作業
-
-### 作業目標
-
-透過實作完整的DNN建模流程,深入理解模型參數對訓練效果的影響,並學會如何系統性地調整超參數以獲得最佳模型性能。
-
----
-
-### 📋 作業一:完整DNN建模流程實作 (60分)
-
-#### 任務描述
-
-使用提供的化工製程數據集,建立一個DNN回歸模型來預測產品品質指標。
-
-#### 數據集說明
-
-**化工反應器溫度控制數據集**
-- **特徵** (8個):
-  - 進料流量 (L/min)
-  - 反應器溫度 (°C)
-  - 反應器壓力 (bar)
-  - 催化劑濃度 (%)
-  - 攪拌速度 (rpm)
-  - 冷卻水溫度 (°C)
-  - 原料純度 (%)
-  - 停留時間 (min)
-- **目標變數**: 產品轉化率 (%)
-- **樣本數**: 2000筆
-
-#### 數據生成程式碼
-
-```python
-import numpy as np
-import pandas as pd
-
-# 設定隨機種子
-np.random.seed(42)
-
-# 生成特徵數據
-n_samples = 2000
-data = {
-    '進料流量': np.random.uniform(10, 50, n_samples),
-    '反應器溫度': np.random.uniform(150, 250, n_samples),
-    '反應器壓力': np.random.uniform(5, 15, n_samples),
-    '催化劑濃度': np.random.uniform(0.5, 5, n_samples),
-    '攪拌速度': np.random.uniform(100, 500, n_samples),
-    '冷卻水溫度': np.random.uniform(15, 35, n_samples),
-    '原料純度': np.random.uniform(90, 99.5, n_samples),
-    '停留時間': np.random.uniform(30, 120, n_samples)
-}
-
-df = pd.DataFrame(data)
-
-# 生成目標變數(產品轉化率) - 複雜非線性關係
-conversion_rate = (
-    0.3 * df['反應器溫度'] +
-    0.2 * df['催化劑濃度'] * df['停留時間'] +
-    -0.15 * (df['進料流量'] - 30)**2 +
-    0.1 * np.log(df['攪拌速度']) * df['反應器壓力'] +
-    0.05 * df['原料純度'] * df['反應器溫度'] / 100 +
-    np.random.normal(0, 5, n_samples)  # 添加噪音
-)/2
-
-# 限制轉化率在合理範圍
-conversion_rate = np.clip(conversion_rate, 0, 100)
-
-df['產品轉化率'] = conversion_rate
-
-# 保存數據
-df.to_csv('reactor_data.csv', index=False, encoding='utf-8-sig')
-print("數據集已生成: reactor_data.csv")
-print(f"數據形狀: {df.shape}")
-print(f"\n前5筆數據:\n{df.head()}")
-```
-
-#### 必須完成的步驟 (每步10分)
-
-**1. 數據準備與探索 (10分)**
-- 載入數據並檢查基本統計資訊
-- 繪製目標變數分布圖
-- 繪製至少3個特徵與目標變數的散點圖
-- 數據分割:訓練集70%、驗證集15%、測試集15%
-- **對X和Y都進行StandardScaler標準化**
-
-**2. 模型建立 (10分)**
-- 使用Sequential API建立DNN模型
-- 至少包含3個隱藏層
-- 使用ReLU激活函數
-- 加入Dropout層(rate=0.3)
-- 使用`model.summary()`查看模型結構
-- **加分項**: 使用`plot_model()`繪製模型架構圖
-
-**3. 模型編譯 (10分)**
-- 使用Adam優化器(learning_rate=0.001)
-- 損失函數:MSE
-- 評估指標:至少包含MAE和RMSE
-- 說明為何選擇這些設定
-
-**4. 模型訓練 (10分)**
-- 設定至少2個callbacks:
-  - EarlyStopping (patience=20)
-  - ModelCheckpoint
-- epochs=200, batch_size=32
-- 使用validation_data進行驗證
-- **加分項**: 加入TensorBoard callback
-
-**5. 訓練過程視覺化 (10分)**
-- 繪製訓練與驗證的Loss曲線
-- 繪製訓練與驗證的MAE曲線
-- 分析是否有過擬合或欠擬合現象
-
-**6. 模型評估與預測 (10分)**
-- **重要**: 對預測結果進行反標準化
-- 在測試集上計算MAE、RMSE、R²
-- 繪製實際值vs預測值散點圖
-- 繪製殘差圖
-- 分析模型性能
-
----
-
-### 🔬 作業二:超參數探討與比較 (40分)
-
-#### 任務描述
-
-系統性地探討不同超參數對模型性能的影響,並撰寫分析報告。
-
-#### 必須完成的實驗
-
-**實驗1: 網路深度影響 (10分)**
-
-比較以下3種網路架構:
-- **淺層網路**: 2層 [64, 32]
-- **中層網路**: 3層 [128, 64, 32]
-- **深層網路**: 4層 [256, 128, 64, 32]
-
-**要求**:
-- 其他參數保持一致
-- 記錄每個模型的:
-  - 訓練時間
-  - 最佳驗證Loss
-  - 測試集MAE、RMSE、R²
-  - 總參數量(從model.summary()獲取)
-- 製作比較表格
-- **分析**: 哪種深度最適合?為什麼?
-
-**實驗2: Dropout Rate影響 (10分)**
-
-比較以下4種dropout rate:
-- 0.0 (無dropout)
-- 0.2
-- 0.3
-- 0.5
-
-**要求**:
-- 使用相同的網路架構
-- 記錄訓練與驗證Loss的差距
-- 分析過擬合程度
-- **分析**: 最佳dropout rate是多少?
-
-**實驗3: Batch Size影響 (10分)**
-
-比較以下4種batch size:
-- 16
-- 32
-- 64
-- 128
-
-**要求**:
-- 記錄每個epoch的訓練時間
-- 記錄最終測試集性能
-- 計算每個epoch的iterations數量
-- **分析**: batch size如何影響訓練速度和模型性能?
-
-**實驗4: 學習率影響 (10分)**
-
-比較以下4種學習率:
-- 0.0001
-- 0.001
-- 0.01
-- 0.1
-
-**要求**:
-- 觀察訓練曲線的收斂速度
-- 記錄是否出現訓練不穩定
-- **分析**: 最佳學習率是多少?學習率過大或過小會有什麼問題?
-
----
-
-### 📊 實驗結果整理格式
-
-#### 表格範例
-
-**實驗1: 網路深度比較**
-
-| 網路架構 | 參數量 | 訓練時間(s) | 驗證Loss | 測試MAE | 測試RMSE | 測試R² |
-|---------|--------|------------|---------|---------|----------|--------|
-| [64, 32] | XXX | XX | X.XX | X.XX | X.XX | X.XX |
-| [128, 64, 32] | XXX | XX | X.XX | X.XX | X.XX | X.XX |
-| [256, 128, 64, 32] | XXX | XX | X.XX | X.XX | X.XX | X.XX |
-
-**分析**:
-- 最佳架構: ___
-- 原因: ___
-- 觀察到的現象: ___
-
-#### 視覺化要求
-
-每個實驗至少包含:
-1. 訓練曲線對比圖
-2. 測試集性能柱狀圖
-3. 實際值vs預測值散點圖(最佳模型)
-
----
-
-### 💡 加分項目 (最多+20分)
-
-1. **使用TensorBoard** (+5分)
-   - 記錄所有實驗的訓練過程
-   - 在報告中展示TensorBoard截圖
-
-2. **BatchNormalization探討** (+5分)
-   - 比較有無BatchNormalization的差異
-   - 分析在已標準化數據上的效果
-
-3. **不同激活函數比較** (+5分)
-   - 比較ReLU、LeakyReLU、tanh
-   - 分析各自的優缺點
-
-4. **模型保存與載入** (+5分)
-   - 保存最佳模型(.keras格式)
-   - 保存scalers(joblib格式)
-   - 展示如何載入並使用模型進行新預測
-
----
-
-### 📝 繳交格式
-
-#### 1. Jupyter Notebook檔案
-
-**檔名**: `學號_姓名_Unit15作業.ipynb`
-
-**內容結構**:
-```
-# Unit15 DNN課堂作業
-## 學生資訊
-- 學號: ___
-- 姓名: ___
-- 繳交日期: ___
-
-## 作業一:完整DNN建模流程
-### 1. 數據準備與探索
-### 2. 模型建立
-### 3. 模型編譯
-### 4. 模型訓練
-### 5. 訓練過程視覺化
-### 6. 模型評估與預測
-
-## 作業二:超參數探討
-### 實驗1: 網路深度影響
-### 實驗2: Dropout Rate影響
-### 實驗3: Batch Size影響
-### 實驗4: 學習率影響
-
-## 總結與心得
-```
-
-#### 2. 報告PDF檔案
-
-**檔名**: `學號_姓名_Unit15作業報告.pdf`
-
-**內容**:
-- 所有實驗結果表格
-- 所有視覺化圖表
-- 詳細分析與討論
-- 個人心得與學習收穫
-
-#### 3. 模型檔案 (加分項)
-
-- `best_model.keras`: 最佳模型
-- `X_scaler.joblib`: X特徵scaler
-- `y_scaler.joblib`: Y目標scaler
-
----
-
-### ⏰ 繳交期限與評分標準
-
-**繳交期限**: 課程結束後2週內
-
-**評分標準**:
-
-| 項目 | 配分 | 評分重點 |
-|------|------|---------|
-| 作業一完成度 | 60分 | 每個步驟的正確性與完整性 |
-| 作業二實驗設計 | 30分 | 實驗設計合理性、結果記錄完整性 |
-| 分析與討論 | 10分 | 分析深度、邏輯性、洞察力 |
-| 程式碼品質 | 加分 | 註解清楚、結構良好 |
-| 加分項目 | +20分 | 額外探討與創新 |
-
-**總分**: 100分 + 加分最多20分
-
----
-
-### 💭 思考題 (不計分,但建議思考)
-
-1. 為什麼在回歸任務中,Y數據也需要標準化?
-2. 如果不進行反標準化直接計算評估指標,會有什麼問題?
-3. 為什麼深層網路不一定比淺層網路好?
-4. Dropout如何防止過擬合?它的工作原理是什麼?
-5. 學習率過大和過小分別會導致什麼問題?
-6. 在工業應用中,如何選擇合適的batch size?
-7. 如果測試集性能遠差於驗證集,可能是什麼原因?
-
----
-
-### 📚 參考資源
-
-- 課程講義: Unit15_DNN_MLP_Overview.md
-- 課程範例: Unit15_DNN_MLP_Overview.ipynb
-- TensorFlow官方文檔: https://www.tensorflow.org/
-- Keras官方文檔: https://keras.io/
-
----
-
-### ❓ 常見問題
-
-**Q1: 數據集太大,訓練太慢怎麼辦?**
-A: 可以先用較小的子集(如500筆)進行實驗,確認程式碼正確後再用完整數據集。
-
-**Q2: 如何知道模型是否過擬合?**
-A: 觀察訓練Loss持續下降但驗證Loss開始上升,或兩者差距過大。
-
-**Q3: 實驗結果不理想怎麼辦?**
-A: 重點在於分析過程和理解原因,不要求一定要達到很高的R²。
-
-**Q4: 可以使用其他數據集嗎?**
-A: 可以,但必須是回歸問題,並在報告中說明數據來源。
-
-**Q5: 需要使用GPU嗎?**
-A: 不需要,這個作業在CPU上即可完成。
-
----
-
 ## 15. 總結
 
 本單元涵蓋了DNN/MLP的完整知識體系:
 
 ✅ **理論基礎**: 神經網路數學原理、前向傳播、反向傳播  
 ✅ **激活函數**: ReLU、Sigmoid、Tanh、Softmax的特性與選擇  
+✅ **架構設計**: 漏斗型架構、層數選擇、節點數決定的理論基礎  
 ✅ **TensorFlow/Keras**: 完整的模型建立、訓練、評估流程  
 ✅ **模型優化**: Callbacks、正則化、超參數調整技巧  
 ✅ **實務應用**: 化工領域應用案例與最佳實踐  
@@ -2942,7 +2036,7 @@ A: 不需要,這個作業在CPU上即可完成。
 
 ---
 
-## 參考資料
+## 16. 參考資料
 
 1. Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.
 2. TensorFlow官方文檔: https://www.tensorflow.org/
@@ -2955,3 +2049,4 @@ A: 不需要,這個作業在CPU上即可完成。
 **課程編號**: CHE-AI-114  
 **授課教師**: 莊曜禎 助理教授  
 **逢甲大學化學工程學系**
+
