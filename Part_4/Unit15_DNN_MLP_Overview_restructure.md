@@ -2044,9 +2044,18 @@ score = mlp_reg.score(X_test, y_test)  # R² score
 4. Géron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow.
 5. Chollet, F. (2021). Deep Learning with Python (2nd Edition).
 
+## 17. 相關資源說明
+
+本單元配套提供了以下 Jupyter Notebook 檔案，供讀者進行實作演練與自我挑戰：
+
+- **範例程式碼 (`Unit15_DNN_MLP_Overview.ipynb`)**: 為本講義的配套實作教材。其詳細示範了從環境配置、數據模擬生成、模型構建（Sequential API）、模型編譯、訓練（含 Callbacks 運用）、結果視覺化分析，到模型預測與存檔的完整端到端流程。讀者可以透過此檔案快速掌握 Keras 開發深度學習模型的實戰技巧。
+
+- **課堂作業 (`Unit15_DNN_MLP_Homework.ipynb`)**: 本作業旨在引導學生將理論應用於化學工程領域。學生將處理一組模擬的「化工反應器溫度控制數據」，並依照步驟執行數據標準化、模型架構設計、正則化優化及多項超參數調整實驗。作業中亦包含思考題，旨在鍛鍊學習者對模型表現與訓練細節的深度洞察力。
+
 ---
 
 **課程編號**: CHE-AI-114  
 **授課教師**: 莊曜禎 助理教授  
 **逢甲大學化學工程學系**
+
 
