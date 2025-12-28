@@ -364,7 +364,7 @@ $$
 
 ### 2.4 學習曲線分析
 
-![Learning Curves](./Jupyter_Scripts/Unit11_Results/learning_curves.png)
+![Learning Curves](./outputs/P4_Unit16_MNIST_Results/learning_curves.png)
 
 **左圖：準確率曲線**
 

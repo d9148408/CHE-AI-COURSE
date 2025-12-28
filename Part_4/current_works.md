@@ -1,13 +1,58 @@
-這是我為大學化學工程學系的學生,開設有關"AI在化工上應用"的課程, 共分為五大部分:
-Part 1：Python 基礎 + EDA
-Part 2：監督式學習
-Part 3：非監督式學習
-Part 4：深度學習
-Part 5：強化式學習
+# 逢甲大學 化學工程學系AI課程
+## 課程名稱: AI在化工上之應用
+**課程代碼: CHE-AI-114**
+**課程教師: 莊曜禎 助理教授**
+**授課時間: 114學年度第2學期 每周四上午09:10-12:00**
+**授課地點: 學思樓 705**
 
-目前在重新整理Part_4資料夾內的深度學習課程
-Unit15_Basic_DeepLearning_Models (md講義檔, ipynb範例演練程式碼), 教學主題是介紹常見的深度學習模型DNN(MLP), CNN, RNN(LSTM,GRU)相關基礎理論, 適用時機, 適用問題, 如何使用TensorFlow(Keras)模組建立這些模型, 相關參數設定教學, 並透過簡單的程式碼範例讓學生可學會如何建立深度學習模型.
+### 課程大綱:
+專為化學工程學系的學生,開設有關"AI在化工上應用"的課程, 共分為五大部分:
+- Part 0: Google Colab環境教學
+- Part 1：Python 基礎 + EDA (numpy, pandas, matplotlib, seaborn, statsmodels)
+- Part 2：監督式學習(sklearn模組)
+- Part 3：非監督式學習(sklearn模組)
+- Part 4：深度學習(TensorFlow/Keras模組)
+- Part 5：強化式學習
 
-Unit15_DNN_Industrial_Examples (md講義檔, ipynb範例演練程式碼), 教學主題是介紹DNN模型在實際工業問題上的應用, 就由三個工業案例(以化工/化學產業優先)數據, 配合程式演練實作與分析讓學生充分了解DNN模型的應用.
-Unit15_Appendix_FuelGasEmission (md講義檔, ipynb範例演練程式碼), 為DNN模型額外的工業應用案例
-Unit15_Appendix_distillation (md講義檔, ipynb範例演練程式碼), 為DNN模型額外的工業應用案例
+### 課程內容大綱
+### **Part 4**
+#### **Unit15 (已完成)**
+ - Unit15_DNN_MLP_Overview.md (教學講義):
+    - DNN(MLP)模型介紹, 詳細背景理論, 數學公式說明, DNN(MLP)模型適合應用場景, DNN(MLP)模型化工領域應用案例.
+    - 詳細介紹如何使用Tensorflow/Keras模組建立DNN(MLP)模型, DNN(MLP)模型所需用到的Layer有哪一些, 如何import Layer, 如何堆疊Layer建立模型, 各種Layer的功能差異, 如何設定各種Layer層的參數, 說明各種activation function的功能差異.
+    - 如何編譯模型 model.compile(), 如何設定optimizer, loss function, metrics, model.summary()觀察模型結構, 各種參數功能與詳細設定指令說明
+    - 如何訓練模型 model.fit(), 如何設定epochs, batch_size, validation_split, validation_data, callbacks,  各種參數功能與詳細設定指令說明.
+    - history=model.fit()紀錄訓練過程, 訓練完成後如何可視化history物件中的各種指標. 
+    - 進階使用Tensorboard紀錄與觀察訓練過程教學
+    - 如何評估模型, model.evaluate()
+    - 如何預測模型, model.predict()
+    - 如何保存模型, model.save()
+    - 如何載入模型, model.load()
+    - 最後簡單說明與與sklearn模組中MLPRegressor, MLPClassifier的差異, 
+ - Unit15_DNN_MLP_Overview.ipynb (程式演練):
+    - 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測, 模型保存, 模型載入等流程. 配合講義內容, 讓學生可學會如何建立與訓練DNN(MLP)模型.
+ - Unit15_DNN_MLP_Homework.ipynb (作業):
+    - 學生課堂練習題, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測, 模型保存, 模型載入等流程.
+ - DNN(MLP)模型在各種工業案例上的應用
+   - Unit15_Appendix_FuelGasEmission (.md講義檔, .ipynb程式演練), 燃料氣體排放預測為主題
+   - Unit15_Appendix_distillation (.md講義檔, .ipynb程式演練), 蒸餾塔操作控制為主題
+   - Unit15_Appendix_RedWine (.md講義檔, .ipynb程式演練), 紅酒品質預測為主題
+   - Unit15_Appendix_Mining (.md講義檔, .ipynb程式演練), 礦業浮選過程矽石濃度預測為主題
+   - Unit15_Basic_DeepLearning_Models (.md講義檔, .ipynb程式演練), 舊講義內容之後將刪除
+
+#### **Unit16 (編輯中)**
+ - Unit16_CNN_Overview.md (教學講義):
+    - CNN詳細背景理論, CNN常見且被廣泛使用的模型有哪一些(詳細列出), CNN模型適合應用場景, CNN模型化工領域應用案例.
+    - 詳細介紹如何使用Tensorflow/Keras模組建立CNN模型, CNN模型所需用到的Layer有哪一些, 如何import Layer, 如何堆疊Layer建立模型, 各種Layer的功能差異, 如何設定各種Layer層的參數, 說明會用到的activation function的功能差異.
+    - 如何編譯模型 model.compile(), 如何設定optimizer, loss function, metrics, model.summary()觀察模型結構, 各種參數功能與詳細設定指令說明
+    - 如何訓練模型 model.fit(), 如何設定epochs, batch_size, validation_split, validation_data, callbacks,  各種參數功能與詳細設定指令說明.
+    - history=model.fit()紀錄訓練過程, 訓練完成後如何可視化history物件中的各種指標. 
+    - 進階使用Tensorboard紀錄與觀察訓練過程教學
+    - 如何評估模型, model.evaluate()
+    - 如何預測模型, model.predict()
+    - 如何保存模型, model.save()
+    - 如何載入模型, model.load()
+ - Unit16_CNN_Overview.ipynb (程式演練):
+    - 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測, 模型保存, 模型載入等流程. 配合講義內容, 讓學生可學會如何建立與訓練CNN模型.
+
+- Unit16_CNN_Basic_Example (.md講義檔, .ipynb程式演練), 原本的舊講義之後將修改為工業案例介紹
