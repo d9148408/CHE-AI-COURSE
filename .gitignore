@@ -22,4 +22,3 @@ Part_4/outputs/P4_Unit15_Example_Mining/models/example_rf_model.joblib
 
 # Also track .gitignore itself
 !.gitignore
-!.agent/
