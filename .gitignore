@@ -8,6 +8,7 @@
 !Part_3/
 !Part_4/
 !Part_5/
+!.agent/
 
 # Inside these folders, ignore any 'data' directory
 Part_0/data/
