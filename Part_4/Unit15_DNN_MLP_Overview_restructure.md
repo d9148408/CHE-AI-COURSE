@@ -429,12 +429,7 @@ $$
 
 **函數特性**:
 - 📈 **輸出範圍**: $[0, +\infty)$
-- 📐 **導數**: 
-
-  $$
-  f'(x) = \begin{cases} 1 & \text{if } x > 0 \\ 0 & \text{if } x \leq 0 \end{cases}
-  $$
-  
+- 📐 **導數**: $f'(x) = \begin{cases} 1 & \text{if } x > 0 \\ 0 & \text{if } x \leq 0 \end{cases}$ 
 - ⚡ **計算成本**: 極低（只需比較運算）
 
 **優點**:
