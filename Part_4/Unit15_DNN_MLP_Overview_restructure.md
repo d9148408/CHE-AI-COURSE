@@ -424,7 +424,7 @@ y = W₃(W₂(W₁x + b₁) + b₂) + b₃
 **核心概念**: ReLU 是「修正線性單元」，它的規則極其簡單：正數保持不變，負數變為零。
 
 $$
-f(x) = \max(0, x) = \begin{cases} x & \text{if } x > 0 \\ 0 & \text{if } x \leq 0 \end{cases}
+f(x) = \max(0, x) = \begin{cases} x & \text{if } x > 0, \\ 0 & \text{if } x \leq 0 \end{cases}
 $$
 
 **函數特性**:
@@ -432,7 +432,7 @@ $$
 - 📐 **導數**: 
 
 $$
-f'(x) = \begin{cases} 1 & \text{if } x > 0 \\ 0 & \text{if } x \leq 0 \end{cases}
+f'(x) = \begin{cases} 1 & \text{if } x > 0, \\ 0 & \text{if } x \leq 0 \end{cases}
 $$
 
 - ⚡ **計算成本**: 極低（只需比較運算）
@@ -464,7 +464,7 @@ $$
 **核心概念**: Leaky ReLU 是 ReLU 的改良版，在負區域給予一個小斜率，避免神經元完全「死亡」。
 
 $$
-f(x) = \begin{cases} x & \text{if } x > 0 \\ \alpha x & \text{if } x \leq 0 \end{cases}
+f(x) = \begin{cases} x & \text{if } x > 0, \\ \alpha x & \text{if } x \leq 0 \end{cases}
 $$
 
 其中 $\alpha$ 通常設為 0.01（即負區域斜率為1%）。
@@ -474,7 +474,7 @@ $$
 - 📐 **導數**: 
 
 $$
-f'(x) = \begin{cases} 1 & \text{if } x > 0 \\ \alpha & \text{if } x \leq 0 \end{cases}
+f'(x) = \begin{cases} 1 & \text{if } x > 0, \\ \alpha & \text{if } x \leq 0 \end{cases}
 $$
 
 **優點**:
