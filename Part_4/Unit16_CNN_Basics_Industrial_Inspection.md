@@ -120,16 +120,14 @@ $$
 w_k = \frac{N}{K \cdot n_k}, \quad n_k = \sum_{i=1}^{N} \mathbb{1}(y_i = k)
 $$
 
-
 **Focal Loss**（解決極度不平衡）：
 
 $$
 \mathcal{L}_{\text{focal}} = -\alpha_t (1 - p_t)^\gamma \log p_t
 $$
 
-
-- $\alpha_t$ ： 類別權重
-- $\gamma$ ： 聚焦參數（通常 2.0），降低易分類樣本的損失
+- $\alpha_t$ ：類別權重
+- $\gamma$ ：聚焦參數（通常 2.0），降低易分類樣本的損失
 
 ---
 
@@ -144,17 +142,16 @@ z^{[l]}_{i,j,k} = \text{ReLU}\left( \sum_{c=1}^{C} \sum_{m=0}^{f-1} \sum_{n=0}^{
 $$
 
 
-- $w^{[l]}$：可學習濾波器（Kernel）
-- $f$：濾波器尺寸（通常 3×3 或 5×5）
-- $C$：輸入通道數
-- $k$：輸出通道數（特徵圖數量）
+- $w^{[l]}$ ：可學習濾波器（Kernel）
+- $f$ ：濾波器尺寸（通常 3×3 或 5×5）
+- $C$ ：輸入通道數
+- $k$ ：輸出通道數（特徵圖數量）
 
 **參數量計算**：
 
 $$
 \#\text{params} = (f \times f \times C_{\text{in}} + 1) \times C_{\text{out}}
 $$
-
 
 例如： $3 \times 3 \times 64 \times 128 = 73,856$ 參數（加上 bias）
 
@@ -175,7 +172,7 @@ $$
 
 
 **為什麼需要 Pooling？**
-1. **降低計算量**：$200 \times 200 \xrightarrow{\text{MaxPool 2×2}} 100 \times 100$（減少 75% 像素）
+1. **降低計算量**： $200 \times 200 \xrightarrow{\text{MaxPool 2×2}} 100 \times 100$ （減少 75% 像素）
 2. **增加平移不變性**：缺陷稍微移動，pooled 特徵保持穩定
 3. **擴大感受野**：後續層能「看到」更大範圍的影像區域
 
@@ -203,7 +200,6 @@ $$
 $$
 p(y \mid x) \approx \frac{1}{2^H} \sum_{k=1}^{2^H} p_k(y \mid x)
 $$
-
 
 ---
 
@@ -428,7 +424,6 @@ $$
 c(x) = \max_{k \in \{1,\dots,K\}} p(y=k \mid x)
 $$
 
-
 **準確率 - 覆蓋率權衡**：
 
 $$
@@ -438,13 +433,11 @@ $$
 \end{aligned}
 $$
 
-
 **目標優化**：
 
 $$
 \theta^* = \arg\max_{\theta} \text{Accuracy}(\theta) \quad \text{s.t.} \quad \text{Coverage}(\theta) \geq 0.7
 $$
-
 
 （確保至少 70% 樣本自動決策，30% 送人工複檢）
 
@@ -700,7 +693,6 @@ $$
 \mathcal{D}_{\text{aug}} = \bigcup_{i=1}^{N} \{ T_k(x_i, y_i) \mid k \in \mathcal{T} \}
 $$
 
-
 其中 $\mathcal{T}$ 為變換集合：
 
 | 變換 | 數學表示 | 物理意義 | 超參數 |
@@ -907,8 +899,6 @@ $$
 \theta^* = \arg\min_{\theta} \sum_{x,y} P(x,y) \cdot \text{Cost}(\text{Decision}_\theta(x), y)
 $$
 
-
-
 ✅ **96.94% CNN 已滿足條件**，可調整 $\theta$ 優化成本。
 
 ### 6.3 數據漂移監控（96.94% CNN 部署後必須執行）
@@ -930,13 +920,11 @@ $$
 D_{KS} = \sup_x |F_{\text{train}}(x) - F_{\text{prod}}(x)|
 $$
 
-
 2. **Page-Hinkley Test** （檢測性能下降）：
 
 $$
 m_T = \sum_{t=1}^{T} (x_t - \bar{x}_t - \delta)
 $$
-
 
 **觸發重訓練的條件**（基於 96.94% CNN）：
 - 驗證準確率下降 > 3%（從 96.94% → 93.94%）

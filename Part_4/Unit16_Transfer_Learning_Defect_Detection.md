@@ -114,7 +114,7 @@ $$
 \mathcal{D}_S = \{(\mathbf{x}_i^S, y_i^S)\}_{i=1}^{N_S}, \quad \mathcal{D}_T = \{(\mathbf{x}_j^T, y_j^T)\}_{j=1}^{N_T}
 $$
 
-通常 $N_S \gg N_T$（源域數據遠多於目標域）。
+通常 $N_S \gg N_T$ （源域數據遠多於目標域）。
 
 **遷移學習目標**：利用在 $\mathcal{D}_S$ 上學到的知識，提升在 $\mathcal{D}_T$ 上的性能。
 
@@ -124,7 +124,6 @@ $$
 \mathbf{z} = \phi(\mathbf{x}; \theta_{\text{base}})
 $$
 
-
 其中 $\phi$ 是預訓練的特徵提取網路， $\theta_{\text{base}}$ 是在源域上學習的參數。
 
 **任務特定分類器**：
@@ -132,7 +131,6 @@ $$
 $$
 \hat{y} = g(\mathbf{z}; \theta_{\text{head}})
 $$
-
 
 其中 $g$ 是針對目標任務設計的分類頭， $\theta_{\text{head}}$ 是需要在目標域上訓練的參數。
 
@@ -276,6 +274,7 @@ for layer in model.layers[-54:]:
 - **避免災難性遺忘（Catastrophic Forgetting）**：全部解凍容易破壞預訓練知識
 
 **學習率調整**：
+
 $$
 \alpha_{\text{stage2}} = 0.1 \times \alpha_{\text{stage1}} = 10^{-4}
 $$
@@ -284,7 +283,7 @@ $$
 
 ### 2.2 學習率衰減策略
 
-為了穩定訓練，採用**指數衰減（Exponential Decay）** ：
+為了穩定訓練，採用**指數衰減（Exponential Decay）**：
 
 $$
 \alpha(t) = \alpha_0 \cdot e^{-\lambda t}
@@ -503,30 +502,29 @@ Flatten → Dense(256) → Dropout(0.5) → Dense(6)
 | 缺陷      | FN              | TP              |
 
 常用指標：
-- **精確率 (Precision)** ：在所有被模型判為「缺陷」的樣本中，有多少是真的缺陷？
+- **精確率 (Precision)**：在所有被模型判為「缺陷」的樣本中，有多少是真的缺陷？
 
 $$
 \text{Precision} = \frac{TP}{TP + FP}
 $$
 
-- **召回率 (Recall ／靈敏度)** ：在所有真正的缺陷中，有多少被模型抓到？
+- **召回率 (Recall ／靈敏度)**：在所有真正的缺陷中，有多少被模型抓到？
 
 $$
 \text{Recall} = \frac{TP}{TP + FN}
 $$
 
-- **F1 分數 (F1-score)** ：Precision 與 Recall 的調和平均，用來平衡兩者：
+- **F1 分數 (F1-score)**：Precision 與 Recall 的調和平均，用來平衡兩者：
 
 $$
 \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 $$
 
-- **特異性 (Specificity)** ：在所有真正的正常品中，有多少被正確識別？
+- **特異性 (Specificity)**：在所有真正的正常品中，有多少被正確識別？
 
 $$
 \text{Specificity} = \frac{TN}{TN + FP}
 $$
-
 
 在化工品質檢測應用中的解讀：
 若將 '缺陷' 視為陽性，'正常' 視為陰性：
@@ -773,7 +771,7 @@ $$
 \frac{\partial \mathcal{L}}{\partial z_k} = \hat{y}_k - y_k
 $$
 
-其中 $z_k$ 是 softmax 前的 logits 。
+其中 $z_k$ 是 softmax 前的 logits。
 
 **梯度消失/爆炸檢查**：
 - 使用 Adam optimizer 自動調整學習率
@@ -1242,17 +1240,16 @@ predictions = interpreter.get_tensor(output_details[0]['index'])
 **成本效益分析（MobileNetV2）**：
 
 設：
-- $C_{\text{FN}}$：漏檢成本（缺陷流入市場）
-- $C_{\text{FP}}$：誤判成本（良品被剔除）
-- $C_{\text{review}}$：人工複檢成本
-- $p_{\text{auto}}$：自動化率
+- $C_{\text{FN}}$ ：漏檢成本（缺陷流入市場）
+- $C_{\text{FP}}$ ：誤判成本（良品被剔除）
+- $C_{\text{review}}$ ：人工複檢成本
+- $p_{\text{auto}}$ ：自動化率
 
 總成本：
 
 $$
 C_{\text{total}} = N \cdot [C_{\text{FN}} \cdot \text{FNR} + C_{\text{FP}} \cdot \text{FPR} + C_{\text{review}} \cdot (1 - p_{\text{auto}})]
 $$
-
 
 **實際案例**（假設）：
 - 漏檢成本：5000 元/件
@@ -1314,13 +1311,11 @@ $$
 \mathbf{x}^* = \arg\min_{\mathbf{x} \in \mathcal{U}} \max_k p(y=k|\mathbf{x})
 $$
 
-
 2. **多樣性採樣**：確保覆蓋特徵空間
 
 $$
 \mathbf{x}^* = \arg\max_{\mathbf{x} \in \mathcal{U}} \min_{\mathbf{x}' \in \mathcal{L}} \|\phi(\mathbf{x}) - \phi(\mathbf{x}')\|
 $$
-
 
 3. **增量訓練**：定期（如每月）用新標註數據微調
 
