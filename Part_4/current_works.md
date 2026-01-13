@@ -17,6 +17,7 @@
 ### 課程內容大綱
 ### **Part 4**
 #### **Unit15 (已完成)**
+Unit15
  - Unit15_DNN_MLP_Overview_restructure.md (教學講義):
     - DNN(MLP)模型介紹, 詳細背景理論, 數學公式說明, DNN(MLP)模型適合應用場景, DNN(MLP)模型化工領域應用案例.
     - 詳細介紹如何使用Tensorflow/Keras模組建立DNN(MLP)模型, DNN(MLP)模型所需用到的Layer有哪一些, 如何import Layer, 如何堆疊Layer建立模型, 各種Layer的功能差異, 如何設定各種Layer層的參數, 說明各種activation function的功能差異.
@@ -41,6 +42,7 @@
 
 
 #### **Unit16 (已完成)**
+Unit16
  - Unit16_CNN_Overview_restructure.md (教學講義):
     - CNN詳細背景理論, CNN常見且被廣泛使用的模型有哪一些(詳細列出), CNN模型適合應用場景, CNN模型化工領域應用案例.
     - 詳細介紹如何使用Tensorflow/Keras模組建立CNN模型, CNN模型所需用到的Layer有哪一些, 如何import Layer, 如何堆疊Layer建立模型, 各種Layer的功能差異, 如何設定各種Layer層的參數, 說明會用到的activation function的功能差異.
@@ -63,6 +65,7 @@
     - Unit16_Eample_Colorectal_Cancer (.md講義檔, .ipynb程式演練), 醫學影像分類
 
 #### **Unit17 (編輯中)**
+Unit17
  - Unit17_RNN_Overview.md (教學講義):
     - RNN詳細背景理論(LSTM和GRU詳細介紹), RNN常見且被廣泛使用的模型架構, RNN模型適合應用場景, RNN模型化工領域應用案例.
     - 詳細介紹如何使用Tensorflow/Keras模組建立RNN模型, RNN模型所需用到的Layer有哪一些, 如何import Layer, 如何堆疊Layer建立模型, 各種Layer的功能差異, 如何設定各種Layer層的參數, 說明會用到的activation function的功能差異.
