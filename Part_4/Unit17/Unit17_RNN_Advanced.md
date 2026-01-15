@@ -203,7 +203,7 @@ $$
 - $\overleftarrow{\mathbf{h}}_t$ : 反向隱藏狀態（包含未來資訊）
 - $\mathbf{W}_b^{hh}, \mathbf{W}_b^{xh}, \mathbf{b}_b^h$ : 反向RNN的參數
 
-**注意**: 反向RNN的 $\overleftarrow{\mathbf{h}}_t$ 依賴於 $\overleftarrow{\mathbf{h}}_{t+1}$，即從未來時刻傳來的資訊。
+**注意**: 反向RNN的 $\overleftarrow{\mathbf{h}}_t$  依賴於 $\overleftarrow{\mathbf{h}}_{t+1}$ ，即從未來時刻傳來的資訊。
 
 #### 狀態結合策略
 
@@ -213,7 +213,7 @@ $$
 \mathbf{h}_t = [\overrightarrow{\mathbf{h}}_t; \overleftarrow{\mathbf{h}}_t]
 $$
 
-維度變化: 如果單向隱藏維度為 $d$，則 $\mathbf{h}_t \in \mathbb{R}^{2d}$
+維度變化: 如果單向隱藏維度為 $d$ ，則 $\mathbf{h}_t \in \mathbb{R}^{2d}$
 
 **2. 相加 (Addition)**
 
@@ -257,7 +257,7 @@ $$
 
 #### 完整計算範例
 
-假設序列長度 $T=3$，輸入維度 $d_x=2$，隱藏維度 $d_h=3$：
+假設序列長度 $T=3$ ，輸入維度 $d_x=2$ ，隱藏維度 $d_h=3$ ：
 
 **輸入序列**:
 ```
@@ -309,7 +309,7 @@ y = softmax(W_y @ h₃ + b_y)
 
 > [!TIP]
 > **理解要點**: 
-> - 在 $t=2$ 時，$h_2$ 同時包含了 $x_1, x_2$ 的過去資訊（通過 $\overrightarrow{\mathbf{h}}_2$）和 $x_3$ 的未來資訊（通過 $\overleftarrow{\mathbf{h}}_2$）
+> - 在 $t=2$  時， $h_2$  同時包含了 $x_1, x_2$  的過去資訊（通過 $\overrightarrow{\mathbf{h}}_2$ ）和 $x_3$  的未來資訊（通過 $\overleftarrow{\mathbf{h}}_2$ ）
 > - 這就是雙向RNN能夠"看到未來"的原理
 
 ### 1.4 雙向LSTM與雙向GRU
@@ -382,7 +382,7 @@ model = Sequential([
 
 #### 參數量對比
 
-假設輸入維度 $d_x=10$，隱藏維度 $d_h=64$：
+假設輸入維度 $d_x=10$ ，隱藏維度 $d_h=64$ ：
 
 | 模型類型 | 單層參數量 | 說明 |
 |---------|----------|------|
@@ -651,7 +651,7 @@ Decoder:                          [固定向量c] → y₁ → y₂ → ... → 
 
 **1. 計算相關性分數**
 
-對於輸入序列的每個位置 $i$，計算它與當前Query的相關性：
+對於輸入序列的每個位置 $i$ ，計算它與當前Query的相關性：
 
 $$
 \text{score}(Query, Key_i) = \text{similarity}(Query, Key_i)
@@ -665,7 +665,7 @@ $$
 \alpha_i = \frac{\exp(\text{score}_i)}{\sum_{j=1}^{n} \exp(\text{score}_j)}
 $$
 
-其中 $\sum_{i=1}^{n} \alpha_i = 1$，且 $\alpha_i \geq 0$
+其中 $\sum_{i=1}^{n} \alpha_i = 1$ ，且 $\alpha_i \geq 0$
 
 **3. 計算加權上下文向量**
 
@@ -750,7 +750,7 @@ $$
 A_{ij} = \frac{\exp(S_{ij}/\sqrt{d_k})}{\sum_{k=1}^{n_k} \exp(S_{ik}/\sqrt{d_k})}
 $$
 
-結果: $A \in \mathbb{R}^{n_q \times n_k}$，每行和為1
+結果: $A \in \mathbb{R}^{n_q \times n_k}$ ，每行和為1
 
 **4. 加權求和 (Weighted Sum)**
 
@@ -856,7 +856,7 @@ $$
 \text{score}(\mathbf{q}, \mathbf{k}) = \mathbf{q}^T \mathbf{W} \mathbf{k}
 $$
 
-優點：引入可學習參數 $\mathbf{W}$，增加靈活性
+優點：引入可學習參數 $\mathbf{W}$ ，增加靈活性
 
 **5. 餘弦相似度 (Cosine Similarity)**
 
@@ -1033,7 +1033,7 @@ t₅ │ 0.05 0.1  0.2  0.3  0.35│ ← t₅主要關注後期
 **觀察**:
 - 對角線值較高：每個位置對自己的注意力較大
 - 帶狀結構：相鄰位置通常相關性更高
-- 非對稱：$A_{ij} \neq A_{ji}$（t₁關注t₂ vs t₂關注t₁的程度不同）
+- 非對稱： $A_{ij} \neq A_{ji}$ （t₁關注t₂ vs t₂關注t₁的程度不同）
 
 #### 位置編碼 (Positional Encoding)
 
@@ -1315,7 +1315,7 @@ Encoder-Decoder架構 (3.2)
 
 #### 什麼是Seq2Seq任務？
 
-**定義**: 給定輸入序列 $X = [x_1, x_2, ..., x_n]$，生成輸出序列 $Y = [y_1, y_2, ..., y_m]$，其中 $n \neq m$（可以相等，但不必須）。
+**定義**: 給定輸入序列 $X = [x_1, x_2, ..., x_n]$ ，生成輸出序列 $Y = [y_1, y_2, ..., y_m]$ ，其中 $n \neq m$ （可以相等，但不必須）。
 
 **經典應用**:
 

@@ -5,17 +5,24 @@
 **授課時間: 114學年度第2學期 每周四上午09:10-12:00**
 **授課地點: 學思樓 705**
 
+### 任務描述:
+進行課程內容的重構整理
+
 ### 課程大綱:
 專為化學工程學系的學生,開設有關"AI在化工上應用"的課程, 共分為五大部分:
 - Part 0: Google Colab環境教學
 - Part 1：Python 基礎 + EDA (numpy, pandas, matplotlib, seaborn, statsmodels)
-- Part 2：監督式學習(sklearn模組)
-- Part 3：非監督式學習(sklearn模組)
+- Part 2：非監督式學習(sklearn模組)
+- Part 3：監督式學習(sklearn模組)
 - Part 4：深度學習(TensorFlow/Keras模組)
 - Part 5：強化式學習
 
 ### 課程內容大綱
-### **Part 4**
+### **Part 0(尚未開始)**
+### **Part 1(尚未開始)**
+### **Part 2(尚未開始)**
+### **Part 3(尚未開始)**
+### **Part 4 (重構進行中)**
 #### **Unit15 (已完成)**
 Unit15
  - Unit15_DNN_MLP_Overview_restructure.md (教學講義):
@@ -79,3 +86,9 @@ Unit17
     - 如何載入模型, model.load()
  - Unit17_RNN_Overview.ipynb (程式演練):
     - 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測, 模型保存, 模型載入等流程. 配合講義內容, 讓學生可學會如何建立與訓練CNN模型.
+ - Unit17_RNN_Advanced.md (進階內容教學講義):
+    - 包含Bidirectional RNN, Sequence-to-Sequence (Encoder-Decoder), Attention等詳細背景理論, 模型架構等內容
+    - Unit17_RNN_Advanced_Seq2Seq_v3.ipynb (Sequence-to-Sequence模型應用)
+    - Unit17_RNN_Advanced_BiRNN_v11.ipynb (Bidirectional模型應用)
+    - Unit17_RNN_Advanced_Attention.ipynb (Attention應用)
+    - Unit17_Example_Boiler (.md講義檔, .ipynb程式演練), 鍋爐溫度預測

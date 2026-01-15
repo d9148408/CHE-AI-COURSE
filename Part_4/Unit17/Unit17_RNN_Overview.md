@@ -157,13 +157,13 @@ RNN及其變體(LSTM, GRU)廣泛應用於各種序列建模任務：
 
 #### 基本RNN單元結構
 
-在時間步 $t$，RNN單元接收：
-- **當前輸入**: $\mathbf{x}_t$ （例如：當前時刻的溫度、壓力）
-- **前一時刻隱藏狀態**: $\mathbf{h}_{t-1}$ （記憶）
+在時間步 $t$ ，RNN單元接收：
+- **當前輸入**: $\mathbf{x}_t$  （例如：當前時刻的溫度、壓力）
+- **前一時刻隱藏狀態**: $\mathbf{h}_{t-1}$  （記憶）
 
 並產生：
-- **當前隱藏狀態**: $\mathbf{h}_t$ （更新的記憶）
-- **當前輸出**: $\mathbf{y}_t$ （可選，取決於任務）
+- **當前隱藏狀態**: $\mathbf{h}_t$  （更新的記憶）
+- **當前輸出**: $\mathbf{y}_t$  （可選，取決於任務）
 
 #### RNN的前向傳播方程
 
@@ -180,19 +180,19 @@ $$
 $$
 
 **參數說明**:
-- $\mathbf{W}_{xh}$ : 輸入到隱藏層的權重矩陣 (shape: `[input_dim, hidden_dim]`)
-- $\mathbf{W}_{hh}$ : 隱藏層到隱藏層的循環權重矩陣 (shape: `[hidden_dim, hidden_dim]`)
-- $\mathbf{W}_{hy}$ : 隱藏層到輸出的權重矩陣 (shape: `[hidden_dim, output_dim]`)
-- $\mathbf{b}_h, \mathbf{b}_y$ : 偏差項
-- $\mathbf{h}_t$ : 隱藏狀態向量 (shape: `[hidden_dim]`)
-- $\mathbf{x}_t$ : 輸入向量 (shape: `[input_dim]`)
-- $\mathbf{y}_t$ : 輸出向量 (shape: `[output_dim]`)
+- $\mathbf{W}_{xh}$  : 輸入到隱藏層的權重矩陣 (shape: `[input_dim, hidden_dim]`)
+- $\mathbf{W}_{hh}$  : 隱藏層到隱藏層的循環權重矩陣 (shape: `[hidden_dim, hidden_dim]`)
+- $\mathbf{W}_{hy}$  : 隱藏層到輸出的權重矩陣 (shape: `[hidden_dim, output_dim]`)
+- $\mathbf{b}_h, \mathbf{b}_y$  : 偏差項
+- $\mathbf{h}_t$  : 隱藏狀態向量 (shape: `[hidden_dim]`)
+- $\mathbf{x}_t$  : 輸入向量 (shape: `[input_dim]`)
+- $\mathbf{y}_t$  : 輸出向量 (shape: `[output_dim]`)
 
 **關鍵理解**:
 
-1. **循環連接**: $\mathbf{W}_{hh} \mathbf{h}_{t-1}$ 項使得前一時刻的狀態影響當前狀態
+1. **循環連接**: $\mathbf{W}_{hh} \mathbf{h}_{t-1}$  項使得前一時刻的狀態影響當前狀態
 2. **參數共享**: 所有時間步使用**相同的權重矩陣** $\mathbf{W}_{xh}, \mathbf{W}_{hh}, \mathbf{W}_{hy}$
-3. **tanh激活**: 將隱藏狀態值限制在 $[-1, 1]$ 範圍內
+3. **tanh激活**: 將隱藏狀態值限制在 $[-1, 1]$  範圍內
 
 #### 展開視圖 (Unfolding in Time)
 
@@ -209,15 +209,15 @@ x₁  →  [RNN] →  [RNN] →  [RNN]  →  最終輸出
 **化工過程類比**:
 
 想像一個**連續攪拌槽式反應器(CSTR)**:
-- **輸入 $\mathbf{x}_t$**: 每時刻進料的原料濃度
-- **隱藏狀態 $\mathbf{h}_t$**: 反應器內的物質濃度（會受上一時刻影響）
-- **輸出 $\mathbf{y}_t$**: 出料濃度或產率
+- **輸入 $\mathbf{x}_t$ **: 每時刻進料的原料濃度
+- **隱藏狀態 $\mathbf{h}_t$ **: 反應器內的物質濃度（會受上一時刻影響）
+- **輸出 $\mathbf{y}_t$ **: 出料濃度或產率
 
 反應器內的濃度不僅取決於當前進料，還取決於之前的累積狀態！
 
 ### 1.4 完整序列處理流程
 
-**問題設定**: 給定一個長度為 $T$ 的輸入序列:
+**問題設定**: 給定一個長度為 $T$  的輸入序列:
 
 $$
 \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_T]
@@ -283,7 +283,7 @@ y = W_hy @ h₁₀ + b_y  → 得到預測值 (如: 產品純度 = 95.3%)
 ```
 
 > [!TIP]
-> **關鍵直覺**: 隱藏狀態 $\mathbf{h}_t$ 是一個"滾動總結"，它濃縮了從開始到當前時刻的所有資訊。每個新的時間步，都會更新這個總結。
+> **關鍵直覺**: 隱藏狀態 $\mathbf{h}_t$  是一個"滾動總結"，它濃縮了從開始到當前時刻的所有資訊。每個新的時間步，都會更新這個總結。
 
 ### 1.5 RNN的訓練：BPTT算法
 
@@ -299,7 +299,7 @@ $$
 L = \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})
 $$
 
-其中 $\hat{\mathbf{y}}$ 基於最終隱藏狀態 $\mathbf{h}_T$ 計算。
+其中 $\hat{\mathbf{y}}$  基於最終隱藏狀態 $\mathbf{h}_T$  計算。
 
 **多對多問題** (每個時間步都有監督訊號):
 
@@ -317,7 +317,7 @@ $$
 \frac{\partial L}{\partial \mathbf{W}_{hh}} = \sum_{t=1}^{T} \frac{\partial L}{\partial \mathbf{h}_t} \frac{\partial \mathbf{h}_t}{\partial \mathbf{W}_{hh}}
 $$
 
-由於 $\mathbf{h}_t$ 依賴於 $\mathbf{h}_{t-1}$，梯度會**沿時間向後傳播**：
+由於 $\mathbf{h}_t$  依賴於 $\mathbf{h}_{t-1}$ ，梯度會**沿時間向後傳播**：
 
 $$
 \frac{\partial L}{\partial \mathbf{h}_t} = \frac{\partial L}{\partial \mathbf{h}_{t+1}} \frac{\partial \mathbf{h}_{t+1}}{\partial \mathbf{h}_t}
@@ -331,7 +331,7 @@ $$
 ```
 
 > [!WARNING]
-> BPTT的計算複雜度與序列長度 $T$ 成正比，長序列會導致：
+> BPTT的計算複雜度與序列長度 $T$  成正比，長序列會導致：
 > 1. 訓練時間增加
 > 2. 記憶體需求增加
 > 3. 梯度消失/爆炸問題
@@ -352,15 +352,15 @@ $$
 \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_k} = \prod_{i=k+1}^{t} \frac{\partial \mathbf{h}_i}{\partial \mathbf{h}_{i-1}}
 $$
 
-每一項包含 $\mathbf{W}_{hh}$ 和 $\tanh'$：
+每一項包含 $\mathbf{W}_{hh}$  和 $\tanh'$ ：
 
 $$
 \frac{\partial \mathbf{h}_i}{\partial \mathbf{h}_{i-1}} = \text{diag}(\tanh'(\mathbf{z}_i)) \cdot \mathbf{W}_{hh}
 $$
 
 由於：
-- $\tanh'(x) \in (0, 1]$，最大值為1
-- 如果 $\mathbf{W}_{hh}$ 的最大特徵值 < 1
+- $\tanh'(x) \in (0, 1]$ ，最大值為1
+- 如果 $\mathbf{W}_{hh}$  的最大特徵值 < 1
 
 則連乘 $t-k$ 次後，梯度會**指數級衰減**：
 
@@ -381,7 +381,7 @@ $$
 
 #### 問題2: 梯度爆炸(Exploding Gradient)
 
-**現象**: 與梯度消失相反，當 $\mathbf{W}_{hh}$ 的特徵值 > 1 時，梯度會**指數級增長**。
+**現象**: 與梯度消失相反，當 $\mathbf{W}_{hh}$  的特徵值 > 1 時，梯度會**指數級增長**。
 
 **後果**:
 - 參數更新過大，導致訓練不穩定
@@ -435,24 +435,24 @@ $$
 - ❌ 梯度容易消失
 
 LSTM的解決方案：
-- ✅ 分離**短期記憶** ($\mathbf{h}_t$) 和**長期記憶** ($\mathbf{c}_t$)
+- ✅ 分離**短期記憶** ($\mathbf{h}_t$ ) 和**長期記憶** ($\mathbf{c}_t$ )
 - ✅ 使用**門控機制**選擇性地保留/遺忘/更新資訊
 - ✅ 梯度可以通過記憶細胞"快速通道"流動，緩解消失問題
 
 #### LSTM的結構
 
 LSTM在每個時間步維護兩個狀態：
-- **記憶細胞狀態** $\mathbf{c}_t$ : 長期記憶（類似傳送帶）
-- **隱藏狀態** $\mathbf{h}_t$ : 短期記憶（輸出給下一層）
+- **記憶細胞狀態** $\mathbf{c}_t$  : 長期記憶（類似傳送帶）
+- **隱藏狀態** $\mathbf{h}_t$  : 短期記憶（輸出給下一層）
 
 並使用三個門控單元：
-1. **遺忘門 (Forget Gate)** $\mathbf{f}_t$ : 決定從 $\mathbf{c}_{t-1}$ 中遺忘多少資訊
-2. **輸入門 (Input Gate)** $\mathbf{i}_t$ : 決定將多少新資訊加入 $\mathbf{c}_t$
-3. **輸出門 (Output Gate)** $\mathbf{o}_t$ : 決定從 $\mathbf{c}_t$ 中輸出多少資訊到 $\mathbf{h}_t$
+1. **遺忘門 (Forget Gate)** $\mathbf{f}_t$  : 決定從 $\mathbf{c}_{t-1}$  中遺忘多少資訊
+2. **輸入門 (Input Gate)** $\mathbf{i}_t$  : 決定將多少新資訊加入 $\mathbf{c}_t$
+3. **輸出門 (Output Gate)** $\mathbf{o}_t$  : 決定從 $\mathbf{c}_t$  中輸出多少資訊到 $\mathbf{h}_t$
 
 #### LSTM的數學方程
 
-在時間步 $t$，給定輸入 $\mathbf{x}_t$ 和前一狀態 $\mathbf{h}_{t-1}, \mathbf{c}_{t-1}$：
+在時間步 $t$ ，給定輸入 $\mathbf{x}_t$  和前一狀態 $\mathbf{h}_{t-1}, \mathbf{c}_{t-1}$ ：
 
 **1. 遺忘門** (Forget Gate):
 
@@ -460,7 +460,7 @@ $$
 \mathbf{f}_t = \sigma(\mathbf{W}_f [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_f)
 $$
 
-- $\mathbf{f}_t \in (0, 1)^{h}$ : 每個元素在0到1之間
+- $\mathbf{f}_t \in (0, 1)^{h}$  : 每個元素在0到1之間
 - 接近0：遺忘對應位置的記憶
 - 接近1：保留對應位置的記憶
 
@@ -474,8 +474,8 @@ $$
 \tilde{\mathbf{c}}_t = \tanh(\mathbf{W}_c [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_c)
 $$
 
-- $\mathbf{i}_t \in (0, 1)^{h}$ : 控制新資訊的接受程度
-- $\tilde{\mathbf{c}}_t \in (-1, 1)^{h}$ : 候選的新記憶內容
+- $\mathbf{i}_t \in (0, 1)^{h}$  : 控制新資訊的接受程度
+- $\tilde{\mathbf{c}}_t \in (-1, 1)^{h}$  : 候選的新記憶內容
 
 **3. 更新記憶細胞**:
 
@@ -497,14 +497,14 @@ $$
 \mathbf{h}_t = \mathbf{o}_t \odot \tanh(\mathbf{c}_t)
 $$
 
-- $\mathbf{o}_t \in (0, 1)^{h}$ : 控制輸出程度
-- $\mathbf{h}_t$ : 經過輸出門篩選的記憶細胞內容
+- $\mathbf{o}_t \in (0, 1)^{h}$  : 控制輸出程度
+- $\mathbf{h}_t$  : 經過輸出門篩選的記憶細胞內容
 
 **符號說明**:
-- $\sigma$ : Sigmoid函數，輸出範圍 (0, 1)
-- $[\mathbf{h}_{t-1}, \mathbf{x}_t]$ : 拼接向量，shape = `[hidden_dim + input_dim]`
-- $\mathbf{W}_f, \mathbf{W}_i, \mathbf{W}_c, \mathbf{W}_o$ : 權重矩陣
-- $\mathbf{b}_f, \mathbf{b}_i, \mathbf{b}_c, \mathbf{b}_o$ : 偏差向量
+- $\sigma$  : Sigmoid函數，輸出範圍 (0, 1)
+- $[\mathbf{h}_{t-1}, \mathbf{x}_t]$  : 拼接向量，shape = `[hidden_dim + input_dim]`
+- $\mathbf{W}_f, \mathbf{W}_i, \mathbf{W}_c, \mathbf{W}_o$  : 權重矩陣
+- $\mathbf{b}_f, \mathbf{b}_i, \mathbf{b}_c, \mathbf{b}_o$  : 偏差向量
 
 #### LSTM工作機制直覺理解
 
@@ -546,7 +546,7 @@ x_t ──────┴──→ [三個門控單元] ──→ [輸出門] �
 
 **化工過程類比**: LSTM就像一個智慧型緩衝槽
 
-- **記憶細胞 $\mathbf{c}_t$**: 緩衝槽內的物料濃度（長期積累）
+- **記憶細胞 $\mathbf{c}_t$ **: 緩衝槽內的物料濃度（長期積累）
 - **遺忘門**: 出料閥門（決定排出多少舊物料）
 - **輸入門**: 進料閥門（決定接受多少新物料）
 - **輸出門**: 取樣閥門（決定輸出多少資訊給下游）
@@ -565,7 +565,7 @@ $$
 - ❌ 傳統RNN: 梯度必須經過 $\tanh$ 和 $\mathbf{W}_{hh}$ 的連乘
 - ✅ LSTM: 梯度可以通過**接近1的遺忘門**直接傳遞
 
-如果遺忘門學習到保持開啟狀態 ($\mathbf{f}_t \approx 1$)，則：
+如果遺忘門學習到保持開啟狀態 ($\mathbf{f}_t \approx 1$ )，則：
 
 $$
 \frac{\partial \mathbf{c}_t}{\partial \mathbf{c}_0} = \mathbf{f}_t \cdot \mathbf{f}_{t-1} \cdot ... \cdot \mathbf{f}_1 \approx 1
@@ -598,7 +598,7 @@ $$
 
 #### GRU的數學方程
 
-GRU只維護一個隱藏狀態 $\mathbf{h}_t$，並使用兩個門：
+GRU只維護一個隱藏狀態 $\mathbf{h}_t$ ，並使用兩個門：
 
 **1. 重置門 (Reset Gate)**:
 
@@ -636,7 +636,7 @@ $$
 - 第一項：保留的舊狀態（比例 $1-\mathbf{z}_t$）
 - 第二項：加入的新狀態（比例 $\mathbf{z}_t$）
 
-**關鍵直覺**: 更新門 $\mathbf{z}_t$ 決定"新舊混合比例"
+**關鍵直覺**: 更新門 $\mathbf{z}_t$  決定"新舊混合比例"
 ```
 z_t = 0.2 → 保留80%舊狀態 + 20%新狀態
 z_t = 0.8 → 保留20%舊狀態 + 80%新狀態
@@ -1114,8 +1114,8 @@ model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
 
 **Dropout參數說明**:
-- `dropout`: 應用在輸入連接上（$\mathbf{x}_t$ → 隱藏層）
-- `recurrent_dropout`: 應用在循環連接上（$\mathbf{h}_{t-1}$ → $\mathbf{h}_t$）
+- `dropout`: 應用在輸入連接上（ $\mathbf{x}_t$  → 隱藏層）
+- `recurrent_dropout`: 應用在循環連接上（ $\mathbf{h}_{t-1}$  → $\mathbf{h}_t$  ）
 
 **注意事項**:
 - 在TensorFlow/Keras中，`dropout`和`recurrent_dropout` 會影響訓練效能，特別是在GPU上。這是因為啟用這些參數時，Keras 會自動關閉CuDNN加速（CuDNN僅支援無dropout的LSTM/GRU），導致模型改用較慢的純TensorFlow實現。
