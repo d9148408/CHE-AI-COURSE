@@ -388,7 +388,7 @@ Part_4/Unit15/
 
 ## 十、注意事項
 **嚴格執行逐段建立 Notebook，每次生成一部分並自檢。**
-0. **逐段生成**：注意LLM模型生成文本長度限制，請逐段依序建立各Cell內容，並同步自檢確保每段程式碼能正確執行
+0. **逐段生成**：注意LLM模型生成文本長度限制，請逐段依序建立各Cell內容，並同步自檢確保每段程式碼能正確執行，注意插入cell時,每插入一個cell必需同時檢查前後順序是否正確, 避免cell順序錯亂。
 1. **編碼規範**：所有文字輸出與檔案操作必須使用 UTF-8 編碼
 2. **中文字元保留**：保持所有繁體中文字元，不要使用 ASCII 替代
 3. **Matplotlib 標籤**：圖表標題、軸標籤必須使用英文（避免字型問題）
@@ -397,13 +397,314 @@ Part_4/Unit15/
 
 ---
 
-## 十一、版本記錄
+## 十一、Notebook Cell 順序修正指南
+
+### 11.1 問題描述
+
+在編輯 Notebook 時，可能會遇到 cell 順序錯誤的問題，導致：
+- **執行錯誤**：變數在定義前被使用（NameError）
+- **邏輯混亂**：標題與程式碼位置顛倒
+- **教學流程中斷**：學生無法按順序理解內容
+
+**常見錯誤模式**：
+```
+錯誤順序：
+- Cell N: 5.3 標題（查看係數）
+- Cell N+1: 5.3 程式碼（查看係數）❌
+- Cell N+2: 5.2 標題（訓練模型）❌
+- Cell N+3: 5.2 程式碼（訓練模型）❌
+- Cell N+4: 5.1 標題（初始化）❌
+- Cell N+5: 5.1 程式碼（初始化）❌
+
+正確順序：
+- Cell N: 5.1 標題（初始化）
+- Cell N+1: 5.1 程式碼（初始化）
+- Cell N+2: 5.2 標題（訓練模型）
+- Cell N+3: 5.2 程式碼（訓練模型）
+- Cell N+4: 5.3 標題（查看係數）
+- Cell N+5: 5.3 程式碼（查看係數）
+```
+
+### 11.2 根本原因
+
+**批量插入 cells 時，`edit_notebook_file` 工具會以 LIFO (後進先出) 順序堆疊 cells。**
+
+範例：
+```python
+# 嘗試在 Cell A 後面插入 3 個 cells
+edit_notebook_file(insert Cell 1 after Cell A)  # 正確位置
+edit_notebook_file(insert Cell 2 after Cell A)  # 插入到 Cell 1 之前！❌
+edit_notebook_file(insert Cell 3 after Cell A)  # 插入到 Cell 2 之前！❌
+
+# 結果：Cell A → Cell 3 → Cell 2 → Cell 1 (反序！)
+```
+
+### 11.3 解決方案：逐步插入與驗證法
+
+**核心原則**：**一次插入一個 cell，立即驗證，再繼續下一個。**
+
+#### 步驟 1：識別錯誤順序的 cells
+
+使用 `copilot_getNotebookSummary` 工具查看所有 cells：
+```bash
+# 查看結果會顯示每個 cell 的編號、類型、內容摘要
+22. Cell Id = #VSC-xxxxx (標題 5.3) ❌ 應該在最後
+23. Cell Id = #VSC-yyyyy (程式碼 5.3) ❌
+24. Cell Id = #VSC-zzzzz (標題 5.2) ❌
+25. Cell Id = #VSC-aaaaa (程式碼 5.2) ❌
+26. Cell Id = #VSC-bbbbb (標題 5.1) ❌
+27. Cell Id = #VSC-ccccc (程式碼 5.1) ❌ 應該在最前
+```
+
+#### 步驟 2：批量刪除錯誤 cells
+
+一次性刪除所有順序錯誤的 cells（這個步驟可以批量執行）：
+```python
+edit_notebook_file(delete cell #VSC-xxxxx)
+edit_notebook_file(delete cell #VSC-yyyyy)
+edit_notebook_file(delete cell #VSC-zzzzz)
+# ... 刪除所有錯誤 cells
+```
+
+#### 步驟 3：逐個插入新 cells（關鍵步驟）
+
+**逐個插入並驗證**：
+```python
+# === Cell 1: 插入標題 ===
+edit_notebook_file(
+    cellId = "#VSC-[前一個正確的cell]",  # 使用前一個正確 cell 的 ID
+    editType = "insert",
+    language = "markdown",
+    newCode = "### 5.1 模型初始化"
+)
+copilot_getNotebookSummary()  # ✅ 驗證：確認 Cell 1 在正確位置
+
+# === Cell 2: 插入程式碼 ===
+edit_notebook_file(
+    cellId = "#VSC-[剛插入的Cell1的ID]",  # ⚠️ 使用 Cell 1 的新 ID
+    editType = "insert",
+    language = "python",
+    newCode = "model = LinearRegression()..."
+)
+copilot_getNotebookSummary()  # ✅ 驗證：確認 Cell 2 在 Cell 1 之後
+
+# === Cell 3: 插入下一個標題 ===
+edit_notebook_file(
+    cellId = "#VSC-[Cell2的ID]",  # ⚠️ 使用 Cell 2 的 ID
+    editType = "insert",
+    language = "markdown",
+    newCode = "### 5.2 模型訓練"
+)
+copilot_getNotebookSummary()  # ✅ 驗證
+
+# 依此類推...
+```
+
+### 11.4 關鍵注意事項
+
+#### ❌ 錯誤做法
+```python
+# 錯誤 1: 批量插入（會導致反序）
+edit_notebook_file(insert Cell 1 after anchor)
+edit_notebook_file(insert Cell 2 after anchor)  # ❌ 會在 Cell 1 之前
+edit_notebook_file(insert Cell 3 after anchor)  # ❌ 會在 Cell 2 之前
+
+# 錯誤 2: 使用 TOP anchor
+edit_notebook_file(
+    cellId = "TOP",  # ❌ 會插入到 notebook 最頂端
+    editType = "insert"
+)
+
+# 錯誤 3: 沒有驗證就繼續
+edit_notebook_file(insert Cell 1)
+edit_notebook_file(insert Cell 2)  # ❌ 沒確認 Cell 1 的 ID
+```
+
+#### ✅ 正確做法
+```python
+# 正確 1: 逐個插入，使用前一個 cell 的 ID
+anchor = "#VSC-last-correct-cell"
+
+# 插入 Cell 1
+result1 = edit_notebook_file(insert Cell 1 after anchor)
+summary1 = copilot_getNotebookSummary()  # 獲取 Cell 1 的新 ID
+new_anchor = "#VSC-new-cell-1-id"
+
+# 插入 Cell 2
+result2 = edit_notebook_file(insert Cell 2 after new_anchor)
+summary2 = copilot_getNotebookSummary()  # 獲取 Cell 2 的新 ID
+new_anchor = "#VSC-new-cell-2-id"
+
+# 正確 2: 每次插入後立即驗證
+edit_notebook_file(insert cell)
+copilot_getNotebookSummary()  # ✅ 確認位置正確
+# 查看輸出，確認 cell 在正確位置後再繼續
+
+# 正確 3: 使用具體的 cell ID 作為 anchor
+edit_notebook_file(
+    cellId = "#VSC-4b69a5b8",  # ✅ 明確的 cell ID
+    editType = "insert"
+)
+```
+
+### 11.5 完整工作流程範例
+
+假設要修正 Section 5（6 個 cells）的順序問題：
+
+```python
+# ========================================
+# 步驟 1: 檢查當前狀態
+# ========================================
+copilot_getNotebookSummary()
+# 發現 Cells 22-27 順序錯誤（倒序）
+
+# ========================================
+# 步驟 2: 刪除所有錯誤 cells
+# ========================================
+edit_notebook_file(delete cell #VSC-xxxxx1)  # Cell 22
+edit_notebook_file(delete cell #VSC-xxxxx2)  # Cell 23
+edit_notebook_file(delete cell #VSC-xxxxx3)  # Cell 24
+edit_notebook_file(delete cell #VSC-xxxxx4)  # Cell 25
+edit_notebook_file(delete cell #VSC-xxxxx5)  # Cell 26
+edit_notebook_file(delete cell #VSC-xxxxx6)  # Cell 27
+
+# ========================================
+# 步驟 3: 逐個插入新 cells
+# ========================================
+
+# --- Cell 22: Section 5 標題 + 5.1 標題 ---
+edit_notebook_file(
+    cellId = "#VSC-164d4d00",  # Cell 21 (上一個正確的 cell)
+    editType = "insert",
+    language = "markdown",
+    newCode = """---
+## 5. 建立線性回歸模型
+
+### 5.1 模型初始化"""
+)
+summary = copilot_getNotebookSummary()
+# ✅ 確認 Cell 22 已正確插入，獲取新 ID: #VSC-92084d7a
+
+# --- Cell 23: 5.1 初始化程式碼 ---
+edit_notebook_file(
+    cellId = "#VSC-92084d7a",  # ⚠️ 使用 Cell 22 的 ID
+    editType = "insert",
+    language = "python",
+    newCode = """# 建立線性回歸模型
+model = LinearRegression(
+    fit_intercept=True,
+    copy_X=True,
+    n_jobs=-1
+)
+print("✓ 線性回歸模型已建立")"""
+)
+summary = copilot_getNotebookSummary()
+# ✅ 確認 Cell 23 已正確插入，獲取新 ID: #VSC-d3f2446d
+
+# --- Cell 24: 5.2 訓練標題 ---
+edit_notebook_file(
+    cellId = "#VSC-d3f2446d",  # ⚠️ 使用 Cell 23 的 ID
+    editType = "insert",
+    language = "markdown",
+    newCode = """### 5.2 模型訓練
+
+使用訓練集數據訓練模型，找出最佳的回歸係數。"""
+)
+summary = copilot_getNotebookSummary()
+# ✅ 確認 Cell 24 已正確插入
+
+# 依此類推，完成所有 cells...
+```
+
+### 11.6 驗證修正結果
+
+修正完成後，必須進行以下驗證：
+
+#### 1. 結構驗證
+```python
+copilot_getNotebookSummary()
+# 檢查：
+# - Cell 總數是否正確
+# - Cell 順序是否符合邏輯
+# - Cell 類型（Markdown/Code）是否正確
+```
+
+#### 2. 執行驗證
+- 從第一個修正的 cell 開始依序執行
+- 確保沒有 NameError 或其他執行錯誤
+- 驗證變數依賴關係正確（例如：X, y → X_train → X_train_scaled）
+
+#### 3. 內容驗證
+- 標題編號是否連續（5.1 → 5.2 → 5.3）
+- 程式碼是否在對應標題之後
+- 註解與說明是否與程式碼匹配
+
+### 11.7 預防措施
+
+為避免未來再次發生 cell 順序問題，建議：
+
+1. **建立新 Notebook 時**：
+   - 嚴格遵循範本順序逐個建立 cells
+   - 每建立 5-10 個 cells 就執行一次驗證
+   - 避免批量生成大量 cells
+
+2. **編輯現有 Notebook 時**：
+   - 插入新 cells 前，先用 `copilot_getNotebookSummary` 確認當前狀態
+   - 一次只插入 1-2 個相關 cells
+   - 立即執行驗證
+
+3. **遇到問題時**：
+   - 不要嘗試多次批量修正（會讓問題更嚴重）
+   - 立即停止，採用「刪除 + 逐個插入」策略
+   - 保持耐心，逐步驗證
+
+### 11.8 工具使用最佳實踐
+
+```python
+# ✅ 推薦模式
+for cell_content in cells_to_insert:
+    # 1. 插入 cell
+    result = edit_notebook_file(
+        cellId = current_anchor,
+        editType = "insert",
+        language = cell_content.language,
+        newCode = cell_content.code
+    )
+    
+    # 2. 立即驗證
+    summary = copilot_getNotebookSummary()
+    
+    # 3. 更新 anchor（使用新插入的 cell ID）
+    current_anchor = extract_new_cell_id(summary)
+    
+    # 4. 確認無誤後再繼續
+    print(f"✅ Cell {i} 已插入並驗證")
+
+# ❌ 避免模式
+for cell_content in cells_to_insert:
+    edit_notebook_file(...)  # 連續插入，沒有驗證
+# 最後才發現全部順序錯誤！
+```
+
+### 11.9 疑難排解
+
+| 問題 | 症狀 | 解決方案 |
+|------|------|---------|
+| Cell 順序全部反轉 | 最後的 cell 出現在最前面 | 批量插入導致，使用逐個插入法重新建立 |
+| 部分 cells 順序錯誤 | 某個區段內 cells 順序混亂 | 刪除該區段所有 cells，逐個重新插入 |
+| 執行時出現 NameError | 變數在定義前被使用 | 檢查變數定義順序，確保依賴關係正確 |
+| Cell 插入到錯誤位置 | Cell 出現在 notebook 頂端或底端 | 避免使用 TOP/BOTTOM anchor，改用具體 cell ID |
+
+---
+
+## 十二、版本記錄
 
 | 版本 | 日期 | 說明 |
 |------|------|------|
 | 1.0 | 2026-01-13 | 初始版本，基於 Unit15 範例建立標準範本 |
+| 1.1 | 2026-01-16 | 新增「Notebook Cell 順序修正指南」章節，記錄 cell 排序問題的解決方案與預防措施 |
 
 ---
 
-**最後更新**：2026-01-13  
+**最後更新**：2026-01-16  
 **維護者**：CHE-AI-COURSE Team

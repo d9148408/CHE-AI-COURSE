@@ -1,0 +1,23 @@
+{
+    "model_type": "Ridge Regression",
+    "best_alpha": 1.151395399326447,
+    "features": [
+        "Temperature_C",
+        "Pressure_bar",
+        "Catalyst_wt%",
+        "Time_min"
+    ],
+    "intercept": 91.85654819959257,
+    "coefficients": {
+        "Temperature_C": 5.867290763544439,
+        "Pressure_bar": 4.085294085330447,
+        "Catalyst_wt%": 2.9954289586324667,
+        "Time_min": 1.9181806284046203
+    },
+    "train_r2": 0.917424608895283,
+    "test_r2": 0.8735843441735793,
+    "train_rmse": 2.8584285594833077,
+    "test_rmse": 3.2565231520400104,
+    "cv_mean_r2": 0.9138111235281066,
+    "cv_std_r2": 0.016713429622651963
+}

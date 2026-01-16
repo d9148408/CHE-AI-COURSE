@@ -1,4 +1,0 @@
-formulation_id,jaccard,items,main_solvent,EHS,Cost,rank_score
-F10,0.3333333333333333,"['Additive:InhibitorA', 'CoSolvent:IPA', 'Solvent:MEK', 'Surfactant:S1']",Solvent:MEK,2,1,1.3666666666666667
-F09,0.3333333333333333,"['Additive:InhibitorA', 'CoSolvent:IPA', 'Solvent:EtOAc', 'Surfactant:S1']",Solvent:EtOAc,2,2,1.4666666666666666
-F04,0.3333333333333333,"['Additive:InhibitorA', 'CoSolvent:EtOAc', 'Solvent:Heptane', 'Surfactant:S2']",Solvent:Heptane,3,2,1.7666666666666666

@@ -1,4 +1,0 @@
-﻿candidate_solvent,jaccard,num_components,diff_removed,diff_added,ehs,cost_factor,hansen_distance,note,predicted_gloss,predicted_voc,jaccard_norm,ehs_norm,cost_norm,voc_norm,composite_score
-Anisole,0.75,7,Solvent:Toluene,Solvent:Anisole,2,2.483230885806788,1.8566429777544182,直接替換,85.7720284266947,207.53756730291113,,0.4,1.0,1.0376878365145557,
-Cyclohexane,0.75,7,Solvent:Toluene,Solvent:Cyclohexane,2,0.8858383690800249,4.696484046259399,直接替換,82.36421914448871,194.04868457558015,,0.4,-0.07696821311665046,0.9702434228779008,
-Diethyl Ether,0.75,7,Solvent:Toluene,Solvent:Diethyl Ether,2,1.2950269250521318,5.87925425385,直接替換,80.94489489538,160.16369667040703,,0.4,0.1989082939650727,0.8008184833520352,

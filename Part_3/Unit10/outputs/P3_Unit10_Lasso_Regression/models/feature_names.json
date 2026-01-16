@@ -1,0 +1,10 @@
+[
+  "Temperature_C",
+  "Pressure_bar",
+  "Catalyst_wt%",
+  "Time_min",
+  "Stirring_Speed_rpm",
+  "Feed_Rate_Lh",
+  "pH",
+  "Solvent_Ratio"
+]

@@ -1,0 +1,36 @@
+{
+  "model_type": "SGDRegressor",
+  "penalty": "l2",
+  "alpha": 0.01,
+  "train_r2": 0.8008025192824618,
+  "test_r2": 0.8101506755678387,
+  "train_rmse": 8.343627391335774,
+  "test_rmse": 8.165459456761191,
+  "n_features": 10,
+  "feature_names": [
+    "Temperature_C",
+    "Pressure_bar",
+    "Catalyst_wt%",
+    "Residence_Time_min",
+    "Feed_Rate_L/hr",
+    "pH",
+    "Stirring_Speed_rpm",
+    "Initiator_conc_M",
+    "Coolant_Flow_L/min",
+    "Feed_Composition"
+  ],
+  "coefficients": [
+    14.331393326724672,
+    3.3957648193480483,
+    1.1684552186585735,
+    5.654738476665575,
+    -4.149411609623349,
+    0.17302597845100845,
+    2.367474134610609,
+    -0.1454308974374961,
+    -0.9076309463324778,
+    0.13055260713088207
+  ],
+  "intercept": 167.07163001666265,
+  "n_iterations": 18
+}

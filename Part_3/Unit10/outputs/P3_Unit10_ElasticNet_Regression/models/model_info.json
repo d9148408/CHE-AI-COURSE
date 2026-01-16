@@ -1,0 +1,38 @@
+{
+  "best_alpha": 0.04750810162102798,
+  "best_l1_ratio": 0.99,
+  "n_selected_features": 8,
+  "selected_features": [
+    "Temperature_C",
+    "Pressure_bar",
+    "Catalyst_wt%",
+    "Time_min",
+    "T1_inlet_C",
+    "T2_outlet_C",
+    "Stirring_Speed_rpm",
+    "pH"
+  ],
+  "eliminated_features": [
+    "P1_inlet_bar",
+    "P2_outlet_bar"
+  ],
+  "train_r2": 0.9236699797291039,
+  "test_r2": 0.8580281119280813,
+  "train_rmse": 2.766200073935004,
+  "test_rmse": 3.2421560537060454,
+  "cv_r2_mean": 0.9171074702865901,
+  "cv_r2_std": 0.0120152137763245,
+  "feature_coefficients": {
+    "Temperature_C": 5.413003478670524,
+    "Pressure_bar": 4.044308251840044,
+    "Catalyst_wt%": 3.078906101901863,
+    "Time_min": 3.5754512408760646,
+    "T1_inlet_C": 0.9898445574628223,
+    "T2_outlet_C": 0.5501374127856761,
+    "P1_inlet_bar": 0.0,
+    "P2_outlet_bar": 0.0,
+    "Stirring_Speed_rpm": 0.05016304187573276,
+    "pH": -0.16284470903222167
+  },
+  "intercept": 136.36259377570593
+}

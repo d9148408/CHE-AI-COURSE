@@ -1,0 +1,22 @@
+{
+    "model_type": "LinearRegression",
+    "features": [
+        "Temperature_C",
+        "Pressure_bar",
+        "Catalyst_wt%",
+        "Time_min"
+    ],
+    "intercept": 91.82594199359727,
+    "coefficients": {
+        "Temperature_C": 5.977240212523579,
+        "Pressure_bar": 3.553778795547821,
+        "Catalyst_wt%": 2.990400564417011,
+        "Time_min": 2.003228266036925
+    },
+    "train_r2": 0.9468531461457893,
+    "test_r2": 0.9157829641012185,
+    "train_rmse": 1.905574146821789,
+    "test_rmse": 2.1711691216760167,
+    "cv_mean_r2": 0.944506041701958,
+    "cv_std_r2": 0.011040081131529707
+}
