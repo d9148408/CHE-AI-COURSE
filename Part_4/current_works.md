@@ -22,7 +22,7 @@
 ### **Part 1(尚未開始)**
 ### **Part 2(尚未開始)**
 ### **Part 3(尚未開始)**
-### **Part 4 (重構進行中)**
+### **Part 4: Deep Learning (已完成)**
 #### **Unit15 (已完成)**
 Unit15
  - Unit15_DNN_MLP_Overview_restructure.md (教學講義):
@@ -71,7 +71,7 @@ Unit16
     - Unit16_Example_ChineseMNIST (.md講義檔, .ipynb程式演練), 中文手寫數字辨識
     - Unit16_Eample_Colorectal_Cancer (.md講義檔, .ipynb程式演練), 醫學影像分類
 
-#### **Unit17 (編輯中)**
+#### **Unit17 (已完成)**
 Unit17
  - Unit17_RNN_Overview.md (教學講義):
     - RNN詳細背景理論(LSTM和GRU詳細介紹), RNN常見且被廣泛使用的模型架構, RNN模型適合應用場景, RNN模型化工領域應用案例.
@@ -92,3 +92,5 @@ Unit17
     - Unit17_RNN_Advanced_BiRNN_v11.ipynb (Bidirectional模型應用)
     - Unit17_RNN_Advanced_Attention.ipynb (Attention應用)
     - Unit17_Example_Boiler (.md講義檔, .ipynb程式演練), 鍋爐溫度預測
+    - Unit17_Example_debutanized_column (.md講義檔, .ipynb程式演練), 去丁烷塔操作預測
+    - Unit17_Example_NASA_Turbofan (.md講義檔, .ipynb程式演練), NASA渦扇引擎剩餘壽命預測
