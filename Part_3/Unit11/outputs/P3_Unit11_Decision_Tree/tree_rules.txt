@@ -1,0 +1,88 @@
+|--- Temperature <= 190.81
+|   |--- Pressure <= 3.06
+|   |   |--- Temperature <= 159.52
+|   |   |   |--- Pressure <= 2.30
+|   |   |   |   |--- value: [73.52]
+|   |   |   |--- Pressure >  2.30
+|   |   |   |   |--- value: [76.38]
+|   |   |--- Temperature >  159.52
+|   |   |   |--- Pressure <= 2.01
+|   |   |   |   |--- Temperature <= 173.98
+|   |   |   |   |   |--- value: [76.48]
+|   |   |   |   |--- Temperature >  173.98
+|   |   |   |   |   |--- value: [78.12]
+|   |   |   |--- Pressure >  2.01
+|   |   |   |   |--- Catalyst <= 1.48
+|   |   |   |   |   |--- value: [80.29]
+|   |   |   |   |--- Catalyst >  1.48
+|   |   |   |   |   |--- value: [78.52]
+|   |--- Pressure >  3.06
+|   |   |--- Pressure <= 4.64
+|   |   |   |--- Catalyst <= 0.95
+|   |   |   |   |--- Temperature <= 166.01
+|   |   |   |   |   |--- value: [79.00]
+|   |   |   |   |--- Temperature >  166.01
+|   |   |   |   |   |--- Catalyst <= 0.74
+|   |   |   |   |   |   |--- value: [81.95]
+|   |   |   |   |   |--- Catalyst >  0.74
+|   |   |   |   |   |   |--- value: [81.01]
+|   |   |   |--- Catalyst >  0.95
+|   |   |   |   |--- Temperature <= 161.40
+|   |   |   |   |   |--- value: [81.77]
+|   |   |   |   |--- Temperature >  161.40
+|   |   |   |   |   |--- Temperature <= 180.80
+|   |   |   |   |   |   |--- Temperature <= 173.37
+|   |   |   |   |   |   |   |--- value: [83.24]
+|   |   |   |   |   |   |--- Temperature >  173.37
+|   |   |   |   |   |   |   |--- value: [85.16]
+|   |   |   |   |   |--- Temperature >  180.80
+|   |   |   |   |   |   |--- value: [81.80]
+|   |   |--- Pressure >  4.64
+|   |   |   |--- value: [87.69]
+|--- Temperature >  190.81
+|   |--- Pressure <= 3.53
+|   |   |--- Temperature <= 213.04
+|   |   |   |--- Pressure <= 2.70
+|   |   |   |   |--- Temperature <= 206.96
+|   |   |   |   |   |--- Pressure <= 1.99
+|   |   |   |   |   |   |--- Catalyst <= 1.50
+|   |   |   |   |   |   |   |--- value: [83.78]
+|   |   |   |   |   |   |--- Catalyst >  1.50
+|   |   |   |   |   |   |   |--- value: [84.18]
+|   |   |   |   |   |--- Pressure >  1.99
+|   |   |   |   |   |   |--- value: [85.17]
+|   |   |   |   |--- Temperature >  206.96
+|   |   |   |   |   |--- value: [82.83]
+|   |   |   |--- Pressure >  2.70
+|   |   |   |   |--- value: [87.50]
+|   |   |--- Temperature >  213.04
+|   |   |   |--- Temperature <= 235.89
+|   |   |   |   |--- Temperature <= 227.31
+|   |   |   |   |   |--- Pressure <= 2.31
+|   |   |   |   |   |   |--- value: [87.16]
+|   |   |   |   |   |--- Pressure >  2.31
+|   |   |   |   |   |   |--- value: [88.79]
+|   |   |   |   |--- Temperature >  227.31
+|   |   |   |   |   |--- Pressure <= 2.13
+|   |   |   |   |   |   |--- value: [85.76]
+|   |   |   |   |   |--- Pressure >  2.13
+|   |   |   |   |   |   |--- value: [85.94]
+|   |   |   |--- Temperature >  235.89
+|   |   |   |   |--- value: [89.15]
+|   |--- Pressure >  3.53
+|   |   |--- Temperature <= 202.85
+|   |   |   |--- value: [88.73]
+|   |   |--- Temperature >  202.85
+|   |   |   |--- Catalyst <= 0.77
+|   |   |   |   |--- Catalyst <= 0.67
+|   |   |   |   |   |--- value: [91.52]
+|   |   |   |   |--- Catalyst >  0.67
+|   |   |   |   |   |--- value: [89.77]
+|   |   |   |--- Catalyst >  0.77
+|   |   |   |   |--- Pressure <= 4.47
+|   |   |   |   |   |--- Catalyst <= 1.38
+|   |   |   |   |   |   |--- value: [92.11]
+|   |   |   |   |   |--- Catalyst >  1.38
+|   |   |   |   |   |   |--- value: [93.46]
+|   |   |   |   |--- Pressure >  4.47
+|   |   |   |   |   |--- value: [95.00]
