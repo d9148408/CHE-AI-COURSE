@@ -1,0 +1,22 @@
+{
+  "model_name": "Gradient Boosting",
+  "accuracy": 0.6783536585365854,
+  "precision": 0.6036866359447005,
+  "recall": 0.51171875,
+  "f1_score": 0.5539112050739958,
+  "auc": 0.74904296875,
+  "training_time": 1.4330408573150635,
+  "feature_names": [
+    "ph",
+    "Hardness",
+    "Solids",
+    "Chloramines",
+    "Sulfate",
+    "Conductivity",
+    "Organic_carbon",
+    "Trihalomethanes",
+    "Turbidity"
+  ],
+  "n_samples_train": 2620,
+  "n_samples_test": 656
+}

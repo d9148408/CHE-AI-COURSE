@@ -1,0 +1,5 @@
+模型,測試準確率
+Decision Tree,0.6725
+Random Forest,0.665
+Gradient Boosting (Basic),0.655
+Gradient Boosting (Optimized),0.67

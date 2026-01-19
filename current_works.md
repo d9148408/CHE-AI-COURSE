@@ -43,7 +43,7 @@ Unit10 線性模型回歸 (Linear Model Regression)
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有線性模型, 進行模型訓練, 所有模型的綜合評估比較.
 
 
-#### **Unit11 (重構進行中)**
+#### **Unit11 (已完成)**
 Unit11 非線性模型回歸 (Non-Linear Model Regression)
  - Unit11_NonLinear_Models_Overview.md (教學講義):
     - 非線性模型詳細背景理論, 非線性模型適合應用場景, 非線性模型化工領域應用案例.
@@ -66,19 +66,42 @@ Unit11 非線性模型回歸 (Non-Linear Model Regression)
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有非線性模型, 進行模型訓練, 所有模型的綜合評估比較.
 
 
-#### **Unit12 (重構進行中)**
+#### **Unit12 (已完成)**
 Unit12 分類模型 (Classification Models)
  - Unit12_Classification_Models_Overview.md (教學講義):
-    - 分類模型詳細背景理論, 分類模型適合應用場景, 分類模型化工領域應用案例.
-    - 簡介sklearn模組包含哪些分類模型方法, 包含邏輯迴歸(Logistic Regression), K近鄰演算法(K-Nearest Neighbors, KNN), 決策樹(Decision Tree), 隨機森林(Random Forest), 支持向量機(Support Vector Machine, SVM), 梯度提升樹(Gradient Boosting Trees)等模型.
+    - 分類模型詳細背景理論, 為什麼回歸模型也可以做分類, 分類模型適合應用場景, 分類模型化工領域應用案例.
+    - 簡介sklearn模組中幾個經典的分類模型方法, 包含邏輯迴歸(Logistic Regression), 決策樹分類(Decision Tree Classifier), 隨機森林分類(Random Forest Classifier), 梯度提升分類 (Gradient Boosting Classifier), 支持向量分類(Support Vector Classification, SVC), 貝氏分類器(Gaussian Naive Bayes) 等模型.
     - 如何使用sklearn模組中的各種函數進行資料前處理, 包含資料標準化(Standardization), 資料正規化(Normalization), 類別變數編碼(One-Hot Encoding)等.
     - 如何使用sklearn模組中的各種函數進行模型評估, 包含交叉驗證(Cross-Validation), 超參數調整(Hyperparameter Tuning)等.
  - Unit12_Logistic_Regression (.md講義, .ipynb程式演練):
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練邏輯迴歸模型.
- - Unit12_KNN_Classifier (.md講義, .ipynb程式演練):
-    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練K近鄰演算法模型
+- Unit12_Support_Vector_Classification (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練支持向量分類模型.
+- Unit12_Decision_Tree_Classifier (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練決策樹分類模型.
+- Unit12_Random_Forest_Classifier (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練隨機森林分類模型.
+- Unit12_Gradient_Boosting_Classifier (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練梯度提升分類模型.
+- Unit12_Gaussian_Naive_Bayes (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練貝氏分類器模型.
+- Unit12_Classification_Models_Homework.ipynb (作業):
+    - 學生課堂練習題, 以Wine Quality Dataset數據做為應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有分類模型, 進行模型訓練, 所有模型的綜合評估比較.   
+- Classification 工業應用案例:
+    - Unit12_Example_WaterQuality (.md講義檔, .ipynb程式演練), 水質分類預測為主題
+    - Unit12_Example_Electrical_Fault_detection_and_classification (.md講義檔, .ipynb程式演練), 電氣設備故障診斷與分類為主題
+
 #### **Unit13 (重構進行中)**
-Unit13
+Unit13 GBDT (Gradient Boosting Decision Tree)三巨頭: XGBoost, LightGBM, CatBoost
+ - Unit13_XGBoost (.md講義, _Regression.ipynb程式演練, _Classification.ipynb程式演練):
+    - XGBoost模型介紹, 套件安裝, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練XGBoost模型.
+ - Unit13_LightGBM (.md講義, _Regression.ipynb程式演練, _Classification.ipynb程式演練):
+    - LightGBM模型介紹, 套件安裝, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練LightGBM模型.
+ - Unit13_CatBoost (.md講義, _Regression.ipynb程式演練, _Classification.ipynb程式演練):
+    - CatBoost模型介紹, 套件安裝, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練CatBoost模型.
+ - Unit13_GBDT_Homework.ipynb (作業):
+    - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立本單元學習的所有GBDT三巨頭模型, 進行模型訓練, 所有模型的綜合評估比較.
+
 #### **Unit14 (重構進行中)**
 Unit14
 
