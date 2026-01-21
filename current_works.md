@@ -91,7 +91,7 @@ Unit12 分類模型 (Classification Models)
     - Unit12_Example_WaterQuality (.md講義檔, .ipynb程式演練), 水質分類預測為主題
     - Unit12_Example_Electrical_Fault_detection_and_classification (.md講義檔, .ipynb程式演練), 電氣設備故障診斷與分類為主題
 
-#### **Unit13 (修改中)**
+#### **Unit13 (已完成)**
 Unit13 集成學習方法 (Ensemble Learning Methods)
  - Unit13_Ensemble_Learning_Overview.md (教學講義):
     - 集成學習方法詳細背景理論, 集成學習方法適合應用場景, 集成學習方法化工領域應用案例.
@@ -101,6 +101,8 @@ Unit13 集成學習方法 (Ensemble Learning Methods)
       - Boosting: XGBoost, LightGBM, CatBoost
     - 如何使用sklearn模組中的各種函數進行資料前處理, 包含資料標準化(Standardization), 資料正規化(Normalization), 類別變數編碼(One-Hot Encoding)等.
     - 如何使用sklearn模組中的各種函數進行模型評估, 包含交叉驗證(Cross-Validation), 超參數調整(Hyperparameter Tuning)等.
+ - Unit13_Ensemble_Learning_Overview.ipynb (簡易程式演練):
+    - 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練各種集成學習方法模型.
  - Unit13_Stacking (.md講義, _Regression.ipynb程式演練, _Classification.ipynb程式演練):
     - Stacking堆疊法介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練Stacking堆疊法模型.
  - Unit13_Random_Forest (.md講義, _Regression.ipynb程式演練, _Classification.ipynb程式演練):
