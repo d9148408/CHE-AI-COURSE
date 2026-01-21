@@ -41,9 +41,9 @@ $$
 - $\boldsymbol{\beta}$ : 回歸係數向量
 - $\alpha$ : **總正則化強度 (Overall Regularization Strength)**
 - $\rho$ : **L1 比例 (L1 Ratio)**，控制 L1 和 L2 的混合比例（sklearn 中稱為 `l1_ratio`）
-  - $\rho = 0$：純 Ridge 回歸
-  - $\rho = 1$：純 Lasso 回歸
-  - $0 < \rho < 1$：Elastic Net（混合）
+  - $\rho = 0$ ：純 Ridge 回歸
+  - $\rho = 1$ ：純 Lasso 回歸
+  - $0 < \rho < 1$ ：Elastic Net（混合）
 
 **改寫為更直觀的形式**：
 
@@ -117,14 +117,14 @@ $$
 
 **α (alpha) - 總正則化強度**：
 - 控制正則化的總體強度
-- $\alpha = 0$：無正則化（OLS）
+- $\alpha = 0$ ：無正則化（OLS）
 - $\alpha$ 越大：正則化越強，係數越小或為 0
 
 **ρ (rho) - L1 比例 (l1_ratio)**：
 - 控制 L1 和 L2 的混合比例
-- $\rho = 0$：純 Ridge 回歸
-- $\rho = 1$：純 Lasso 回歸
-- $\rho = 0.5$：L1 和 L2 各佔一半
+- $\rho = 0$ ：純 Ridge 回歸
+- $\rho = 1$ ：純 Lasso 回歸
+- $\rho = 0.5$ ：L1 和 L2 各佔一半
 
 ### 2.3 求解方法
 

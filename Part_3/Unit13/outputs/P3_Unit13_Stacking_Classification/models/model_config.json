@@ -1,0 +1,18 @@
+{
+  "base_classifiers": [
+    "lr",
+    "rf",
+    "gbdt",
+    "svc"
+  ],
+  "meta_learner": "LogisticRegression",
+  "cv_type": "StratifiedKFold",
+  "cv_folds": 5,
+  "stack_method": "predict_proba",
+  "test_accuracy": 0.84,
+  "test_precision": 0.9444444444444444,
+  "test_recall": 0.85,
+  "test_f1": 0.8947368421052632,
+  "test_roc_auc": 0.91609375,
+  "training_time_seconds": 6.209244728088379
+}

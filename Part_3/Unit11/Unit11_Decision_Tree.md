@@ -76,37 +76,37 @@
 
 ### 2.1 樹結構的數學表示
 
-設訓練資料集為 $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{N}$，其中：
-- $\mathbf{x}_i \in \mathbb{R}^p$：$p$ 維特徵向量
-- $y_i \in \mathbb{R}$：連續目標變數
+設訓練資料集為 $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{N}$ ，其中：
+- $\mathbf{x}_i \in \mathbb{R}^p$ ： $p$ 維特徵向量
+- $y_i \in \mathbb{R}$ ：連續目標變數
 
-決策樹將特徵空間 $\mathbb{R}^p$ 分割成 $M$ 個不重疊的區域 $\{R_1, R_2, \ldots, R_M\}$，對於任意輸入 $\mathbf{x}$，模型預測為：
+決策樹將特徵空間 $\mathbb{R}^p$ 分割成 $M$ 個不重疊的區域 $\{R_1, R_2, \ldots, R_M\}$ ，對於任意輸入 $\mathbf{x}$ ，模型預測為：
 
 $$
 f(\mathbf{x}) = \sum_{m=1}^{M} c_m \cdot \mathbb{1}(\mathbf{x} \in R_m)
 $$
 
 其中：
-- $c_m$：區域 $R_m$ 的預測常數（通常為該區域內樣本的平均值）
-- $\mathbb{1}(\cdot)$：指示函數
+- $c_m$ ：區域 $R_m$ 的預測常數（通常為該區域內樣本的平均值）
+- $\mathbb{1}(\cdot)$ ：指示函數
 
 ### 2.2 節點分裂準則
 
 #### 2.2.1 均方誤差 (Mean Squared Error, MSE)
 
-對於節點 $t$ 包含的樣本集 $\mathcal{D}_t = \{(\mathbf{x}_i, y_i) \mid \mathbf{x}_i \in R_t\}$，該節點的 **MSE** 定義為：
+對於節點 $t$ 包含的樣本集 $\mathcal{D}_t = \{(\mathbf{x}_i, y_i) \mid \mathbf{x}_i \in R_t\}$ ，該節點的 **MSE** 定義為：
 
 $$
 \text{MSE}(t) = \frac{1}{N_t} \sum_{i \in \mathcal{D}_t} (y_i - \bar{y}_t)^2
 $$
 
 其中：
-- $N_t = |\mathcal{D}_t|$：節點內樣本數
-- $\bar{y}_t = \frac{1}{N_t} \sum_{i \in \mathcal{D}_t} y_i$：節點內樣本平均值
+- $N_t = |\mathcal{D}_t|$ ：節點內樣本數
+- $\bar{y}_t = \frac{1}{N_t} \sum_{i \in \mathcal{D}_t} y_i$ ：節點內樣本平均值
 
 #### 2.2.2 最優分裂點選擇
 
-對於特徵 $j$ 和分裂閾值 $s$，將節點 $t$ 分裂為左右子節點：
+對於特徵 $j$ 和分裂閾值 $s$ ，將節點 $t$ 分裂為左右子節點：
 
 $$
 \begin{aligned}
@@ -145,7 +145,7 @@ $$
 
 1. **初始化**：整個訓練集作為根節點
 2. **遞迴分裂**：
-   - 對於每個內部節點 $t$：
+   - 對於每個內部節點 $t$ ：
      - 遍歷所有特徵 $j = 1, \ldots, p$
      - 對每個特徵，遍歷所有可能的分裂點 $s$
      - 選擇使雜質減少量最大的 $(j^*, s^*)$
@@ -159,8 +159,8 @@ $$
 4. **預測**：葉節點的預測值為該節點內所有樣本的平均值
 
 **時間複雜度**：
-- 訓練：$O(N \cdot p \cdot \log N)$（平衡樹情況）
-- 預測：$O(\log N)$
+- 訓練： $O(N \cdot p \cdot \log N)$ （平衡樹情況）
+- 預測： $O(\log N)$
 
 ### 2.4 特徵重要性 (Feature Importance)
 
@@ -203,8 +203,8 @@ $$
 
 **`max_features` 說明**：
 - `None` 或 `'auto'`：使用所有特徵
-- `'sqrt'`：$\sqrt{p}$ 個特徵
-- `'log2'`：$\log_2(p)$ 個特徵
+- `'sqrt'`： $\sqrt{p}$ 個特徵
+- `'log2'`： $\log_2(p)$ 個特徵
 - `int`：固定數量
 - `float`：比例（如 0.5 表示 50%）
 
@@ -258,13 +258,13 @@ R_\alpha(T) = R(T) + \alpha \cdot |T|
 $$
 
 其中：
-- $R(T) = \sum_{m=1}^{|T|} N_m \cdot \text{MSE}_m$：樹的總誤差
-- $|T|$：葉節點數（樹的複雜度）
-- $\alpha \geq 0$：複雜度懲罰係數
+- $R(T) = \sum_{m=1}^{|T|} N_m \cdot \text{MSE}_m$ ：樹的總誤差
+- $|T|$ ：葉節點數（樹的複雜度）
+- $\alpha \geq 0$ ：複雜度懲罰係數
 
 **過程**：
 1. 生長完整的樹 $T_0$
-2. 對於每個內部節點 $t$，計算移除該子樹後的成本變化
+2. 對於每個內部節點 $t$ ，計算移除該子樹後的成本變化
 3. 選擇 $\alpha$ 值，剪除不值得保留的子樹
 4. 使用交叉驗證選擇最佳 $\alpha$
 
@@ -956,7 +956,7 @@ final_pred = 0.7 * tree_pred + 0.3 * linear_pred
 
 **改進方向**：
 1. **特徵工程**
-   - 添加物理導出特徵：$T \times P$, $\ln(k) \propto 1/T$ (阿倫尼烏斯)
+   - 添加物理導出特徵： $T \times P$ , $\ln(k) \propto 1/T$ (阿倫尼烏斯)
    - 可能提升模型性能與可解釋性
 
 2. **約束決策樹**

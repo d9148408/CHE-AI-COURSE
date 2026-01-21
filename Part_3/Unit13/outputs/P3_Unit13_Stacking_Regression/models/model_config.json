@@ -1,0 +1,14 @@
+{
+  "base_models": [
+    "ridge",
+    "rf",
+    "gbdt",
+    "svr"
+  ],
+  "meta_learner": "Ridge",
+  "cv_folds": 5,
+  "test_r2": 0.967032253613162,
+  "test_rmse": 6.6386163461825145,
+  "test_mae": 5.210951995970292,
+  "training_time_seconds": 5.148568153381348
+}
