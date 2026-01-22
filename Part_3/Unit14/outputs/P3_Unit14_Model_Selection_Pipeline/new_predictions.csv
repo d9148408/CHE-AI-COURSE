@@ -1,0 +1,4 @@
+Temperature,Pressure,Flow_Rate,Concentration,Residence_Time,Catalyst_Type,Operation_Mode,Predicted_Yield
+180,5.0,50,2.5,30,Type_A,Continuous,80.32251804180794
+220,7.5,70,3.5,25,Type_B,Batch,89.27451930520799
+200,6.0,60,3.0,28,Type_C,Semi-Batch,81.41942785098524

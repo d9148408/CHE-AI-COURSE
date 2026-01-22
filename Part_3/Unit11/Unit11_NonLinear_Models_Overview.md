@@ -82,7 +82,6 @@ $$
 
 #### 1.4.2 樹狀模型 (Tree-based Models)
 - **決策樹 (Decision Tree)**：透過樹狀結構進行分層決策
-- **隨機森林 (Random Forest)**：多棵決策樹的集成學習
 - **梯度提升樹 (Gradient Boosting Trees)**：逐步修正誤差的集成學習
 
 #### 1.4.3 核方法與機率模型
@@ -180,59 +179,7 @@ $$
 
 ---
 
-### 2.3 隨機森林 (Random Forest)
-
-**模型**：`sklearn.ensemble.RandomForestRegressor`
-
-**核心概念**：
-隨機森林是**決策樹的集成學習 (Ensemble Learning)** 方法，透過以下策略提升預測性能：
-
-1. **Bagging (Bootstrap Aggregating)**：從訓練資料中隨機抽樣（有放回）建立多棵樹
-2. **隨機特徵選擇**：每次分割時只考慮隨機選取的部分特徵
-3. **平均預測**：最終預測為所有樹預測值的平均
-
-數學上，隨機森林的預測為：
-
-$$
-\hat{y} = \frac{1}{T} \sum_{t=1}^{T} f_t(\mathbf{x})
-$$
-
-其中 $T$ 是樹的數量， $f_t$ 是第 $t$ 棵決策樹的預測函數。
-
-**主要參數**：
-- `n_estimators`: 樹的數量（預設 100，越多越好但計算慢）
-- `max_depth`: 每棵樹的最大深度
-- `min_samples_split`: 內部節點分裂所需的最小樣本數
-- `min_samples_leaf`: 葉節點所需的最小樣本數
-- `max_features`: 每次分割考慮的最大特徵數（'sqrt', 'log2', int, float）
-- `bootstrap`: 是否使用 bootstrap 抽樣（預設 True）
-- `oob_score`: 是否計算袋外 (out-of-bag) 分數（預設 False）
-
-**特徵重要性**：
-隨機森林可計算每個特徵的重要性，基於該特徵在所有樹中降低不純度的平均值。
-
-**優點**：
-- 預測準確度高，泛化能力強
-- 不易過擬合（相比單棵決策樹）
-- 可處理高維資料
-- 可評估特徵重要性
-- 訓練可平行化
-
-**缺點**：
-- 可解釋性降低（相比單棵樹）
-- 訓練和預測速度較慢
-- 模型檔案較大
-- 對雜訊和異常值敏感度仍存在
-
-**適用場景**：
-- 資料量充足
-- 需要高預測準確度
-- 特徵數量多
-- 需要評估特徵重要性
-
----
-
-### 2.4 梯度提升樹 (Gradient Boosting Trees)
+### 2.3 梯度提升樹 (Gradient Boosting Trees)
 
 **模型**：`sklearn.ensemble.GradientBoostingRegressor`
 
@@ -289,7 +236,7 @@ $$
 
 ---
 
-### 2.5 支持向量機 (Support Vector Machine, SVM)
+### 2.4 支持向量機 (Support Vector Machine, SVM)
 
 **模型**：`sklearn.svm.SVR` (Support Vector Regression)
 
@@ -358,7 +305,7 @@ $$
 
 ---
 
-### 2.6 高斯過程回歸 (Gaussian Process Regression, GPR)
+### 2.5 高斯過程回歸 (Gaussian Process Regression, GPR)
 
 **模型**：`sklearn.gaussian_process.GaussianProcessRegressor`
 
@@ -436,22 +383,21 @@ $$
 
 ---
 
-### 2.7 模型比較總結
+### 2.6 模型比較總結
 
 | 模型 | 複雜度 | 可解釋性 | 預測準確度 | 訓練速度 | 不確定性量化 | 適用資料量 |
 |------|--------|----------|------------|----------|--------------|------------|
 | 多項式回歸 | 低-中 | ★★★★☆ | ★★☆☆☆ | ★★★★★ | ✗ | 中-大 |
 | 決策樹 | 中 | ★★★★★ | ★★★☆☆ | ★★★★☆ | ✗ | 小-中 |
-| 隨機森林 | 高 | ★★☆☆☆ | ★★★★☆ | ★★★☆☆ | △ (OOB) | 中-大 |
 | 梯度提升樹 | 高 | ★★☆☆☆ | ★★★★★ | ★★☆☆☆ | ✗ | 中-大 |
 | SVM | 中-高 | ★☆☆☆☆ | ★★★★☆ | ★★☆☆☆ | ✗ | 小-中 |
 | GPR | 高 | ★☆☆☆☆ | ★★★★☆ | ★☆☆☆☆ | ★★★★★ | 小 |
 
 **選擇建議**：
-- **追求準確度**：梯度提升樹 > 隨機森林 > GPR
+- **追求準確度**：梯度提升樹 > GPR
 - **需要可解釋**：決策樹 > 多項式回歸
 - **小資料集**：GPR > SVM > 決策樹
-- **大資料集**：隨機森林 > 梯度提升樹
+- **大資料集**：梯度提升樹
 - **需要不確定性**：GPR（唯一選擇）
 - **即時預測**：多項式回歸 > 決策樹
 
@@ -467,7 +413,6 @@ $$
 |------|-------------------|------|
 | 多項式回歸 | **需要** | 高次項數值範圍極大，影響數值穩定性 |
 | 決策樹 | **不需要** | 基於分割點，對尺度不敏感 |
-| 隨機森林 | **不需要** | 同決策樹 |
 | 梯度提升樹 | **不需要** | 同決策樹 |
 | SVM | **強烈需要** | 核函數計算距離，對尺度極度敏感 |
 | GPR | **強烈需要** | 核函數基於距離，尺度影響預測 |
@@ -631,8 +576,9 @@ def mape(y_true, y_pred):
 
 ```python
 from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import GradientBoostingRegressor
 
-model = RandomForestRegressor(n_estimators=100, random_state=42)
+model = GradientBoostingRegressor(n_estimators=100, random_state=42)
 scores = cross_val_score(model, X, y, cv=5, scoring='r2')
 
 print(f"R² scores: {scores}")
@@ -656,16 +602,17 @@ scores = cross_val_score(model, X, y, cv=tscv, scoring='neg_mean_squared_error')
 
 ```python
 from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import GradientBoostingRegressor
 
 param_grid = {
     'n_estimators': [50, 100, 200],
-    'max_depth': [5, 10, 15, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.01, 0.1, 0.2],
+    'min_samples_split': [2, 5, 10]
 }
 
 grid_search = GridSearchCV(
-    RandomForestRegressor(random_state=42),
+    GradientBoostingRegressor(random_state=42),
     param_grid,
     cv=5,
     scoring='r2',
@@ -684,17 +631,18 @@ print(f"Best R² score: {grid_search.best_score_:.3f}")
 
 ```python
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.ensemble import GradientBoostingRegressor
 from scipy.stats import uniform, randint
 
 param_dist = {
     'n_estimators': randint(50, 300),
-    'max_depth': randint(3, 20),
-    'min_samples_split': randint(2, 20),
-    'min_samples_leaf': randint(1, 10)
+    'max_depth': randint(3, 10),
+    'learning_rate': uniform(0.01, 0.3),
+    'min_samples_split': randint(2, 20)
 }
 
 random_search = RandomizedSearchCV(
-    RandomForestRegressor(random_state=42),
+    GradientBoostingRegressor(random_state=42),
     param_dist,
     n_iter=100,
     cv=5,
@@ -736,10 +684,11 @@ plt.show()
 
 ```python
 from sklearn.model_selection import validation_curve
+from sklearn.ensemble import GradientBoostingRegressor
 
 param_range = [10, 50, 100, 200, 500]
 train_scores, val_scores = validation_curve(
-    RandomForestRegressor(random_state=42),
+    GradientBoostingRegressor(random_state=42),
     X, y,
     param_name='n_estimators',
     param_range=param_range,
@@ -764,7 +713,7 @@ plt.show()
 #### 5.1.1 複雜反應系統建模
 - **場景**：多步驟反應、催化反應、聚合反應
 - **特點**：反應機理複雜，難以用簡單方程描述
-- **推薦模型**：隨機森林、梯度提升樹、GPR
+- **推薦模型**：梯度提升樹、GPR
 - **案例**：預測聚合物分子量分布、反應選擇性
 
 #### 5.1.2 非線性製程控制
@@ -776,49 +725,24 @@ plt.show()
 #### 5.1.3 品質預測與優化
 - **場景**：產品物性、感官品質、藥效預測
 - **特點**：多因素交互作用、局部最優
-- **推薦模型**：隨機森林（特徵重要性）、XGBoost（高準確度）
+- **推薦模型**：梯度提升樹（XGBoost）（高準確度）
 - **案例**：藥物溶解度預測、食品質地預測
 
 #### 5.1.4 故障診斷與異常檢測
 - **場景**：設備異常、製程偏移、產品缺陷
 - **特點**：正常與異常的邊界複雜
-- **推薦模型**：決策樹（可解釋）、隨機森林、梯度提升樹
+- **推薦模型**：決策樹（可解釋）、梯度提升樹
 - **案例**：泵浦故障診斷、蒸餾塔異常檢測
 
 #### 5.1.5 分子性質預測 (QSPR/QSAR)
 - **場景**：物理化學性質、生物活性、毒性預測
 - **特點**：高維分子描述符、非線性結構-性質關係
-- **推薦模型**：隨機森林、梯度提升樹、SVM
+- **推薦模型**：梯度提升樹、SVM
 - **案例**：沸點預測、辛醇-水分配係數預測、藥物活性預測
 
 ### 5.2 實際應用案例
 
-#### 案例 1：催化反應產率優化（隨機森林）
-
-**背景**：某化工廠希望建立催化反應產率的預測模型，並識別關鍵操作變數。
-
-**資料特徵**：
-- 反應溫度 (200-300°C)
-- 反應壓力 (10-50 bar)
-- 催化劑負載量 (1-5 wt%)
-- 進料流量 (50-200 L/h)
-- 氫氣比例 (0.5-2.0)
-- 催化劑使用時間 (0-1000 h)
-
-**模型選擇**：隨機森林回歸
-
-**實作流程**：
-1. 資料分割：80% 訓練，20% 測試
-2. 特徵不需標準化（樹狀模型）
-3. 超參數調整：`n_estimators=200`, `max_depth=15`
-4. 評估特徵重要性
-
-**結果**：
-- 測試集 $R^2 = 0.94$ ， RMSE = 1.2%
-- 關鍵特徵：反應溫度 (35%)、催化劑使用時間 (28%)、壓力 (20%)
-- 應用：透過模型指導操作優化，產率提升 3.5%
-
-#### 案例 2：蒸餾塔操作建模（梯度提升樹）
+#### 案例 1：蒸餾塔操作建模（梯度提升樹）
 
 **背景**：建立蒸餾塔頂產品純度的預測模型，用於製程監控與控制。
 
@@ -844,7 +768,7 @@ plt.show()
 - 預測提前 15 分鐘，支援前饋控制
 - 產品純度波動降低 40%
 
-#### 案例 3：藥物溶解度預測（SVM + 分子描述符）
+#### 案例 2：藥物溶解度預測（SVM + 分子描述符）
 
 **背景**：預測藥物分子在水中的溶解度，用於藥物設計篩選。
 
@@ -869,7 +793,7 @@ plt.show()
 - 關鍵描述符：LogP、TPSA、氫鍵數
 - 應用：虛擬篩選，候選分子數量減少 80%
 
-#### 案例 4：反應器溫度控制（高斯過程回歸 + 貝氏優化）
+#### 案例 3：反應器溫度控制（高斯過程回歸 + 貝氏優化）
 
 **背景**：最佳化批次反應器的溫度曲線，最大化產率。
 
@@ -909,15 +833,15 @@ plt.show()
   └─ 否 ↓
 資料量級？
   ├─ 小 (< 1,000) → SVM 或 GPR
-  ├─ 中 (1,000 - 100,000) → 隨機森林 或 梯度提升樹
-  └─ 大 (> 100,000) → 隨機森林 或 線性模型
+  ├─ 中 (1,000 - 100,000) → 梯度提升樹
+  └─ 大 (> 100,000) → 梯度提升樹 或 線性模型
           ↓
 是否需要高度可解釋性？
   ├─ 是 → 決策樹 或 多項式回歸
   └─ 否 ↓
 是否追求最高準確度？
   ├─ 是 → 梯度提升樹 (XGBoost / LightGBM)
-  └─ 否 → 隨機森林（平衡準確度與速度）
+  └─ 否 → 梯度提升樹（平衡準確度與速度）
 ```
 
 ### 6.2 模型組合策略
@@ -941,9 +865,10 @@ y_pred_weighted = w1 * y_pred_rf + w2 * y_pred_gbm + w3 * y_pred_svm
 
 ```python
 from sklearn.ensemble import StackingRegressor
+from sklearn.tree import DecisionTreeRegressor
 
 estimators = [
-    ('rf', RandomForestRegressor(n_estimators=100)),
+    ('dt', DecisionTreeRegressor(max_depth=10)),
     ('gbm', GradientBoostingRegressor(n_estimators=100)),
     ('svr', SVR(kernel='rbf'))
 ]
@@ -996,11 +921,10 @@ y_pred = stacking.predict(X_test)
 
 1. **Unit11_Polynomial_Regression**：多項式回歸的詳細理論與實作
 2. **Unit11_Decision_Tree**：決策樹的分裂策略與視覺化
-3. **Unit11_Random_Forest**：集成學習與特徵重要性分析
-4. **Unit11_Gradient_Boosting_Trees**：提升方法與超參數調整
-5. **Unit11_Support_Vector_Machine**：核技巧與參數選擇
-6. **Unit11_Gaussian_Process_Regression**：貝氏方法與不確定性量化
-7. **Unit11_NonLinear_Models_Homework**：綜合練習與模型比較
+3. **Unit11_Gradient_Boosting_Trees**：提升方法與超參數調整
+4. **Unit11_Support_Vector_Machine**：核技巧與參數選擇
+5. **Unit11_Gaussian_Process_Regression**：貝氏方法與不確定性量化
+6. **Unit11_NonLinear_Models_Homework**：綜合練習與模型比較
 
 每個子主題都包含詳細的數學推導、程式碼實作和化工領域的應用案例，請按順序學習以獲得最佳效果。
 
@@ -1031,14 +955,13 @@ y_pred = stacking.predict(X_test)
 
 - **多項式回歸**：透過特徵擴展捕捉曲線關係，適合平滑函數擬合
 - **決策樹**：高度可解釋的分層決策模型，適合複雜交互作用
-- **隨機森林**：決策樹的集成學習，平衡準確度與穩健性
 - **梯度提升樹**：逐步修正誤差的集成方法，提供最高預測準確度
 - **支持向量機**：透過核函數處理非線性，適合中小型資料集
 - **高斯過程回歸**：貝氏方法提供不確定性量化，適合小資料集和貝氏優化
 
 **關鍵要點**：
 - 非線性模型可捕捉複雜的資料模式，但需更多資料和謹慎調參
-- 樹狀模型（RF、GBM）是工業應用首選，兼顧準確度與實用性
+- 梯度提升樹（GBM）是工業應用首選，兼顧準確度與實用性
 - SVM 和 GPR 需要特徵縮放，計算成本較高
 - 模型選擇應考慮：資料量、可解釋性需求、計算資源、預測準確度
 

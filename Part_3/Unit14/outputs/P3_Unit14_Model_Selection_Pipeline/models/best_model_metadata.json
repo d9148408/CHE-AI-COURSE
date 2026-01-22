@@ -1,0 +1,33 @@
+{
+    "model_name": "SVR",
+    "model_type": "SVR",
+    "training_date": "2026-01-22 12:55:59",
+    "performance_metrics": {
+        "test_r2": 0.8683620664755227,
+        "test_mae": 2.648068776435015,
+        "test_rmse": 3.28910081764645,
+        "test_mape": 0.03450396437211044,
+        "cv_r2_mean": 0.8325824718524822,
+        "cv_r2_std": 0.012594235637033517
+    },
+    "training_info": {
+        "training_samples": 400,
+        "test_samples": 100,
+        "training_time_seconds": 0.032539,
+        "random_seed": 42
+    },
+    "features": {
+        "numerical_features": [
+            "Temperature",
+            "Pressure",
+            "Flow_Rate",
+            "Concentration",
+            "Residence_Time"
+        ],
+        "categorical_features": [
+            "Catalyst_Type",
+            "Operation_Mode"
+        ],
+        "total_features": 7
+    }
+}

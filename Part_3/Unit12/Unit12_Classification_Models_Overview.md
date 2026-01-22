@@ -206,45 +206,7 @@ $$
 
 ---
 
-### 2.4 隨機森林分類 (Random Forest Classifier)
-
-**模型**：`sklearn.ensemble.RandomForestClassifier`
-
-**核心概念**：
-- **集成學習 (Ensemble Learning)**：結合多棵決策樹的預測
-- **Bagging 策略**：每棵樹使用不同的隨機子集訓練
-- **特徵隨機性**：每次分割只考慮隨機選取的特徵子集
-- **投票機制**：最終預測由多數決定
-
-**數學原理**：
-
-對於 $T$ 棵決策樹，最終預測為：
-
-$$
-\hat{y} = \text{mode}\{h_1(\mathbf{x}), h_2(\mathbf{x}), \ldots, h_T(\mathbf{x})\}
-$$
-
-機率輸出為各樹預測機率的平均。
-
-**主要參數**：
-- `n_estimators`: 樹的數量（預設 100）
-- `criterion`: 分割準則 ('gini', 'entropy')
-- `max_depth`: 每棵樹的最大深度
-- `min_samples_split`: 分割節點所需的最小樣本數
-- `min_samples_leaf`: 葉節點所需的最小樣本數
-- `max_features`: 每次分割考慮的最大特徵數
-- `bootstrap`: 是否使用 bootstrap 抽樣
-- `class_weight`: 類別權重
-- `n_jobs`: 並行計算的工作數
-
-**適用場景**：
-- 需要高準確度
-- 防止過擬合
-- 特徵重要性分析
-- 處理高維度資料
-- 對異常值和雜訊有較強抵抗力
-
-### 2.5 梯度提升分類 (Gradient Boosting Classifier)
+### 2.4 梯度提升分類 (Gradient Boosting Classifier)
 
 **模型**：`sklearn.ensemble.GradientBoostingClassifier`
 
@@ -283,7 +245,7 @@ $$
 - 容易過擬合（需謹慎調參）
 - 對異常值較敏感
 
-### 2.6 貝氏分類器 (Gaussian Naive Bayes)
+### 2.5 貝氏分類器 (Gaussian Naive Bayes)
 
 **模型**：`sklearn.naive_bayes.GaussianNB`
 
@@ -332,14 +294,13 @@ $$
 - 特徵獨立假設在實務中常不成立
 - 特徵分佈假設可能不符實際
 
-### 2.7 模型比較總結
+### 2.6 模型比較總結
 
 | 模型 | 線性/非線性 | 可解釋性 | 訓練速度 | 預測速度 | 適合資料量 | 特徵要求 |
 |------|-------------|----------|----------|----------|------------|----------|
 | Logistic Regression | 線性 | 高 | 快 | 快 | 中到大 | 需標準化 |
 | SVC | 非線性 | 低 | 慢 | 中 | 小到中 | 需標準化 |
 | Decision Tree | 非線性 | 高 | 快 | 快 | 中 | 無要求 |
-| Random Forest | 非線性 | 中 | 中 | 中 | 中到大 | 無要求 |
 | Gradient Boosting | 非線性 | 中 | 慢 | 中 | 中到大 | 無要求 |
 | Naive Bayes | 線性 | 高 | 極快 | 極快 | 小到中 | 假設獨立 |
 
@@ -458,11 +419,11 @@ y_pred_adjusted = (y_proba >= threshold).astype(int)
 ```python
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
-    ('classifier', RandomForestClassifier(n_estimators=100, random_state=42))
+    ('classifier', GradientBoostingClassifier(n_estimators=100, random_state=42))
 ])
 
 pipeline.fit(X_train, y_train)
@@ -664,17 +625,17 @@ scores = cross_val_score(model, X, y, cv=skf, scoring='f1')
 
 ```python
 from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 
 param_grid = {
     'n_estimators': [50, 100, 200],
-    'max_depth': [5, 10, 15, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
+    'learning_rate': [0.01, 0.1, 0.2],
+    'max_depth': [3, 5, 7],
+    'min_samples_split': [2, 5, 10]
 }
 
 grid_search = GridSearchCV(
-    RandomForestClassifier(random_state=42),
+    GradientBoostingClassifier(random_state=42),
     param_grid,
     cv=5,
     scoring='f1',
@@ -701,14 +662,14 @@ from scipy.stats import randint, uniform
 
 param_distributions = {
     'n_estimators': randint(50, 300),
-    'max_depth': [5, 10, 15, 20, None],
+    'learning_rate': uniform(0.01, 0.3),
+    'max_depth': randint(3, 10),
     'min_samples_split': randint(2, 20),
-    'min_samples_leaf': randint(1, 10),
-    'max_features': ['sqrt', 'log2', None]
+    'subsample': uniform(0.6, 0.4)
 }
 
 random_search = RandomizedSearchCV(
-    RandomForestClassifier(random_state=42),
+    GradientBoostingClassifier(random_state=42),
     param_distributions,
     n_iter=50,
     cv=5,
@@ -763,8 +724,8 @@ for metric, values in scores.items():
 根據製程參數（溫度、壓力、流量等）即時判斷設備運行狀態是否正常。
 
 **應用模型**：
-- **隨機森林分類器**：處理多個感測器資料，對雜訊有較強抵抗力
-- **梯度提升分類器**：可捕捉參數間複雜的非線性關係
+- **梯度提升分類器**：可捕捉參數間複雜的非線性關係，處理多個感測器資料
+- **決策樹分類器**：提供可解釋的決策規則
 
 **特徵範例**：
 - 操作溫度、壓力、流量
@@ -787,7 +748,7 @@ for metric, values in scores.items():
 **應用模型**：
 - **邏輯迴歸**：簡單問題，需要可解釋性
 - **支持向量分類**：處理中等規模、高維度數據
-- **決策樹/隨機森林**：可視化決策規則，便於製程優化
+- **決策樹**：可視化決策規則，便於製程優化
 
 **特徵範例**：
 - 原料性質
@@ -808,8 +769,8 @@ for metric, values in scores.items():
 預測在給定條件下，化學反應是否能成功進行或達到預期轉化率。
 
 **應用模型**：
-- **隨機森林**：處理複雜的非線性關係
-- **梯度提升**：追求最高預測準確度
+- **梯度提升**：追求最高預測準確度，處理複雜的非線性關係
+- **支持向量分類**：處理中等規模數據的非線性問題
 - **貝氏分類器**：資料量少時的快速建模
 
 **特徵範例**：
@@ -833,7 +794,7 @@ for metric, values in scores.items():
 
 **應用模型**：
 - **支持向量分類**：處理高維特徵（如頻譜分析結果）
-- **隨機森林**：多傳感器融合，特徵重要性分析
+- **梯度提升分類**：多傳感器融合，特徵重要性分析
 - **決策樹**：簡單故障樹診斷邏輯
 
 **特徵範例**：
@@ -857,7 +818,7 @@ for metric, values in scores.items():
 **應用模型**：
 - **邏輯迴歸**：可解釋性強，符合法規要求
 - **決策樹**：可視化風險決策路徑
-- **隨機森林**：綜合多因素的風險評估
+- **梯度提升分類**：綜合多因素的風險評估
 
 **特徵範例**：
 - 化學品性質（毒性、易燃性、反應性）
@@ -895,7 +856,7 @@ for metric, values in scores.items():
 3. 理解資料特性與問題複雜度
 
 **模型改進階段**：
-1. 嘗試集成學習模型（隨機森林、梯度提升）
+1. 嘗試集成學習模型（梯度提升）或核方法（支持向量機）
 2. 進行超參數調整
 3. 處理類別不平衡問題
 
@@ -1101,10 +1062,9 @@ risk_score = model.predict_proba(X)[:, 1]
 1. **Unit12_Logistic_Regression**：邏輯迴歸的詳細理論與實作
 2. **Unit12_Support_Vector_Classification**：SVC 的核函數與應用
 3. **Unit12_Decision_Tree_Classifier**：決策樹分類的原理與可視化
-4. **Unit12_Random_Forest_Classifier**：隨機森林的集成學習策略
-5. **Unit12_Gradient_Boosting_Classifier**：梯度提升的進階技術
-6. **Unit12_Gaussian_Naive_Bayes**：貝氏分類器的機率推論
-7. **Unit12_Classification_Models_Homework**：綜合練習與模型比較
+4. **Unit12_Gradient_Boosting_Classifier**：梯度提升的進階技術
+5. **Unit12_Gaussian_Naive_Bayes**：貝氏分類器的機率推論
+6. **Unit12_Classification_Models_Homework**：綜合練習與模型比較
 
 每個子主題都包含詳細的數學推導、程式碼實作和化工領域的應用案例，請按順序學習以獲得最佳效果。
 

@@ -54,8 +54,6 @@ Unit11 非線性模型回歸 (Non-Linear Model Regression)
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練多項式回歸模型.
  - Unit11_Decision_Tree (.md講義, .ipynb程式演練):
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練決策樹模型.
- - Unit11_Random_Forest (.md講義, .ipynb程式演練):
-    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練隨機森林模型.
  - Unit11_Gradient_Boosting_Trees (.md講義, .ipynb程式演練):
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練梯度提升樹模型.
  - Unit11_Support_Vector_Machine (.md講義, .ipynb程式演練):
@@ -79,8 +77,6 @@ Unit12 分類模型 (Classification Models)
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練支持向量分類模型.
 - Unit12_Decision_Tree_Classifier (.md講義, .ipynb程式演練):
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練決策樹分類模型.
-- Unit12_Random_Forest_Classifier (.md講義, .ipynb程式演練):
-    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練隨機森林分類模型.
 - Unit12_Gradient_Boosting_Classifier (.md講義, .ipynb程式演練):
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練梯度提升分類模型.
 - Unit12_Gaussian_Naive_Bayes (.md講義, .ipynb程式演練):
@@ -116,8 +112,67 @@ Unit13 集成學習方法 (Ensemble Learning Methods)
  - Unit13_Ensemble_Learning_Homework.ipynb (作業):
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立本單元學習的所有集成學習模型, 進行模型訓練, 所有模型的綜合評估比較.
 
-#### **Unit14 (重構進行中)**
-Unit14
+#### **Unit14 (已完成)**
+Unit14 選讀單元 - 模型評估與選擇 (Model Evaluation and Selection)
+ - Unit14_Model_Evaluation_Overview.md (教學講義):
+    - 模型評估與選擇的重要性, 為什麼需要系統性的模型選擇方法, 化工領域中模型選擇的實務考量.
+    - 回歸模型評估指標詳解: MAE, MSE, RMSE, R², MAPE, 以及各指標的適用場景與限制.
+    - 分類模型評估指標詳解: Accuracy, Precision, Recall, F1-Score, ROC-AUC, Confusion Matrix, 以及多分類評估指標.
+    - 交叉驗證進階技巧: K-Fold CV, Stratified K-Fold CV, Time Series CV, Leave-One-Out CV, Nested CV.
+    - Bias-Variance Trade-off 偏差-方差權衡理論, 過擬合與欠擬合的診斷方法.
+    - 學習曲線 (Learning Curves) 與驗證曲線 (Validation Curves) 的繪製與解讀.
+    - 模型比較的統計檢定方法: paired t-test, Wilcoxon signed-rank test.
+    - 多目標模型選擇: 平衡準確度、計算成本、可解釋性、穩健性.
+ - Unit14_Hyperparameter_Tuning.md (教學講義):
+    - 超參數調整的重要性與策略, 超參數 vs 模型參數的差異.
+    - Grid Search (網格搜索) 詳解: 原理、實作、優缺點.
+    - Random Search (隨機搜索) 詳解: 原理、實作、優缺點.
+    - Bayesian Optimization (貝氏最佳化) 詳解: 原理、實作、套件介紹 (Optuna, Hyperopt).
+    - Halving Grid Search 與 Halving Random Search 加速技巧.
+    - 如何設定合理的超參數搜索空間, 避免計算資源浪費.
+    - 超參數調整的化工應用案例與最佳實踐.
+ - Unit14_Model_Comparison.ipynb (程式演練):
+    - 完整的模型比較流程演練, 使用化工領域模擬數據.
+    - 同時訓練 Unit10-13 學習的多種模型 (Linear, Ridge, Lasso, Decision Tree, Random Forest, XGBoost, SVM 等).
+    - 使用多種評估指標進行綜合比較, 繪製模型性能比較圖表.
+    - 學習曲線與驗證曲線繪製, 診斷過擬合/欠擬合問題.
+    - 交叉驗證結果的統計分析與視覺化.
+    - 模型選擇決策流程: 根據評估結果選出最佳模型.
+ - Unit14_Hyperparameter_Tuning_GridSearch.ipynb (程式演練):
+    - Grid Search 完整實作範例, 使用 sklearn 的 GridSearchCV.
+    - 針對單一模型 (如 Random Forest) 進行超參數網格搜索.
+    - 搜索結果視覺化: 熱力圖顯示不同超參數組合的性能.
+    - 最佳超參數的提取與模型重新訓練.
+    - 化工案例: 反應器產率預測模型的超參數調整.
+ - Unit14_Hyperparameter_Tuning_Bayesian.ipynb (程式演練):
+    - Bayesian Optimization 實作範例, 使用 Optuna 套件.
+    - Optuna 套件安裝與基本使用教學.
+    - 定義目標函數 (objective function) 與搜索空間.
+    - 視覺化最佳化過程: 參數重要性、最佳化歷程、超參數關係圖.
+    - 與 Grid Search 效率比較.
+    - 化工案例: 蒸餾塔操作參數最佳化.
+ - Unit14_Model_Selection_Pipeline.ipynb (程式演練):
+    - 建立完整的模型選擇 Pipeline, 從資料預處理到最終模型部署.
+    - 使用 sklearn 的 Pipeline 與 ColumnTransformer 整合前處理與建模.
+    - 多模型自動化訓練與評估框架.
+    - 模型持久化: 儲存最佳模型與載入應用.
+    - 化工綜合案例: 程序品質預測系統的完整建模流程.
+ - Unit14_Model_Interpretability_Basics.ipynb (程式演練):
+    - 模型可解釋性基礎介紹, 為什麼化工領域需要可解釋的模型.
+    - 特徵重要性分析: 基於樹模型的 feature_importances_.
+    - Permutation Importance 排列重要性分析.
+    - 部分依賴圖 (Partial Dependence Plot, PDP) 繪製與解讀.
+    - 化工案例: 解釋反應產率預測模型中各操作變數的影響.
+ - Unit14_Homework.ipynb (作業):
+    - 學生綜合練習題, 提供完整的化工數據集 (如催化劑性能數據).
+    - 任務1: 訓練至少5種不同類型的模型, 進行綜合評估比較.
+    - 任務2: 選擇2個模型進行超參數調整 (一個用 Grid Search, 一個用 Bayesian Optimization).
+    - 任務3: 繪製學習曲線與驗證曲線, 診斷模型問題.
+    - 任務4: 產出模型選擇報告, 說明最終選擇的模型及理由.
+    - 任務5: 對最佳模型進行特徵重要性分析與解釋.
+ - Model Evaluation 工業應用案例 (待補):
+    - Unit14_Example_
+    - Unit14_Example_
 
 
 ### **Part 4: 深度學習 Deep Learning (已完成)**

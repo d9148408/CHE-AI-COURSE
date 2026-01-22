@@ -1,0 +1,22 @@
+{
+    "feature_names": [
+        "Temperature",
+        "Pressure",
+        "Flow_Rate",
+        "Concentration",
+        "Residence_Time",
+        "Catalyst_Type",
+        "Operation_Mode"
+    ],
+    "numerical_features": [
+        "Temperature",
+        "Pressure",
+        "Flow_Rate",
+        "Concentration",
+        "Residence_Time"
+    ],
+    "categorical_features": [
+        "Catalyst_Type",
+        "Operation_Mode"
+    ]
+}
