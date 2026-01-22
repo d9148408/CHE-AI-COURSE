@@ -8,20 +8,142 @@
 ### 任務描述:
 進行課程內容的重構整理
 
-### 課程大綱:
-專為化學工程學系的學生,開設有關"AI在化工上應用"的課程, 共分為五大部分:
+### 課程介紹:
+專為化學工程學系的學生, 所設計的 **「AI在化工上應用」** 課程.
+
 - Part 0: Google Colab環境教學
 - Part 1：Python 基礎 + EDA (numpy, pandas, matplotlib, seaborn, statsmodels)
-- Part 2：非監督式學習(sklearn模組)
-- Part 3：監督式學習(sklearn模組)
-- Part 4：深度學習(TensorFlow/Keras模組)
-- Part 5：強化式學習
+- Part 2：非監督式學習
+- Part 3：監督式學習
+- Part 4：深度學習
+- Part 5：進階課程 - 強化式學習
+- Part 6：進階課程 - 生成式AI
+- Part 7：進階課程 - 大型語言模型
 
-### 課程內容大綱
+大學授課範圍以Part 0 ~ Part 4為主, 共計17個單元. 課程內容涵蓋Python程式語言基礎複習(數據資料前處理與可視化模組)、非監督式學習、監督式學習與深度學習等主題, 並結合化工領域的實際應用案例進行教學. 課程目標在於培養學生具備AI技術在化工領域中的應用能力, 以提升其未來在職場上的競爭力.
+
+進階課程適合有興趣深入了解AI技術的研究所學生, 包含強化式學習、生成式AI與大型語言模型等前沿主題, 以拓展學生的知識視野與技能.
+
+### 課程大綱
 ### **Part 0(尚未開始)**
-### **Part 1(尚未開始)**
-### **Part 2: 非監督式學習 Unsupervised Learning (尚未開始)**
-### **Part 3: 監督式學習 Supervised Learning (重構進行中)**
+### **Part 1: Python 基礎 + EDA (尚未開始)**
+
+---
+### **Part 2: 非監督式學習 Unsupervised Learning (重構進行中)**
+#### **Unit05 (已完成)**
+Unit05 分群 (Clustering)
+ - Unit05_Clustering_Overview.md (教學講義):
+    - 分群詳細背景理論, 分群適合應用場景, 分群化工領域應用案例.
+    - 簡介sklearn模組包含哪些分群方法, 包含K-平均演算法(K-Means), 階層式分群(Hierarchical Clustering), 基於密度的分群(DBSCAN), 高斯混合模型(Gaussian Mixture Models, GMM)等模型.
+    - 各方法優缺點對照表, 演算法選擇決策樹, 化工應用場景對照:
+      - K-Means: 反應器多模式操作識別 (已知模式數)
+      - Hierarchical: 產品分類體系建立 (需要階層關係)
+      - DBSCAN: 異常操作模式探索 (未知模式數，有噪音)
+      - GMM: 多產品品質分布建模 (需要機率評估)
+    - 如何使用sklearn模組中的各種函數進行資料前處理, 包含資料標準化(Standardization), 資料正規化(Normalization), 類別變數編碼(One-Hot Encoding)等.
+    - 如何使用sklearn模組中的各種函數指標進行模型評估, 包含
+      - 內部評估指標 (無需標籤): Silhouette Score (輪廓係數), Davies-Bouldin Index (DB指數), Calinski-Harabasz Score (CH指數), Inertia / Within-Cluster Sum of Squares (WCSS).
+      - 外部評估指標 (需要真實標籤，用於驗證):  Adjusted Rand Index (ARI), Normalized Mutual Information (NMI), Fowlkes-Mallows Index (FMI).
+      - 穩定性評估: Bootstrap Resampling 穩定性測試, 不同初始化的一致性檢驗.
+      - 化工特定考量: 群集的工程可解釋性, 操作模式切換的合理性, 與製程知識的一致性
+ - Unit05_K_Means (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練K-平均演算法模型.
+ - Unit05_Hierarchical_Clustering (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練階層式分群模型.
+ - Unit05_DBSCAN (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練DBSCAN模型.
+ - Unit05_Gaussian_Mixture_Models (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練高斯混合模型.
+ - Unit05_Clustering_Homework.ipynb (作業):
+    - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有分群模型, 進行模型訓練, 所有模型的綜合評估比較.
+
+#### **Unit06 (重構進行中)**
+Unit06 降維 (Dimensionality Reduction)
+ - Unit06_Dimensionality_Reduction_Overview.md (教學講義):
+    - 降維詳細背景理論, 降維適合應用場景, 降維化工領域應用案例.
+    - 簡介sklearn模組包含哪些降維方法, 包含主成分分析(Principal Component Analysis, PCA), 核主成分分析(Kernel PCA), t-SNE, UMAP等模型.
+    - 各方法優缺點對照表, 演算法選擇決策樹, 線性 vs 非線性降維方法比較表, 化工應用場景對照:
+      - PCA: 製程監控與故障診斷 (線性降維，解釋性強)
+      - Kernel PCA: 非線性製程特徵提取 (非線性關係)
+      - t-SNE: 高維製程數據視覺化 (局部結構保持)
+      - UMAP: 大規模製程數據降維與視覺化 (速度快，保持全局結構)
+    - 如何使用sklearn模組中的各種函數進行資料前處理, 包含資料標準化(Standardization), 資料正規化(Normalization), 類別變數編碼(One-Hot Encoding)等.
+    - 如何使用sklearn模組中的各種函數指標進行模型評估, 包含
+      - PCA 特定指標: 解釋變異數比例(Explained Variance Ratio), 累積解釋變異數(Cumulative Explained Variance), Reconstruction Error (重建誤差), Scree Plot (陡坡圖).
+      - 通用指標: Trustworthiness (信賴度), Continuity (連續性), Kullback-Leibler Divergence (KL散度).
+      - 視覺化品質評估: 降維後的2D/3D散點圖視覺化, 群集分離度(Cluster Separation), 局部結構保持(Local Structure Preservation), 與領域知識的一致性.
+      - 化工應用評估: 主成分的物理意義可解釋性, Loadings 的工程合理性, 是否保留製程動態特性.
+ - Unit06_PCA (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練PCA模型.
+ - Unit06_Kernel_PCA (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練Kernel PCA模型.
+ - Unit06_tSNE (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練t-SNE模型.
+ - Unit06_UMAP (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練UMAP模型.
+ - Unit06_Dimensionality_Reduction_Homework.ipynb (作業):
+    - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有降維模型, 進行模型訓練, 所有模型的綜合評估比較.
+
+#### **Unit07 (重構進行中)**
+Unit07 異常檢測 (Anomaly / Outlier Detection)
+ - Unit07_Anomaly_Detection_Overview.md (教學講義):
+    - 異常檢測詳細背景理論, 異常檢測適合應用場景, 異常檢測化工領域應用案例.
+    - 簡介sklearn模組包含哪些異常檢測方法, 包含孤立森林(Isolation Forest), 一類支持向量機(One-Class SVM), 區域性離群因子(Local Outlier Factor, LOF), 橢圓包絡(Elliptic Envelope) 等模型.
+    - 各方法優缺點對照表, 演算法選擇決策樹, 化工應用場景對照:
+      - Isolation Forest: 大規模數據異常檢測 (適合高維數據)
+      - One-Class SVM: 小樣本異常邊界建模 (適合精確邊界)
+      - LOF: 局部密度異常檢測 (適合非均勻分布)
+      - Elliptic Envelope: 高斯分布異常檢測 (適合正態數據)
+    - 如何使用sklearn模組中的各種函數進行資料前處理, 包含資料標準化(Standardization), 資料正規化(Normalization), 類別變數編碼(One-Hot Encoding)等.
+    - 如何使用sklearn模組中的各種函數進行模型評估, 包含:
+      - 有部分標籤時 (半監督場景): 精確率(Precision), 召回率(Recall), F1分數(F1-Score), ROC曲線下面積(Area Under the ROC Curve, AUC-ROC), 混淆矩陣(Confusion Matrix).
+      - 完全無標籤時 (純非監督): 視覺化檢驗 (Scatter plots with anomaly highlights), 專家領域知識驗證, 歷史事件回溯驗證, 統計量檢驗 (如 z-score > 3).
+      - 化工實務評估: 誤報成本 vs 漏報成本分析, 告警抑制策略 (連續 N 點), A/B Testing 上線前後比較, 與製程工程師的訪談驗證.
+ - Unit07_Isolation_Forest (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練孤立森林模型.
+ - Unit07_OneClass_SVM (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練一類支持向量機模型.
+ - Unit07_LOF (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練區域性離群因子模型.
+ - Unit07_Elliptic_Envelope (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練橢圓包絡模型.
+ - Unit07_Anomaly_Detection_Homework.ipynb (作業):
+    - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有異常檢測模型, 進行模型訓練, 所有模型的綜合評估比較.
+
+#### **Unit08 (重構進行中)**
+Unit08 關聯規則學習 (Association Rule Learning)
+ - Unit08_Association_Rule_Learning_Overview.md (教學講義):
+    - 關聯規則學習詳細背景理論, 關聯規則學習適合應用場景, 關聯規則學習化工領域應用案例.
+    - 簡介關聯規則學習的基本概念, 包含支持度(Support), 置信度(Confidence), 提升度(Lift)等指標.
+    - 簡介Apriori演算法與FP-Growth演算法.
+    - 各方法優缺點對照表, 演算法選擇決策樹, 化工應用場景對照:
+      - Apriori: 小規模配方數據挖掘 (易於理解與實現)
+      - FP-Growth: 大規模製程數據挖掘 (高效能，適合大數據)
+    - 規則視覺化方法: 規則網絡圖 (Network Graph), Support-Confidence 散佈圖, 平行坐標圖 (Parallel Coordinates).
+    - 規則過濾與排序: 如何設定合理的 min_support 與 min_confidence, 進階評估指標 (Conviction, Leverage, Zhang's Metric), 統計顯著性檢驗 (避免小樣本過擬合).
+    - 化工應用決策流程: 從規則到配方建議的轉化, 多規則衝突時的處理策略, 與實驗設計(DOE)的整合方法.
+    - 常見陷阱警示: Simpson's Paradox (辛普森悖論), 相關性 ≠ 因果性, 稀有項目的規則不可靠.
+ - Unit08_Apriori_Algorithm (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練Apriori演算法模型.
+ - Unit08_FP_Growth_Algorithm (.md講義, .ipynb程式演練):
+    - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練FP-Growth演算法模型.
+ - Unit08_Association_Rule_Learning_Homework.ipynb (作業):
+    - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有關聯規則學習模型, 進行模型訓練, 所有模型的綜合評估比較.
+
+#### **Unit09 (重構進行中)**
+Unit09 綜合案例研究 (Integrated Case Study)
+ - Unit09_Integrated_Case_Study_Overview.md (教學講義):
+    - 綜合案例研究介紹, 化工領域中常見的非監督式學習應用場景, 以田納西-伊士曼製程(Tennessee Eastman Process, TEP)數據分析工作流程為例, 詳細說明如何結合分群(Clustering), 降維(Dimensionality Reduction), 異常檢測(Anomaly Detection)等方法, 進行完整的資料分析工作流.
+ - Unit09_Integrated_Case_Study_Overview.ipynb (程式演練):
+    - 以田納西-伊士曼製程(Tennessee Eastman Process, TEP)數據做為案例, 完整流程的程式碼演練範例, 包含資料前處理, 分群模型建立與訓練, 降維模型建立與訓練, 異常檢測模型建立與訓練等流程. 配合講義內容, 讓學生可學會如何結合多種非監督式學習方法進行資料分析.
+ - Unit09_Solvent_Screening_Case_Study.ipynb (程式演練):
+    - 溶劑篩選案例: Clustering + PCA + Association Rules
+    - 從 100 種候選溶劑篩選至 5 種最佳候選溶劑, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理, 分群模型建立與訓練, 降維模型建立與訓練, 關聯規則學習模型建立與訓練等流程. 配合講義內容, 讓學生可學會如何結合多種非監督式學習方法進行資料分析.
+ - Unit09_Integrated_Case_Study_Homework.ipynb (作業):
+    - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 結合本單元學習的所有非監督式學習方法, 進行完整的資料分析工作流.
+
+---
+### **Part 3: 監督式學習 Supervised Learning (已完成)**
 #### **Unit10 (已完成)**
 Unit10 線性模型回歸 (Linear Model Regression)
  - Unit10_Linear_Models_Overview.md (教學講義):
@@ -113,7 +235,7 @@ Unit13 集成學習方法 (Ensemble Learning Methods)
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立本單元學習的所有集成學習模型, 進行模型訓練, 所有模型的綜合評估比較.
 
 #### **Unit14 (已完成)**
-Unit14 選讀單元 - 模型評估與選擇 (Model Evaluation and Selection)
+Unit14 模型評估與選擇 (Model Evaluation and Selection)
  - Unit14_Model_Evaluation_Overview.md (教學講義):
     - 模型評估與選擇的重要性, 為什麼需要系統性的模型選擇方法, 化工領域中模型選擇的實務考量.
     - 回歸模型評估指標詳解: MAE, MSE, RMSE, R², MAPE, 以及各指標的適用場景與限制.
@@ -174,7 +296,7 @@ Unit14 選讀單元 - 模型評估與選擇 (Model Evaluation and Selection)
     - Unit14_Example_
     - Unit14_Example_
 
-
+---
 ### **Part 4: 深度學習 Deep Learning (已完成)**
 #### **Unit15 (已完成)**
 Unit15 DNN(MLP)
@@ -247,3 +369,12 @@ Unit17 RNN
     - Unit17_Example_Boiler (.md講義檔, .ipynb程式演練), 鍋爐溫度預測
     - Unit17_Example_debutanized_column (.md講義檔, .ipynb程式演練), 去丁烷塔操作預測
     - Unit17_Example_NASA_Turbofan (.md講義檔, .ipynb程式演練), NASA渦扇引擎剩餘壽命預測
+
+---
+### **Part 5: 進階課程 - 強化學習 Reinforcement Learning (待完成)**
+
+---
+### **Part 6: 進階課程 - 生成式AI Generative AI (待完成)**
+
+---
+### **Part 7: 進階課程 - 大型語言模型 LLM (待完成)**

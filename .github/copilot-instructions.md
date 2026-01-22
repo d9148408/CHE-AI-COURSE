@@ -1,7 +1,7 @@
 # GitHub Copilot Project Instructions
 
 ## Rules for This Project
-- 嚴格遵守: 注意LLM模型文字生成長度限制(Output:15K), 開始編寫全新.md或.ipynb文件時, 請先建立空白文件, 逐段生成謝入並同時自檢, 逐段完成後再整體檢視
+- 嚴格遵守: 注意LLM模型文字生成長度限制(Output:15K), 開始編寫全新.md或.ipynb文件時, 請先建立空白文件, 再逐段生成內容寫入, 並同時完成生成內容上下文檢查, 最後再整體檢視確認有無任何錯誤.
 - 編輯ipynb檔案時, 詳閱並遵守: .github/copilot-instructions-ipynb.md 檔案中的規範
 
 ## 0. Default Python Interpreter
