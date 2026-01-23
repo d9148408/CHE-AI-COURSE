@@ -57,7 +57,7 @@ Unit05 分群 (Clustering)
  - Unit05_Clustering_Homework.ipynb (作業):
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有分群模型, 進行模型訓練, 所有模型的綜合評估比較.
 
-#### **Unit06 (重構進行中)**
+#### **Unit06 (已完成)**
 Unit06 降維 (Dimensionality Reduction)
  - Unit06_Dimensionality_Reduction_Overview.md (教學講義):
     - 降維詳細背景理論, 降維適合應用場景, 降維化工領域應用案例.
@@ -74,6 +74,7 @@ Unit06 降維 (Dimensionality Reduction)
       - 視覺化品質評估: 降維後的2D/3D散點圖視覺化, 群集分離度(Cluster Separation), 局部結構保持(Local Structure Preservation), 與領域知識的一致性.
       - 化工應用評估: 主成分的物理意義可解釋性, Loadings 的工程合理性, 是否保留製程動態特性.
  - Unit06_PCA (.md講義, .ipynb程式演練):
+    - 此為重點教學單元!
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練PCA模型.
  - Unit06_Kernel_PCA (.md講義, .ipynb程式演練):
     - 模型介紹, 詳細背景理論, 數學公式說明, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理(設計使用模擬數據), 模型建立, 模型訓練, 模型評估, 模型預測等流程. 配合講義內容, 讓學生可學會如何建立與訓練Kernel PCA模型.
