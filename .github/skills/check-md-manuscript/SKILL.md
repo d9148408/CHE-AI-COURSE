@@ -1,6 +1,6 @@
 ---
 name: check-md-manuscript
-description: 檢查講義md檔案內容的完整性與正確性
+description: 檢查教學講義 Markdown (.md)文件檔案內容的完整性與正確性
 ---
 
 # 執行動作

@@ -12,7 +12,7 @@
 專為化學工程學系的學生, 所設計的 **「AI在化工上應用」** 課程.
 
 - Part 0: Google Colab環境教學
-- Part 1：Python 基礎 + EDA (numpy, pandas, matplotlib, seaborn, statsmodels)
+- Part 1：AI與機器學習概論
 - Part 2：非監督式學習
 - Part 3：監督式學習
 - Part 4：深度學習
@@ -26,7 +26,73 @@
 
 ### 課程大綱
 ### **Part 0(尚未開始)**
-### **Part 1: Python 基礎 + EDA (尚未開始)**
+#### Unit00
+Unit00 Python學習環境設定教學
+ - Unit00_Colab_Environment_Setup.md (教學講義):
+    - 介紹Google Colab平台的基本功能與操作介面.
+    - 如何建立與管理Colab筆記本(Notebooks).
+    - 如何上傳與下載資料檔案至Colab環境.
+    - 如何安裝與使用Python套件與模組.
+    - 如何使用GPU加速運算資源.
+    - 實作範例: 基本的Python程式碼執行與資料分析流程.
+ - Unit00_Colab_Environment_Setup.ipynb (程式演練):
+    - 實際操作Google Colab平台, 包含建立筆記本, 上傳下載資料, 安裝套件等步驟.
+    - 執行基本的Python程式碼範例, 進行簡單的資料分析與視覺化.
+ - Unit00_Local_Environment_Setup.md (教學講義):
+    - 介紹如何在本地電腦上建立Python開發環境.
+    - 安裝Anaconda或Miniconda進行環境管理.
+    - 使用Jupyter Notebook或JupyterLab進行程式碼撰寫與執行.
+    - 安裝必要的Python套件與模組.
+    - 實作範例: 基本的Python程式碼執行與資料分析流程.
+ - Unit00_Local_Environment_Setup.ipynb (程式演練):
+    - 實際操作本地Python開發環境, 包含建立虛擬環境, 安裝套件等步驟.
+    - 執行基本的Python程式碼範例, 進行簡單的資料分析與視覺化.
+
+### **Part 1: AI & ML Indroduction** (重構進行中)**
+#### Unit01 (重構進行中)**
+Unit01 AI與機器學習概論
+ - Unit01_AI_ML_Overview.md (教學講義):
+    - 課程地圖與學習目標說明.
+    - 介紹人工智慧(AI)與機器學習(ML)的基本概念與歷史發展.
+    - 探討AI與ML在各行各業中的應用案例, 特別是化工領域的實際應用.
+    - 機器學習的主要類型: 監督式學習(Supervised Learning), 非監督式學習(Unsupervised Learning), 深度學習(Deep Learning), 強化式學習(Reinforcement Learning).
+    - 詳細介紹機器學習的完整工作流程, 包含資料收集, 資料前處理, 特徵工程, 模型選擇, 模型訓練, 模型評估, 模型調整與優化, 模型部署等步驟.
+    - 探討每個步驟中常見的挑戰與解決方案, 特別是針對化工領域的應用場景.
+    - 強調資料品質與特徵選擇對模型效能的重要性.
+    - 提供實際案例分析, 展示如何應用機器學習工作流程解決化工領域的問題.
+
+### **Unit02 (重構進行中)**
+Unit03 Python程式語言基礎
+ - Unit03_Python_Basics.md (教學講義):
+    - 介紹Python程式語言的基本語法與結構, 包含變數與資料型態, 控制流程(條件語句與迴圈), 函式與模組, 例外處理等.
+    - 探討Python在資料科學與機器學習中的應用優勢.
+    - 提供實際範例程式碼, 幫助學生熟悉Python的基本操作與常用功能.
+ - Unit03_Python_Basics.ipynb (程式演練):
+    - 實際操作Python程式碼, 包含基本語法練習, 控制流程範例, 函式與模組使用等.
+    - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+
+
+#### Unit03 (重構進行中)**
+Unit03 Python模組 Numpy 與 Pandas
+ - Unit03_Numpy_Pandas_Overview.md (教學講義):
+    - 介紹Numpy與Pandas模組的基本概念與功能.
+    - 探討Numpy在數值計算與矩陣運算中的應用, 包含陣列(Array)操作, 數學函式, 隨機數生成等.
+    - 探討Pandas在資料處理與分析中的應用, 包含資料結構(DataFrame與Series), 資料清理, 資料篩選與排序, 資料合併與分組等.
+    - 提供實際範例程式碼, 幫助學生熟悉Numpy與Pandas的基本操作與常用功能.
+ - Unit03_Numpy_Pandas.ipynb (程式演練):
+    - 實際操作Numpy與Pandas程式碼, 包含陣列操作練習, 資料清理範例, 資料分析練習等.
+    - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+
+#### Unit04 (重構進行中)**
+Unit04 Python模組 Matplotlib 與 Seaborn
+ - Unit04_Matplotlib_Seaborn_Overview.md (教學講義):
+    - 介紹Matplotlib與Seaborn模組的基本概念與功能.
+    - 探討Matplotlib在資料視覺化中的應用, 包含基本圖表(折線圖, 長條圖, 散佈圖等), 圖表自訂(標題, 標籤, 圖例等), 多圖表佈局等.
+    - 探討Seaborn在統計資料視覺化中的應用, 包含分佈圖, 類別圖, 熱力圖等.
+    - 提供實際範例程式碼, 幫助學生熟悉Matplotlib與Seaborn的基本操作與常用功能.
+ - Unit04_Matplotlib_Seaborn.ipynb (程式演練):
+    - 實際操作Matplotlib與Seaborn程式碼, 包含基本圖表繪製練習, 統計圖表範例等.
+    - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
 
 ---
 ### **Part 2: 非監督式學習 Unsupervised Learning (重構進行中)**
@@ -85,7 +151,7 @@ Unit06 降維 (Dimensionality Reduction)
  - Unit06_Dimensionality_Reduction_Homework.ipynb (作業):
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有降維模型, 進行模型訓練, 所有模型的綜合評估比較.
 
-#### **Unit07 (重構進行中)**
+#### **Unit07 (已完成)**
 Unit07 異常檢測 (Anomaly / Outlier Detection)
  - Unit07_Anomaly_Detection_Overview.md (教學講義):
     - 異常檢測詳細背景理論, 異常檢測適合應用場景, 異常檢測化工領域應用案例.

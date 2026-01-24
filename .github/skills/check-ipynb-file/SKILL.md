@@ -1,6 +1,6 @@
 ---
 name: check-ipynb-file
-description: 檢查演練程式碼ipynb檔案內容的完整性與正確性
+description: 檢查範例演練程式碼 Jupyter notebook (.ipynb)檔案內容的完整性與正確性
 ---
 
 # 執行動作
