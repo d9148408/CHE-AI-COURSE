@@ -6,7 +6,6 @@
 !Part_0/
 !Part_1/
 !Part_2/
-!Part_2/Unit09/data/TEP_data/
 !Part_3/
 !Part_4/
 # !Part_5/
@@ -22,7 +21,7 @@ Part_2/Unit05/data/
 Part_2/Unit06/data/
 Part_2/Unit07/data/
 Part_2/Unit08/data/
-Part_2/Unit09/data/
+#Part_2/Unit09/data/
 Part_3/Unit10/data/
 Part_3/Unit11/data/
 Part_3/Unit12/data/
@@ -37,3 +36,4 @@ Part_4/outputs/P4_Unit15_Example_Mining/models/example_rf_model.joblib
 
 # Also track .gitignore itself
 !.gitignore
+!README.md
