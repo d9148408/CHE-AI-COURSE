@@ -184,8 +184,8 @@ Unit08 關聯規則學習 (Association Rule Learning)
     - 簡介關聯規則學習的基本概念, 包含支持度(Support), 置信度(Confidence), 提升度(Lift)等指標.
     - 簡介Apriori演算法與FP-Growth演算法.
     - 各方法優缺點對照表, 演算法選擇決策樹, 化工應用場景對照:
-      - Apriori: 小規模配方數據挖掘 (易於理解與實現)
-      - FP-Growth: 大規模製程數據挖掘 (高效能，適合大數據)
+      - 簡介Apriori: 小規模配方數據挖掘 (易於理解與實現)
+      - 簡介FP-Growth: 大規模製程數據挖掘 (高效能，適合大數據)
     - 規則視覺化方法: 規則網絡圖 (Network Graph), Support-Confidence 散佈圖, 平行坐標圖 (Parallel Coordinates).
     - 規則過濾與排序: 如何設定合理的 min_support 與 min_confidence, 進階評估指標 (Conviction, Leverage, Zhang's Metric), 統計顯著性檢驗 (避免小樣本過擬合).
     - 化工應用決策流程: 從規則到配方建議的轉化, 多規則衝突時的處理策略, 與實驗設計(DOE)的整合方法.
@@ -203,7 +203,7 @@ Unit09 綜合案例研究 (Integrated Case Study)
     - 綜合案例研究介紹, 化工領域中常見的非監督式學習應用場景, 以田納西-伊士曼製程(Tennessee Eastman Process, TEP)數據分析工作流程為例, 詳細說明如何結合分群(Clustering), 降維(Dimensionality Reduction), 異常檢測(Anomaly Detection)等方法, 進行完整的資料分析工作流.
  - Unit09_Integrated_Case_Study_Overview.ipynb (程式演練):
     - 以田納西-伊士曼製程(Tennessee Eastman Process, TEP)數據做為案例, 完整流程的程式碼演練範例, 包含資料前處理, 分群模型建立與訓練, 降維模型建立與訓練, 異常檢測模型建立與訓練等流程. 配合講義內容, 讓學生可學會如何結合多種非監督式學習方法進行資料分析.
- - Unit09_Solvent_Screening_Case_Study.ipynb (程式演練):
+ - Unit09_Solvent_Screening_Case_Study.ipynb (.md講義, .ipynb程式演練):
     - 溶劑篩選案例: Clustering + PCA + Association Rules
     - 從 100 種候選溶劑篩選至 5 種最佳候選溶劑, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理, 分群模型建立與訓練, 降維模型建立與訓練, 關聯規則學習模型建立與訓練等流程. 配合講義內容, 讓學生可學會如何結合多種非監督式學習方法進行資料分析.
  - Unit09_Integrated_Case_Study_Homework.ipynb (作業):

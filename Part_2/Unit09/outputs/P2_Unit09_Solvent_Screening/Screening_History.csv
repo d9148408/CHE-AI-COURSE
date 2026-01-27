@@ -1,0 +1,5 @@
+Stage,Count
+Stage 0 - Initial,100
+Stage 1 - After Clustering,50
+Stage 2 - After PCA,34
+Stage 3 - Top 5,5
