@@ -1,0 +1,34 @@
+name: PY310
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - cudatoolkit=11.2
+  - cudnn=8.1
+  - numpy=1.23.5
+  - pandas
+  - scipy
+  - scikit-learn
+  - umap-learn
+  - imbalanced-learn
+  - mlxtend
+  - networkx
+  - py-xgboost-gpu=1.7.6
+  - lightgbm
+  - catboost
+  - matplotlib
+  - seaborn
+  - python-kaleido
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - ipywidgets
+  - pydot
+  - pip
+  - pip:
+      - tensorflow==2.10.1
+      - tensorboard==2.10.1
+      - protobuf==3.19.6
+      - tensorflow-datasets==4.6.0
+      - tensorflow-metadata==1.13.0
+      - googleapis-common-protos==1.56.4

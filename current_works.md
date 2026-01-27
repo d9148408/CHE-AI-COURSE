@@ -25,7 +25,7 @@
 進階課程適合有興趣深入了解AI技術的研究所學生, 包含強化式學習、生成式AI與大型語言模型等前沿主題, 以拓展學生的知識視野與技能.
 
 ### 課程大綱
-### **Part 0(尚未開始)**
+### **Part 0(重構進行中)**
 #### Unit00
 Unit00 Python學習環境設定教學
  - Unit00_Colab_Environment_Setup.md (教學講義):
@@ -39,16 +39,15 @@ Unit00 Python學習環境設定教學
     - 實際操作Google Colab平台, 包含建立筆記本, 上傳下載資料, 安裝套件等步驟.
     - 執行基本的Python程式碼範例, 進行簡單的資料分析與視覺化.
  - Unit00_Local_Environment_Setup.md (教學講義):
-    - 介紹如何在本地電腦上建立Python開發環境.
-    - 安裝Anaconda或Miniconda進行環境管理.
+    - 介紹如何在Windows本地電腦上建立Python開發環境.
+    - 安裝Miniconda進行環境管理, 使用PY310_environment.yml檔案建立虛擬環境與安裝套件.
     - 使用Jupyter Notebook或JupyterLab進行程式碼撰寫與執行.
-    - 安裝必要的Python套件與模組.
     - 實作範例: 基本的Python程式碼執行與資料分析流程.
  - Unit00_Local_Environment_Setup.ipynb (程式演練):
     - 實際操作本地Python開發環境, 包含建立虛擬環境, 安裝套件等步驟.
     - 執行基本的Python程式碼範例, 進行簡單的資料分析與視覺化.
 
-### **Part 1: AI & ML Indroduction** (重構進行中)**
+### **Part 1: AI & ML Indroduction** (已完成)**
 #### Unit01 (已完成)**
 Unit01 AI與機器學習概論
  - Unit01_AI_ML_Overview.md (教學講義):
