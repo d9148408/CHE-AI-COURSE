@@ -49,53 +49,74 @@ Unit00 Python學習環境設定教學
     - 執行基本的Python程式碼範例, 進行簡單的資料分析與視覺化.
 
 ### **Part 1: AI & ML Indroduction** (重構進行中)**
-#### Unit01 (重構進行中)**
+#### Unit01 (已完成)**
 Unit01 AI與機器學習概論
  - Unit01_AI_ML_Overview.md (教學講義):
-    - 課程地圖與學習目標說明.
+    - 詳細課程地圖與學習目標說明.
     - 介紹人工智慧(AI)與機器學習(ML)的基本概念與歷史發展.
-    - 探討AI與ML在各行各業中的應用案例, 特別是化工領域的實際應用.
-    - 機器學習的主要類型: 監督式學習(Supervised Learning), 非監督式學習(Unsupervised Learning), 深度學習(Deep Learning), 強化式學習(Reinforcement Learning).
-    - 詳細介紹機器學習的完整工作流程, 包含資料收集, 資料前處理, 特徵工程, 模型選擇, 模型訓練, 模型評估, 模型調整與優化, 模型部署等步驟.
-    - 探討每個步驟中常見的挑戰與解決方案, 特別是針對化工領域的應用場景.
+    - 簡介AI與ML在各行各業中的應用, 特別是化工領域的實際應用.
+    - 簡介機器學習的主要類型: Part_2:非監督式學習(Unsupervised Learning), Part_3:監督式學習(Supervised Learning), Part_4:深度學習(Deep Learning), Part 5: 進階課程 - 強化學習 Reinforcement Learning, Part 6:進階課程 - 生成式AI Generative AI, Part 7:進階課程 - 大型語言.
+    - 簡介介紹機器學習的完整工作流程, 包含資料收集, 資料前處理, 特徵工程, 模型選擇, 模型訓練, 模型評估, 模型調整與優化, 模型部署等步驟.
+    - 簡短說明每個步驟中常見的挑戰與解決方案, 簡介如何應用機器學習工作流程解決化工領域的問題.
     - 強調資料品質與特徵選擇對模型效能的重要性.
-    - 提供實際案例分析, 展示如何應用機器學習工作流程解決化工領域的問題.
+    - 說明整個課程會學習到的東西, 各part個單元簡介, 學習路徑圖.
 
-### **Unit02 (重構進行中)**
-Unit03 Python程式語言基礎
- - Unit03_Python_Basics.md (教學講義):
+
+### **Unit02 (已完成)**
+Unit02 Python程式語言基礎
+ - Unit02_Python_Basics.md (教學講義):
     - 介紹Python程式語言的基本語法與結構, 包含變數與資料型態, 控制流程(條件語句與迴圈), 函式與模組, 例外處理等.
     - 探討Python在資料科學與機器學習中的應用優勢.
     - 提供實際範例程式碼, 幫助學生熟悉Python的基本操作與常用功能.
- - Unit03_Python_Basics.ipynb (程式演練):
+ - Unit02_Python_Basics.ipynb (程式演練):
     - 實際操作Python程式碼, 包含基本語法練習, 控制流程範例, 函式與模組使用等.
     - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+ - Unit02_Python_Basics_Homework.ipynb (作業):
+    - 學生課堂練習題, 包含變數與資料型態練習, 控制流程練習, 函式與模組使用練習等.
 
 
-#### Unit03 (重構進行中)**
+#### Unit03 (已完成)**
 Unit03 Python模組 Numpy 與 Pandas
- - Unit03_Numpy_Pandas_Overview.md (教學講義):
-    - 介紹Numpy與Pandas模組的基本概念與功能.
-    - 探討Numpy在數值計算與矩陣運算中的應用, 包含陣列(Array)操作, 數學函式, 隨機數生成等.
-    - 探討Pandas在資料處理與分析中的應用, 包含資料結構(DataFrame與Series), 資料清理, 資料篩選與排序, 資料合併與分組等.
-    - 提供實際範例程式碼, 幫助學生熟悉Numpy與Pandas的基本操作與常用功能.
- - Unit03_Numpy_Pandas.ipynb (程式演練):
-    - 實際操作Numpy與Pandas程式碼, 包含陣列操作練習, 資料清理範例, 資料分析練習等.
-    - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+ - Unit03_Numpy.md (教學講義):
+      - 介紹Numpy模組的基本概念與功能.
+      - 探討Numpy在數值計算與矩陣運算中的應用, 包含陣列(Array)操作, 數學函式, 隨機數生成等.
+      - 提供實際範例程式碼, 幫助學生熟悉Numpy的基本操作與常用功能.
+ - Unit03_Numpy.ipynb (程式演練):
+      - 實際操作Numpy程式碼, 包含陣列操作範例, 數學函式應用, 隨機數生成等.
+      - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+ - Unit03_Pandas.md (教學講義):
+      - 介紹Pandas模組的基本概念與功能.
+      - 探討Pandas在資料處理與分析中的應用, 讀取資料, 包含資料結構(DataFrame與Series), 資料清理, 資料篩選與排序, 資料合併與分組等, 特別是時序資料的處理, 如何轉換時間格式, 如何與datetime和time模組整合使用等.
+      - 提供實際範例程式碼與化工領域應用案例, 幫助學生熟悉Pandas的基本操作與常用功能.
+ - Unit03_Pandas.ipynb (程式演練):
+      - 實際操作Pandas程式碼, 包含Series與DataFrame操作, 資料讀取與清理, 時間序列處理, 資料合併與分組等.
+      - 包含化工領域實際應用案例: 反應器批次數據分析, 製程監控數據清理, 多反應器性能比較等.
+      - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+ - Unit03_Numpy_Homework.ipynb (作業):
+      - 學生課堂練習題, 包含陣列操作練習, 數學函式應用練習, 隨機數生成練習等.
+ - Unit03_Pandas_Homework.ipynb (作業):
+      - 學生課堂練習題, 包含資料讀取練習, 資料清理範例, 資料篩選與排序練習, 資料合併與分組練習等.
 
-#### Unit04 (重構進行中)**
+
+
+#### Unit04 (已完成)**
 Unit04 Python模組 Matplotlib 與 Seaborn
- - Unit04_Matplotlib_Seaborn_Overview.md (教學講義):
-    - 介紹Matplotlib與Seaborn模組的基本概念與功能.
+ - Unit04_Matplotlib (.md講義, .ipynb程式演練):
+    - 介紹Matplotlib模組的基本概念與功能.
     - 探討Matplotlib在資料視覺化中的應用, 包含基本圖表(折線圖, 長條圖, 散佈圖等), 圖表自訂(標題, 標籤, 圖例等), 多圖表佈局等.
+    - 提供實際範例程式碼, 幫助學生熟悉Matplotlib的基本操作與常用功能.
+ - Unit04_Seaborn (.md講義, .ipynb程式演練):
+    - 介紹Seaborn模組的基本概念與功能.
     - 探討Seaborn在統計資料視覺化中的應用, 包含分佈圖, 類別圖, 熱力圖等.
-    - 提供實際範例程式碼, 幫助學生熟悉Matplotlib與Seaborn的基本操作與常用功能.
- - Unit04_Matplotlib_Seaborn.ipynb (程式演練):
-    - 實際操作Matplotlib與Seaborn程式碼, 包含基本圖表繪製練習, 統計圖表範例等.
-    - 透過互動式筆記本, 讓學生能夠即時執行與測試程式碼.
+    - 提供實際範例程式碼, 幫助學生熟悉Seaborn的基本操作與常用功能.
+ - Unit04_Matplotlib_Homework.ipynb (作業):
+    - 學生課堂練習題, 包含基本圖表繪製練習, 統計圖表範例等.
+ - Unit04_Seaborn_Homework.ipynb (作業):
+    - 學生課堂練習題, 包含分佈圖繪製練習, 類別圖範例, 熱力圖練習等.
+
 
 ---
-### **Part 2: 非監督式學習 Unsupervised Learning (重構進行中)**
+### **Part 2: 非監督式學習 Unsupervised Learning (已完成)**
 #### **Unit05 (已完成)**
 Unit05 分群 (Clustering)
  - Unit05_Clustering_Overview.md (教學講義):
