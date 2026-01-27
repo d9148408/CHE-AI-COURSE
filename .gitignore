@@ -1,28 +1,36 @@
 # Ignore everything by default
 /*
-!current_works.md
+# !current_works.md
 
 # But do not ignore these specific folders
 !Part_0/
 !Part_1/
 !Part_2/
+!Part_2/Unit09/data/TEP_data/
 !Part_3/
 !Part_4/
 # !Part_5/
-!.agent/
-!.github/
+# !.agent/
+# !.github/
 
 # Inside these folders, ignore any 'data' directory
-Part_0/data/
-Part_1/data/
-Part_2/data/
-Part_3/data/
-Part_4/old_files/
+Part_1/Unit01/data/
+Part_1/Unit02/data/
+Part_1/Unit03/data/
+Part_1/Unit04/data/
+Part_2/Unit05/data/
+Part_2/Unit06/data/
+Part_2/Unit07/data/
+Part_2/Unit08/data/
+Part_2/Unit09/data/
+Part_3/Unit10/data/
+Part_3/Unit11/data/
+Part_3/Unit12/data/
+Part_3/Unit13/data/
+Part_3/Unit14/data/
 Part_4/Unit15/data/
 Part_4/Unit16/data/
 Part_4/Unit17/data/
-Part_4/old_files/
-Part_5/data/
 
 # Ignore large model files
 Part_4/outputs/P4_Unit15_Example_Mining/models/example_rf_model.joblib
