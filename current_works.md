@@ -197,7 +197,7 @@ Unit08 關聯規則學習 (Association Rule Learning)
  - Unit08_Association_Rule_Learning_Homework.ipynb (作業):
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 建立所有本單元學習的所有關聯規則學習模型, 進行模型訓練, 所有模型的綜合評估比較.
 
-#### **Unit09 (重構進行中)**
+#### **Unit09 (已完成)**
 Unit09 綜合案例研究 (Integrated Case Study)
  - Unit09_Integrated_Case_Study_Overview.md (教學講義):
     - 綜合案例研究介紹, 化工領域中常見的非監督式學習應用場景, 以田納西-伊士曼製程(Tennessee Eastman Process, TEP)數據分析工作流程為例, 詳細說明如何結合分群(Clustering), 降維(Dimensionality Reduction), 異常檢測(Anomaly Detection)等方法, 進行完整的資料分析工作流.
@@ -208,6 +208,19 @@ Unit09 綜合案例研究 (Integrated Case Study)
     - 從 100 種候選溶劑篩選至 5 種最佳候選溶劑, 以化工領域應用案例, 完整流程的程式碼演練範例, 包含資料前處理, 分群模型建立與訓練, 降維模型建立與訓練, 關聯規則學習模型建立與訓練等流程. 配合講義內容, 讓學生可學會如何結合多種非監督式學習方法進行資料分析.
  - Unit09_Integrated_Case_Study_Homework.ipynb (作業):
     - 學生課堂練習題, 以化工領域應用案例, 包含資料前處理(設計使用模擬數據), 結合本單元學習的所有非監督式學習方法, 進行完整的資料分析工作流.
+ - Unit09_Process_Safety_Anomaly_Detection (.md講義, .ipynb程式演練):
+    - 製程安全與異常偵測案例: Isolation Forest + PCA/MSPC (T²/SPE 統計監控)
+    - 從傳統單變數警報演進到多變數關聯監控, 詳細介紹非監督式異常偵測方法 (Isolation Forest) 與降維監控技術 (PCA/MSPC).
+    - 探討監督式 vs 非監督式學習在製程安全監控的應用策略, 包含監控策略設計、告警規則設定、處置流程 (SOP) 與可追溯性管理.
+    - 完整程式碼演練涵蓋 Isolation Forest 數學原理、PCA-based MSPC (T² 統計量、SPE) 實作、告警門檻設定、異常診斷與根因分析等實務技術.
+ - Unit09_Advanced_Topics (.md講義, .ipynb程式演練):
+    - 進階補充教材: 製程安全異常偵測深度主題
+    - 使用經典的 Tennessee Eastman Process (TEP) 數據集 (52 變數, 21 種故障類型) 進行綜合案例分析.
+    - 詳細介紹進階 PCA 技術 (Kernel PCA, Sparse PCA, Dynamic PCA, Incremental PCA) 與多種異常偵測方法 (LOF, GMM, One-Class SVM) 的數學原理與實作.
+    - 深入探討 MSPC (Multivariate Statistical Process Control) 方法, 包含 T² 統計量、SPE (Squared Prediction Error) 完整數學推導、貢獻圖分析、控制限計算等.
+    - 比較不同異常偵測方法的優劣勢與適用場景, 協助學生選擇最適合的方法應用於實際化工製程安全監控.
+ - Unit09_Integrated_Case_Study_Homework.ipynb (作業):
+    - 學生課堂練習題, 使用TEP_data其中一組數據集, 包含資料前處理(設計使用模擬數據), 結合本單元學習的所有非監督式學習方法, 進行完整的資料分析工作流.
 
 ---
 ### **Part 3: 監督式學習 Supervised Learning (已完成)**
