@@ -94,7 +94,7 @@ Performance
 - **P 點**：潛在故障點，感測器開始偵測到異常，但設備仍能運作
 - **F 點**：功能失效點，設備無法達到設計要求或完全停機
 - **P-F interval**：從 P 到 F 的時間窗口，這是提前規劃維修的寶貴時間
-- **RUL**：在時間點 $t$，距離 F 點的剩餘時間
+- **RUL**：在時間點 $t$ ，距離 F 點的剩餘時間
 
 $$
 RUL(t) = t_{failure} - t
@@ -742,15 +742,15 @@ GRU 預測結果:
 
 設 $d_i = \mathrm{predicted\_RUL}_i - \mathrm{true\_RUL}_i$ （預測誤差）
 
-- **低估 RUL** ($d_i < 0$)：預測值 < 真實值，即**提前預測故障**
-  - 例如：真實 RUL = 50，預測 RUL = 30 → $d = -20$（早預測 20 cycles）
+- **低估 RUL** ( $d_i < 0$ )：預測值 < 真實值，即**提前預測故障**
+  - 例如：真實 RUL = 50，預測 RUL = 30 → $d = -20$ （早預測 20 cycles）
   - 後果：提前維修，增加維護成本，但**設備安全**
-  - 懲罰：較輕（$e^{-d/13} - 1$）
+  - 懲罰：較輕（ $e^{-d/13} - 1$ ）
 
-- **高估 RUL** ($d_i \geq 0$)：預測值 > 真實值，即**延遲預測故障**
-  - 例如：真實 RUL = 30，預測 RUL = 50 → $d = +20$（晚預測 20 cycles）
+- **高估 RUL** ( $d_i \geq 0$ )：預測值 > 真實值，即**延遲預測故障**
+  - 例如：真實 RUL = 30，預測 RUL = 50 → $d = +20$ （晚預測 20 cycles）
   - 後果：維修延遲，設備可能在運作中故障，**安全風險高**
-  - 懲罰：較重（$e^{d/10} - 1$）
+  - 懲罰：較重（ $e^{d/10} - 1$ ）
 
 **NASA Score 公式：**
 
@@ -963,8 +963,6 @@ gru_score = nasa_score(y_test_true, gru_pred)
 
 ### 綜合評估結論
 
-### 綜合評估結論
-
 **生產部署建議：**
 
 1. ✅ **優先選擇 LSTM**
@@ -1154,7 +1152,7 @@ print(f"Predicted RUL: {mean_rul[0]:.1f} ± {std_rul[0]:.1f} cycles")
 ```
 
 **決策應用：**
-- 若 $\mathrm{mean\_RUL} - 2 \times \mathrm{std\_RUL} < 30$，則觸發維修（保守策略）
+- 若 $\mathrm{mean\_RUL} - 2 \times \mathrm{std\_RUL} < 30$ ，則觸發維修（保守策略）
 - 高不確定度（std > 15）→ 增加檢查頻率以收集更多數據
 
 ---
@@ -1236,7 +1234,7 @@ print(f"Predicted RUL: {mean_rul[0]:.1f} ± {std_rul[0]:.1f} cycles")
 ### 改進方向（9 種方法，優先級排序）
 
 **詳細改進策略與實施計畫請參考：**
-- � **快速實施手冊**：[Unit17_Model_Improvement_Quick_Fixes.ipynb](Unit17_Model_Improvement_Quick_Fixes.ipynb)（30分鐘可完成）
+- 📘 **快速實施手冊**：[Unit17_Model_Improvement_Quick_Fixes.ipynb](Unit17_Model_Improvement_Quick_Fixes.ipynb)（30分鐘可完成）
 
 **以下提供 9 種改進方法的概述與優先級建議：**
 

@@ -82,10 +82,10 @@
 - 使用過去 N 個時間步的數據預測下一個時間步的目標變數
 
 **輸入與輸出**:
-```
-輸入: [x_{t-n}, x_{t-n+1}, ..., x_{t-1}] (形狀: [n, features])
-輸出: y_t (形狀: [1] 或 [output_features])
-```
+
+輸入： $[x_{t-n}, x_{t-n+1}, ..., x_{t-1}]$ ( 形狀： $[n, \text{features}]$ )
+
+輸出： $y_t$ ( 形狀： $[1]$ 或 $[\text{output\_features}]$ )
 
 ### 2.2 模型選擇理由
 
@@ -704,7 +704,7 @@ MAPE (Mean Absolute % Error):    8.82%
 
 **評估指標解讀**：
 
-1. **R² Score （決定係數）**: 
+1. ** $R^2$ Score （決定係數）**： 
    - 兩個模型皆達到 0.954 以上，表示可解釋 95.4% 的變異
    - 非常優異的預測性能，適合工業應用
 
@@ -738,7 +738,7 @@ def plot_parity(y_true, y_pred_lstm, y_pred_gru):
                  'r--', linewidth=2, label='Perfect Prediction')
     axes[0].set_xlabel('True Values', fontsize=12)
     axes[0].set_ylabel('LSTM Predictions', fontsize=12)
-    axes[0].set_title(f'LSTM Model - Parity Plot\nR² = {metrics_lstm["R2"]:.4f}', fontsize=14)
+    axes[0].set_title(f'LSTM Model - Parity Plot\n$R^2$ = {metrics_lstm["R2"]:.4f}', fontsize=14)
     axes[0].legend()
     axes[0].grid(True, alpha=0.3)
     
@@ -749,7 +749,7 @@ def plot_parity(y_true, y_pred_lstm, y_pred_gru):
                  'r--', linewidth=2, label='Perfect Prediction')
     axes[1].set_xlabel('True Values', fontsize=12)
     axes[1].set_ylabel('GRU Predictions', fontsize=12)
-    axes[1].set_title(f'GRU Model - Parity Plot\nR² = {metrics_gru["R2"]:.4f}', fontsize=14)
+    axes[1].set_title(f'GRU Model - Parity Plot\n$R^2$ = {metrics_gru["R2"]:.4f}', fontsize=14)
     axes[1].legend()
     axes[1].grid(True, alpha=0.3)
     
@@ -770,13 +770,13 @@ Parity Plot（對等圖）是評估預測模型性能的重要工具，紅色虛
 
 **LSTM 模型（左圖）**：
 - 數據點密集分佈於對角線附近
-- R² = 0.9540，顯示高度線性相關
+- $R^2 = 0.9540$ ，顯示高度線性相關
 - 少數點偏離對角線較遠，為難預測樣本
 - 無系統性偏差（無明顯上偏或下偏）
 
 **GRU 模型（右圖）**：
 - 分佈模式與 LSTM 非常相似
-- R² = 0.9543，略高於 LSTM
+- $R^2 = 0.9543$ ，略高於 LSTM
 - 數據點分散略小，預測穩定性略佳
 
 **關鍵發現**：
@@ -972,7 +972,7 @@ plt.show()
 |------|------|-----|------|------|
 | MAE | 8.655 | 8.646 | -0.009 | GRU 略優 |
 | RMSE | 11.281 | 11.243 | -0.038 | GRU 略優 |
-| R² Score | 0.9540 | 0.9543 | +0.0003 | GRU 略優 |
+| $R^2$ Score | 0.9540 | 0.9543 | +0.0003 | GRU 略優 |
 | MAPE (%) | 9.05 | 8.82 | -0.23 | GRU 略優 |
 
 **核心發現**：
@@ -1005,13 +1005,13 @@ plt.show()
 
 **最終模型性能**：
 
-| 模型 | MAE | RMSE | R² | MAPE | 訓練時間 |
+| 模型 | MAE | RMSE | $R^2$ | MAPE | 訓練時間 |
 |------|-----|------|-----|------|----------|
 | LSTM | 8.655 | 11.281 | 0.9540 | 9.05% | 較長 |
 | GRU | 8.646 | 11.243 | 0.9543 | 8.82% | 較短 |
 
 **關鍵洞察**：
-1. **卓越的預測性能**：R² > 0.95 顯示模型極佳的擬合能力
+1. **卓越的預測性能**： $R^2 > 0.95$ 顯示模型極佳的擬合能力
 2. **實用的誤差範圍**：MAPE ~9% 在工業應用中屬於優秀水準
 3. **GRU 的優勢**：性能相當的情況下，計算效率更高
 4. **模型穩定性**：誤差分布對稱，無系統性偏差
@@ -1464,8 +1464,8 @@ z_scores = np.abs(zscore(df, nan_policy='omit'))
 df_cleaned = df[(z_scores < 3).all(axis=1)]
 
 # 2. Winsorization（截斷極值）
-from scipy.stats.mower import winsorize
-df['feature'] = winsorize(df['feature'], limits=[0.01, 0.01])
+from scipy.stats.mstats import winsorize
+df['feature'] = winsorize(df['feature'], limits=[0.01, 0.01])  # 截斷上下 1% 的極值
 
 # 3. 使用更穩健的標準化
 from sklearn.preprocessing import RobustScaler
