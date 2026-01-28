@@ -2449,9 +2449,450 @@ model.load_weights('rnn_weights.h5')
 
 ---
 
-## 5. RNN在化工領域的應用
+## 5. 實驗演練：SimpleRNN vs LSTM vs GRU 性能比較
 
-### 5.1 典型應用場景
+> [!NOTE]
+> **本章目標**: 通過實際演練，比較三種RNN架構（SimpleRNN、LSTM、GRU）在時間序列回歸任務上的性能差異。
+
+### 5.1 實驗設計
+
+本實驗建立並訓練三種不同的RNN模型，比較它們在模擬時間序列數據上的表現：
+
+**實驗參數**:
+- **數據集**: 模擬化工製程時間序列
+  - 樣本數: 2000
+  - 時間步數: 30
+  - 特徵數: 10
+- **任務類型**: 多對一回歸（基於序列預測單一目標值）
+- **數據分割**: 訓練集70% / 驗證集15% / 測試集15%
+- **模型架構**: 雙層RNN + 全連接層
+
+### 5.2 數據生成與視覺化
+
+首先生成模擬的時間序列數據，包含趨勢和週期性成分：
+
+```python
+def generate_timeseries_data(n_samples=2000, timesteps=30, n_features=10):
+    """生成模擬的時間序列數據"""
+    X = np.random.randn(n_samples, timesteps, n_features)
+    
+    # 添加趨勢和週期性
+    for i in range(n_samples):
+        trend = np.linspace(0, np.random.randn(), timesteps)
+        seasonal = np.sin(2 * np.pi * np.arange(timesteps) / 10) * np.random.rand()
+        for j in range(n_features):
+            X[i, :, j] += trend + seasonal
+    
+    # 生成目標值：基於序列的非線性組合
+    y = np.zeros(n_samples)
+    for i in range(n_samples):
+        last_steps = X[i, -5:, :3].mean(axis=0)
+        y[i] = (last_steps[0]**2 + last_steps[1] * last_steps[2] + 
+                np.sin(last_steps.sum()) + np.random.randn() * 0.1)
+    
+    return X, y
+```
+
+**執行結果**:
+```
+生成模擬時間序列數據...
+  - 樣本數: 2000
+  - 時間步數: 30
+  - 特徵數: 10
+
+數據形狀:
+  X: (2000, 30, 10)
+  y: (2000,)
+
+目標值統計:
+  平均值: 2.2664
+  標準差: 3.3533
+  最小值: -2.2008
+  最大值: 30.3427
+```
+
+**時間序列範例視覺化**:
+
+![時間序列範例](outputs/P4_Unit17_Results/figs/timeseries_examples.png)
+
+> **圖說**: 前3個樣本的前3個特徵隨時間變化的模式。可以觀察到數據包含趨勢和週期性成分，每個樣本對應不同的目標值（y值）。
+
+### 5.3 數據處理
+
+**數據分割與標準化**:
+
+```python
+# 步驟1: 分割數據（不打亂！）
+X_temp, X_test, y_temp, y_test = train_test_split(
+    X, y, test_size=0.15, random_state=42, shuffle=False
+)
+X_train, X_val, y_train, y_val = train_test_split(
+    X_temp, y_temp, test_size=0.176, random_state=42, shuffle=False
+)
+
+# 步驟2: 標準化
+scaler_X = StandardScaler()
+scaler_y = StandardScaler()
+
+# X的標準化（先展平為2D）
+X_train_flat = X_train.reshape(-1, X_train.shape[-1])
+X_train_scaled = scaler_X.fit_transform(X_train_flat).reshape(X_train.shape)
+# y的標準化
+y_train_scaled = scaler_y.fit_transform(y_train.reshape(-1, 1)).flatten()
+```
+
+**執行結果**:
+```
+分割數據集...
+
+數據集大小:
+  訓練集: 1400 樣本 (70.0%)
+  驗證集: 300 樣本 (15.0%)
+  測試集: 300 樣本 (15.0%)
+
+標準化數據...
+✓ 標準化完成
+
+標準化後的統計:
+  X_train - Mean: -0.0000, Std: 1.0000
+  y_train - Mean: -0.0000, Std: 1.0000
+```
+
+### 5.4 模型建立
+
+#### 5.4.1 SimpleRNN 模型
+
+```python
+model_rnn = Sequential([
+    SimpleRNN(64, return_sequences=True, input_shape=(30, 10)),
+    SimpleRNN(32),
+    Dense(16, activation='relu'),
+    Dense(1)
+], name='SimpleRNN')
+```
+
+**模型摘要**:
+```
+Model: "SimpleRNN"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ simple_rnn (SimpleRNN)      (None, 30, 64)            4800      
+ simple_rnn_1 (SimpleRNN)    (None, 32)                3104      
+ dense (Dense)               (None, 16)                528       
+ dense_1 (Dense)             (None, 1)                 17        
+=================================================================
+Total params: 8,449
+Trainable params: 8,449
+Non-trainable params: 0
+```
+
+#### 5.4.2 LSTM 模型
+
+```python
+model_lstm = Sequential([
+    LSTM(128, return_sequences=True, input_shape=(30, 10)),
+    LSTM(64),
+    Dense(32, activation='relu'),
+    Dropout(0.2),
+    Dense(1)
+], name='LSTM')
+```
+
+**模型摘要**:
+```
+Model: "LSTM"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ lstm (LSTM)                 (None, 30, 128)           71168     
+ lstm_1 (LSTM)               (None, 64)                49408     
+ dense_2 (Dense)             (None, 32)                2080      
+ dropout (Dropout)           (None, 32)                0         
+ dense_3 (Dense)             (None, 1)                 33        
+=================================================================
+Total params: 122,689
+Trainable params: 122,689
+Non-trainable params: 0
+```
+
+#### 5.4.3 GRU 模型
+
+```python
+model_gru = Sequential([
+    GRU(128, return_sequences=True, input_shape=(30, 10)),
+    GRU(64),
+    Dense(32, activation='relu'),
+    Dropout(0.2),
+    Dense(1)
+], name='GRU')
+```
+
+**模型摘要**:
+```
+Model: "GRU"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ gru (GRU)                   (None, 30, 128)           53760     
+ gru_1 (GRU)                 (None, 64)                37248     
+ dense_4 (Dense)             (None, 32)                2080      
+ dropout_1 (Dropout)         (None, 32)                0         
+ dense_5 (Dense)             (None, 1)                 33        
+=================================================================
+Total params: 93,121
+Trainable params: 93,121
+Non-trainable params: 0
+```
+
+#### 5.4.4 參數量比較
+
+![參數量比較](outputs/P4_Unit17_Results/figs/model_params_comparison.png)
+
+```
+=== 模型參數量比較 ===
+SimpleRNN   :      8,449 parameters
+LSTM        :    122,689 parameters (14.5倍)
+GRU         :     93,121 parameters (11.0倍)
+```
+
+> **觀察**: LSTM參數量最多，GRU比LSTM少約24%，SimpleRNN最輕量。
+
+### 5.5 模型訓練
+
+所有模型使用相同的訓練配置：
+
+```python
+# 編譯設定
+model.compile(
+    optimizer=Adam(learning_rate=0.001, clipnorm=1.0),  # 梯度裁剪
+    loss='mse',
+    metrics=['mae', 'RootMeanSquaredError']
+)
+
+# Callbacks設定
+callbacks = [
+    EarlyStopping(monitor='val_loss', patience=30, restore_best_weights=True),
+    ModelCheckpoint(filepath='best_model.h5', monitor='val_loss', save_best_only=True),
+    ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=15, min_lr=1e-7)
+]
+
+# 訓練
+history = model.fit(
+    X_train_scaled, y_train_scaled,
+    epochs=200,
+    batch_size=32,
+    validation_data=(X_val_scaled, y_val_scaled),
+    callbacks=callbacks,
+    shuffle=False,  # 時間序列不打亂！
+    verbose=1
+)
+```
+
+**訓練歷史對比**:
+
+![訓練歷史](outputs/P4_Unit17_Results/figs/all_models_training_history.png)
+
+> **圖說**: 三個模型的訓練過程對比。上排為Loss(MSE)曲線，下排為MAE曲線。紅點標示最佳驗證性能的epoch。
+
+**關鍵觀察**:
+- **SimpleRNN**: 在 epoch 133 達到最佳性能，但驗證曲線波動較大
+- **LSTM**: 在 epoch 145 達到最佳性能，訓練曲線最穩定，達到最低的驗證loss
+- **GRU**: 在 epoch 79 達到最佳性能，收斂速度最快
+
+### 5.6 性能評估結果
+
+#### 5.6.1 測試集性能指標
+
+**執行結果**:
+```
+=== 三模型性能評估 ===
+
+==================================================
+評估 SimpleRNN 模型
+==================================================
+測試集性能 (原始尺度):
+  MAE: 0.6357
+  MSE: 0.8724
+  RMSE: 0.9340
+  R²: 0.9387
+
+==================================================
+評估 LSTM 模型
+==================================================
+測試集性能 (原始尺度):
+  MAE: 0.3395
+  MSE: 0.3213
+  RMSE: 0.5668
+  R²: 0.9774
+
+==================================================
+評估 GRU 模型
+==================================================
+測試集性能 (原始尺度):
+  MAE: 0.3936
+  MSE: 0.4052
+  RMSE: 0.6365
+  R²: 0.9715
+```
+
+#### 5.6.2 綜合比較視覺化
+
+![綜合比較](outputs/P4_Unit17_Results/figs/all_models_comprehensive_comparison.png)
+
+> **圖說**: 全面的性能比較，包含：
+> - **第一行**: MAE、RMSE、R² 指標柱狀圖
+> - **第二行**: 前100個樣本的預測vs實際值時序圖
+> - **第三行**: 散點圖與殘差分布
+
+#### 5.6.3 收斂速度分析
+
+![收斂速度](outputs/P4_Unit17_Results/figs/convergence_speed_comparison.png)
+
+```
+📈 收斂速度分析:
+  SimpleRNN   : 最佳epoch=133, 總訓練epoch=163
+  LSTM        : 最佳epoch=145, 總訓練epoch=175
+  GRU         : 最佳epoch= 79, 總訓練epoch=109
+```
+
+**關鍵發現**:
+- **GRU收斂最快**: 僅需79 epoch達到最佳性能
+- **LSTM訓練最久**: 需要145 epoch，且訓練至200 epoch上限
+- **SimpleRNN中等速度**: 133 epoch達最佳，但最終性能最差
+
+#### 5.6.4 性能比較表格
+
+```
+====================================================================================================
+三模型性能比較表
+====================================================================================================
+    Model      MAE      MSE     RMSE       R²  Parameters  MAE_Improvement(%)  RMSE_Improvement(%)
+SimpleRNN 0.635695 0.872440 0.934045 0.938667        8449            0.000000             0.000000
+     LSTM 0.339549 0.321254 0.566793 0.977416      122689           46.586129            39.318454
+      GRU 0.393581 0.405183 0.636540 0.971515       93121           38.086472            31.851209
+====================================================================================================
+
+📊 關鍵發現:
+  ✓ 最佳MAE性能: LSTM (MAE=0.3395)
+  ✓ 最佳R²性能: LSTM (R²=0.9774)
+  ✓ 最輕量模型: SimpleRNN (8,449 parameters)
+```
+
+### 5.7 實驗結論
+
+#### 5.7.1 性能對比總結
+
+| 指標 | SimpleRNN | LSTM | GRU | 最佳 |
+|------|-----------|------|-----|------|
+| **MAE** | 0.6357 | **0.3395** | 0.3936 | LSTM |
+| **RMSE** | 0.9340 | **0.5668** | 0.6365 | LSTM |
+| **R²** | 0.9387 | **0.9774** | 0.9715 | LSTM |
+| **參數量** | **8,449** | 122,689 | 93,121 | SimpleRNN |
+| **收斂速度** | 133 epoch | 145 epoch | **79 epoch** | GRU |
+| **訓練穩定性** | 中等 | **優秀** | 良好 | LSTM |
+
+#### 5.7.2 關鍵發現
+
+1. **LSTM表現最佳**:
+   - MAE相較SimpleRNN改善46.6%
+   - R²達到0.9774，顯示優秀的預測能力
+   - 訓練曲線最穩定，無明顯過擬合
+
+2. **GRU最具效率**:
+   - 性能僅略遜於LSTM (MAE差0.054)
+   - 參數量比LSTM少24%
+   - 收斂速度快1.8倍 (79 vs 145 epoch)
+   - **實務應用最佳選擇**
+
+3. **SimpleRNN能力受限**:
+   - 雖然參數最少，但性能明顯較差
+   - 驗證曲線波動大，訓練不穩定
+   - 僅適合極短序列或簡單模式
+
+#### 5.7.3 實務建議
+
+**模型選擇指南**:
+
+```
+資源受限、快速原型 → SimpleRNN
+  ├─ 參數少 (8K)
+  ├─ 訓練快
+  └─ 適合序列長度 < 10
+
+追求最佳性能 → LSTM
+  ├─ R² = 0.977
+  ├─ 處理長期依賴最佳
+  └─ 適合序列長度 > 50
+
+實務生產環境 → GRU ⭐（推薦）
+  ├─ 性能接近LSTM (R² = 0.972)
+  ├─ 參數少24%
+  ├─ 訓練快1.8倍
+  └─ 適合序列長度 20-100
+```
+
+**化工應用場景建議**:
+
+| 應用場景 | 推薦模型 | 理由 |
+|---------|---------|------|
+| 批次反應器品質預測 | GRU | 中等長度序列(30-60分鐘)，需平衡性能與效率 |
+| 連續製程異常檢測 | SimpleRNN/GRU | 需要快速推論，短期依賴即可 |
+| 設備RUL預測 | LSTM | 長期趨勢捕捉，需要極致性能 |
+| 能耗預測與優化 | GRU | 週期性+中期依賴，高效頻繁重訓練 |
+
+#### 5.7.4 注意事項
+
+> [!WARNING]
+> **時間序列建模關鍵要點**:
+> 1. **數據不打亂**: `shuffle=False` 避免破壞時序關係
+> 2. **先分割再標準化**: 防止數據洩漏
+> 3. **梯度裁剪**: `clipnorm=1.0` 防止梯度爆炸
+> 4. **適當的Callbacks**: EarlyStopping + ReduceLROnPlateau 確保訓練穩定
+
+> [!TIP]
+> **優化建議**:
+> - 如果遇到過擬合：增加Dropout、減少層數/神經元數
+> - 如果訓練緩慢：優先嘗試GRU，或減少序列長度
+> - 如果性能不足：嘗試雙向RNN (Bidirectional)、增加層數
+> - 如果需要可解釋性：加入Attention機制
+
+### 5.8 模型保存與部署
+
+**所有模型已保存**:
+```
+✓ SimpleRNN 完整模型: final_simplernn_model.h5 (0.15 MB)
+✓ LSTM 完整模型: final_lstm_model.h5 (1.45 MB)
+✓ GRU 完整模型: final_gru_model.h5 (1.11 MB)
+✓ Scalers: scalers.pkl (標準化器)
+✓ 訓練歷史: training_histories.pkl
+✓ 比較結果: models_comparison.pkl
+```
+
+**載入最佳模型使用**:
+```python
+from tensorflow.keras.models import load_model
+import joblib
+
+# 載入LSTM模型（實驗中表現最佳）
+model = load_model('outputs/P4_Unit17_Results/models/final_lstm_model.h5')
+
+# 載入標準化器
+scalers = joblib.load('outputs/P4_Unit17_Results/models/scalers.pkl')
+scaler_X = scalers['scaler_X']
+scaler_y = scalers['scaler_y']
+
+# 使用模型預測
+X_new_scaled = scaler_X.transform(X_new.reshape(-1, 10)).reshape(-1, 30, 10)
+y_pred_scaled = model.predict(X_new_scaled)
+y_pred = scaler_y.inverse_transform(y_pred_scaled)
+```
+
+---
+
+## 6. RNN在化工領域的應用
+
+### 6.1 典型應用場景
 
 | 應用類型 | 具體任務 | 模型類型 | 輸入/輸出 |
 |---------|---------|---------|----------|
@@ -2461,7 +2902,7 @@ model.load_weights('rnn_weights.h5')
 | 軟感測器 | 難測變數估計 | LSTM/GRU | 多對一 |
 | RUL預測 | 剩餘壽命估計 | LSTM | 多對一 |
 
-### 5.2 與DNN的對比
+### 6.2 與DNN的對比
 
 | 特性 | DNN | RNN/LSTM/GRU |
 |-----|-----|--------------|
@@ -2562,8 +3003,6 @@ model.load_weights('rnn_weights.h5')
 - Keras官方文檔: https://keras.io/
 - TensorFlow時間序列教程
 - 深度學習專項課程 (Andrew Ng)
-
----
 
 ---
 

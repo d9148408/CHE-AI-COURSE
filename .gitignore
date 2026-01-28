@@ -1,7 +1,7 @@
 # Ignore everything by default
 /*
 # !.agent/
-#!.github/
+# !.github/
 #!current_works.md
 
 # But do not ignore these specific folders
