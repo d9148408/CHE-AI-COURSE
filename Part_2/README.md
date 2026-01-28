@@ -27,10 +27,11 @@
 
 ## 📖 單元目錄
 
-### [Unit05: 分群分析 (Clustering Analysis)](Unit05/)
+### [Unit 05: 分群分析 (Clustering Analysis)](Unit05/)
 
 **主題**：使用無監督式演算法自動發現數據中的群組結構
 
+**投影片**：[Unit05_Clustering_Overview.pdf](Unit05/Unit05_Clustering_Overview.pdf)
 **單元概述**：[Unit05_Clustering_Overview.md](Unit05/Unit05_Clustering_Overview.md)
 
 **演算法詳解**：
@@ -53,6 +54,7 @@
 
 **主題**：在保留主要特徵的前提下，減少數據的維度
 
+**投影片**：[Unit06_Dimensionality_Reduction_Overview.pdf](Unit06/Unit06_Dimensionality_Reduction_Overview.pdf)
 **單元概述**：[Unit06_Dimensionality_Reduction_Overview.md](Unit06/Unit06_Dimensionality_Reduction_Overview.md)
 
 **演算法詳解**：
@@ -75,6 +77,7 @@
 
 **主題**：識別與大多數數據顯著不同的異常樣本
 
+**投影片**：[Unit07_Anomaly_Detection_Overview.pdf](Unit07/Unit07_Anomaly_Detection_Overview.pdf)
 **單元概述**：[Unit07_Anomaly_Detection_Overview.md](Unit07/Unit07_Anomaly_Detection_Overview.md)
 
 **演算法詳解**：
@@ -97,6 +100,7 @@
 
 **主題**：發現數據中項目之間的有趣關聯或相關模式
 
+**投影片**：[Unit08_Association_Rule_Learning_Overview.pdf](Unit08/Unit08_Association_Rule_Learning_Overview.pdf)
 **單元概述**：[Unit08_Association_Rule_Learning_Overview.md](Unit08/Unit08_Association_Rule_Learning_Overview.md)
 
 **演算法詳解**：

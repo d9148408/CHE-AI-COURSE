@@ -20,13 +20,13 @@ Part 1 是「AI在化工上的應用」課程的基礎部分，專為化學工�
 - 機器學習工作流程
 - AI在化工領域的應用案例
 - 課程整體架構與學習路徑
-
-**檔案**：
-- 📄 [Unit01_AI_ML_Overview.md](Unit01/Unit01_AI_ML_Overview.md) - 完整講義
+- **檔案**：
+    - 📕 [Unit01_AI_ML_Overview.pdf](Unit01/Unit01_AI_ML_Overview.pdf) - 投影片
+    - 📄 [Unit01_AI_ML_Overview.md](Unit01/Unit01_AI_ML_Overview.md) - 完整講義
 
 ---
 
-### [Unit02: Python程式語言基礎 (Python Programming Basics)](Unit02/)
+### [Unit 02: Python程式語言基礎 (Python Programming Basics)](Unit02/)
 
 **單元主題**：Python核心語法與程式設計基礎
 
@@ -38,37 +38,40 @@ Part 1 是「AI在化工上的應用」課程的基礎部分，專為化學工�
 - 化工計算應用實例
 
 **檔案**：
+- 📕 [Unit02_Python_Basics.pdf](Unit02/Unit02_Python_Basics.pdf) - 投影片
 - 📄 [Unit02_Python_Basics.md](Unit02/Unit02_Python_Basics.md) - 完整講義
 - 📓 [Unit02_Python_Basics.ipynb](Unit02/Unit02_Python_Basics.ipynb) - 範例程式碼
 - 📝 [Unit02_Python_Basics_Homework.ipynb](Unit02/Unit02_Python_Basics_Homework.ipynb) - 作業練習
 
 ---
 
-### [Unit03: Numpy與Pandas (Numpy and Pandas)](Unit03/)
+### [Unit 03: Numpy與Pandas (Numpy and Pandas)](Unit03/)
 
 **單元主題**：科學計算與資料處理核心套件
 
 **主要內容**：
 
-#### Part 1: NumPy
+#### Unit 03: NumPy
 - 多維陣列建立、索引、切片與變形
 - 向量化運算與廣播機制
 - 數學函式、統計分析、線性代數運算
+- **檔案**：
+    - 📕 [Unit03_Numpy.pdf](Unit03/Unit03_Numpy.pdf) - NumPy投影片
+    - 📄 [Unit03_Numpy.md](Unit03/Unit03_Numpy.md) - NumPy完整講義
+    - 📓 [Unit03_Numpy.ipynb](Unit03/Unit03_Numpy.ipynb) - NumPy範例程式碼
+    - 📝 [Unit03_Numpy_Homework.ipynb](Unit03/Unit03_Numpy_Homework.ipynb) - NumPy作業練習
 
-#### Part 2: Pandas
+#### Unit 03: Pandas
 - Series與DataFrame資料結構
 - 資料讀取與寫入（CSV、Excel、JSON等）
 - 資料選取、篩選、排序與清理
 - 缺失值處理與資料合併
 - 分組聚合與時間序列處理
-
-**檔案**：
-- 📄 [Unit03_Numpy.md](Unit03/Unit03_Numpy.md) - NumPy完整講義
-- 📓 [Unit03_Numpy.ipynb](Unit03/Unit03_Numpy.ipynb) - NumPy範例程式碼
-- 📝 [Unit03_Numpy_Homework.ipynb](Unit03/Unit03_Numpy_Homework.ipynb) - NumPy作業練習
-- 📄 [Unit03_Pandas.md](Unit03/Unit03_Pandas.md) - Pandas完整講義
-- 📓 [Unit03_Pandas.ipynb](Unit03/Unit03_Pandas.ipynb) - Pandas範例程式碼
-- 📝 [Unit03_Pandas_Homework.ipynb](Unit03/Unit03_Pandas_Homework.ipynb) - Pandas作業練習
+- **檔案**：
+    - 📕 [Unit03_Pandas.pdf](Unit03/Unit03_Pandas.pdf) - Pandas投影片
+    - 📄 [Unit03_Pandas.md](Unit03/Unit03_Pandas.md) - Pandas完整講義
+    - 📓 [Unit03_Pandas.ipynb](Unit03/Unit03_Pandas.ipynb) - Pandas範例程式碼
+    - 📝 [Unit03_Pandas_Homework.ipynb](Unit03/Unit03_Pandas_Homework.ipynb) - Pandas作業練習
 
 ---
 
@@ -78,25 +81,27 @@ Part 1 是「AI在化工上的應用」課程的基礎部分，專為化學工�
 
 **主要內容**：
 
-#### Part 1: Matplotlib
+#### Unit 04: Matplotlib
 - Figure與Axes繪圖架構
 - 基本圖表：折線圖、長條圖、散佈圖、直方圖、圓餅圖
 - 圖表元素自訂：標題、軸標籤、圖例、網格、顏色、線型
 - 多圖佈局與子圖排列
+- **檔案**：
+    - 📕 [Unit04_Matplotlib.pdf](Unit04/Unit04_Matplotlib.pdf) - Matplotlib投影片
+    - 📄 [Unit04_Matplotlib.md](Unit04/Unit04_Matplotlib.md) - Matplotlib完整講義
+    - 📓 [Unit04_Matplotlib.ipynb](Unit04/Unit04_Matplotlib.ipynb) - Matplotlib範例程式碼
+    - 📝 [Unit04_Matplotlib_Homework.ipynb](Unit04/Unit04_Matplotlib_Homework.ipynb) - Matplotlib作業練習
 
-#### Part 2: Seaborn
+#### Unit 04: Seaborn
 - 統計視覺化：分佈圖、類別圖、關係圖
 - 熱力圖與相關性分析
 - 主題樣式與調色盤
 - 進階統計圖表製作
-
-**檔案**：
-- 📄 [Unit04_Matplotlib.md](Unit04/Unit04_Matplotlib.md) - Matplotlib完整講義
-- 📓 [Unit04_Matplotlib.ipynb](Unit04/Unit04_Matplotlib.ipynb) - Matplotlib範例程式碼
-- 📝 [Unit04_Matplotlib_Homework.ipynb](Unit04/Unit04_Matplotlib_Homework.ipynb) - Matplotlib作業練習
-- 📄 [Unit04_Seaborn.md](Unit04/Unit04_Seaborn.md) - Seaborn完整講義
-- 📓 [Unit04_Seaborn.ipynb](Unit04/Unit04_Seaborn.ipynb) - Seaborn範例程式碼
-- 📝 [Unit04_Seaborn_Homework.ipynb](Unit04/Unit04_Seaborn_Homework.ipynb) - Seaborn作業練習
+- **檔案**：
+    - 📕 [Unit04_Seaborn.pdf](Unit04/Unit04_Seaborn.pdf) - Seaborn投影片
+    - 📄 [Unit04_Seaborn.md](Unit04/Unit04_Seaborn.md) - Seaborn完整講義
+    - 📓 [Unit04_Seaborn.ipynb](Unit04/Unit04_Seaborn.ipynb) - Seaborn範例程式碼
+    - 📝 [Unit04_Seaborn_Homework.ipynb](Unit04/Unit04_Seaborn_Homework.ipynb) - Seaborn作業練習
 
 ---
 
