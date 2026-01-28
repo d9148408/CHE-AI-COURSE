@@ -1,6 +1,8 @@
 # Ignore everything by default
 /*
-# !current_works.md
+# !.agent/
+#!.github/
+#!current_works.md
 
 # But do not ignore these specific folders
 !Part_0/
@@ -9,13 +11,13 @@
 !Part_3/
 !Part_4/
 # !Part_5/
-# !.agent/
-# !.github/
 
 # Inside these folders, ignore any 'data' directory
 Part_1/Unit01/data/
 Part_1/Unit02/data/
 Part_1/Unit03/data/
+Part_1/Unit03/Unit03_Numpy_v2.ipynb
+Part_1/Unit03/Unit03_Pandas_v4.ipynb
 Part_1/Unit04/data/
 Part_2/Unit05/data/
 Part_2/Unit06/data/

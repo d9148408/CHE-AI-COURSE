@@ -67,7 +67,7 @@ Part 1 是「AI在化工上的應用」課程的基礎部分，專為化學工�
 - 📓 [Unit03_Numpy.ipynb](Unit03/Unit03_Numpy.ipynb) - NumPy範例程式碼
 - 📝 [Unit03_Numpy_Homework.ipynb](Unit03/Unit03_Numpy_Homework.ipynb) - NumPy作業練習
 - 📄 [Unit03_Pandas.md](Unit03/Unit03_Pandas.md) - Pandas完整講義
-- 📓 [Unit03_Pandas_v2.ipynb](Unit03/Unit03_Pandas_v2.ipynb) - Pandas範例程式碼
+- 📓 [Unit03_Pandas.ipynb](Unit03/Unit03_Pandas.ipynb) - Pandas範例程式碼
 - 📝 [Unit03_Pandas_Homework.ipynb](Unit03/Unit03_Pandas_Homework.ipynb) - Pandas作業練習
 
 ---

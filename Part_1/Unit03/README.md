@@ -83,7 +83,7 @@
 
 **檔案**：
 - 講義：[Unit03_Pandas.md](Unit03_Pandas.md)
-- 程式範例：[Unit03_Pandas_v2.ipynb](Unit03_Pandas_v2.ipynb)
+- 程式範例：[Unit03_Pandas.ipynb](Unit03_Pandas.ipynb)
 
 **內容重點**：
 - **Pandas核心資料結構**：
@@ -219,7 +219,7 @@ conda install numpy pandas openpyxl
 
 ### 第三階段：Pandas基礎
 1. 閱讀 [Unit03_Pandas.md](Unit03_Pandas.md) 第1-4節
-2. 執行 [Unit03_Pandas_v2.ipynb](Unit03_Pandas_v2.ipynb) 對應章節
+2. 執行 [Unit03_Pandas.ipynb](Unit03_Pandas.ipynb) 對應章節
 3. 重點掌握：
    - Series與DataFrame的特性
    - 資料讀取（read_csv）

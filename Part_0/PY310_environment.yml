@@ -7,6 +7,7 @@ dependencies:
   - cudnn=8.1
   - numpy=1.23.5
   - pandas
+  - openpyxl
   - scipy
   - scikit-learn
   - umap-learn
