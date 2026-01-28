@@ -1930,3 +1930,16 @@ plt.show()
 
 現在請前往配套的 **Unit07_Isolation_Forest.ipynb** 進行完整的程式碼演練，將理論知識應用於實際的化工反應器異常檢測案例。
 
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit07 Isolation Forest 孤立森林異常檢測
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

@@ -1622,18 +1622,15 @@ X_new_umap = reducer.transform(X_new_scaled)
 
 ---
 
-**課程編號**: CHE-AI-114  
-**單元**: Unit06 - 降維 (Dimensionality Reduction)  
-**教師**: 莊曜禎 助理教授  
-**學期**: 114 學年度第 2 學期  
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit06 Dimensionality Reduction Overview 降維概述
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
 
----
-
-**版本歷史**:
-- v1.0 (2026-01-23): 初版完成
-
-**聯絡資訊**:
-- 如有問題或建議，請聯絡課程助教或透過課程平台提出
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
 
 ---
 

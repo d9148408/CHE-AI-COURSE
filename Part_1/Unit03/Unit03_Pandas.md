@@ -1074,3 +1074,17 @@ df_clean = df.dropna()  # 回傳新 DataFrame
 ---
 
 **下一單元預告**：在 Unit04 中，我們將學習使用 Matplotlib 與 Seaborn 進行資料視覺化，將 Pandas 處理後的資料繪製成各種專業圖表。
+
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit03 Pandas資料處理與分析
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

@@ -455,21 +455,14 @@ pip install opencv-python Pillow scikit-image plotly albumentations imgaug h5py 
 
 ---
 
-## 👥 貢獻與反饋
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Part 4 深度學習 (Deep Learning)
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
 
-如有任何問題、建議或發現錯誤，歡迎透過以下方式聯繫：
-- 開啟 GitHub Issue
-- 提交 Pull Request
-- 發送電子郵件
-
----
-
-## 📄 授權
-
-本教材遵循 [授權協議名稱] 授權。
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
 
 ---
-
-**更新日期**：2026-01-27
-
-**重要提醒**：深度學習需要較多的計算資源與訓練時間。建議先在小數據集上實驗，理解模型行為後再應用於大型數據。善用遷移學習與預訓練模型可以大幅節省時間與資源。

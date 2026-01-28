@@ -519,6 +519,18 @@ joblib >= 1.0.0               # 模型儲存
 
 ---
 
-**版本資訊**：Unit15 v1.0 | 最後更新：2026-01-27
-
 **🎉 恭喜您踏入深度學習的世界！掌握 DNN 是理解 CNN、RNN 等進階架構的關鍵基礎！**
+
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit15 深度神經網路與多層感知機 (Deep Neural Networks & Multi-Layer Perceptron)
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

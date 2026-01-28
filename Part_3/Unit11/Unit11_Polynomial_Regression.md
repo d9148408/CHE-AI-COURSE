@@ -1202,20 +1202,15 @@ $$
 
 ---
 
-**版權聲明**：本教材由逢甲大學化學工程學系莊曜禎助理教授編寫，僅供教學使用。
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit11 Polynomial Regression 多項式回歸
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
 
-**課程代碼**：CHE-AI-114  
-**更新日期**：2025 年 1 月
-
----
-
-**附錄：完整執行結果檔案**
-
-- 講義檔案：`Unit11_Polynomial_Regression.md`
-- 程式碼：`Unit11_Polynomial_Regression.ipynb`
-- 輸出資料夾：`outputs/P3_Unit11_Polynomial_Regression/`
-  - 圖片：`figs/` (7 張 PNG 圖檔)
-  - 數據：`model_evaluation.csv`, `cross_validation_results.csv`, `regularization_comparison.csv`
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
 
 ---
 

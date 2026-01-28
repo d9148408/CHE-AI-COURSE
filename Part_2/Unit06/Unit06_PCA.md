@@ -1804,3 +1804,16 @@ print(f"\nNumber of non-zero loadings: {np.count_nonzero(spca.components_)}")
 
 **配合程式演練**：請參考 `Unit06_PCA.ipynb` 進行完整的化工案例實作練習，該 Notebook 包含詳細的程式碼範例與解說。
 
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit06 主成分分析 (PCA)
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

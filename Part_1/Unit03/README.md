@@ -442,3 +442,17 @@ conda install numpy pandas openpyxl
 
 **上一單元**：[Unit02 Python程式語言基礎](../Unit02/)  
 **下一單元**：[Unit04 Matplotlib與Seaborn](../Unit04/)
+
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit 03 Numpy與Pandas
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

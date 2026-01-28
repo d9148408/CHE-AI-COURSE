@@ -1633,7 +1633,15 @@ def detect_input_anomaly(X_new, X_train):
 
 ---
 
-*最後更新：2026-01-16*  
-*作者：CHE-AI-COURSE Team*  
-*版本：v3.0*
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit17 - 去丁烷塔 C4 含量預測
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---
 

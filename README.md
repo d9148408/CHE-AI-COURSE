@@ -1,19 +1,21 @@
 # AI在化工上之應用課程 (AI Applications in Chemical Engineering)
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)
 ![Course](https://img.shields.io/badge/Course-CHE--AI--114-orange.svg)
 
 ---
 
 ## 📚 課程簡介
 
-本課程專為**逢甲大學化學工程學系**學生設計，旨在培養學生將人工智慧 (AI) 與機器學習 (Machine Learning) 技術應用於化工領域的實作能力。課程涵蓋從基礎Python程式設計、非監督式學習、監督式學習、到深度學習的完整學習路徑，並透過豐富的化工實際案例進行教學。
+本課程專為**化學工程學系**學生設計，旨在培養學生將人工智慧 (AI) 與機器學習 (Machine Learning) 技術應用於化工領域的實作能力。課程涵蓋從基礎Python程式設計、非監督式學習、監督式學習、到深度學習的完整學習路徑，並透過豐富的化工實際案例進行教學。
 
-**課程代碼**：CHE-AI-114  
+**課程名稱**：AI在化工上之應用
+**課程製作**：逢甲大學 化工系 智慧程序系統工程實驗室
 **授課教師**：莊曜禎 助理教授  
-**授課時間**：114學年度第2學期 每周四上午 09:10-12:00  
-**授課地點**：學思樓 705
+**適合對象**：化工系大三、大四及研究所學生
+**預備知識**：基礎Python程式設計概念 (如變數、迴圈、函式)
+**課程授權**：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
@@ -378,13 +380,14 @@ jupyter lab
 
 **授課教師**：莊曜禎 助理教授  
 **單位**：逢甲大學 化學工程學系  
-**Email**：[請至課程網站查詢]
+**Email**：yaocchuang@o365.fcu.edu.tw
 
 ---
 
 ## 📄 授權
 
-本課程內容採用 [MIT License](LICENSE) 授權。
+本課程內容採用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 授權。
+允許他人以非商業方式使用、修改、再創作作品，但必須標明原作者，並以相同的CC BY-NC-SA授權條款發布衍生作品。 
 
 ---
 
@@ -395,12 +398,13 @@ jupyter lab
 - scikit-learn、TensorFlow、Keras 開發團隊
 - Jupyter Project
 - 所有提供開源數據集的研究機構
+- ChatGPT、Gemini、Claude 提供的技術支援、內容校對以及內容優化
 
 ---
 
 ## 📈 課程更新記錄
 
-- **2026-01** - Part 0-4 完整重構完成
+- **2026-01** - Unit01-17 完成初版
 
 ---
 

@@ -1111,3 +1111,16 @@ Kernel PCA 是 PCA 的強大非線性擴展，透過核技巧將數據隱式映�
 - 比較分析：PCA vs. Kernel PCA 在化工數據上的效果
 - 進階學習：t-SNE 與 UMAP 等其他非線性降維方法
 
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit06 Kernel PCA 非線性主成分分析
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

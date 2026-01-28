@@ -1380,23 +1380,14 @@ def asymmetric_loss(y_true, y_pred):
 
 ---
 
-## 📞 聯絡與支援
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit17 - 渦輪發動機剩餘壽命預測
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
 
-如有問題或建議，歡迎透過以下方式聯繫：
-**待修改**
-- 📧 Email: course@example.com
-- 💬 討論區: https://forum.example.com
-- 📖 課程首頁: https://che-ai-course.example.com
-
----
-
-**版本資訊**  
-- 版本：v1.0  
-- 更新日期：2024-01-15  
-- 作者：CHE-AI-COURSE Team
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
 
 ---
-
-**授權聲明**  
-本教材採用 CC BY-NC-SA 4.0 授權。您可以自由分享與修改，但需註明出處，且不可用於商業用途。
-

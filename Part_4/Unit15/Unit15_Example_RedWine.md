@@ -812,3 +812,17 @@ Notebook 內容包含：資料讀取、EDA、基線模型、DNN 建模、訓練�
 - Cortez et al. (2009). "Modeling wine preferences by data mining from physicochemical properties." Decision Support Systems.
 - 葡萄酒化學與感官評估相關文獻
 - SHAP（SHapley Additive exPlanations）用於模型解釋
+
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit15 紅酒品質評估：DNN回歸實務
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

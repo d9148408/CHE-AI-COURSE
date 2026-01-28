@@ -456,3 +456,17 @@ conda install matplotlib seaborn
 ## 🎉 恭喜完成Part 1！
 
 您已經完成「AI與機器學習概論」Part的所有單元，建立了紮實的Python基礎、資料處理能力與視覺化技術。這些是機器學習的核心基礎，接下來您將進入Part 2，開始學習非監督式學習的演算法與應用！
+
+---
+
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit 04 Matplotlib與Seaborn
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
+
+---

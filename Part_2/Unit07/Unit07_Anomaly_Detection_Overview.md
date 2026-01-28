@@ -1017,9 +1017,14 @@ from sklearn.decomposition import PCA
 
 ---
 
-**文件更新日期**：2025-01-23  
-**課程**：逢甲大學化學工程學系 AI課程 (CHE-AI-114)  
-**授課教師**：莊曜禎助理教授  
-**單元**：Part 2 - Unit07 異常檢測概論
+**課程資訊**
+- 課程名稱：AI在化工上之應用
+- 課程單元：Unit07 Anomaly Detection Overview 異常檢測基礎概念與方法選擇
+- 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
+- 授課教師：莊曜禎 助理教授
+- 更新日期：2026-01-28
+
+**課程授權 [CC BY-NC-SA 4.0]**
+ - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。
 
 ---
