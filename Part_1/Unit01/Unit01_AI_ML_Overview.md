@@ -112,7 +112,7 @@ Part 5-7: 進階主題（研究所選修）
 ---
 
 ## 2. 人工智慧與機器學習簡介
-
+![AI、ML、DL 關係圖](figs/Gemini_Generated_Image_u03m70u03m70u03m.png)
 ### 2.1 什麼是人工智慧 (Artificial Intelligence, AI)?
 
 **人工智慧 (AI)** 是指讓機器展現類似人類智慧行為的技術與系統。這包括：
@@ -170,7 +170,7 @@ Part 5-7: 進階主題（研究所選修）
 - 深度學習在影像、語音、自然語言處理等領域表現卓越
 
 ### 2.4 AI與機器學習的歷史發展
-
+![AI發展史](figs/Gemini_Generated_Image_4ww3q44ww3q44ww3.png)
 **1950s-1960s：起源與早期探索**
 - 1950：Alan Turing提出「圖靈測試」
 - 1956：達特茅斯會議，「人工智慧」一詞誕生
@@ -199,7 +199,7 @@ Part 5-7: 進階主題（研究所選修）
 ---
 
 ## 3. AI與機器學習的應用
-
+![各行業的AI應用實例](figs/Gemini_Generated_Image_r9ikipr9ikipr9ik.png)
 ### 3.1 各行業的AI應用實例
 
 **醫療健康**
@@ -239,7 +239,7 @@ Part 5-7: 進階主題（研究所選修）
 - 再生能源優化
 
 ### 3.2 AI在化工領域的應用
-
+![AI在化工領域的應用](figs/Gemini_Generated_Image_chglmkchglmkchgl.png)
 化學工程涵蓋製程設計、操作、控制與優化等多個面向，AI技術在這些領域都有廣泛應用：
 
 #### 3.2.1 製程設計與優化
