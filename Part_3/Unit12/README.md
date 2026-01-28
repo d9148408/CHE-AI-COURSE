@@ -35,7 +35,8 @@
 
 ### 1️⃣ 總覽篇：分類模型基礎 ⭐
 
-**檔案**：[Unit12_Classification_Models_Overview.md](Unit12_Classification_Models_Overview.md)
+**投影片檔案**：[Unit12_Classification_Models_Overview.pdf](Unit12_Classification_Models_Overview.pdf)
+**講義檔案**：[Unit12_Classification_Models_Overview.md](Unit12_Classification_Models_Overview.md)
 
 **內容重點**：
 - 分類問題的定義與類型：二元分類、多元分類、多標籤分類
@@ -58,7 +59,8 @@
 ### 2️⃣ 邏輯迴歸 (Logistic Regression) ⭐
 
 **檔案**：
-- 講義：[Unit12_Logistic_Regression.md](Unit12_Logistic_Regression.md)
+- 投影片檔案：[Unit12_Logistic_Regression.pdf](Unit12_Logistic_Regression.pdf)
+- 講義檔案：[Unit12_Logistic_Regression.md](Unit12_Logistic_Regression.md)
 - 程式範例：[Unit12_Logistic_Regression.ipynb](Unit12_Logistic_Regression.ipynb)
 
 **內容重點**：
@@ -91,7 +93,8 @@
 ### 3️⃣ 決策樹分類器 (Decision Tree Classifier)
 
 **檔案**：
-- 講義：[Unit12_Decision_Tree_Classifier.md](Unit12_Decision_Tree_Classifier.md)
+- 投影片檔案：[Unit12_Decision_Tree_Classifier.pdf](Unit12_Decision_Tree_Classifier.pdf)
+- 講義檔案：[Unit12_Decision_Tree_Classifier.md](Unit12_Decision_Tree_Classifier.md)
 - 程式範例：[Unit12_Decision_Tree_Classifier.ipynb](Unit12_Decision_Tree_Classifier.ipynb)
 
 **內容重點**：
@@ -124,7 +127,8 @@
 ### 4️⃣ 支持向量分類 (Support Vector Classification)
 
 **檔案**：
-- 講義：[Unit12_Support_Vector_Classification.md](Unit12_Support_Vector_Classification.md)
+- 投影片檔案：[Unit12_Support_Vector_Classification.pdf](Unit12_Support_Vector_Classification.pdf)
+- 講義檔案：[Unit12_Support_Vector_Classification.md](Unit12_Support_Vector_Classification.md)
 - 程式範例：[Unit12_Support_Vector_Classification.ipynb](Unit12_Support_Vector_Classification.ipynb)
 
 **內容重點**：
@@ -157,7 +161,8 @@
 ### 5️⃣ 高斯樸素貝氏 (Gaussian Naive Bayes)
 
 **檔案**：
-- 講義：[Unit12_Gaussian_Naive_Bayes.md](Unit12_Gaussian_Naive_Bayes.md)
+- 投影片檔案：[Unit12_Gaussian_Naive_Bayes.pdf](Unit12_Gaussian_Naive_Bayes.pdf)
+- 講義檔案：[Unit12_Gaussian_Naive_Bayes.md](Unit12_Gaussian_Naive_Bayes.md)
 - 程式範例：[Unit12_Gaussian_Naive_Bayes.ipynb](Unit12_Gaussian_Naive_Bayes.ipynb)
 
 **內容重點**：
@@ -189,7 +194,8 @@
 ### 6️⃣ 梯度提升分類器 (Gradient Boosting Classifier)
 
 **檔案**：
-- 講義：[Unit12_Gradient_Boosting_Classifier.md](Unit12_Gradient_Boosting_Classifier.md)
+- 投影片檔案：[Unit12_Gradient_Boosting_Classifier.pdf](Unit12_Gradient_Boosting_Classifier.pdf)
+- 講義檔案：[Unit12_Gradient_Boosting_Classifier.md](Unit12_Gradient_Boosting_Classifier.md)
 - 程式範例：[Unit12_Gradient_Boosting_Classifier.ipynb](Unit12_Gradient_Boosting_Classifier.ipynb)
 
 **內容重點**：
@@ -222,7 +228,8 @@
 ### 7️⃣ 實際案例 1：水質分類 (Water Quality)
 
 **檔案**：
-- 講義：[Unit12_Example_WaterQuality.md](Unit12_Example_WaterQuality.md)
+- 投影片檔案：[Unit12_Example_WaterQuality.pdf](Unit12_Example_WaterQuality.pdf)
+- 講義檔案：[Unit12_Example_WaterQuality.md](Unit12_Example_WaterQuality.md)
 - 程式範例：[Unit12_Example_WaterQuality.ipynb](Unit12_Example_WaterQuality.ipynb)
 
 **內容重點**：
@@ -241,7 +248,8 @@
 ### 8️⃣ 實際案例 2：電力故障檢測與分類 (Electrical Fault Detection)
 
 **檔案**：
-- 講義：[Unit12_Example_Electrical_Fault_detection_and_classification.md](Unit12_Example_Electrical_Fault_detection_and_classification.md)
+- 投影片檔案：[Unit12_Example_Electrical_Fault_detection_and_classification.pdf](Unit12_Example_Electrical_Fault_detection_and_classification.pdf)
+- 講義檔案：[Unit12_Example_Electrical_Fault_detection_and_classification.md](Unit12_Example_Electrical_Fault_detection_and_classification.md)
 - 程式範例：[Unit12_Example_Electrical_Fault_detection_and_classification.ipynb](Unit12_Example_Electrical_Fault_detection_and_classification.ipynb)
 
 **內容重點**：
@@ -351,44 +359,53 @@ shap >= 0.40.0             # 模型解釋工具
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit12_Classification_Models_Overview.md](Unit12_Classification_Models_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit12_Classification_Models_Overview.pdf](Unit12_Classification_Models_Overview.pdf)
+   - 講義 [Unit12_Classification_Models_Overview.md](Unit12_Classification_Models_Overview.md)
 2. 理解從回歸到分類的轉換邏輯
 3. 熟悉分類評估指標 (Accuracy、Precision、Recall、F1、ROC-AUC)
 
 ### 第二階段：演算法學習與實作
 1. **Logistic Regression**（建議最先學習，最基礎）
-   - 閱讀講義 [Unit12_Logistic_Regression.md](Unit12_Logistic_Regression.md)
+   - 投影片 [Unit12_Logistic_Regression.pdf](Unit12_Logistic_Regression.pdf)
+   - 講義 [Unit12_Logistic_Regression.md](Unit12_Logistic_Regression.md)
    - 執行 [Unit12_Logistic_Regression.ipynb](Unit12_Logistic_Regression.ipynb)
    - 重點掌握：Sigmoid 函數、機率解讀、決策邊界
    
 2. **Decision Tree Classifier**（學習規則型分類）
-   - 閱讀講義 [Unit12_Decision_Tree_Classifier.md](Unit12_Decision_Tree_Classifier.md)
+   - 投影片 [Unit12_Decision_Tree_Classifier.pdf](Unit12_Decision_Tree_Classifier.pdf)
+   - 講義 [Unit12_Decision_Tree_Classifier.md](Unit12_Decision_Tree_Classifier.md)
    - 執行 [Unit12_Decision_Tree_Classifier.ipynb](Unit12_Decision_Tree_Classifier.ipynb)
    - 重點掌握：樹結構、Gini/Entropy、規則萃取
    
 3. **Gradient Boosting Classifier**（最實用的高精度模型）
-   - 閱讀講義 [Unit12_Gradient_Boosting_Classifier.md](Unit12_Gradient_Boosting_Classifier.md)
+   - 投影片 [Unit12_Gradient_Boosting_Classifier.pdf](Unit12_Gradient_Boosting_Classifier.pdf)
+   - 講義 [Unit12_Gradient_Boosting_Classifier.md](Unit12_Gradient_Boosting_Classifier.md)
    - 執行 [Unit12_Gradient_Boosting_Classifier.ipynb](Unit12_Gradient_Boosting_Classifier.ipynb)
    - 重點掌握：Boosting 原理、超參數調整、特徵重要性
    
 4. **Support Vector Classification**（進階：核方法）
-   - 閱讀講義 [Unit12_Support_Vector_Classification.md](Unit12_Support_Vector_Classification.md)
+   - 投影片 [Unit12_Support_Vector_Classification.pdf](Unit12_Support_Vector_Classification.pdf)
+   - 講義 [Unit12_Support_Vector_Classification.md](Unit12_Support_Vector_Classification.md)
    - 執行 [Unit12_Support_Vector_Classification.ipynb](Unit12_Support_Vector_Classification.ipynb)
    - 重點掌握：大間隔、核函數、C 和 gamma 參數
    
 5. **Gaussian Naive Bayes**（快速分類器）
-   - 閱讀講義 [Unit12_Gaussian_Naive_Bayes.md](Unit12_Gaussian_Naive_Bayes.md)
+   - 投影片 [Unit12_Gaussian_Naive_Bayes.pdf](Unit12_Gaussian_Naive_Bayes.pdf)
+   - 講義 [Unit12_Gaussian_Naive_Bayes.md](Unit12_Gaussian_Naive_Bayes.md)
    - 執行 [Unit12_Gaussian_Naive_Bayes.ipynb](Unit12_Gaussian_Naive_Bayes.ipynb)
    - 重點掌握：貝氏定理、條件獨立假設
 
 ### 第三階段：實際案例學習
 1. **水質分類案例**
-   - 閱讀 [Unit12_Example_WaterQuality.md](Unit12_Example_WaterQuality.md)
+   - 投影片 [Unit12_Example_WaterQuality.pdf](Unit12_Example_WaterQuality.pdf)
+   - 講義 [Unit12_Example_WaterQuality.md](Unit12_Example_WaterQuality.md)
    - 執行 [Unit12_Example_WaterQuality.ipynb](Unit12_Example_WaterQuality.ipynb)
    - 學習類別不平衡處理、模型比較、超參數優化
    
 2. **電力故障檢測案例**
-   - 閱讀 [Unit12_Example_Electrical_Fault_detection_and_classification.md](Unit12_Example_Electrical_Fault_detection_and_classification.md)
+   - 投影片 [Unit12_Example_Electrical_Fault_detection_and_classification.pdf](Unit12_Example_Electrical_Fault_detection_and_classification.pdf)
+   - 講義 [Unit12_Example_Electrical_Fault_detection_and_classification.md](Unit12_Example_Electrical_Fault_detection_and_classification.md)
    - 執行 [Unit12_Example_Electrical_Fault_detection_and_classification.ipynb](Unit12_Example_Electrical_Fault_detection_and_classification.ipynb)
    - 學習多類別分類、階層式建模、混淆矩陣分析
 

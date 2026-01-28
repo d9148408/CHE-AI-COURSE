@@ -22,7 +22,8 @@
 
 ### 1️⃣ 總覽篇：綜合案例研究概述
 
-**檔案**：[Unit09_Integrated_Case_Study_Overview.md](Unit09_Integrated_Case_Study_Overview.md)
+**投影片檔案**：[Unit09_Integrated_Case_Study_Overview.pdf](Unit09_Integrated_Case_Study_Overview.pdf)
+**講義檔案**：[Unit09_Integrated_Case_Study_Overview.md](Unit09_Integrated_Case_Study_Overview.md)
 （也可參考：[Unit09_Integrated_Case_Study_Overview.ipynb](Unit09_Integrated_Case_Study_Overview.ipynb)）
 
 **內容重點**：
@@ -61,6 +62,7 @@
 ### 2️⃣ 案例一：製程安全與異常檢測
 
 **檔案**：
+- 投影片：[Unit09_Process_Safety_Anomaly_Detection.pdf](Unit09_Process_Safety_Anomaly_Detection.pdf)
 - 講義：[Unit09_Process_Safety_Anomaly_Detection.md](Unit09_Process_Safety_Anomaly_Detection.md)
 - 程式範例：[Unit09_Process_Safety_Anomaly_Detection.ipynb](Unit09_Process_Safety_Anomaly_Detection.ipynb)
 
@@ -106,6 +108,7 @@
 ### 3️⃣ 案例二：溶劑篩選決策支援
 
 **檔案**：
+- 投影片：[Unit09_Solvent_Screening_Case_Study.pdf](Unit09_Solvent_Screening_Case_Study.pdf)
 - 講義：[Unit09_Solvent_Screening_Case_Study.md](Unit09_Solvent_Screening_Case_Study.md)
 - 程式範例：[Unit09_Solvent_Screening_Case_Study.ipynb](Unit09_Solvent_Screening_Case_Study.ipynb)
 
@@ -159,6 +162,7 @@
 ### 4️⃣ 進階主題
 
 **檔案**：
+- 投影片：[Unit09_Advanced_Topics.pdf](Unit09_Advanced_Topics.pdf)
 - 講義：[Unit09_Advanced_Topics.md](Unit09_Advanced_Topics.md)
 - 程式範例：[Unit09_Advanced_Topics.ipynb](Unit09_Advanced_Topics.ipynb)
 
@@ -267,21 +271,25 @@ networkx >= 2.6.0
 
 ### 學習順序
 1. **理解綜合案例的必要性**
-   - 閱讀 [Unit09_Integrated_Case_Study_Overview.md](Unit09_Integrated_Case_Study_Overview.md)
+   - 投影片：[Unit09_Integrated_Case_Study_Overview.pdf](Unit09_Integrated_Case_Study_Overview.pdf)
+   - 講義 [Unit09_Integrated_Case_Study_Overview.md](Unit09_Integrated_Case_Study_Overview.md)
    - 理解方法組合的價值
 
 2. **案例一：製程安全監控**
-   - 閱讀 [Unit09_Process_Safety_Anomaly_Detection.md](Unit09_Process_Safety_Anomaly_Detection.md)
+   - 投影片：[Unit09_Process_Safety_Anomaly_Detection.pdf](Unit09_Process_Safety_Anomaly_Detection.pdf)
+   - 講義 [Unit09_Process_Safety_Anomaly_Detection.md](Unit09_Process_Safety_Anomaly_Detection.md)
    - 執行 [Unit09_Process_Safety_Anomaly_Detection.ipynb](Unit09_Process_Safety_Anomaly_Detection.ipynb)
    - 理解 Isolation Forest + PCA/MSPC 的組合策略
 
 3. **案例二：溶劑篩選**
-   - 閱讀 [Unit09_Solvent_Screening_Case_Study.md](Unit09_Solvent_Screening_Case_Study.md)
+   - 投影片：[Unit09_Solvent_Screening_Case_Study.pdf](Unit09_Solvent_Screening_Case_Study.pdf)
+   - 講義 [Unit09_Solvent_Screening_Case_Study.md](Unit09_Solvent_Screening_Case_Study.md)
    - 執行 [Unit09_Solvent_Screening_Case_Study.ipynb](Unit09_Solvent_Screening_Case_Study.ipynb)
    - 理解多階段篩選漏斗策略
 
 4. **進階主題探索**
-   - 閱讀 [Unit09_Advanced_Topics.md](Unit09_Advanced_Topics.md)
+   - 投影片：[Unit09_Advanced_Topics.pdf](Unit09_Advanced_Topics.pdf)
+   - 講義 [Unit09_Advanced_Topics.md](Unit09_Advanced_Topics.md)
    - 執行 [Unit09_Advanced_Topics.ipynb](Unit09_Advanced_Topics.ipynb)
 
 5. **綜合練習**

@@ -22,7 +22,8 @@
 
 ### 1️⃣ 總覽篇：關聯規則學習基礎
 
-**檔案**：[Unit08_Association_Rule_Learning_Overview.md](Unit08_Association_Rule_Learning_Overview.md)
+**投影片檔案**：[Unit08_Association_Rule_Learning_Overview.pdf](Unit08_Association_Rule_Learning_Overview.pdf)
+**講義檔案**：[Unit08_Association_Rule_Learning_Overview.md](Unit08_Association_Rule_Learning_Overview.md)
 
 **內容重點**：
 - 關聯規則學習的定義與核心概念
@@ -47,7 +48,8 @@
 ### 2️⃣ Apriori 演算法
 
 **檔案**：
-- 講義：[Unit08_Apriori_Algorithm.md](Unit08_Apriori_Algorithm.md)
+- 投影片檔案：[Unit08_Apriori_Algorithm.pdf](Unit08_Apriori_Algorithm.pdf)
+- 講義檔案：[Unit08_Apriori_Algorithm.md](Unit08_Apriori_Algorithm.md)
 - 程式範例：[Unit08_Apriori_Algorithm.ipynb](Unit08_Apriori_Algorithm.ipynb)
 
 **內容重點**：
@@ -80,7 +82,8 @@
 ### 3️⃣ FP-Growth 演算法
 
 **檔案**：
-- 講義：[Unit08_FP_Growth_Algorithm.md](Unit08_FP_Growth_Algorithm.md)
+- 投影片檔案：[Unit08_FP_Growth_Algorithm.pdf](Unit08_FP_Growth_Algorithm.pdf)
+- 講義檔案：[Unit08_FP_Growth_Algorithm.md](Unit08_FP_Growth_Algorithm.md)
 - 程式範例：[Unit08_FP_Growth_Algorithm.ipynb](Unit08_FP_Growth_Algorithm.ipynb)
 
 **內容重點**：
@@ -113,7 +116,8 @@
 
 ### 4️⃣ 實作練習
 
-**檔案**：[Unit08_Association_Rule_Learning_Homework.ipynb](Unit08_Association_Rule_Learning_Homework.ipynb)
+**投影片檔案**：[Unit08_Association_Rule_Learning_Homework.pdf](Unit08_Association_Rule_Learning_Homework.pdf)
+**講義檔案**：[Unit08_Association_Rule_Learning_Homework.ipynb](Unit08_Association_Rule_Learning_Homework.ipynb)
 
 **練習內容**：
 - 應用關聯規則學習於化工配方數據
@@ -182,18 +186,22 @@ plotly >= 5.0.0  # 互動式視覺化
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit08_Association_Rule_Learning_Overview.md](Unit08_Association_Rule_Learning_Overview.md)
+1. 閱讀 
+   - 投影片：[Unit08_Association_Rule_Learning_Overview.pdf](Unit08_Association_Rule_Learning_Overview.pdf)
+   - 講義：[Unit08_Association_Rule_Learning_Overview.md](Unit08_Association_Rule_Learning_Overview.md)
 2. 理解支持度、置信度、提升度等核心概念
 3. 了解關聯規則在化工領域的應用價值
 
 ### 第二階段：演算法學習與實作
 1. **Apriori 演算法**（建議先學習）
-   - 閱讀講義 [Unit08_Apriori_Algorithm.md](Unit08_Apriori_Algorithm.md)
+   - 投影片：[Unit08_Apriori_Algorithm.pdf](Unit08_Apriori_Algorithm.pdf)
+   - 講義 [Unit08_Apriori_Algorithm.md](Unit08_Apriori_Algorithm.md)
    - 執行 [Unit08_Apriori_Algorithm.ipynb](Unit08_Apriori_Algorithm.ipynb)
    - 理解 Apriori 性質與剪枝策略
    
 2. **FP-Growth 演算法**
-   - 閱讀講義 [Unit08_FP_Growth_Algorithm.md](Unit08_FP_Growth_Algorithm.md)
+   - 投影片：[Unit08_FP_Growth_Algorithm.pdf](Unit08_FP_Growth_Algorithm.pdf)
+   - 講義 [Unit08_FP_Growth_Algorithm.md](Unit08_FP_Growth_Algorithm.md)
    - 執行 [Unit08_FP_Growth_Algorithm.ipynb](Unit08_FP_Growth_Algorithm.ipynb)
    - 理解 FP-Tree 結構與分治策略
 

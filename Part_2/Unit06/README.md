@@ -22,7 +22,8 @@
 
 ### 1️⃣ 總覽篇：降維基礎
 
-**檔案**：[Unit06_Dimensionality_Reduction_Overview.md](Unit06_Dimensionality_Reduction_Overview.md)
+**投影片檔案**：[Unit06_Dimensionality_Reduction_Overview.pdf](Unit06_Dimensionality_Reduction_Overview.pdf)
+**講義檔案**：[Unit06_Dimensionality_Reduction_Overview.md](Unit06_Dimensionality_Reduction_Overview.md)
 
 **內容重點**：
 - 降維技術的定義與目的
@@ -44,7 +45,8 @@
 ### 2️⃣ 主成分分析 (PCA) ⭐ 重點教學單元
 
 **檔案**：
-- 講義：[Unit06_PCA.md](Unit06_PCA.md)
+- 投影片檔案：[Unit06_PCA.pdf](Unit06_PCA.pdf)
+- 講義檔案：[Unit06_PCA.md](Unit06_PCA.md)
 - 程式範例：[Unit06_PCA.ipynb](Unit06_PCA.ipynb)
 
 **內容重點**：
@@ -78,7 +80,8 @@
 ### 3️⃣ 核主成分分析 (Kernel PCA)
 
 **檔案**：
-- 講義：[Unit06_Kernel_PCA.md](Unit06_Kernel_PCA.md)
+- 投影片檔案：[Unit06_Kernel_PCA.pdf](Unit06_Kernel_PCA.pdf)
+- 講義檔案：[Unit06_Kernel_PCA.md](Unit06_Kernel_PCA.md)
 - 程式範例：[Unit06_Kernel_PCA.ipynb](Unit06_Kernel_PCA.ipynb)
 
 **內容重點**：
@@ -111,7 +114,8 @@
 ### 4️⃣ t-分布隨機鄰域嵌入 (t-SNE)
 
 **檔案**：
-- 講義：[Unit06_tSNE.md](Unit06_tSNE.md)
+- 投影片檔案：[Unit06_tSNE.pdf](Unit06_tSNE.pdf)
+- 講義檔案：[Unit06_tSNE.md](Unit06_tSNE.md)
 - 程式範例：[Unit06_tSNE.ipynb](Unit06_tSNE.ipynb)
 
 **內容重點**：
@@ -147,7 +151,8 @@
 ### 5️⃣ 均勻流形逼近與投影 (UMAP)
 
 **檔案**：
-- 講義：[Unit06_UMAP.md](Unit06_UMAP.md)
+- 投影片檔案：[Unit06_UMAP.pdf](Unit06_UMAP.pdf)
+- 講義檔案：[Unit06_UMAP.md](Unit06_UMAP.md)
 - 程式範例：[Unit06_UMAP.ipynb](Unit06_UMAP.ipynb)
 
 **內容重點**：
@@ -243,28 +248,34 @@ ipywidgets >= 7.6.0  # Jupyter 互動元件
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit06_Dimensionality_Reduction_Overview.md](Unit06_Dimensionality_Reduction_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit06_Dimensionality_Reduction_Overview.pdf](Unit06_Dimensionality_Reduction_Overview.pdf)
+   - 講義 [Unit06_Dimensionality_Reduction_Overview.md](Unit06_Dimensionality_Reduction_Overview.md)
 2. 理解降維的目的與維度詛咒問題
 3. 了解線性與非線性降維的差異
 
 ### 第二階段：演算法學習與實作
 1. **PCA**（建議最先學習，化工領域最重要）
-   - 閱讀講義 [Unit06_PCA.md](Unit06_PCA.md)
+   - 投影片 [Unit06_PCA.pdf](Unit06_PCA.pdf)
+   - 講義 [Unit06_PCA.md](Unit06_PCA.md)
    - 執行 [Unit06_PCA.ipynb](Unit06_PCA.ipynb)
    - 重點掌握 T² 和 SPE 統計量、貢獻圖分析
    
 2. **Kernel PCA**
-   - 閱讀講義 [Unit06_Kernel_PCA.md](Unit06_Kernel_PCA.md)
+   - 投影片 [Unit06_Kernel_PCA.pdf](Unit06_Kernel_PCA.pdf) 
+   - 講義 [Unit06_Kernel_PCA.md](Unit06_Kernel_PCA.md)
    - 執行 [Unit06_Kernel_PCA.ipynb](Unit06_Kernel_PCA.ipynb)
    - 比較與 PCA 的差異
    
 3. **t-SNE**
-   - 閱讀講義 [Unit06_tSNE.md](Unit06_tSNE.md)
+   - 投影片 [Unit06_tSNE.pdf](Unit06_tSNE.pdf)
+   - 講義 [Unit06_tSNE.md](Unit06_tSNE.md)
    - 執行 [Unit06_tSNE.ipynb](Unit06_tSNE.ipynb)
    - 掌握視覺化技巧
    
 4. **UMAP**（進階主題）
-   - 閱讀講義 [Unit06_UMAP.md](Unit06_UMAP.md)
+   - 投影片 [Unit06_UMAP.pdf](Unit06_UMAP.pdf)
+   - 講義 [Unit06_UMAP.md](Unit06_UMAP.md)
    - 執行 [Unit06_UMAP.ipynb](Unit06_UMAP.ipynb)
    - 比較 t-SNE 與 UMAP 的差異
 

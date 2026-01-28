@@ -31,7 +31,8 @@
 ### 1️⃣ Numpy 數值計算基礎 ⭐
 
 **檔案**：
-- 講義：[Unit03_Numpy.md](Unit03_Numpy.md)
+- 投影片檔案：[Unit03_Numpy.pdf](Unit03_Numpy.pdf)
+- 講義檔案：[Unit03_Numpy.md](Unit03_Numpy.md)
 - 程式範例：[Unit03_Numpy.ipynb](Unit03_Numpy.ipynb)
 
 **內容重點**：
@@ -82,7 +83,8 @@
 ### 2️⃣ Pandas 資料處理與分析 ⭐
 
 **檔案**：
-- 講義：[Unit03_Pandas.md](Unit03_Pandas.md)
+- 投影片檔案：[Unit03_Pandas.pdf](Unit03_Pandas.pdf)
+- 講義檔案：[Unit03_Pandas.md](Unit03_Pandas.md)
 - 程式範例：[Unit03_Pandas.ipynb](Unit03_Pandas.ipynb)
 
 **內容重點**：

@@ -31,7 +31,8 @@
 ### 1️⃣ Matplotlib 資料視覺化 ⭐
 
 **檔案**：
-- 講義：[Unit04_Matplotlib.md](Unit04_Matplotlib.md)
+- 投影片檔案：[Unit04_Matplotlib.pdf](Unit04_Matplotlib.pdf)
+- 講義檔案：[Unit04_Matplotlib.md](Unit04_Matplotlib.md)
 - 程式範例：[Unit04_Matplotlib.ipynb](Unit04_Matplotlib.ipynb)
 
 **內容重點**：
@@ -83,7 +84,8 @@
 ### 2️⃣ Seaborn 統計資料視覺化 ⭐
 
 **檔案**：
-- 講義：[Unit04_Seaborn.md](Unit04_Seaborn.md)
+- 投影片檔案：[Unit04_Seaborn.pdf](Unit04_Seaborn.pdf)
+- 講義檔案：[Unit04_Seaborn.md](Unit04_Seaborn.md)
 - 程式範例：[Unit04_Seaborn.ipynb](Unit04_Seaborn.ipynb)
 
 **內容重點**：

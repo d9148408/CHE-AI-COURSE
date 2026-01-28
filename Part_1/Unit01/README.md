@@ -26,7 +26,8 @@
 
 ### 1️⃣ AI與機器學習概論 ⭐
 
-**檔案**：[Unit01_AI_ML_Overview.md](Unit01_AI_ML_Overview.md)
+**投影片檔案**：[Unit01_AI_ML_Overview.pdf](Unit01_AI_ML_Overview.pdf)
+**講義檔案**：[Unit01_AI_ML_Overview.md](Unit01_AI_ML_Overview.md)
 
 **內容重點**：
 - **課程結構概覽**：

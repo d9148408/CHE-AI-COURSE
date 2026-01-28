@@ -33,7 +33,8 @@
 
 ### 1️⃣ 總覽篇：非線性模型基礎 ⭐
 
-**檔案**：[Unit11_NonLinear_Models_Overview.md](Unit11_NonLinear_Models_Overview.md)
+**投影片檔案**：[Unit11_NonLinear_Models_Overview.pdf](Unit11_NonLinear_Models_Overview.pdf)
+**講義檔案**：[Unit11_NonLinear_Models_Overview.md](Unit11_NonLinear_Models_Overview.md)
 
 **內容重點**：
 - 非線性模型的定義與數學表示
@@ -54,7 +55,8 @@
 ### 2️⃣ 多項式回歸 (Polynomial Regression) ⭐
 
 **檔案**：
-- 講義：[Unit11_Polynomial_Regression.md](Unit11_Polynomial_Regression.md)
+- 投影片檔案：[Unit11_Polynomial_Regression.pdf](Unit11_Polynomial_Regression.pdf)
+- 講義檔案：[Unit11_Polynomial_Regression.md](Unit11_Polynomial_Regression.md)
 - 程式範例：[Unit11_Polynomial_Regression.ipynb](Unit11_Polynomial_Regression.ipynb)
 
 **內容重點**：
@@ -86,7 +88,8 @@
 ### 3️⃣ 決策樹回歸 (Decision Tree Regression)
 
 **檔案**：
-- 講義：[Unit11_Decision_Tree.md](Unit11_Decision_Tree.md)
+- 投影片檔案：[Unit11_Decision_Tree.pdf](Unit11_Decision_Tree.pdf)
+- 講義檔案：[Unit11_Decision_Tree.md](Unit11_Decision_Tree.md)
 - 程式範例：[Unit11_Decision_Tree.ipynb](Unit11_Decision_Tree.ipynb)
 
 **內容重點**：
@@ -119,7 +122,8 @@
 ### 4️⃣ 支持向量機回歸 (Support Vector Machine Regression)
 
 **檔案**：
-- 講義：[Unit11_Support_Vector_Machine.md](Unit11_Support_Vector_Machine.md)
+- 投影片檔案：[Unit11_Support_Vector_Machine.pdf](Unit11_Support_Vector_Machine.pdf)
+- 講義檔案：[Unit11_Support_Vector_Machine.md](Unit11_Support_Vector_Machine.md)
 - 程式範例：[Unit11_Support_Vector_Machine.ipynb](Unit11_Support_Vector_Machine.ipynb)
 
 **內容重點**：
@@ -151,7 +155,8 @@
 ### 5️⃣ 高斯過程回歸 (Gaussian Process Regression) ⭐
 
 **檔案**：
-- 講義：[Unit11_Gaussian_Process_Regression.md](Unit11_Gaussian_Process_Regression.md)
+- 投影片檔案：[Unit11_Gaussian_Process_Regression.pdf](Unit11_Gaussian_Process_Regression.pdf)
+- 講義檔案：[Unit11_Gaussian_Process_Regression.md](Unit11_Gaussian_Process_Regression.md)
 - 程式範例：[Unit11_Gaussian_Process_Regression.ipynb](Unit11_Gaussian_Process_Regression.ipynb)
 
 **內容重點**：
@@ -185,7 +190,8 @@
 ### 6️⃣ 梯度提升樹回歸 (Gradient Boosting Trees Regression)
 
 **檔案**：
-- 講義：[Unit11_Gradient_Boosting_Trees.md](Unit11_Gradient_Boosting_Trees.md)
+- 投影片檔案：[Unit11_Gradient_Boosting_Trees.pdf](Unit11_Gradient_Boosting_Trees.pdf)
+- 講義檔案：[Unit11_Gradient_Boosting_Trees.md](Unit11_Gradient_Boosting_Trees.md)
 - 程式範例：[Unit11_Gradient_Boosting_Trees.ipynb](Unit11_Gradient_Boosting_Trees.ipynb)
 
 **內容重點**：
@@ -293,33 +299,40 @@ tqdm >= 4.62.0          # 進度條顯示
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit11_NonLinear_Models_Overview.md](Unit11_NonLinear_Models_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit11_NonLinear_Models_Overview.pdf](Unit11_NonLinear_Models_Overview.pdf)
+   - 講義 [Unit11_NonLinear_Models_Overview.md](Unit11_NonLinear_Models_Overview.md)
 2. 理解非線性模型的必要性與分類
 3. 回顧 Unit10 線性模型的限制
 
 ### 第二階段：演算法學習與實作
 1. **Polynomial Regression**（建議最先學習，最接近線性模型）
-   - 閱讀講義 [Unit11_Polynomial_Regression.md](Unit11_Polynomial_Regression.md)
+   - 投影片 [Unit11_Polynomial_Regression.pdf](Unit11_Polynomial_Regression.pdf)
+   - 講義 [Unit11_Polynomial_Regression.md](Unit11_Polynomial_Regression.md)
    - 執行 [Unit11_Polynomial_Regression.ipynb](Unit11_Polynomial_Regression.ipynb)
    - 重點掌握：特徵擴展、多項式次數選擇、過擬合控制
    
 2. **Decision Tree**（學習非參數模型的概念）
-   - 閱讀講義 [Unit11_Decision_Tree.md](Unit11_Decision_Tree.md)
+   - 投影片 [Unit11_Decision_Tree.pdf](Unit11_Decision_Tree.pdf)
+   - 講義 [Unit11_Decision_Tree.md](Unit11_Decision_Tree.md)
    - 執行 [Unit11_Decision_Tree.ipynb](Unit11_Decision_Tree.ipynb)
    - 重點掌握：樹結構、分裂準則、剪枝策略、規則解讀
    
 3. **Gradient Boosting Trees**（最實用的高精度模型）
-   - 閱讀講義 [Unit11_Gradient_Boosting_Trees.md](Unit11_Gradient_Boosting_Trees.md)
+   - 投影片 [Unit11_Gradient_Boosting_Trees.pdf](Unit11_Gradient_Boosting_Trees.pdf)
+   - 講義 [Unit11_Gradient_Boosting_Trees.md](Unit11_Gradient_Boosting_Trees.md)
    - 執行 [Unit11_Gradient_Boosting_Trees.ipynb](Unit11_Gradient_Boosting_Trees.ipynb)
    - 重點掌握：Boosting 原理、超參數調整、Early Stopping
    
 4. **Support Vector Machine**（進階：核方法）
-   - 閱讀講義 [Unit11_Support_Vector_Machine.md](Unit11_Support_Vector_Machine.md)
+   - 投影片 [Unit11_Support_Vector_Machine.pdf](Unit11_Support_Vector_Machine.pdf)
+   - 講義 [Unit11_Support_Vector_Machine.md](Unit11_Support_Vector_Machine.md)
    - 執行 [Unit11_Support_Vector_Machine.ipynb](Unit11_Support_Vector_Machine.ipynb)
    - 重點掌握：核函數、C 和 gamma 參數、特徵標準化
    
 5. **Gaussian Process Regression**（進階：機率模型與不確定性）
-   - 閱讀講義 [Unit11_Gaussian_Process_Regression.md](Unit11_Gaussian_Process_Regression.md)
+   - 投影片 [Unit11_Gaussian_Process_Regression.pdf](Unit11_Gaussian_Process_Regression.pdf)
+   - 講義 [Unit11_Gaussian_Process_Regression.md](Unit11_Gaussian_Process_Regression.md)
    - 執行 [Unit11_Gaussian_Process_Regression.ipynb](Unit11_Gaussian_Process_Regression.ipynb)
    - 重點掌握：貝氏推論、核函數設計、不確定性量化
 

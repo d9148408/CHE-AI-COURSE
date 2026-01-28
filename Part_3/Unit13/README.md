@@ -31,7 +31,9 @@
 
 ### 1️⃣ 總覽篇：集成學習基礎 ⭐
 
-**檔案**：[Unit13_Ensemble_Learning_Overview.md](Unit13_Ensemble_Learning_Overview.md) / [Unit13_Ensemble_Learning_Overview.ipynb](Unit13_Ensemble_Learning_Overview.ipynb)
+**投影片檔案**：[Unit13_Ensemble_Learning_Overview.pdf](Unit13_Ensemble_Learning_Overview.pdf)
+**講義檔案**：[Unit13_Ensemble_Learning_Overview.md](Unit13_Ensemble_Learning_Overview.md)
+**程式範例**：[Unit13_Ensemble_Learning_Overview.ipynb](Unit13_Ensemble_Learning_Overview.ipynb)
 
 **內容重點**：
 - 集成學習的定義與核心優勢
@@ -52,6 +54,7 @@
 ### 2️⃣ Random Forest（隨機森林）⭐
 
 **檔案**：
+- 投影片：[Unit13_Random_Forest.pdf](Unit13_Random_Forest.pdf)
 - 講義：[Unit13_Random_Forest.md](Unit13_Random_Forest.md)
 - 回歸範例：[Unit13_Random_Forest_Regression.ipynb](Unit13_Random_Forest_Regression.ipynb)
 - 分類範例：[Unit13_Random_Forest_Classifier.ipynb](Unit13_Random_Forest_Classifier.ipynb)
@@ -86,6 +89,7 @@
 ### 3️⃣ XGBoost (eXtreme Gradient Boosting) ⭐
 
 **檔案**：
+- 投影片：[Unit13_XGBoost.pdf](Unit13_XGBoost.pdf)
 - 講義：[Unit13_XGBoost.md](Unit13_XGBoost.md)
 - 回歸範例：[Unit13_XGBoost_Regression.ipynb](Unit13_XGBoost_Regression.ipynb)
 - 分類範例：[Unit13_XGBoost_Classification.ipynb](Unit13_XGBoost_Classification.ipynb)
@@ -123,6 +127,7 @@
 ### 4️⃣ LightGBM (Light Gradient Boosting Machine)
 
 **檔案**：
+- 投影片：[Unit13_LightGBM.pdf](Unit13_LightGBM.pdf)
 - 講義：[Unit13_LightGBM.md](Unit13_LightGBM.md)
 - 回歸範例：[Unit13_LightGBM_Regression.ipynb](Unit13_LightGBM_Regression.ipynb)
 - 分類範例：[Unit13_LightGBM_Classification.ipynb](Unit13_LightGBM_Classification.ipynb)
@@ -159,6 +164,7 @@
 ### 5️⃣ CatBoost (Categorical Boosting)
 
 **檔案**：
+- 投影片：[Unit13_CatBoost.pdf](Unit13_CatBoost.pdf)
 - 講義：[Unit13_CatBoost.md](Unit13_CatBoost.md)
 - 回歸範例：[Unit13_CatBoost_Regression.ipynb](Unit13_CatBoost_Regression.ipynb)
 - 分類範例：[Unit13_CatBoost_Classification.ipynb](Unit13_CatBoost_Classification.ipynb)
@@ -196,6 +202,7 @@
 ### 6️⃣ Stacking（堆疊集成）
 
 **檔案**：
+- 投影片：[Unit13_Stacking.pdf](Unit13_Stacking.pdf)
 - 講義：[Unit13_Stacking.md](Unit13_Stacking.md)
 - 回歸範例：[Unit13_Stacking_Regression.ipynb](Unit13_Stacking_Regression.ipynb)
 - 分類範例：[Unit13_Stacking_Classification.ipynb](Unit13_Stacking_Classification.ipynb)
@@ -315,37 +322,44 @@ joblib >= 1.0.0            # 模型儲存與載入
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit13_Ensemble_Learning_Overview.md](Unit13_Ensemble_Learning_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit13_Ensemble_Learning_Overview.pdf](Unit13_Ensemble_Learning_Overview.pdf)
+   - 講義 [Unit13_Ensemble_Learning_Overview.md](Unit13_Ensemble_Learning_Overview.md)
 2. 理解集成學習的理論基礎：偏差-方差分解、多樣性原則
 3. 了解 Bagging、Boosting、Stacking 的差異
 
 ### 第二階段：演算法學習與實作
 1. **Random Forest**（建議最先學習，概念最簡單）
-   - 閱讀講義 [Unit13_Random_Forest.md](Unit13_Random_Forest.md)
+   - 投影片 [Unit13_Random_Forest.pdf](Unit13_Random_Forest.pdf)
+   - 講義 [Unit13_Random_Forest.md](Unit13_Random_Forest.md)
    - 執行回歸範例 [Unit13_Random_Forest_Regression.ipynb](Unit13_Random_Forest_Regression.ipynb)
    - 執行分類範例 [Unit13_Random_Forest_Classifier.ipynb](Unit13_Random_Forest_Classifier.ipynb)
    - 重點掌握：Bagging 原理、特徵重要性、OOB Score
    
 2. **XGBoost**（最重要，必須精通）
-   - 閱讀講義 [Unit13_XGBoost.md](Unit13_XGBoost.md)
+   - 投影片 [Unit13_XGBoost.pdf](Unit13_XGBoost.pdf)
+   - 講義 [Unit13_XGBoost.md](Unit13_XGBoost.md)
    - 執行回歸範例 [Unit13_XGBoost_Regression.ipynb](Unit13_XGBoost_Regression.ipynb)
    - 執行分類範例 [Unit13_XGBoost_Classification.ipynb](Unit13_XGBoost_Classification.ipynb)
    - 重點掌握：Boosting 原理、超參數調整、Early Stopping
    
 3. **LightGBM**（速度優勢）
-   - 閱讀講義 [Unit13_LightGBM.md](Unit13_LightGBM.md)
+   - 投影片 [Unit13_LightGBM.pdf](Unit13_LightGBM.pdf)
+   - 講義 [Unit13_LightGBM.md](Unit13_LightGBM.md)
    - 執行回歸範例 [Unit13_LightGBM_Regression.ipynb](Unit13_LightGBM_Regression.ipynb)
    - 執行分類範例 [Unit13_LightGBM_Classification.ipynb](Unit13_LightGBM_Classification.ipynb)
    - 重點掌握：Histogram-based、類別特徵處理
    
 4. **CatBoost**（類別特徵專家）
-   - 閱讀講義 [Unit13_CatBoost.md](Unit13_CatBoost.md)
+   - 投影片 [Unit13_CatBoost.pdf](Unit13_CatBoost.pdf)
+   - 講義 [Unit13_CatBoost.md](Unit13_CatBoost.md)
    - 執行回歸範例 [Unit13_CatBoost_Regression.ipynb](Unit13_CatBoost_Regression.ipynb)
    - 執行分類範例 [Unit13_CatBoost_Classification.ipynb](Unit13_CatBoost_Classification.ipynb)
    - 重點掌握：Ordered Target Encoding、預設參數優化
    
 5. **Stacking**（進階：模型組合）
-   - 閱讀講義 [Unit13_Stacking.md](Unit13_Stacking.md)
+   - 投影片 [Unit13_Stacking.pdf](Unit13_Stacking.pdf)
+   - 講義 [Unit13_Stacking.md](Unit13_Stacking.md)
    - 執行回歸範例 [Unit13_Stacking_Regression.ipynb](Unit13_Stacking_Regression.ipynb)
    - 執行分類範例 [Unit13_Stacking_Classification.ipynb](Unit13_Stacking_Classification.ipynb)
    - 重點掌握：基礎學習器選擇、元學習器設計

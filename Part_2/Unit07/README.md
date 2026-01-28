@@ -22,7 +22,8 @@
 
 ### 1️⃣ 總覽篇：異常檢測基礎
 
-**檔案**：[Unit07_Anomaly_Detection_Overview.md](Unit07_Anomaly_Detection_Overview.md)
+**投影片檔案**：[Unit07_Anomaly_Detection_Overview.pdf](Unit07_Anomaly_Detection_Overview.pdf)
+**講義檔案**：[Unit07_Anomaly_Detection_Overview.md](Unit07_Anomaly_Detection_Overview.md)
 
 **內容重點**：
 - 異常檢測的定義與重要性
@@ -45,7 +46,8 @@
 ### 2️⃣ 孤立森林 (Isolation Forest) ⭐ 最廣泛應用
 
 **檔案**：
-- 講義：[Unit07_Isolation_Forest.md](Unit07_Isolation_Forest.md)
+- 投影片檔案：[Unit07_Isolation_Forest.pdf](Unit07_Isolation_Forest.pdf)
+- 講義檔案：[Unit07_Isolation_Forest.md](Unit07_Isolation_Forest.md)
 - 程式範例：[Unit07_Isolation_Forest.ipynb](Unit07_Isolation_Forest.ipynb)
 
 **內容重點**：
@@ -79,7 +81,8 @@
 ### 3️⃣ 區域性離群因子 (Local Outlier Factor, LOF)
 
 **檔案**：
-- 講義：[Unit07_LOF.md](Unit07_LOF.md)
+- 投影片檔案：[Unit07_LOF.pdf](Unit07_LOF.pdf)
+- 講義檔案：[Unit07_LOF.md](Unit07_LOF.md)
 - 程式範例：[Unit07_LOF.ipynb](Unit07_LOF.ipynb)
 
 **內容重點**：
@@ -114,7 +117,8 @@
 ### 4️⃣ 一類支持向量機 (One-Class SVM)
 
 **檔案**：
-- 講義：[Unit07_OneClass_SVM.md](Unit07_OneClass_SVM.md)
+- 投影片檔案：[Unit07_OneClass_SVM.pdf](Unit07_OneClass_SVM.pdf)
+- 講義檔案：[Unit07_OneClass_SVM.md](Unit07_OneClass_SVM.md)
 - 程式範例：[Unit07_OneClass_SVM.ipynb](Unit07_OneClass_SVM.ipynb)
 
 **內容重點**：
@@ -148,7 +152,8 @@
 ### 5️⃣ 橢圓包絡 (Elliptic Envelope)
 
 **檔案**：
-- 講義：[Unit07_Elliptic_Envelope.md](Unit07_Elliptic_Envelope.md)
+- 投影片檔案：[Unit07_Elliptic_Envelope.pdf](Unit07_Elliptic_Envelope.pdf)
+- 講義檔案：[Unit07_Elliptic_Envelope.md](Unit07_Elliptic_Envelope.md)
 - 程式範例：[Unit07_Elliptic_Envelope.ipynb](Unit07_Elliptic_Envelope.ipynb)
 
 **內容重點**：
@@ -245,25 +250,31 @@ pyod >= 1.0.0  # Python Outlier Detection 工具箱
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit07_Anomaly_Detection_Overview.md](Unit07_Anomaly_Detection_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit07_Anomaly_Detection_Overview.pdf](Unit07_Anomaly_Detection_Overview.pdf)
+   - 講義 [Unit07_Anomaly_Detection_Overview.md](Unit07_Anomaly_Detection_Overview.md)
 2. 理解異常檢測的核心概念與應用場景
 3. 區分離群值檢測與新奇點檢測
 
 ### 第二階段：演算法學習與實作
 1. **Isolation Forest**（建議最先學習，最實用）
-   - 閱讀講義 [Unit07_Isolation_Forest.md](Unit07_Isolation_Forest.md)
+   - 投影片：[Unit07_Isolation_Forest.pdf](Unit07_Isolation_Forest.pdf)
+   - 講義 [Unit07_Isolation_Forest.md](Unit07_Isolation_Forest.md)
    - 執行 [Unit07_Isolation_Forest.ipynb](Unit07_Isolation_Forest.ipynb)
    
 2. **LOF**
-   - 閱讀講義 [Unit07_LOF.md](Unit07_LOF.md)
+   - 投影片：[Unit07_LOF.pdf](Unit07_LOF.pdf)
+   - 講義 [Unit07_LOF.md](Unit07_LOF.md)
    - 執行 [Unit07_LOF.ipynb](Unit07_LOF.ipynb)
    
 3. **One-Class SVM**
-   - 閱讀講義 [Unit07_OneClass_SVM.md](Unit07_OneClass_SVM.md)
+   - 投影片：[Unit07_OneClass_SVM.pdf](Unit07_OneClass_SVM.pdf)
+   - 講義 [Unit07_OneClass_SVM.md](Unit07_OneClass_SVM.md)
    - 執行 [Unit07_OneClass_SVM.ipynb](Unit07_OneClass_SVM.ipynb)
    
 4. **Elliptic Envelope**
-   - 閱讀講義 [Unit07_Elliptic_Envelope.md](Unit07_Elliptic_Envelope.md)
+   - 投影片：[Unit07_Elliptic_Envelope.pdf](Unit07_Elliptic_Envelope.pdf)
+   - 講義 [Unit07_Elliptic_Envelope.md](Unit07_Elliptic_Envelope.md)
    - 執行 [Unit07_Elliptic_Envelope.ipynb](Unit07_Elliptic_Envelope.ipynb)
 
 ### 第三階段：綜合應用與練習

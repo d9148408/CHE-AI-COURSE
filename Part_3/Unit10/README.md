@@ -31,7 +31,8 @@
 
 ### 1️⃣ 總覽篇：線性模型基礎 ⭐
 
-**檔案**：[Unit10_Linear_Models_Overview.md](Unit10_Linear_Models_Overview.md)
+**投影片檔案**：[Unit10_Linear_Models_Overview.pdf](Unit10_Linear_Models_Overview.pdf)
+**講義檔案**：[Unit10_Linear_Models_Overview.md](Unit10_Linear_Models_Overview.md)
 
 **內容重點**：
 - 線性模型的定義與數學表示
@@ -52,7 +53,8 @@
 ### 2️⃣ 線性回歸 (Linear Regression) ⭐
 
 **檔案**：
-- 講義：[Unit10_Linear_Regression.md](Unit10_Linear_Regression.md)
+- 投影片檔案：[Unit10_Linear_Regression.pdf](Unit10_Linear_Regression.pdf)
+- 講義檔案：[Unit10_Linear_Regression.md](Unit10_Linear_Regression.md)
 - 程式範例：[Unit10_Linear_Regression.ipynb](Unit10_Linear_Regression.ipynb)
 
 **內容重點**：
@@ -83,7 +85,8 @@
 ### 3️⃣ Ridge 回歸 (Ridge Regression)
 
 **檔案**：
-- 講義：[Unit10_Ridge_Regression.md](Unit10_Ridge_Regression.md)
+- 投影片檔案：[Unit10_Ridge_Regression.pdf](Unit10_Ridge_Regression.pdf)
+- 講義檔案：[Unit10_Ridge_Regression.md](Unit10_Ridge_Regression.md)
 - 程式範例：[Unit10_Ridge_Regression.ipynb](Unit10_Ridge_Regression.ipynb)
 
 **內容重點**：
@@ -115,7 +118,8 @@
 ### 4️⃣ Lasso 回歸 (Lasso Regression)
 
 **檔案**：
-- 講義：[Unit10_Lasso_Regression.md](Unit10_Lasso_Regression.md)
+- 投影片檔案：[Unit10_Lasso_Regression.pdf](Unit10_Lasso_Regression.pdf)
+- 講義檔案：[Unit10_Lasso_Regression.md](Unit10_Lasso_Regression.md)
 - 程式範例：[Unit10_Lasso_Regression.ipynb](Unit10_Lasso_Regression.ipynb)
 
 **內容重點**：
@@ -148,7 +152,8 @@
 ### 5️⃣ ElasticNet 回歸 (ElasticNet Regression)
 
 **檔案**：
-- 講義：[Unit10_ElasticNet_Regression.md](Unit10_ElasticNet_Regression.md)
+- 投影片檔案：[Unit10_ElasticNet_Regression.pdf](Unit10_ElasticNet_Regression.pdf)
+- 講義檔案：[Unit10_ElasticNet_Regression.md](Unit10_ElasticNet_Regression.md)
 - 程式範例：[Unit10_ElasticNet_Regression.ipynb](Unit10_ElasticNet_Regression.ipynb)
 
 **內容重點**：
@@ -180,7 +185,8 @@
 ### 6️⃣ 隨機梯度下降回歸 (SGD Regression)
 
 **檔案**：
-- 講義：[Unit10_SGD_Regression.md](Unit10_SGD_Regression.md)
+- 投影片檔案：[Unit10_SGD_Regression.pdf](Unit10_SGD_Regression.pdf)
+- 講義檔案：[Unit10_SGD_Regression.md](Unit10_SGD_Regression.md)
 - 程式範例：[Unit10_SGD_Regression.ipynb](Unit10_SGD_Regression.ipynb)
 
 **內容重點**：
@@ -275,33 +281,40 @@ tqdm >= 4.62.0         # 進度條顯示
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit10_Linear_Models_Overview.md](Unit10_Linear_Models_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit10_Linear_Models_Overview.pdf](Unit10_Linear_Models_Overview.pdf)
+   - 講義 [Unit10_Linear_Models_Overview.md](Unit10_Linear_Models_Overview.md)
 2. 理解線性模型的數學原理與基本假設
 3. 熟悉均方誤差 (MSE) 損失函數與正則化概念
 
 ### 第二階段：演算法學習與實作
 1. **Linear Regression**（建議最先學習，最基礎）
-   - 閱讀講義 [Unit10_Linear_Regression.md](Unit10_Linear_Regression.md)
+   - 投影片 [Unit10_Linear_Regression.pdf](Unit10_Linear_Regression.pdf)
+   - 講義 [Unit10_Linear_Regression.md](Unit10_Linear_Regression.md)
    - 執行 [Unit10_Linear_Regression.ipynb](Unit10_Linear_Regression.ipynb)
    - 重點掌握：最小二乘法、係數解讀、模型評估
    
 2. **Ridge Regression**（理解 L2 正則化）
-   - 閱讀講義 [Unit10_Ridge_Regression.md](Unit10_Ridge_Regression.md)
+   - 投影片 [Unit10_Ridge_Regression.pdf](Unit10_Ridge_Regression.pdf)
+   - 講義 [Unit10_Ridge_Regression.md](Unit10_Ridge_Regression.md)
    - 執行 [Unit10_Ridge_Regression.ipynb](Unit10_Ridge_Regression.ipynb)
    - 重點掌握：多重共線性處理、alpha 參數選擇、RidgeCV 使用
    
 3. **Lasso Regression**（理解 L1 正則化與特徵選擇）
-   - 閱讀講義 [Unit10_Lasso_Regression.md](Unit10_Lasso_Regression.md)
+   - 投影片 [Unit10_Lasso_Regression.pdf](Unit10_Lasso_Regression.pdf)
+   - 講義 [Unit10_Lasso_Regression.md](Unit10_Lasso_Regression.md)
    - 執行 [Unit10_Lasso_Regression.ipynb](Unit10_Lasso_Regression.ipynb)
    - 重點掌握：稀疏性、自動特徵選擇、Lasso Path
    
 4. **ElasticNet Regression**（整合 L1 和 L2）
-   - 閱讀講義 [Unit10_ElasticNet_Regression.md](Unit10_ElasticNet_Regression.md)
+   - 投影片 [Unit10_ElasticNet_Regression.pdf](Unit10_ElasticNet_Regression.pdf) 
+   - 講義 [Unit10_ElasticNet_Regression.md](Unit10_ElasticNet_Regression.md)
    - 執行 [Unit10_ElasticNet_Regression.ipynb](Unit10_ElasticNet_Regression.ipynb)
    - 重點掌握：l1_ratio 參數、穩健特徵選擇
    
 5. **SGD Regression**（進階主題：大規模數據）
-   - 閱讀講義 [Unit10_SGD_Regression.md](Unit10_SGD_Regression.md)
+   - 投影片 [Unit10_SGD_Regression.pdf](Unit10_SGD_Regression.pdf)
+   - 講義 [Unit10_SGD_Regression.md](Unit10_SGD_Regression.md)
    - 執行 [Unit10_SGD_Regression.ipynb](Unit10_SGD_Regression.ipynb)
    - 重點掌握：線上學習、partial_fit、學習率調整
 

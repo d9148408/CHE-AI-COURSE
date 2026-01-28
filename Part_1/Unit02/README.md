@@ -28,7 +28,8 @@ Python 是目前資料科學、機器學習與人工智慧領域最受歡迎的�
 ### 1️⃣ Python程式語言基礎 ⭐
 
 **檔案**：
-- 講義：[Unit02_Python_Basics.md](Unit02_Python_Basics.md)
+- 投影片檔案：[Unit02_Python_Basics.pdf](Unit02_Python_Basics.pdf)
+- 講義檔案：[Unit02_Python_Basics.md](Unit02_Python_Basics.md)
 - 程式範例：[Unit02_Python_Basics.ipynb](Unit02_Python_Basics.ipynb)
 
 **內容重點**：

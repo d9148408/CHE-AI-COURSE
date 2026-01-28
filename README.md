@@ -1,6 +1,9 @@
 # AI在化工上之應用課程 (AI Applications in Chemical Engineering)
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-red.svg)
+![Keras](https://img.shields.io/badge/Keras-2.x-blue.svg)
 ![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)
 ![Course](https://img.shields.io/badge/Course-CHE--AI--114-orange.svg)
 
@@ -14,7 +17,7 @@
 - **課程製作**：逢甲大學 化工系 智慧程序系統工程實驗室
 - **授課教師**：莊曜禎 助理教授  
 - **適合對象**：化工系大三、大四及研究所學生
-- **預備知識**：基礎Python程式設計概念 (如變數、迴圈、函式)
+- **前置課程**：建議已完成 Python程式設計(大一)、電腦在化工上的應用(大二)課程
 - **課程授權**：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
@@ -400,7 +403,7 @@ jupyter lab
 - scikit-learn、TensorFlow、Keras 開發團隊
 - Jupyter Project
 - 所有提供開源數據集的研究機構
-- ChatGPT、Gemini、Claude 提供的技術支援、內容校對以及內容優化
+- ChatGPT、Gemini、Claude 和 NotebookLM 提供的技術支援、內容校對以及內容優化
 
 ---
 

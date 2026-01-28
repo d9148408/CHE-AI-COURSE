@@ -33,7 +33,8 @@
 
 ### 1️⃣ 總覽篇：模型評估的重要性 ⭐
 
-**檔案**：[Unit14_Model_Evaluation_Overview.md](Unit14_Model_Evaluation_Overview.md)
+**投影片檔案**：[Unit14_Model_Evaluation_Overview.pdf](Unit14_Model_Evaluation_Overview.pdf)
+**講義檔案**：[Unit14_Model_Evaluation_Overview.md](Unit14_Model_Evaluation_Overview.md)
 
 **內容重點**：
 - **模型評估的重要性**：
@@ -74,7 +75,8 @@
 ### 2️⃣ 超參數調整：Grid Search
 
 **檔案**：
-- [Unit14_Hyperparameter_Tuning_GridSearch.ipynb](Unit14_Hyperparameter_Tuning_GridSearch.ipynb)
+
+- 程式範例：[Unit14_Hyperparameter_Tuning_GridSearch.ipynb](Unit14_Hyperparameter_Tuning_GridSearch.ipynb)
 - [Unit14_Hyperparameter_Tuning_GridSearch_v2.ipynb](Unit14_Hyperparameter_Tuning_GridSearch_v2.ipynb)
 
 **內容重點**：
@@ -104,7 +106,7 @@
 
 ### 3️⃣ 超參數調整：Bayesian Optimization
 
-**檔案**：[Unit14_Hyperparameter_Tuning_Bayesian.ipynb](Unit14_Hyperparameter_Tuning_Bayesian.ipynb)
+**程式範例**：[Unit14_Hyperparameter_Tuning_Bayesian.ipynb](Unit14_Hyperparameter_Tuning_Bayesian.ipynb)
 
 **內容重點**：
 - **Bayesian Optimization 原理**：
@@ -133,7 +135,7 @@
 
 ### 4️⃣ 模型比較
 
-**檔案**：[Unit14_Model_Comparison.ipynb](Unit14_Model_Comparison.ipynb)
+**程式範例**：[Unit14_Model_Comparison.ipynb](Unit14_Model_Comparison.ipynb)
 
 **內容重點**：
 - **統計檢定方法**：
@@ -163,7 +165,7 @@
 
 ### 5️⃣ 模型可解釋性基礎
 
-**檔案**：[Unit14_Model_Interpretability_Basics.ipynb](Unit14_Model_Interpretability_Basics.ipynb)
+**程式範例**：[Unit14_Model_Interpretability_Basics.ipynb](Unit14_Model_Interpretability_Basics.ipynb)
 
 **內容重點**：
 - **可解釋性的重要性**：
@@ -198,7 +200,7 @@
 
 ### 6️⃣ 模型選擇流程 (Pipeline)
 
-**檔案**：[Unit14_Model_Selection_Pipeline.ipynb](Unit14_Model_Selection_Pipeline.ipynb)
+**程式範例**：[Unit14_Model_Selection_Pipeline.ipynb](Unit14_Model_Selection_Pipeline.ipynb)
 
 **內容重點**：
 - **完整建模流程**：
@@ -322,12 +324,16 @@ yellowbrick >= 1.3.0        # 視覺化診斷工具
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit14_Model_Evaluation_Overview.md](Unit14_Model_Evaluation_Overview.md)
+1. 閱讀 
+   - 投影片 [Unit14_Model_Evaluation_Overview.pdf](Unit14_Model_Evaluation_Overview.pdf)
+   - 講義 [Unit14_Model_Evaluation_Overview.md](Unit14_Model_Evaluation_Overview.md)
 2. 理解各種評估指標的適用場景與限制
 3. 熟悉交叉驗證的進階技巧
 
 ### 第二階段：超參數調整實作
 1. **Grid Search**（基礎方法）
+   - 投影片 [Unit14_Hyperparameter_Tuning_GridSearch.pdf](Unit14_Hyperparameter_Tuning_GridSearch.pdf)
+   - 講義 [Unit14_Hyperparameter_Tuning_GridSearch.md](Unit14_Hyperparameter_Tuning_GridSearch.md)
    - 執行 [Unit14_Hyperparameter_Tuning_GridSearch.ipynb](Unit14_Hyperparameter_Tuning_GridSearch.ipynb)
    - 執行 [Unit14_Hyperparameter_Tuning_GridSearch_v2.ipynb](Unit14_Hyperparameter_Tuning_GridSearch_v2.ipynb)
    - 重點掌握：參數網格設計、並行化、結果分析

@@ -42,7 +42,8 @@
 ### 2️⃣ K-Means 分群演算法
 
 **檔案**：
-- 講義：[Unit05_K_Means.md](Unit05_K_Means.md)
+- 投影片檔案：[Unit05_K_Means.pdf](Unit05_K_Means.pdf)
+- 講義檔案：[Unit05_K_Means.md](Unit05_K_Means.md)
 - 程式範例：[Unit05_K_Means.ipynb](Unit05_K_Means.ipynb)
 
 **內容重點**：
@@ -73,7 +74,8 @@
 ### 3️⃣ 階層式分群演算法
 
 **檔案**：
-- 講義：[Unit05_Hierarchical_Clustering.md](Unit05_Hierarchical_Clustering.md)
+- 投影片檔案：[Unit05_Hierarchical_Clustering.pdf](Unit05_Hierarchical_Clustering.pdf)
+- 講義檔案：[Unit05_Hierarchical_Clustering.md](Unit05_Hierarchical_Clustering.md)
 - 程式範例：[Unit05_Hierarchical_Clustering.ipynb](Unit05_Hierarchical_Clustering.ipynb)
 
 **內容重點**：
@@ -105,7 +107,8 @@
 ### 4️⃣ DBSCAN 分群演算法
 
 **檔案**：
-- 講義：[Unit05_DBSCAN.md](Unit05_DBSCAN.md)
+- 投影片檔案：[Unit05_DBSCAN.pdf](Unit05_DBSCAN.pdf)
+- 講義檔案：[Unit05_DBSCAN.md](Unit05_DBSCAN.md)
 - 程式範例：[Unit05_DBSCAN.ipynb](Unit05_DBSCAN.ipynb)
 
 **內容重點**：
@@ -138,7 +141,8 @@
 ### 5️⃣ 高斯混合模型
 
 **檔案**：
-- 講義：[Unit05_Gaussian_Mixture_Models.md](Unit05_Gaussian_Mixture_Models.md)
+- 投影片檔案：[Unit05_Gaussian_Mixture_Models.pdf](Unit05_Gaussian_Mixture_Models.pdf)
+- 講義檔案：[Unit05_Gaussian_Mixture_Models.md](Unit05_Gaussian_Mixture_Models.md)
 - 程式範例：[Unit05_Gaussian_Mixture_Models.ipynb](Unit05_Gaussian_Mixture_Models.ipynb)
 
 **內容重點**：
@@ -234,25 +238,31 @@ ipywidgets >= 7.6.0  # Jupyter 互動元件
 ## 📈 學習路徑建議
 
 ### 第一階段：基礎概念建立
-1. 閱讀 [Unit05_Clustering_Overview.md](Unit05_Clustering_Overview.md)
+1. 閱讀 
+    - 投影片 [Unit05_Clustering_Overview.pdf](Unit05_Clustering_Overview.pdf)
+    - 講義 [Unit05_Clustering_Overview.md](Unit05_Clustering_Overview.md)
 2. 理解分群分析的核心概念與應用場景
 3. 熟悉相似度度量與群集評估指標
 
 ### 第二階段：演算法學習與實作
 1. **K-Means**（建議最先學習）
-   - 閱讀講義 [Unit05_K_Means.md](Unit05_K_Means.md)
+   - 投影片 [Unit05_K_Means.pdf](Unit05_K_Means.pdf)
+   - 講義 [Unit05_K_Means.md](Unit05_K_Means.md)
    - 執行 [Unit05_K_Means.ipynb](Unit05_K_Means.ipynb)
    
 2. **Hierarchical Clustering**
-   - 閱讀講義 [Unit05_Hierarchical_Clustering.md](Unit05_Hierarchical_Clustering.md)
+   - 投影片 [Unit05_Hierarchical_Clustering.pdf](Unit05_Hierarchical_Clustering.pdf)
+   - 講義 [Unit05_Hierarchical_Clustering.md](Unit05_Hierarchical_Clustering.md)
    - 執行 [Unit05_Hierarchical_Clustering.ipynb](Unit05_Hierarchical_Clustering.ipynb)
    
 3. **DBSCAN**
-   - 閱讀講義 [Unit05_DBSCAN.md](Unit05_DBSCAN.md)
+   - 投影片 [Unit05_DBSCAN.pdf](Unit05_DBSCAN.pdf)
+   - 講義 [Unit05_DBSCAN.md](Unit05_DBSCAN.md)
    - 執行 [Unit05_DBSCAN.ipynb](Unit05_DBSCAN.ipynb)
    
 4. **GMM**（進階主題）
-   - 閱讀講義 [Unit05_Gaussian_Mixture_Models.md](Unit05_Gaussian_Mixture_Models.md)
+   - 投影片 [Unit05_Gaussian_Mixture_Models.pdf](Unit05_Gaussian_Mixture_Models.pdf)
+   - 講義 [Unit05_Gaussian_Mixture_Models.md](Unit05_Gaussian_Mixture_Models.md)
    - 執行 [Unit05_Gaussian_Mixture_Models.ipynb](Unit05_Gaussian_Mixture_Models.ipynb)
 
 ### 第三階段：綜合應用與練習
