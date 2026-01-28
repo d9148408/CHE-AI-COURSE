@@ -10,12 +10,12 @@
 
 本課程專為**化學工程學系**學生設計，旨在培養學生將人工智慧 (AI) 與機器學習 (Machine Learning) 技術應用於化工領域的實作能力。課程涵蓋從基礎Python程式設計、非監督式學習、監督式學習、到深度學習的完整學習路徑，並透過豐富的化工實際案例進行教學。
 
-**課程名稱**：AI在化工上之應用
-**課程製作**：逢甲大學 化工系 智慧程序系統工程實驗室
-**授課教師**：莊曜禎 助理教授  
-**適合對象**：化工系大三、大四及研究所學生
-**預備知識**：基礎Python程式設計概念 (如變數、迴圈、函式)
-**課程授權**：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- **課程名稱**：AI在化工上之應用
+- **課程製作**：逢甲大學 化工系 智慧程序系統工程實驗室
+- **授課教師**：莊曜禎 助理教授  
+- **適合對象**：化工系大三、大四及研究所學生
+- **預備知識**：基礎Python程式設計概念 (如變數、迴圈、函式)
+- **課程授權**：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
@@ -23,7 +23,7 @@
 
 完成本課程後，您將能夠：
 
-1. **紮實的Python基礎**：掌握Python程式設計、科學計算 (NumPy/Pandas)、資料視覺化 (Matplotlib/Seaborn)
+1. **紮實的Python基礎**：未學習過Python程式設計的人員，可快速掌握Python程式設計基礎、科學計算 (NumPy/Pandas)、資料視覺化 (Matplotlib/Seaborn)
 2. **AI理論與實務**：理解AI與機器學習的核心概念，並能選擇合適的演算法解決問題
 3. **豐富的演算法工具箱**：從K-Means、PCA到XGBoost、LSTM，掌握20+種主流演算法
 4. **化工應用實戰能力**：能將AI技術應用於製程優化、品質控制、異常檢測、預測建模等實際問題
@@ -46,13 +46,15 @@
 
 ---
 
-### [Part 1: Python基礎與資料處理](Part_1/)
+### [Part 1: AI與機器學習概論](Part_1/)
 **主題**：AI與機器學習的理論基礎、Python程式設計、科學計算與資料視覺化
 
 - **[Unit01: AI與機器學習概論](Part_1/Unit01/)** - AI/ML基礎理論、化工應用案例
-- **[Unit02: Python程式語言基礎](Part_1/Unit02/)** - 語法、流程控制、函式、例外處理
-- **[Unit03: NumPy與Pandas](Part_1/Unit03/)** - 數值運算、表格資料處理、時間序列
-- **[Unit04: Matplotlib與Seaborn](Part_1/Unit04/)** - 資料視覺化、統計繪圖
+
+***已修讀過大一Python程式設計課程的學生可入複習或快跳過以下單元***
+- **[Unit02: Python程式語言基礎 (選讀)](Part_1/Unit02/)** - 語法、流程控制、函式、例外處理
+- **[Unit03: NumPy與Pandas (選讀)](Part_1/Unit03/)** - 數值運算、表格資料處理、時間序列
+- **[Unit04: Matplotlib與Seaborn (選讀)](Part_1/Unit04/)** - 資料視覺化、統計繪圖
 
 **應用場景**：化工資料分析、實驗數據處理、結果視覺化
 
@@ -250,7 +252,7 @@ CHE-AI-COURSE/
 
 ```powershell
 # 複製專案
-git clone https://github.com/your-repo/CHE-AI-COURSE.git
+git clone https://github.com/fcuycchuang/CHE-AI-COURSE.git
 cd CHE-AI-COURSE
 
 # 建立 Python 3.10 虛擬環境
