@@ -322,8 +322,8 @@ sensor_std = train_df[sensor_names].std()
 
 $$
 RUL(t) = \begin{cases}
-\text{max_RUL} & \text{if } t < \text{total_cycles} - \text{max_RUL} \\
-\text{total_cycles} - t & \text{otherwise}
+\mathrm{max\_RUL} & \text{if } t < \mathrm{total\_cycles} - \mathrm{max\_RUL} \\
+\mathrm{total\_cycles} - t & \text{otherwise}
 \end{cases}
 $$
 
@@ -740,7 +740,7 @@ GRU 預測結果:
 
 **關鍵概念釐清：**
 
-設 $d_i = \text{predicted_RUL}_i - \text{true_RUL}_i$ （預測誤差）
+設 $d_i = \mathrm{predicted\_RUL}_i - \mathrm{true\_RUL}_i$ （預測誤差）
 
 - **低估 RUL** ($d_i < 0$)：預測值 < 真實值，即**提前預測故障**
   - 例如：真實 RUL = 50，預測 RUL = 30 → $d = -20$（早預測 20 cycles）
@@ -768,7 +768,7 @@ e^{d_i/10} - 1 & \text{if } d_i \geq 0 \text{ (高估)}
 $$
 
 $$
-d_i = \text{predicted_RUL}_i - \text{true_RUL}_i
+d_i = \mathrm{predicted\_RUL}_i - \mathrm{true\_RUL}_i
 $$
 
 **懲罰特性：**
@@ -1154,7 +1154,7 @@ print(f"Predicted RUL: {mean_rul[0]:.1f} ± {std_rul[0]:.1f} cycles")
 ```
 
 **決策應用：**
-- 若 $\text{mean_RUL} - 2 \times \text{std_RUL} < 30$，則觸發維修（保守策略）
+- 若 $\mathrm{mean\_RUL} - 2 \times \mathrm{std\_RUL} < 30$，則觸發維修（保守策略）
 - 高不確定度（std > 15）→ 增加檢查頻率以收集更多數據
 
 ---
