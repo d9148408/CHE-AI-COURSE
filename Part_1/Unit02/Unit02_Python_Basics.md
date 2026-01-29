@@ -319,7 +319,7 @@ modulus = a % b         # 1  (取餘數)
 exponent = a ** b       # 1000 (次方)
 
 # 化工應用範例
-# 理想氣體方程式： PV = nRT
+# 理想氣體方程式： $PV = nRT$
 pressure = 1.0        # atm
 volume = 22.4         # L
 R = 0.0821            # L·atm/(mol·K)
@@ -542,7 +542,7 @@ print("-" * 25)
 
 while concentration > 0.1:
     print(f"{time:6.1f}    {concentration:8.4f}")
-    # 一階反應動力學： C(t) = C0 * exp(-kt)
+    # 一階反應動力學： $C(t) = C_0 \exp(-kt)$
     time += 0.5
     concentration = 1.0 * (2.71828 ** (-k * time))
 
@@ -705,7 +705,7 @@ print_reactor_info(temperature=350.0, pressure=10.0, type="CSTR")
 # 理想氣體方程式計算
 def ideal_gas_law(P=None, V=None, n=None, T=None, R=0.0821):
     """
-    理想氣體方程式： PV = nRT
+    理想氣體方程式： $PV = nRT$
     
     Parameters:
     -----------
@@ -774,7 +774,7 @@ print(f"轉化率： {conversion:.2%}")
 # 熱容計算（多項式擬合）
 def heat_capacity(T, a, b, c, d=0):
     """
-    計算熱容 Cp = a + bT + cT² + dT³
+    計算熱容 $C_p = a + bT + cT^2 + dT^3$
     
     Parameters:
     -----------
@@ -1206,7 +1206,7 @@ plt.show()
 import numpy as np
 from scipy.optimize import curve_fit
 
-# Arrhenius 方程式： k = A * exp(-Ea / (R*T))
+# Arrhenius 方程式： $k = A \exp(-E_a / RT)$
 def arrhenius(T, A, Ea):
     R = 8.314  # J/(mol·K)
     return A * np.exp(-Ea / (R * T))

@@ -1,6 +1,6 @@
 # Unit10 隨機梯度下降回歸 | SGD Regression
 
-> **最後更新**：2026-01-16 | 建立完整教學講義
+> **最後更新**：2026-01-29 | 完成內容檢查與修正
 
 ---
 
@@ -45,7 +45,7 @@ SGD 回歸解決了以下重要問題：
    - 化工應用：即時反應器監控、連續生產過程優化
 
 3. **靈活性**：
-   - 支持多種損失函數（squared_loss, huber, epsilon_insensitive 等）
+   - 支持多種損失函數（squared_error, huber, epsilon_insensitive 等）
    - 支持多種正則化（L1, L2, Elastic Net）
    - 可以模擬 OLS、Ridge、Lasso、Elastic Net 等多種線性模型
 
@@ -139,7 +139,7 @@ $$
 
 sklearn 的 `SGDRegressor` 支持多種損失函數：
 
-1. **平方損失 (Squared Loss)** - `loss='squared_loss'`（默認）：
+1. **平方損失 (Squared Loss)** - `loss='squared_error'`（默認）：
    $$
    L(y, \hat{y}) = \frac{1}{2}(y - \hat{y})^2
    $$
@@ -304,7 +304,7 @@ $$
 
 | 參數 | 說明 | 默認值 | 建議 |
 |------|------|--------|------|
-| `loss` | 損失函數 | `'squared_loss'` | 異常值多用 `'huber'` |
+| `loss` | 損失函數 | `'squared_error'` | 異常值多用 `'huber'` |
 | `penalty` | 正則化類型 | `'l2'` | 特徵選擇用 `'l1'` 或 `'elasticnet'` |
 | `alpha` | 正則化強度 | `0.0001` | 通過交叉驗證調整 |
 | `l1_ratio` | Elastic Net 的 L1 比例 | `0.15` | 僅當 `penalty='elasticnet'` 時有效 |
@@ -342,7 +342,7 @@ X_test_scaled = scaler.transform(X_test)
 
 # 3. 建立 SGD 模型
 sgd_model = SGDRegressor(
-    loss='squared_loss',        # 損失函數
+    loss='squared_error',       # 損失函數
     penalty='l2',               # 正則化類型
     alpha=0.0001,               # 正則化強度
     learning_rate='optimal',    # 學習率策略
@@ -382,7 +382,7 @@ print(f"Number of iterations: {sgd_model.n_iter_}")
 
 ```python
 # 1. 平方損失（標準 OLS + 正則化）
-sgd_squared = SGDRegressor(loss='squared_loss', penalty='l2', alpha=0.0001)
+sgd_squared = SGDRegressor(loss='squared_error', penalty='l2', alpha=0.0001)
 
 # 2. Huber 損失（對異常值魯棒）
 sgd_huber = SGDRegressor(
@@ -498,7 +498,7 @@ from sklearn.linear_model import SGDRegressor
 
 # 啟用早停法
 sgd_early = SGDRegressor(
-    loss='squared_loss',
+    loss='squared_error',
     penalty='l2',
     alpha=0.0001,
     max_iter=10000,            # 設置較大的最大迭代次數
@@ -531,7 +531,7 @@ from sklearn.linear_model import SGDRegressor
 
 # 1. 初始化模型（啟用 warm_start）
 sgd_online = SGDRegressor(
-    loss='squared_loss',
+    loss='squared_error',
     penalty='l2',
     alpha=0.0001,
     learning_rate='optimal',
@@ -575,7 +575,7 @@ from sklearn.linear_model import SGDRegressor
 
 # 定義參數網格
 param_grid = {
-    'loss': ['squared_loss', 'huber'],
+    'loss': ['squared_error', 'huber'],
     'penalty': ['l2', 'l1', 'elasticnet'],
     'alpha': [0.0001, 0.001, 0.01, 0.1],
     'learning_rate': ['optimal', 'adaptive'],
@@ -633,10 +633,10 @@ print(f"Test R²: {test_r2:.4f}")
 
 | 模型 | SGDRegressor 設置 | 說明 |
 |------|-------------------|------|
-| **OLS (普通最小平方法)** | `penalty='none'`, `loss='squared_loss'` | 無正則化的線性回歸 |
-| **Ridge Regression** | `penalty='l2'`, `loss='squared_loss'` | L2 正則化 |
-| **Lasso Regression** | `penalty='l1'`, `loss='squared_loss'` | L1 正則化 |
-| **Elastic Net** | `penalty='elasticnet'`, `loss='squared_loss'` | L1 + L2 正則化 |
+| **OLS (普通最小平方法)** | `penalty='none'`, `loss='squared_error'` | 無正則化的線性回歸 |
+| **Ridge Regression** | `penalty='l2'`, `loss='squared_error'` | L2 正則化 |
+| **Lasso Regression** | `penalty='l1'`, `loss='squared_error'` | L1 正則化 |
+| **Elastic Net** | `penalty='elasticnet'`, `loss='squared_error'` | L1 + L2 正則化 |
 | **Huber Regression** | `penalty='l2'`, `loss='huber'` | 對異常值魯棒 |
 | **Support Vector Regression (SVR)** | `penalty='l2'`, `loss='epsilon_insensitive'` | ε-不敏感損失 |
 
@@ -718,7 +718,7 @@ print(results_df.to_string(index=False))
    - SGD 可以逐批處理數據
 
 4. **需要靈活性**：
-   - 支持多種損失函數（squared_loss, huber, epsilon_insensitive）
+   - 支持多種損失函數（squared_error, huber, epsilon_insensitive）
    - 支持多種正則化（L1, L2, Elastic Net）
 
 **❌ 不推薦使用 SGDRegressor 的場景**：
@@ -886,7 +886,7 @@ X_test_scaled = scaler.transform(X_test)
 
 # 1. 標準 SGD（對異常值敏感）
 sgd_squared = SGDRegressor(
-    loss='squared_loss',
+    loss='squared_error',
     penalty='l2',
     alpha=0.001,
     max_iter=1000,
@@ -1073,7 +1073,7 @@ for day in range(0, 101, 10):  # 每 10 天評估一次
    - 適應動態環境和概念漂移
 
 3. **靈活性**：
-   - 多種損失函數（squared_loss, huber, epsilon_insensitive）
+   - 多種損失函數（squared_error, huber, epsilon_insensitive）
    - 多種正則化（L1, L2, Elastic Net）
    - 可模擬多種線性模型
 
@@ -1618,7 +1618,7 @@ X_test_scaled = scaler.transform(X_test)
 
 # Step 4: 建立模型
 sgd_model = SGDRegressor(
-    loss='squared_loss',          # 或 'huber' 處理異常值
+    loss='squared_error',         # 或 'huber' 處理異常值
     penalty='l2',                 # 或 'l1', 'elasticnet'
     alpha=0.0001,                 # 正則化強度
     learning_rate='optimal',      # 學習率策略
@@ -1725,7 +1725,7 @@ print("\nModel saved successfully!")
    - 概念漂移處理（催化劑老化、原料變化）
    - 異常值魯棒建模（Huber 損失）
 
-### 9.2 與其他線性模型的選擇
+### 10.2 與其他線性模型的選擇
 
 | 數據規模 | 在線學習 | 推薦模型 |
 |---------|---------|---------|
@@ -1734,7 +1734,7 @@ print("\nModel saved successfully!")
 | > 100,000 | 否 | **SGDRegressor** |
 | > 100,000 | 是 | **SGDRegressor** |
 
-### 9.3 最佳實踐
+### 10.3 最佳實踐
 
 1. **數據預處理**：
    - ✓ **必須進行標準化**（`StandardScaler`）
@@ -1789,7 +1789,7 @@ from scipy.stats import loguniform
 
 # 定義參數分佈
 param_distributions = {
-    'loss': ['squared_loss', 'huber'],
+    'loss': ['squared_error', 'huber'],
     'penalty': ['l2', 'l1', 'elasticnet'],
     'alpha': loguniform(1e-5, 1e-1),
     'learning_rate': ['optimal', 'adaptive'],
@@ -1883,7 +1883,7 @@ print(f"Best CV R²: {random_search.best_score_:.4f}")
 - 課程單元：Unit10 SGD 回歸
 - 課程製作：逢甲大學 化工系 智慧程序系統工程實驗室
 - 授課教師：莊曜禎 助理教授
-- 更新日期：2026-01-28
+- 更新日期：2026-01-29
 
 **課程授權 [CC BY-NC-SA 4.0]**
  - 本教材遵循 [創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授權。

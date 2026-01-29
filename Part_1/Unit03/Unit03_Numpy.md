@@ -723,7 +723,7 @@ print(f"標準化後標準差: {standardized.std(axis=0)}")
 ### 9.1 化工數據分析：反應動力學參數估算
 
 ```python
-# 一階反應動力學：ln(C) = ln(C0) - k*t
+# 一階反應動力學：ln(C) = ln(C0) - k * t
 # 已知不同時間點的濃度數據，估算速率常數 k
 
 time = np.array([0, 10, 20, 30, 40, 50])  # 時間 (min)
@@ -738,7 +738,7 @@ ln_C0 = ln_C[0]
 k = -np.sum(time * ln_C) / np.sum(time ** 2)
 
 print(f"反應速率常數 k: {k:.6f} min⁻¹")
-print(f"半生期 t₁/₂: {np.log(2) / k:.2f} min")
+print(f"半生期 $t_{{1/2}}$ : {np.log(2) / k:.2f} min")
 
 # 計算預測值與誤差
 ln_C_pred = ln_C0 - k * time

@@ -36,11 +36,11 @@ $$
 $$
 
 其中：
-- $\mathbf{y}$ : 目標變數向量
-- $\mathbf{X}$ : 特徵矩陣
-- $\boldsymbol{\beta}$ : 回歸係數向量
-- $\alpha$ : **正則化強度 (Regularization Strength)**，控制懲罰項的權重
-- $\| \boldsymbol{\beta} \|_1 = \sum_{j=1}^{p} |\beta_j|$ : L1 範數（係數的絕對值和）
+- $\mathbf{y}$ ：目標變數向量
+- $\mathbf{X}$ ：特徵矩陣
+- $\boldsymbol{\beta}$ ：回歸係數向量
+- $\alpha$ ：**正則化強度 (Regularization Strength)**，控制懲罰項的權重
+- $\| \boldsymbol{\beta} \|_1 = \sum_{j=1}^{p} |\beta_j|$ ：L1 範數（係數的絕對值和）
 
 ### 1.2 為什麼需要 Lasso 回歸？
 
@@ -82,8 +82,8 @@ $$
 - 這是 Lasso 能產生稀疏解的根本原因
 
 **與 Ridge 的關鍵差異**：
-- **Ridge (L2)**：圓形約束區域 → 係數收縮但不為 0
-- **Lasso (L1)**：菱形約束區域 → 係數可變為 0（稀疏解）
+- **Ridge (L2)**： 圓形約束區域 → 係數收縮但不為 0
+- **Lasso (L1)**： 菱形約束區域 → 係數可變為 0（稀疏解）
 
 ---
 
@@ -320,7 +320,7 @@ for i, (idx, name) in enumerate(zip(selected_features, selected_feature_names)):
 
 | 特性 | OLS | Ridge (L2) | Lasso (L1) |
 |------|-----|-----------|-----------|
-| 目標函數 | $\|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}\|^2$ | $\|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}\|^2 + \alpha\|\boldsymbol{\beta}\|^2$ | $\|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}\|^2 + \alpha\|\boldsymbol{\beta}\|$ |
+| 目標函數 | $\|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}\|^2$ | $\|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}\|^2 + \alpha\|\boldsymbol{\beta}\|^2$ | $\|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}\|^2 + \alpha\|\boldsymbol{\beta}\|_1$ |
 | 解的形式 | 解析解 | 解析解 | 數值解 |
 | 係數估計 | 無偏但高方差 | 有偏但低方差 | 有偏且稀疏 |
 | 特徵選擇 | ✗ | ✗ | ✓ |
@@ -575,9 +575,9 @@ Ridge 2.338718 2.971148 0.903246               8
    - Lasso 略低於 Ridge 和 OLS，但差距極小
 
 2. **稀疏性差異**：
-   - **Lasso**：7 個非零係數（剔除 1 個特徵）
-   - **Ridge**：8 個非零係數（保留所有特徵）
-   - **OLS**：8 個非零係數（保留所有特徵）
+   - **Lasso**： 7 個非零係數（剔除 1 個特徵）
+   - **Ridge**： 8 個非零係數（保留所有特徵）
+   - **OLS**： 8 個非零係數（保留所有特徵）
 
 3. **實務意義**：
    - Lasso 在保持高預測精度的同時實現了特徵選擇
@@ -612,7 +612,7 @@ Ridge 2.338718 2.971148 0.903246               8
    - 模型欠擬合
 
 4. **最佳 α（紅色虛線）**：
-   - 位置：α = 0.0423
+   - 位置： α = 0.0423
    - 此時保留 7 個特徵，平衡了預測性能與稀疏性
 
 **實務啟示**：

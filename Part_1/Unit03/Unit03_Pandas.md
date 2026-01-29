@@ -677,7 +677,7 @@ import matplotlib.pyplot as plt
 # 建立範例時間序列資料
 ts = pd.DataFrame({
     'Time': pd.date_range('2024-01-01', periods=168, freq='h'),
-    'Temperature': 350 + 10 * np.sin(np.linspace(0, 4*np.pi, 168)) + np.random.randn(168) * 2
+    'Temperature': 350 + 10 * np.sin(np.linspace(0, 4 * np.pi, 168)) + np.random.randn(168) * 2
 }).set_index('Time')
 
 # 計算移動平均
@@ -1038,14 +1038,14 @@ df_clean = df.dropna()  # 回傳新 DataFrame
 建立一個 DataFrame 記錄 5 天的反應器操作數據，包含日期、溫度、壓力、轉化率，並完成以下任務：
 1. 計算平均溫度和轉化率
 2. 找出轉化率最高的那天
-3. 新增一欄「效率」= 轉化率 / 溫度
+3. 新增一欄「效率」 = 轉化率 / 溫度
 
 ### 練習 2：資料清理
 
 給定包含缺失值和異常值的製程數據，完成以下任務：
 1. 識別缺失值的數量和位置
 2. 使用適當方法填補缺失值
-3. 移除異常值（定義：超出平均值 ± 3 個標準差）
+3. 移除異常值（定義：超出平均值 $\pm$ 3 個標準差）
 
 ### 練習 3：時間序列分析
 
