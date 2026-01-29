@@ -61,10 +61,10 @@ RNN 解決了傳統 DNN 無法處理的問題：
   - RNN 的核心優勢：記憶機制、參數共享、可變長度
   
 - **RNN 基礎架構**：
-  - 隱藏狀態 (Hidden State)：$h_t = f(W_{hh}h_{t-1} + W_{xh}x_t + b_h)$
-  - 輸出 (Output)：$y_t = W_{hy}h_t + b_y$
+  - 隱藏狀態 (Hidden State)： $h_t = f(W_{hh}h_{t-1} + W_{xh}x_t + b_h)$
+  - 輸出 (Output)： $y_t = W_{hy}h_t + b_y$
   - 時間展開 (Unrolling in Time)：RNN 如何處理序列
-  - 參數共享：$W_{hh}, W_{xh}, W_{hy}$ 在所有時刻重複使用
+  - 參數共享： $W_{hh}, W_{xh}, W_{hy}$ 在所有時刻重複使用
   
 - **RNN 的挑戰：梯度消失與爆炸**：
   - **梯度消失 (Vanishing Gradient)**：長序列訓練時梯度趨近於 0，無法學習長期依賴
@@ -72,17 +72,17 @@ RNN 解決了傳統 DNN 無法處理的問題：
   - 解決方案：LSTM、GRU、梯度裁剪 (Gradient Clipping)、BPTT 截斷
   
 - **LSTM (Long Short-Term Memory)**：
-  - **細胞狀態 (Cell State)**：$C_t$，長期記憶通道
-  - **遺忘門 (Forget Gate)**：$f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)$，決定遺忘多少過去資訊
-  - **輸入門 (Input Gate)**：$i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)$，決定記住多少新資訊
-  - **輸出門 (Output Gate)**：$o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)$，決定輸出多少資訊
-  - **細胞更新**：$C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t$
-  - **隱藏狀態更新**：$h_t = o_t \odot \tanh(C_t)$
+  - **細胞狀態 (Cell State)**： $C_t$ ，長期記憶通道
+  - **遺忘門 (Forget Gate)**： $f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)$ ，決定遺忘多少過去資訊
+  - **輸入門 (Input Gate)**： $i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)$ ，決定記住多少新資訊
+  - **輸出門 (Output Gate)**： $o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)$ ，決定輸出多少資訊
+  - **細胞更新**： $C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t$
+  - **隱藏狀態更新**： $h_t = o_t \odot \tanh(C_t)$
   
 - **GRU (Gated Recurrent Unit)**：
   - 簡化版 LSTM，只有兩個門（更新門、重置門）
-  - **更新門 (Update Gate)**：$z_t = \sigma(W_z \cdot [h_{t-1}, x_t])$
-  - **重置門 (Reset Gate)**：$r_t = \sigma(W_r \cdot [h_{t-1}, x_t])$
+  - **更新門 (Update Gate)**： $z_t = \sigma(W_z \cdot [h_{t-1}, x_t])$
+  - **重置門 (Reset Gate)**： $r_t = \sigma(W_r \cdot [h_{t-1}, x_t])$
   - 參數更少、訓練更快，性能接近 LSTM
   
 - **RNN 變體架構**：
@@ -124,8 +124,11 @@ RNN 解決了傳統 DNN 無法處理的問題：
 ### 2️⃣ 進階專題：雙向 RNN、Seq2Seq、Attention ⭐
 
 **檔案**：
-- 講義：[Unit17_Advanced_BiRNN_Seq2Seq_Attention.md](Unit17_Advanced_BiRNN_Seq2Seq_Attention.md)
-- 程式範例：[Unit17_Advanced_BiRNN_Seq2Seq_Attention.ipynb](Unit17_Advanced_BiRNN_Seq2Seq_Attention.ipynb)
+- 講義：[Unit17_RNN_Advanced.md](Unit17_RNN_Advanced.md)
+- 程式範例（三個獨立 Notebook）：
+  - [Unit17_RNN_Advanced_BiRNN.ipynb](Unit17_RNN_Advanced_BiRNN.ipynb) - 雙向 RNN
+  - [Unit17_RNN_Advanced_Seq2Seq.ipynb](Unit17_RNN_Advanced_Seq2Seq.ipynb) - Seq2Seq
+  - [Unit17_RNN_Advanced_Attention.ipynb](Unit17_RNN_Advanced_Attention.ipynb) - Attention 機制
 
 **內容重點**：
 - **雙向 RNN (Bidirectional RNN)**：
@@ -145,7 +148,7 @@ RNN 解決了傳統 DNN 無法處理的問題：
 - **Attention 機制**：
   - 問題：Seq2Seq 的 Context Vector 是瓶頸（長序列資訊丟失）
   - 解決：Attention 讓解碼器在每一步都關注編碼器的不同部分
-  - 權重計算：$\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_k \exp(e_{ik})}$
+  - 權重計算： $\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_k \exp(e_{ik})}$
   - Keras 實作：自定義 Attention 層
   - 可解釋性：視覺化 Attention 權重，理解模型決策
   
@@ -204,8 +207,8 @@ RNN 解決了傳統 DNN 無法處理的問題：
 ### 4️⃣ 實際案例 2：脫丁烷塔軟感測器 (Debutanizer Column)
 
 **檔案**：
-- 講義：[Unit17_Example_Debutanizer.md](Unit17_Example_Debutanizer.md)
-- 程式範例：[Unit17_Example_Debutanizer.ipynb](Unit17_Example_Debutanizer.ipynb)
+- 講義：[Unit17_Example_debutanizer_column.md](Unit17_Example_debutanizer_column.md)
+- 程式範例：[Unit17_Example_debutanizer_column.ipynb](Unit17_Example_debutanizer_column.ipynb)
 
 **內容重點**：
 - **問題背景**：
@@ -242,8 +245,8 @@ RNN 解決了傳統 DNN 無法處理的問題：
 ### 5️⃣ 實際案例 3：NASA 渦輪風扇 RUL 預測 (Remaining Useful Life) ⭐
 
 **檔案**：
-- 講義：[Unit17_Example_NASA_Turbofan.md](Unit17_Example_NASA_Turbofan.md)
-- 程式範例：[Unit17_Example_NASA_Turbofan.ipynb](Unit17_Example_NASA_Turbofan.ipynb)
+- 講義：[Unit17_Example_RUL_NASA_Turbofan.md](Unit17_Example_RUL_NASA_Turbofan.md)
+- 程式範例：[Unit17_Example_RUL_NASA_Turbofan.ipynb](Unit17_Example_RUL_NASA_Turbofan.ipynb)
 
 **內容重點**：
 - **問題背景**：
@@ -288,7 +291,7 @@ RNN 解決了傳統 DNN 無法處理的問題：
 
 ### 6️⃣ 實作練習
 
-**檔案**：[Unit17_RNN_Homework.ipynb](Unit17_RNN_Homework.ipynb)
+**檔案**：[Unit17_RNN_Homework.ipynb](Unit17_RNN_Homework.ipynb) ⚠️ *（規劃中，即將推出）*
 
 **練習內容**：
 - 建立完整的 LSTM/GRU 時間序列預測模型
@@ -424,18 +427,21 @@ tensorboard >= 2.10.0            # 訓練視覺化
    - 重點：多變量輸入、時間窗口設計、LSTM 基礎應用
    
 2. **脫丁烷塔軟感測器**（軟感測器經典應用）
-   - 閱讀 [Unit17_Example_Debutanizer.md](Unit17_Example_Debutanizer.md)
-   - 執行 [Unit17_Example_Debutanizer.ipynb](Unit17_Example_Debutanizer.ipynb)
+   - 閱讀 [Unit17_Example_debutanizer_column.md](Unit17_Example_debutanizer_column.md)
+   - 執行 [Unit17_Example_debutanizer_column.ipynb](Unit17_Example_debutanizer_column.ipynb)
    - 重點：動態系統建模、滯後效應、RNN vs. DNN 對比
    
 3. **NASA 渦輪風扇 RUL**（進階應用，RUL 預測）
-   - 閱讀 [Unit17_Example_NASA_Turbofan.md](Unit17_Example_NASA_Turbofan.md)
-   - 執行 [Unit17_Example_NASA_Turbofan.ipynb](Unit17_Example_NASA_Turbofan.ipynb)
+   - 閱讀 [Unit17_Example_RUL_NASA_Turbofan.md](Unit17_Example_RUL_NASA_Turbofan.md)
+   - 執行 [Unit17_Example_RUL_NASA_Turbofan.ipynb](Unit17_Example_RUL_NASA_Turbofan.ipynb)
    - 重點：RUL 標籤生成、健康指標、預測性維護
 
 ### 第三階段：進階架構（選修）
-1. 閱讀 [Unit17_Advanced_BiRNN_Seq2Seq_Attention.md](Unit17_Advanced_BiRNN_Seq2Seq_Attention.md)
-2. 執行 [Unit17_Advanced_BiRNN_Seq2Seq_Attention.ipynb](Unit17_Advanced_BiRNN_Seq2Seq_Attention.ipynb)
+2. 閱讀 [Unit17_RNN_Advanced.md](Unit17_RNN_Advanced.md)
+2. 執行進階 Notebook（依序學習）：
+   - [Unit17_RNN_Advanced_BiRNN.ipynb](Unit17_RNN_Advanced_BiRNN.ipynb)
+   - [Unit17_RNN_Advanced_Seq2Seq.ipynb](Unit17_RNN_Advanced_Seq2Seq.ipynb)
+   - [Unit17_RNN_Advanced_Attention.ipynb](Unit17_RNN_Advanced_Attention.ipynb)
 3. 重點：雙向 RNN、Seq2Seq、Attention、Transformer
 
 ### 第四階段：綜合練習
@@ -565,14 +571,14 @@ tensorboard >= 2.10.0            # 訓練視覺化
 ### RUL 預測專用指標
 - **RMSE**：標準均方根誤差
 - **Score Function**（NASA PHM）：
-  - 早期預測偏高懲罰輕：$s_i = e^{-\frac{d_i}{13}} - 1$ (if $d_i < 0$)
-  - 晚期預測偏低懲罰重：$s_i = e^{+\frac{d_i}{10}} - 1$ (if $d_i \geq 0$)
-  - 總分：$Score = \sum_{i=1}^{n} s_i$
+  - 早期預測偏高懲罰輕： $s_i = e^{-\frac{d_i}{13}} - 1$ (if $d_i < 0$ )
+  - 晚期預測偏低懲罰重： $s_i = e^{+\frac{d_i}{10}} - 1$ (if $d_i \geq 0$ )
+  - 總分： $Score = \sum_{i=1}^{n} s_i$
 
 ### 異常檢測
-- **重建誤差 (Reconstruction Error)**：$\text{Error} = |y_{\text{true}} - y_{\text{pred}}|$
+- **重建誤差 (Reconstruction Error)**： $\text{Error} = |y_{\text{true}} - y_{\text{pred}}|$
 - **異常分數 (Anomaly Score)**：標準化重建誤差
-- **閾值設定**：$\text{threshold} = \mu + k\sigma$ (常用 $k=3$)
+- **閾值設定**： $\text{threshold} = \mu + k\sigma$ (常用 $k=3$ )
 - **分類指標**：Precision、Recall、F1-Score、ROC-AUC
 
 ### 訓練監控
