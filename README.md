@@ -149,26 +149,27 @@
 
 ---
 ## 課程安排
-| 次/單元 | 主題與閱讀教材 | 教學與學習活動 | 指定作業 / 預習作業 | 同步(小時) | 非同步(小時) | 面授(小時) |
-|---|---|---|---|---|---|---|
-| 1 | **Part 0: Google Colab**<br>Unit00 Python學習環境設定教學<br><br>**Part 1: AI & ML Introduction**<br>Unit01 AI與機器學習概論<br>Unit02 Python程式語言基礎 | 完成Google帳號申請<br>完成課程資料下載<br>完成Google Colab環境設定<br>完成課堂作業 | Unit02_Python_Basics_Homework.ipynb | 0 | 0 | 3 |
-| 2 | **Part 1: AI & ML Introduction**<br>Unit03 Python模組 Numpy 與 Pandas<br>Unit04 Python模組 Matplotlib 與 Seaborn | 完成課堂作業 | Unit03_Numpy_Homework.ipynb<br>Unit03_Pandas_Homework.ipynb | 0 | 0 | 3 |
-| 3 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit05 分群 (Clustering) | 完成課堂作業 | Unit05_Clustering_Homework.ipynb | 0 | 0 | 3 |
-| 4 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit06 降維 (Dimensionality Reduction) | 完成課堂作業 | Unit06_Dimensionality_Reduction_Homework.ipynb | 0 | 0 | 3 |
-| 5 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit07 異常檢測 (Anomaly / Outlier Detection) | 完成課堂作業 | Unit07_Anomaly_Detection_Homework.ipynb | 0 | 0 | 3 |
-| 6 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit08 關聯規則學習 (Association Rule Learning) | 完成課堂作業 | Unit08_Association_Rule_Learning_Homework.ipynb<br>Unit09_Integrated_Case_Study_Homework.ipynb | 0 | 0 | 3 |
-| 7 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit09 綜合案例研究 (Integrated Case Study) | 完成課堂作業 | Unit09_Integrated_Case_Study_Homework.ipynb | 0 | 0 | 3 |
-| 8 | **Part 3: 監督式學習 Supervised Learning**<br>Unit10 線性模型回歸 (Linear Model Regression) | 完成課堂作業 | Unit10_Linear_Models_Homework.ipynb | 0 | 0 | 3 |
-| 9 | **Part 3: 監督式學習 Supervised Learning**<br>Unit11 非線性模型回歸 (Non-Linear Model Regression) | 完成課堂作業 | Unit11_NonLinear_Models_Homework.ipynb | 0 | 0 | 3 |
-|10 | **Part 3: 監督式學習 Supervised Learning**<br>Unit12 分類模型 (Classification Models) | 完成課堂作業 | Unit12_Classification_Models_Homework.ipynb | 0 | 0 | 3 |
-|11 | **Part 3: 監督式學習 Supervised Learning**<br>Unit13 集成學習方法 (Ensemble Learning Methods) | 完成課堂作業 | Unit13_Ensemble_Learning_Homework.ipynb | 0 | 0 | 3 |
-|12 | **Part 3: 監督式學習 Supervised Learning**<br>Unit14 模型評估與選擇 (Model Evaluation and Selection) | 完成課堂作業 | Unit14_Homework.ipynb | 0 | 0 | 3 |
-|13 | **Part 4: 深度學習 Deep Learning**<br>Unit15 全連接多層感知模型 (DNN / MLP) | 完成課堂作業 | Unit15_DNN_MLP_Homework.ipynb | 0 | 0 | 3 |
-|14 | **Part 4: 深度學習 Deep Learning**<br>Unit16 卷積神經網路 (CNN) | 完成課堂作業 | Unit16_CNN_Homework.ipynb | 0 | 0 | 3 |
-|15 | **Part 4: 深度學習 Deep Learning**<br>Unit17 循環神經網路 (RNN) | 完成課堂作業 | Unit16_CNN_Homework.ipynb | 0 | 0 | 3 |
-|16 | 期末分組專題報告 | 期末考評分 | – | 0 | 0 | 3 |
-|17 | 期末分組專題報告 | 期末考評分 | – | 0 | 0 | 3 |
-|18 | 期末分組專題報告 | 期末考評分 | – | 0 | 0 | 3 |
+| 週次 | 主題與閱讀教材 | 教學與學習活動 | 面授(小時) |
+|---|---|---|---|
+| 1 | **Part 0: Google Colab**<br>Unit00 Python學習環境設定教學<br><br>**Part 1: AI & ML Introduction**<br>Unit01 AI與機器學習概論<br>Unit02 Python程式語言基礎 | 完成Google帳號申請<br>完成課程資料下載<br>完成Google Colab環境設定<br>完成課堂作業 | 3 |
+| 2 | **Part 1: AI & ML Introduction**<br>Unit03 Python模組 Numpy 與 Pandas<br>Unit04 Python模組 Matplotlib 與 Seaborn | 完成課堂作業 | 3 |
+| 3 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit05 分群 (Clustering) | 完成課堂作業 | 3 |
+| 4 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit06 降維 (Dimensionality Reduction) | 完成課堂作業 | 3 |
+| 5 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit07 異常檢測 (Anomaly / Outlier Detection) | 完成課堂作業 | 3 |
+| 6 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit08 關聯規則學習 (Association Rule Learning) | 完成課堂作業 | 3 |
+| 7 | **Part 2: 非監督式學習 Unsupervised Learning**<br>Unit09 綜合案例研究 (Integrated Case Study) | 完成課堂作業 | 3 |
+| 8 | **Part 3: 監督式學習 Supervised Learning**<br>Unit10 線性模型回歸 (Linear Model Regression) | 完成課堂作業 | 3 |
+| 9 | **Part 3: 監督式學習 Supervised Learning**<br>Unit11 非線性模型回歸 (Non-Linear Model Regression) | 完成課堂作業 | 3 |
+|10 | **Part 3: 監督式學習 Supervised Learning**<br>Unit12 分類模型 (Classification Models) | 完成課堂作業 | 3 |
+|11 | **Part 3: 監督式學習 Supervised Learning**<br>Unit13 集成學習方法 (Ensemble Learning Methods) | 完成課堂作業 | 3 |
+|12 | **Part 3: 監督式學習 Supervised Learning**<br>Unit14 模型評估與選擇 (Model Evaluation and Selection) | 完成課堂作業 | 3 |
+|13 | **Part 4: 深度學習 Deep Learning**<br>Unit15 全連接多層感知模型 (DNN / MLP) | 完成課堂作業 | 3 |
+|14 | **Part 4: 深度學習 Deep Learning**<br>Unit16 卷積神經網路 (CNN) | 完成課堂作業 | 3 |
+|15 | **Part 4: 深度學習 Deep Learning**<br>Unit17 循環神經網路 (RNN) | 完成課堂作業 | 3 |
+|16 | 期末分組專題報告 | 期末考評分 | 3 |
+|17 | 期末分組專題報告 | 期末考評分 | 3 |
+|18 | 期末分組專題報告 | 期末考評分 | 3 |
+
 
 
 ---
