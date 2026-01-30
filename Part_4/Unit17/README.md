@@ -437,7 +437,7 @@ tensorboard >= 2.10.0            # 訓練視覺化
    - 重點：RUL 標籤生成、健康指標、預測性維護
 
 ### 第三階段：進階架構（選修）
-2. 閱讀 [Unit17_RNN_Advanced.md](Unit17_RNN_Advanced.md)
+1. 閱讀 [Unit17_RNN_Advanced.md](Unit17_RNN_Advanced.md)
 2. 執行進階 Notebook（依序學習）：
    - [Unit17_RNN_Advanced_BiRNN.ipynb](Unit17_RNN_Advanced_BiRNN.ipynb)
    - [Unit17_RNN_Advanced_Seq2Seq.ipynb](Unit17_RNN_Advanced_Seq2Seq.ipynb)

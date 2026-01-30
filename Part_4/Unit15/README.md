@@ -444,11 +444,11 @@ joblib >= 1.0.0               # 模型儲存
 ## 📝 評估指標總結
 
 ### 回歸任務
-- **MSE (Mean Squared Error)**：$\frac{1}{n}\sum(y_i - \hat{y}_i)^2$，懲罰大誤差
-- **RMSE (Root Mean Squared Error)**：$\sqrt{\text{MSE}}$，與目標變數同單位
-- **MAE (Mean Absolute Error)**：$\frac{1}{n}\sum|y_i - \hat{y}_i|$，對異常值較不敏感
-- **R² (Coefficient of Determination)**：$1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$，解釋變異比例
-- **MAPE (Mean Absolute Percentage Error)**：$\frac{100\%}{n}\sum\frac{|y_i - \hat{y}_i|}{|y_i|}$，相對誤差
+- **MSE (Mean Squared Error)**： $\frac{1}{n}\sum(y_i - \hat{y}_i)^2$ ，懲罰大誤差
+- **RMSE (Root Mean Squared Error)**： $\sqrt{\text{MSE}}$ ，與目標變數同單位
+- **MAE (Mean Absolute Error)**： $\frac{1}{n}\sum|y_i - \hat{y}_i|$ ，對異常值較不敏感
+- **R² (Coefficient of Determination)**： $1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$ ，解釋變異比例
+- **MAPE (Mean Absolute Percentage Error)**： $\frac{100\%}{n}\sum\frac{|y_i - \hat{y}_i|}{|y_i|}$ ，相對誤差
 
 ### 分類任務
 - **Accuracy**：整體預測正確率

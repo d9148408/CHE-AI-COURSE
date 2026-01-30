@@ -130,7 +130,7 @@
 **實際案例**：
 - [鍋爐 NOx 排放預測 (Boiler)](Unit17/Unit17_Example_Boiler.md) ([Notebook](Unit17/Unit17_Example_Boiler.ipynb))
 - [脫丁烷塔控制 (Debutanizer Column)](Unit17/Unit17_Example_debutanizer_column.md) ([Notebook](Unit17/Unit17_Example_debutanizer_column.ipynb))
-- [NASA 渦輪風扇 RUL 預測](Unit17/Unit17_Example_NASA_Turbofan_RUL.md) ([Notebook](Unit17/Unit17_Example_NASA_Turbofan_RUL.ipynb))
+- [NASA 渦輪風扇 RUL 預測](Unit17/Unit17_Example_RUL_NASA_Turbofan.md) ([Notebook](Unit17/Unit17_Example_RUL_NASA_Turbofan.ipynb))
 - [製程異常檢測（時間序列）](Unit17/Unit17_Example_Process_Anomaly_Detection.md) ([Notebook](Unit17/Unit17_Example_Process_Anomaly_Detection.ipynb))
 
 **作業練習**：[Unit17_RNN_Homework.ipynb](Unit17/Unit17_RNN_Homework.ipynb)

@@ -409,7 +409,7 @@ jupyter lab
 ## 📧 聯絡方式
 
 **授課教師**：莊曜禎 助理教授  
-**單位**：逢甲大學 化學工程學系  
+**單位**：[逢甲大學 化學工程學系](https://che.fcu.edu.tw/)  
 **Email**：yaocchuang@o365.fcu.edu.tw
 
 ---
